@@ -146,7 +146,10 @@ const initialFormValues = {
 };
 
 const mapStateToProps = state => ({
-  userProfile: { ...initialFormValues, ...getUserProfileSelector(state) },
+  userProfile: {
+    ...initialFormValues,
+    ...getUserProfileSelector(state),
+  },
   user: getUserSelector(state),
 });
 

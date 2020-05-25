@@ -4,7 +4,7 @@
   "screenshotsFolder": "/tmp/cypress/screenshots",
   "videosFolder": "/tmp/cypress/videos",
   "testFiles": "**/*.feature",
-  "numTestsKeptInMemory": 100,
-  "defaultCommandTimeout": 10000,
-  "requestTimeout": 5000
+  "numTestsKeptInMemory": 0,
+  "defaultCommandTimeout": 30000,
+  "requestTimeout": 10000
 }

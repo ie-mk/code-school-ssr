@@ -1,5 +1,5 @@
 {
-  "name": "prop-rent",
+  "name": "code-school",
   "version": "1.0.0",
   "author": "Justinas Simutis",
   "license": "UNLICENSED",
@@ -8,12 +8,13 @@
   },
   "main": "firebaseFunctions.js",
   "scripts": {
-    "dev": "next src/ -p 8181",
-    "build": "next build src/",
+    "dev": "next src/ -p 8081",
+    "build": "next build src/ && npm run predeploy",
     "start": "next start src/",
-    "serve": "npm run build && firebase emulators:start --only functions,hosting",
+    "serve": "npm run build && npm run predeploy && firebase emulators:start --only functions,hosting",
     "shell": "npm run build && firebase functions:shell",
     "deploy": "firebase deploy --only functions,hosting",
+    "predeploy": "cpx \"src/public/**/*.*\" \"./public\" -C",
     "logs": "firebase functions:log",
     "build-api": "rimraf \"dist-api/**\" &&  NODE_ENV=build webpack --config webpack.api.config.js --progress",
     "cypress:open": "./e2e/node_modules/.bin/cypress open -P e2e",
@@ -22,26 +23,25 @@
   "dependencies": {
     "@zeit/next-css": "1.0.1",
     "babel-plugin-styled-components": "1.10.7",
-    "file-loader": "^6.0.0",
     "firebase": "7.1.0",
     "firebase-admin": "^8.9.0",
     "firebase-functions": "3.3.0",
     "firebaseui": "^4.5.0",
     "formik": "^2.1.4",
-    "geofirex": "^0.1.0",
     "i18next": "^19.4.4",
     "lodash.debounce": "^4.0.8",
+    "moment": "^2.26.0",
     "next": "9.2.2",
     "next-fonts": "^1.1.0",
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-firebaseui": "4.1.0",
-    "react-i18next": "^11.4.0",
     "react-monaco-editor": "^0.36.0",
-    "react-redux": "6.0.1",
+    "react-i18next": "11.4.0",
+    "react-redux": "7.2.0",
     "react-router": "3.2.4",
-    "redux": "4.0.4",
+    "redux": "4.0.5",
     "redux-actions": "2.6.5",
     "redux-form": "8.2.6",
     "redux-notifications": "4.0.1",
@@ -56,7 +56,6 @@
   "devDependencies": {
     "babel-eslint": "8.2.3",
     "cpx": "^1.5.0",
-    "css-loader": "^3.5.3",
     "cypress": "^4.5.0",
     "eslint": "5.16.0",
     "eslint-plugin-prettier": "2.6.0",
@@ -68,12 +67,7 @@
     "prettier": "^1.19.1",
     "pretty-quick": "^1.11.1",
     "redux-devtools-extension": "2.13.8",
-    "rimraf": "^3.0.2",
-    "style-loader": "^1.2.1",
-    "ttf-loader": "^1.0.2"
-  },
-  "resolutions": {
-    "@babel/runtime": "^7.9.6"
+    "rimraf": "^3.0.2"
   },
   "husky": {
     "hooks": {

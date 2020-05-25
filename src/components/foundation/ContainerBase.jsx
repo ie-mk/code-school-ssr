@@ -8,6 +8,7 @@ import {
   borderRadius,
   boxShadow,
 } from '../../constants/styles';
+import getMedia from '../../utils/media';
 
 const getfontSize = fontSize => css`
   font-size: ${fontSize ? fontSizeMap[fontSize] : ''};
@@ -123,10 +124,6 @@ const getFlexDirection = flexDirection => css`
   flex-direction: ${flexDirection};
 `;
 
-const getfontWeight = fontBold => css`
-  font-weight: ${fontBold};
-`;
-
 const ContainerRoot = styled.div`
   display: ${({ display }) => (display ? display : 'block')};
 
@@ -190,6 +187,7 @@ const ContainerRoot = styled.div`
   ${({ flexDirection }) =>
     flexDirection ? getFlexDirection(flexDirection) : ''}
   ${({ styles }) => (styles ? styles : '')};
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
 const ContainerBase = props => {

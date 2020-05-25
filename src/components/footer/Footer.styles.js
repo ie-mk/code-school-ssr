@@ -4,8 +4,6 @@ import { lightenDarkenColor } from '../../utils/colors';
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 50px 10% 100px;
-  background-color: ${lightenDarkenColor(colors.header, 60)};
   color: ${colors.white};
   width: 100%;
   height: 250px;
@@ -19,6 +17,7 @@ const Column = styled.section`
 
 const Address = styled.div`
   font-size: ${fontSizeMap.title4};
+  margin-top: ${spacing.xl};
 `;
 
 const Header = styled.header`

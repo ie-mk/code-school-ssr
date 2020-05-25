@@ -37,7 +37,9 @@ Given('I login with test user with registered permissions', () => {
       elem.val('test-registered-user');
     });
 
-    cy.get('[data-test="login-with-test-user"]').click({ force: true });
+    cy.get('[data-test="login-with-test-user"]').click({
+      force: true,
+    });
   });
 });
 
@@ -202,60 +204,6 @@ Then('I check the values of the description', (dataTable: any) => {
   );
 });
 
-Given('I expand the {string} section', (location: string) => {
-  cy.get('[data-test="test-title"]')
-    .contains(location)
-    .click();
-});
-
-Then('Google map with location marker should be rendered', () => {
-  cy.get('[data-test="test-map"]').should('be.visible');
-});
-
-Then('I fill address data', (dataTable: any) => {
-  cy.get('input[name="addressLine1"]')
-    .clear()
-    .type(dataTable.rawTable[0][1], {
-      force: true,
-    });
-  cy.get('input[name="addressLine2"]')
-    .clear()
-    .type(dataTable.rawTable[1][1], {
-      force: true,
-    });
-  cy.get('input[name="city"]')
-    .clear()
-    .type(dataTable.rawTable[2][1], {
-      force: true,
-    });
-  cy.get('input[name="zipCode"]')
-    .clear()
-    .type(dataTable.rawTable[3][1], {
-      force: true,
-    });
-});
-
-Then('I should not see {string}', (title: string) => {
-  cy.contains(title).should('not.exist');
-});
-
-Then('I move drag marker to the new location', () => {
-  cy.get('[usemap^="#gmimap"]')
-    .parent()
-    .as('marker')
-    .then($el => {
-      const { x, y } = $el[0].getBoundingClientRect();
-
-      cy.log('-------marker positionv x: ', x);
-      cy.log('-------marker position y: ', y);
-
-      cy.get('@marker')
-        .trigger('mousedown', { which: 1 })
-        .trigger('mousemove', { clientX: x + 200, clientY: y + 200 })
-        .trigger('mouseup');
-    });
-});
-
 // ====================== EXAMPLES ====================================
 
 Given('I navigate to the Opportunities Tab', () => {
@@ -376,7 +324,9 @@ Given(
 );
 
 Given('I click on the loan pricing tab', () => {
-  cy.get('[data-test="loan-pricing-tab"]').click({ force: true });
+  cy.get('[data-test="loan-pricing-tab"]').click({
+    force: true,
+  });
 });
 
 Given('I sign in as {string}', (role: string) => {
@@ -389,7 +339,9 @@ Given('I click {string}', (name: string) => {
 });
 
 Given('I click button {string}', (name: string) => {
-  cy.get(`button:contains("${name}")`).click({ force: true });
+  cy.get(`button:contains("${name}")`).click({
+    force: true,
+  });
 });
 
 Given('I click button Add new asset', () => {
@@ -468,7 +420,10 @@ Then('I adjust borrower price to {string}', (price: string) => {
         nativeInputValueSetter.call(range, Number(price));
       range.dispatchEvent(
         // @ts-ignore
-        new Event('change', { value: Number(price), bubbles: true }),
+        new Event('change', {
+          value: Number(price),
+          bubbles: true,
+        }),
       );
     });
   });
@@ -541,11 +496,15 @@ Then('I can see security asset minimum value {string}', (text: string) => {
 });
 
 Then('I expand the security asset', () => {
-  cy.get('[data-test="security-asset-expand-icon"]').click({ force: true });
+  cy.get('[data-test="security-asset-expand-icon"]').click({
+    force: true,
+  });
 });
 
 Then('I click edit button of security asset', () => {
-  cy.get('[data-test="security-asset-edit-button"]').click({ force: true });
+  cy.get('[data-test="security-asset-edit-button"]').click({
+    force: true,
+  });
 });
 
 Then('I can see the loan pricing container', () => {

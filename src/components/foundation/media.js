@@ -44,7 +44,9 @@ function mediaFactory({ max, min }) {
   `;
 }
 
-export const mobileOnly = mediaFactory({ max: Breakpoints.mobile });
+export const mobileOnly = mediaFactory({
+  max: Breakpoints.mobile,
+});
 export const mobileLargeOnly = mediaFactory({
   max: Breakpoints.mobileLarge,
   min: Breakpoints.mobile,
@@ -66,15 +68,21 @@ export const desktopLargeOnly = mediaFactory({
   min: Breakpoints.desktop,
 });
 
-export const aboveMobile = mediaFactory({ min: Breakpoints.mobile });
+export const aboveMobile = mediaFactory({
+  min: Breakpoints.mobile,
+});
 export const aboveMobileLarge = mediaFactory({
   min: Breakpoints.mobileLarge,
 });
-export const aboveTablet = mediaFactory({ min: Breakpoints.tablet });
+export const aboveTablet = mediaFactory({
+  min: Breakpoints.tablet,
+});
 export const aboveTabletLarge = mediaFactory({
   min: Breakpoints.tabletLarge,
 });
-export const aboveDesktop = mediaFactory({ min: Breakpoints.desktop });
+export const aboveDesktop = mediaFactory({
+  min: Breakpoints.desktop,
+});
 export const aboveDesktopLarge = mediaFactory({
   min: Breakpoints.desktopLarge,
 });
@@ -82,11 +90,15 @@ export const aboveDesktopLarge = mediaFactory({
 export const belowMobileLarge = mediaFactory({
   max: Breakpoints.mobileLarge,
 });
-export const belowTablet = mediaFactory({ max: Breakpoints.tablet });
+export const belowTablet = mediaFactory({
+  max: Breakpoints.tablet,
+});
 export const belowTabletLarge = mediaFactory({
   max: Breakpoints.tabletLarge,
 });
-export const belowDesktop = mediaFactory({ max: Breakpoints.desktop });
+export const belowDesktop = mediaFactory({
+  max: Breakpoints.desktop,
+});
 export const belowDesktopLarge = mediaFactory({
   max: Breakpoints.desktopLarge,
 });

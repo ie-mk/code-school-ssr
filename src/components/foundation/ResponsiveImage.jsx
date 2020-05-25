@@ -1,8 +1,25 @@
 import React from 'react';
-import Styled from './ResponsiveImage.styles';
+import styled from 'styled-components';
+
+const ImageContainer = styled.div`
+  width: ${({ width }) => width || ''};
+  max-width: ${({ maxWidth }) => maxWidth || ''};
+  height: ${({ height }) => height || ''};
+  padding: ${({ padding }) => padding || ''};
+  margin: ${({ margin }) => margin || ''};
+  border-radius: ${({ borderRadius }) => borderRadius || ''};
+  background-image: url(${({ src }) => src});
+  background-repeat: no-repeat;
+  background-size: ${({ backGroundSize }) => backGroundSize || 'cover'};
+  flex: ${({ flex }) => flex || ''};
+  cursor: ${({ cursor }) => cursor || ''};
+  position: ${({ position }) => position || ''};
+  z-index: ${({ zIndex }) => zIndex || ''};
+  min-width: 0;
+`;
 
 const ResponsiveImage = props => {
-  return <Styled.ImageContainer {...props} />;
+  return <ImageContainer {...props} />;
 };
 
 export default ResponsiveImage;

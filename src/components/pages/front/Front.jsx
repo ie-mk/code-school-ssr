@@ -2,12 +2,22 @@ import React from 'react';
 import Styled from './Front.styles';
 import { useTranslation } from 'react-i18next';
 import PageContent from '../../foundation/PageContent';
-import HeroFront from '../../heroFront/HeroFront';
+import HeroFront from '../../heros/heroFront/HeroFront';
+import SectionPictureDescButton from '../../heros/sectionPictureDescButton/SectionPictureDescButton';
+import SectionCards from '../../heros/sectionCards/SectionCards';
 
 const Front = () => {
   const { t } = useTranslation();
 
-  return <HeroFront />;
+  return (
+    <>
+      <HeroFront />
+      <PageContent>
+        <SectionPictureDescButton />
+        <SectionCards />
+      </PageContent>
+    </>
+  );
 };
 
 export default Front;

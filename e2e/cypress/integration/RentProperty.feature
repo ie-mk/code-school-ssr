@@ -61,7 +61,7 @@ Scenario: LOGGED IN - create new Ad
     And I wait "1000" ms
   Then I click button "Create New"
     And I wait "5000" ms
-And I can see "Title"
+  And I can see "Title"
   And I can see "Type of the property"
   And I can see "Number of Rooms"
   And I can see "Number of Bedrooms"
@@ -84,7 +84,7 @@ And I can see "Title"
  And I click button "Update Description"
  Then I refresh the page
  And I wait "3000" ms
-And I check the values of the description
+  And I check the values of the description
   | Title | Best flat in Hyderabad |
   | Number of Rooms | 3 |
   | Number of Bedrooms | 2 |
@@ -94,18 +94,4 @@ And I check the values of the description
   | Max Number Of Guests | 6 |
   | Location description | Best location in Hyderabad |
   | Full description | Please book ASAP as almost fully booked |
-Then I expand the "Location" section
-And I fill address data
-| addressLine1 | 30 S Colonnade |
-| addressLine2 | Canary Wharf |
-| city | London |
-| postcode | E14 5EP |
-Then I click button "Update Address"
-Then Google map with location marker should be rendered
-And I click button "Adjust Location"
-And I should not see "Adjust Location"
-Then I move drag marker to the new location
-And I click button "Save Address"
-  And I wait "3000" ms
-And I should not see "Save Address"
-
+ 

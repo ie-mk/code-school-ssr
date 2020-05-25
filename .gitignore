@@ -1,6 +1,7 @@
 
 .idea/
 dist/
+dist-api/
 node_modules/
 .next/
 _next/

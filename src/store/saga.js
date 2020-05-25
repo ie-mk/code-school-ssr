@@ -8,7 +8,7 @@ import {
   takeLatest,
 } from 'redux-saga/effects';
 import { adActions, userActions } from './actions';
-import api from '../api';
+import api from '../api/api.min';
 import moment from 'moment';
 import { getUID } from './selectors';
 import Router from 'next/router';

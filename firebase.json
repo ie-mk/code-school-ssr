@@ -11,9 +11,6 @@
   },
   "functions": {
     "source": ".",
-    "predeploy": [
-      "npm --prefix \"$PROJECT_DIR\" install",
-      "npm --prefix \"$PROJECT_DIR\" run build"
-    ]
+    "predeploy": ["cd \"$PROJECT_DIR\"", "yarn", "yarn run build"]
   }
 }

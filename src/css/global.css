@@ -21,7 +21,10 @@ body {
   color: white;
 }
 
-main {
+.darkTheme {
+  background: transparent
+    linear-gradient(180deg, #1a2036 0%, #191f37 51%, #191f37 100%) 0% 0%
+    no-repeat padding-box;
 }
 
 .hidden {

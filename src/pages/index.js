@@ -12,8 +12,4 @@ const Index = () => {
   );
 };
 
-Index.getInitialProps = async ctx => {
-  return { store: ctx.store };
-};
-
 export default Index;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import withSpacing from './withSpacing';
 
 const LinkStyled = styled.a`
   text-decoration: none;
@@ -16,4 +17,4 @@ const Logo = ({ imgSrc, width, title }) => (
     </LinkStyled>
   </Link>
 );
-export default Logo;
+export default withSpacing(Logo);

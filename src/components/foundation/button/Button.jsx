@@ -35,9 +35,13 @@ const borderMap = {
 };
 
 const ButtonWrapper = styled.button`
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'none')};
+  width: ${({ width }) => (width ? width : 'none')};
   margin: ${({ margin }) =>
     marginMap[margin] ? marginMap[margin] : '0 40px 0 0'};
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
+  padding: ${({ padding }) =>
+    paddingMap[padding] ? paddingMap[padding] : padding};
   background: ${({ type }) =>
     backGroundMap[type] ? backGroundMap[type] : 'transparent'};
   border-radius: 2px;
@@ -47,10 +51,11 @@ const ButtonWrapper = styled.button`
   color: ${({ type }) => (colorMap[type] ? colorMap[type] : 'white')};
   font-weight: bold;
   font-size: ${({ size }) => (fontSizeMap[size] ? fontSizeMap[size] : '12px')};
+  font-size: ${({ fontSize }) =>
+    fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSize};
   z-index: 1;
   &:hover {
-    background-color: ${({ type }) =>
-      colorMap[type] ? lightenDarkenColor(colorMap[type], -30) : 'white'};
+    box-shadow: 0 0 2px 2px white;
   }
 `;
 

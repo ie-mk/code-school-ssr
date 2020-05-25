@@ -82,7 +82,10 @@ export const userReducer = handleActions(
 
     [userActions.adToFavourites]: (state, action) => ({
       ...state,
-      favourites: { ...state.favourites, ...action.payload },
+      favourites: {
+        ...state.favourites,
+        ...action.payload,
+      },
     }),
 
     /*===============================================================*/
@@ -106,8 +109,6 @@ export const userReducer = handleActions(
     loadingPicture: false,
     error: null,
     isFirstLogin: null,
-    favourites: {},
-    ads: null,
   },
 );
 

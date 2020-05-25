@@ -1,24 +1,5 @@
 import styled, { css } from 'styled-components';
-import media from './media';
-
-// @ts-ignore
-const getColConfig = colConfig => css`
-  grid-template-columns: ${colConfig};
-`;
-
-// @ts-ignore
-const generateColMedia = mediaColConfig => {
-  return css`
-    ${Object.keys(mediaColConfig).map(key => {
-      const colConf = mediaColConfig[key];
-      return css`
-        ${media[key]`
-          ${getColConfig(colConf)}
-        `}
-      `;
-    })}
-  `;
-};
+import getMedia from '../../utils/media';
 
 /*
  * "width: 100%" added to cover some edge cases when grid is not taking full
@@ -31,8 +12,7 @@ const Grid = styled.div`
   grid-template-columns: ${({ columns }) => columns || ''};
   grid-template-rows: ${({ rows }) => rows || ''};
   grid-gap: ${({ gridGap }) => gridGap || ''};
-  ${({ mediaColConfig }) =>
-    mediaColConfig ? generateColMedia(mediaColConfig) : ''}
+  ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
 export default Grid;

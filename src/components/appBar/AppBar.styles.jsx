@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const LoginWrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   i {
     font-size: 20px;
   }
@@ -9,9 +11,6 @@ const LoginWrapper = styled.div`
     background-color: #e8edf1;
     font-weight: bold;
     font-size: 13px;
-  }
-  button {
-    height: 36px;
   }
 `;
 
