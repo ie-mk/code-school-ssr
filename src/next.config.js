@@ -15,15 +15,25 @@ module.exports = withCSS({
     alias['foundation'] = path.join(projectRoot, 'components/foundation');
     alias['modules'] = path.join(projectRoot, 'modules');
     alias['store'] = path.join(projectRoot, 'store');
-    // alias['apiPath'] = path.join(projectRoot, '../api/api');
-    alias['apiPath'] = path.join(projectRoot, './api/api.min');
+
+    config.module.rules.push({
+      test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 100000,
+        },
+      },
+    });
 
     config.plugins.push(
       new MonacoWebpackPlugin({
-        // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-        languages: ['json'],
+        // Add languages as needed...
+        languages: ['javascript', 'typescript'],
+        filename: 'static/[name].worker.js',
       }),
     );
+
     return config;
   },
 });
