@@ -1,22 +1,19 @@
-export default `class Animal {
-    constructor(public name: string) { }
-    move(meters: number) {
-        console.log(this.name + " moved " + meters + "m.");
+export default `
+    class Teletabis extends React.Component {
+        // constructor(props) {
+        //     super(props);
+        // }
+
+        // componentDidMount() {
+        //     console.log('Tinkis Vinkis!')
+        // }
+
+        // tinkeyMyWinkey = () => {
+        //     console.log('You just tinkey my winkey!');
+        // }
+
+        render() {
+            return <div>Tinkis Vinkis</div>
+        }
     }
-}
-class Snake extends Animal {
-    move() {
-        console.log("Slithering...");
-        super.move(5);
-    }
-}
-class Horse extends Animal {
-    move() {
-        console.log("Galloping...");
-        super.move(45);
-    }
-}
-var sam = new Snake("Sammy the Python")
-var tom: Animal = new Horse("Tommy the Palomino")
-sam.move()
-tom.move(34)`;
+`;

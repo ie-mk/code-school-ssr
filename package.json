@@ -21,6 +21,9 @@
     "cypress:openLocal": "./e2e/node_modules/.bin/cypress open -P e2e --env E2ELOCAL=true"
   },
   "dependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.8.3",
+    "@babel/plugin-transform-react-jsx-compat": "^7.8.3",
+    "@babel/standalone": "^7.9.6",
     "@zeit/next-css": "1.0.1",
     "babel-plugin-styled-components": "1.10.7",
     "firebase": "7.1.0",
