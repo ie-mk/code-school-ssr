@@ -5,7 +5,8 @@ import { fontSizeMap, spacing } from '../../constants/styles';
 
 const LinkWrapper = styled.div`
   margin-left: 10px;
-  font-size: ${fontSizeMap.h4};
+  font-size: ${fontSizeMap.h5};
+  font-weight: 600;
   a {
     color: white;
     text-decoration: none;

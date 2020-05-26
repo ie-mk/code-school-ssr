@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   letter-spacing: 0;
   font-size: ${fontSizeMap.text};
   color: ${colors.text.primary};
+  font-weight: 200;
 `;
 
 const BodyText = ({ children }) => {

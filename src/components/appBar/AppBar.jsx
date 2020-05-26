@@ -5,7 +5,7 @@ import api from '../../api/api.min';
 import Button from '../foundation/button/Button';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
-import { colors } from '../../constants/styles';
+import { colors, spacing } from '../../constants/styles';
 import { lightenDarkenColor } from '../../utils/colors';
 import { useTranslation } from 'react-i18next';
 import MenuLink from '../foundation/MenuLink';
@@ -52,7 +52,11 @@ const AppBar = ({ user, dispatch, userLanguage }) => {
         paddingRight="xxxl"
         maxWidth="1400px"
       >
-        <Logo imgSrc="/logo/logo_with_name.png" width="200px" />
+        <Logo
+          imgSrc="/logo/logo_with_name.png"
+          width="200px"
+          marginRight={spacing.xxl}
+        />
         <Styled.LinkWrapper>
           <MenuLink href="/">Home</MenuLink>
           <MenuLink href="/courses">Courses</MenuLink>

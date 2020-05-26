@@ -49,7 +49,7 @@ const ButtonWrapper = styled.button`
   cursor: pointer;
   outline: none;
   color: ${({ type }) => (colorMap[type] ? colorMap[type] : 'white')};
-  font-weight: bold;
+  font-weight: 500;
   font-size: ${({ size }) => (fontSizeMap[size] ? fontSizeMap[size] : '12px')};
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSize};

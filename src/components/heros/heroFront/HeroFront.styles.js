@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 900px;
+  max-width: 1100px;
   z-index: 1;
 `;
 
