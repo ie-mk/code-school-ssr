@@ -6,23 +6,47 @@ import pluginTransformReactJsx from '@babel/plugin-transform-react-jsx';
 import pluginSyntaxClassProperties from '@babel/plugin-syntax-class-properties';
 import Styled from './CodeEditor.styles';
 import sample from './code-sample';
+import Button from '../foundation/button/Button';
 
 const MonacoEditor = dynamic(import('react-monaco-editor'), { ssr: false });
 
 function IndexPage() {
   const [value, setValue] = useState(sample);
-  const transformed = transform(value, {
-    presets: ['env', 'react'],
-    plugins: [pluginTransformReactJsx, pluginSyntaxClassProperties],
-  }).code;
+  const [runValue, setRunValue] = useState(sample);
 
-  const appended = `
-    ${transformed}
+  let transformed;
+  let appended;
 
-    window.output.Teletabis = Teletabis;
-  `;
+  try {
+    transformed = transform(runValue, {
+      presets: ['env', 'react'],
+      plugins: [pluginTransformReactJsx, pluginSyntaxClassProperties],
+    }).code;
 
-  setTimeout(() => eval(appended));
+    appended = `
+      ${transformed}
+
+      window.output.Teletabis = Teletabis;
+    `;
+  } catch (e) {
+    console.error(e);
+
+    appended = `
+        const Teletabis = () => {
+          return 'Error';
+        };
+
+        window.output.Teletabis = Teletabis;
+      `;
+  }
+
+  setTimeout(() => {
+    try {
+      eval(appended);
+    } catch (e) {
+      debugger;
+    }
+  });
 
   return (
     <Styled.Wrapper>
@@ -30,9 +54,11 @@ function IndexPage() {
         style={{ display: 'flex', paddingTop: '100px', position: 'relative' }}
       >
         <Editor value={value} onChange={setValue} />
-        <Editor value={transformed} />
+        <Output />
       </div>
-      <Output />
+      <Button type="secondary" size="lg" onClick={() => setRunValue(value)}>
+        Run
+      </Button>
     </Styled.Wrapper>
   );
 }
