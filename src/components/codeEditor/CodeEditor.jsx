@@ -51,12 +51,20 @@ function IndexPage() {
   return (
     <Styled.Wrapper>
       <div
-        style={{ display: 'flex', paddingTop: '100px', position: 'relative' }}
+        style={{
+          display: 'flex',
+          paddingTop: '100px',
+          position: 'relative',
+        }}
       >
         <Editor value={value} onChange={setValue} />
         <Output />
       </div>
-      <Button type="secondary" size="lg" onClick={() => setRunValue(value)}>
+      <Button
+        type="secondary"
+        marginLeft="100px"
+        onClick={() => setRunValue(value)}
+      >
         Run
       </Button>
     </Styled.Wrapper>
@@ -66,7 +74,7 @@ function IndexPage() {
 function Editor(props) {
   return (
     <MonacoEditor
-      height="300px"
+      height="400px"
       width="50%"
       language="typescript"
       theme="vs-dark"
