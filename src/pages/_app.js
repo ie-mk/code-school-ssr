@@ -25,6 +25,10 @@ class MyApp extends App {
     return { pageProps };
   }
 
+  componentDidMount() {
+    window.React = React;
+  }
+
   render() {
     const { Component, pageProps, store } = this.props;
     const url = !IS_SERVER && window.location.pathname;
