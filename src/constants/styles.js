@@ -21,6 +21,11 @@ export const dashboard = {
   dashboardBackground: '#f0f0f7',
 };
 
+export const table = {
+  headerBackground: '#191f36',
+  rowBackground: '#e8e8e8',
+};
+
 export const spacing = {
   xxxxxxl: '150px',
   xxxxxl: '90px',
@@ -79,6 +84,7 @@ export const colors = {
   text: {
     primary: '#D5D5D5',
   },
+
   background: {
     primary: '#1A2036',
     secondary: '#191F37',

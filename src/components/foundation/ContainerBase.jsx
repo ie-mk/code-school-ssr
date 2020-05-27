@@ -148,6 +148,7 @@ const ContainerRoot = styled.div`
   background: ${({ background }) => background || ''};
   z-index: ${({ zIndex }) => zIndex || ''};
   flex: ${({ flex }) => flex || ''};
+  flex-wrap: ${({ flexWrap }) => flexWrap || ''};
 
   overflow: ${({ overflow }) => overflow || ''};
   overflow-y: ${({ overflowY }) => overflowY || ''};
