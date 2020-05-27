@@ -93,7 +93,9 @@ const getPaddingLeft = paddingLeft => css`
 `;
 
 const getPaddingRight = paddingRight => css`
-  padding-left: ${spacing[paddingRight] ? spacing[paddingRight] : paddingRight};
+  padding-right: ${spacing[paddingRight]
+    ? spacing[paddingRight]
+    : paddingRight};
 `;
 
 const getMarginBottom = margin => css`
@@ -109,7 +111,7 @@ const getMarginLeft = marginLeft => css`
 `;
 
 const getMarginRight = marginRight => css`
-  margin-left: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
+  margin-right: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
 `;
 
 const getAlign = alignItems => css`

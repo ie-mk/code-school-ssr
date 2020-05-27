@@ -18,7 +18,9 @@ const getPaddingLeft = paddingLeft => css`
   padding-left: ${spacing[paddingLeft] ? spacing[paddingLeft] : paddingLeft};
 `;
 const getPaddingRight = paddingRight => css`
-  padding-left: ${spacing[paddingRight] ? spacing[paddingRight] : paddingRight};
+  padding-right: ${spacing[paddingRight]
+    ? spacing[paddingRight]
+    : paddingRight};
 `;
 
 const getMargin = margin => css`
@@ -37,7 +39,7 @@ const getMarginLeft = marginLeft => css`
   margin-left: ${spacing[marginLeft] ? spacing[marginLeft] : marginLeft};
 `;
 const getMarginRight = marginRight => css`
-  margin-left: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
+  margin-right: ${spacing[marginRight] ? spacing[marginRight] : marginRight};
 `;
 
 const ContainerRoot = styled.div`
