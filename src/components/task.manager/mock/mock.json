@@ -1,0 +1,37 @@
+{
+  "id": "TASK_ID",
+  "desc": "HTML",
+  "tasks": [
+    {
+      "desc": "HTML",
+      "steps": [
+        {
+          "desc": "HTML",
+          "renderer": "standard",
+          "files": [
+            {
+              "name": "index.js",
+              "seed": "JS",
+              "solution": "JS",
+              "test": "JS_TEST",
+              "desc": "HTML",
+              "variables": {
+                "MyComponent": {
+                  "type": "react.class.component"
+                }
+              }
+            },
+            {
+              "name": "index.css",
+              "seed": "CSS",
+              "solution": "CSS",
+              "test": "CSS_TEST",
+              "desc": "HTML"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "next": "NEXT_TASK_ID"
+}

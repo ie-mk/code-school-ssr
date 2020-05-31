@@ -15,6 +15,7 @@ module.exports = withCSS({
     alias['foundation'] = path.join(projectRoot, 'components/foundation');
     alias['modules'] = path.join(projectRoot, 'modules');
     alias['store'] = path.join(projectRoot, 'store');
+    alias['constants'] = path.join(projectRoot, '/constants');
 
     config.module.rules.push({
       test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,

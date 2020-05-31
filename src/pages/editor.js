@@ -1,12 +1,12 @@
 import React from 'react';
 import { IS_SERVER } from '../constants';
 import ErrorBoundary from '../components/ErrorBoundary';
-import CodeEditor from '../components/codeEditor/CodeEditor';
+import { TaskManager } from '../components';
 
 const Login = () => {
   return !IS_SERVER ? (
     <ErrorBoundary>
-      <CodeEditor />
+      <TaskManager />
     </ErrorBoundary>
   ) : null;
 };
