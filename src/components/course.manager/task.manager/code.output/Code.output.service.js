@@ -2,7 +2,7 @@ class CodeOutputService {
   constructor() {
     return new Proxy(this, {
       get: (t, k) => {
-        if (!this.instance) return this[k];
+        if (k === 'setup') return this.setup;
 
         return this.instance[k];
       },

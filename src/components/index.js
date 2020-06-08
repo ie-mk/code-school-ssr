@@ -1,1 +1,1 @@
-export * from './task.manager';
+export * from './course.manager';

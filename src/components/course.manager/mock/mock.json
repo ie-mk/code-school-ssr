@@ -1,5 +1,5 @@
 {
-  "id": "TASK_ID",
+  "id": "COURSE_ID",
   "desc": "HTML",
   "tasks": [
     {
@@ -32,6 +32,5 @@
         }
       ]
     }
-  ],
-  "next": "NEXT_TASK_ID"
+  ]
 }

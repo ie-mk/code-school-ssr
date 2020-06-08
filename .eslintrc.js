@@ -23,5 +23,6 @@ module.exports = {
     // 'prettier.jsxBracketSameLine': 0,
     quotes: [2, 'single', { avoidEscape: true }],
     'react/prop-types': 0,
+    'no-func-assign': 0,
   },
 };
