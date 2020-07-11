@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { transform } from '@babel/standalone';
 import pluginTransformReactJsx from '@babel/plugin-transform-react-jsx';
-import pluginSyntaxClassProperties from '@babel/plugin-syntax-class-properties';
+import pluginProposalClassProperties from '@babel/plugin-proposal-class-properties';
 import { getFileExtension } from '../utils';
 import { codeOutputService as service } from './Code.output.service';
 import { Wrapper } from './Code.output.styles';
@@ -54,7 +54,7 @@ export class CodeOutput extends Component {
   renderComponent = file => {
     const transformation = transform(file.content, {
       presets: ['env', 'react'],
-      plugins: [pluginTransformReactJsx, pluginSyntaxClassProperties],
+      plugins: [pluginTransformReactJsx, pluginProposalClassProperties],
     });
 
     let Component;
