@@ -6,8 +6,7 @@ function FileExplorer(props) {
 
   return (
     <Wrapper>
-      {tree.map(file => {
-        const { name } = file;
+      {Object.entries(tree).map(([name, file]) => {
         const onClick = () => onSelect(file);
 
         return (

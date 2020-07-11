@@ -2,13 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   height: 100%;
+  display: flex;
 
-  .top {
-    height: 50%;
-    display: flex;
-  }
-
-  .bottom {
-    height: 50%;
+  > * {
+    width: calc(100% / 3);
   }
 `;

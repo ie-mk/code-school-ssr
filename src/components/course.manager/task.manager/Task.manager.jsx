@@ -10,13 +10,9 @@ function TaskManager(props) {
 
   return (
     <Wrapper>
-      <div className="top">
-        <Desc desc={task.desc} />
-        <CodeEditor source={step} />
-      </div>
-      <div className="bottom">
-        <CodeOutput />
-      </div>
+      <Desc desc={task.desc} />
+      <CodeEditor source={step} />
+      <CodeOutput />
     </Wrapper>
   );
 }

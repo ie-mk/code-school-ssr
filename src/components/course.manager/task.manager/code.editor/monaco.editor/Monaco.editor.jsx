@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 const _MonacoEditor = dynamic(import('react-monaco-editor'), { ssr: false });
 
 export const MonacoEditor = memo(function MonacoEditor(props) {
+  const { fileExtension } = props;
+
   function editorDidMount() {
     getWorkerUrl();
   }
@@ -12,13 +14,13 @@ export const MonacoEditor = memo(function MonacoEditor(props) {
     editorDidMount,
     height: '100%',
     width: '100%',
-    language: 'javascript',
     theme: 'vs-dark',
     options: {
       minimap: {
         enabled: false,
       },
     },
+    language: LANGUAGE_BY_FILE_EXTENSION[fileExtension],
     ...props,
   };
 
@@ -37,3 +39,9 @@ function getWorkerUrl() {
     return '_next/static/editor.worker.js';
   };
 }
+
+var LANGUAGE_BY_FILE_EXTENSION = {
+  undefined: 'javascript',
+  js: 'javascript',
+  css: 'css',
+};
