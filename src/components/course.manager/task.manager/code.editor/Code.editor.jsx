@@ -1,6 +1,6 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState } from 'react';
 import { codeOutputService } from '../code.output';
-import { getFileExtension } from '../utils';
+import { getFileExtension, useDebounce } from '../utils';
 import { MonacoEditor } from './monaco.editor';
 import { FileExplorer } from './file.explorer';
 import { Wrapper } from './Code.editor.styles';
@@ -10,10 +10,6 @@ function CodeEditor(props) {
   const [selectedFileName, setSelectedFileName] = useState('index.js');
   const selectedFile = files[selectedFileName];
   const fileExtension = getFileExtension(selectedFile);
-
-  useEffect(() => {
-    codeOutputService.renderOutput(files);
-  }, [files]);
 
   function onChange(code) {
     setFiles({
@@ -28,6 +24,12 @@ function CodeEditor(props) {
   function onFileSelect(file) {
     setSelectedFileName(file.name);
   }
+
+  function renderOutput() {
+    codeOutputService.renderOutput(files);
+  }
+
+  useDebounce(500, renderOutput, [files]);
 
   return (
     <Wrapper>
