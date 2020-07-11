@@ -14,7 +14,7 @@ const Front = () => {
       <HeroFront />
       <PageContent>
         <SectionPictureDescButton />
-        <SectionCards />
+        <SectionCards title="How it works" />
       </PageContent>
     </>
   );

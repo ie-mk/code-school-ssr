@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 import { fontSizeMap, colors, spacing } from '../../constants/styles';
 import { lightenDarkenColor } from '../../utils/colors';
+import media from '../foundation/media';
 
 const Wrapper = styled.div`
   display: flex;
   color: ${colors.white};
   width: 100%;
   height: 250px;
+  ${media.belowTabletLarge`
+    height: auto;
+  `}
 `;
 
 const Column = styled.section`

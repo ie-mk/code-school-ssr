@@ -9,10 +9,12 @@ import Logo from '../../foundation/Logo';
 import DashboardTab from './dashboard/DashBoard';
 import DashboardHeader from './dashboardHeader/DashboardHeader';
 import Inbox from './inbox/Inbox';
-import Courses from './courses/Cources';
+import DashboardCourses from './courses/DashboardCourses';
 import PracticalTasks from './practicalTasks/PracticalTasks';
 import Students from './students/Students';
 import Authors from './authors/Authors';
+import Staff from './staff/Staff';
+import Users from './users/Users';
 
 const Dashboard = ({ dispatch, user }) => {
   useEffect(() => {
@@ -38,6 +40,8 @@ const Dashboard = ({ dispatch, user }) => {
   const practicalTasks = activeTab === 'practicalTasks';
   const students = activeTab === 'students';
   const authors = activeTab === 'authors';
+  const staff = activeTab === 'staff';
+  const users = activeTab === 'users';
 
   return (
     <Styled.Wrapper>
@@ -51,6 +55,7 @@ const Dashboard = ({ dispatch, user }) => {
           <Logo
             imgSrc="/logo/logo_with_name.png"
             width="150px"
+            height="50px"
             padding="30px 50px 50px"
           />
           <DashboardMenu active={activeTab} setActiveComponent={makeActive} />
@@ -61,10 +66,12 @@ const Dashboard = ({ dispatch, user }) => {
           <Styled.Wrapper>
             {dashboard && <DashboardTab />}
             {inbox && <Inbox />}
-            {courses && <Courses />}
+            {courses && <DashboardCourses />}
             {practicalTasks && <PracticalTasks />}
             {students && <Students />}
             {authors && <Authors />}
+            {staff && <Staff />}
+            {users && <Users />}
           </Styled.Wrapper>
         </div>
       </Grid>

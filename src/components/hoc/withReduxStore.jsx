@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getOrCreateStore } from '../../store/store';
 import { isServer } from '../../utils/utils';
+import { IS_SERVER } from '../../constants';
 
 // creates redux store and sets it on the context
 export default App => {
@@ -29,6 +30,9 @@ export default App => {
     constructor(props) {
       super(props);
       this.store = getOrCreateStore(props.initialState);
+      if (!IS_SERVER) {
+        window.store = this.store;
+      }
     }
 
     static propTypes = {

@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import Router from 'next/router';
 import { Field, Formik } from 'formik';
 import PageContent from '../../foundation/PageContent';
+import media from '../../foundation/media';
+
 const { firebase } = api;
 
 const Wrapper = styled.div`
@@ -14,7 +16,11 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 150px;
+  margin-bottom: 75px;
+  ${media.belowTabletLarge`
+    margin-top: 75px;
+  `}
 `;
 
 class FireBaseUILoginPage extends React.Component {

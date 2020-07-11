@@ -7,11 +7,11 @@ import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import SectionCard from '../../cards/SectionCard';
 import { background, spacing } from '../../../constants/styles';
 
-const SectionCards = () => {
+const SectionCards = ({ title }) => {
   return (
     <CenteredFlexContainer marginTop="xxl">
       <SectionTitle
-        text="How it works"
+        text={title}
         marginBottom={spacing.xl}
         marginTop={spacing.xl}
       />
@@ -28,7 +28,7 @@ const SectionCards = () => {
         gridGap={spacing.xxxxl}
       >
         <SectionCard
-          imgSrc="/svg/free.svg"
+          imgSrc="/svg/premium.svg"
           title="Pro"
           text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna

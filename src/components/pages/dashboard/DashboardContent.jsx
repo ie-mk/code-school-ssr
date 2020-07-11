@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DashboardItem from './dashboardItem/DashboardItem';
 import ContainerBase from '../../foundation/ContainerBase';
+import { connect } from 'react-redux';
+import { resourceActions } from '../../../store/actions';
 
 const DescriptionSection = props => (
   <ContainerBase
@@ -37,7 +39,11 @@ const Items = () => {
   });
 };
 
-const DashboardContent = () => {
+const DashboardContent = ({ dispatch }) => {
+  // useEffect(() => {
+  //   dispatch(resourceActions.createCourse.request());
+  // }, []);
+
   return (
     <DescriptionSection>
       <Items />
@@ -45,4 +51,4 @@ const DashboardContent = () => {
   );
 };
 
-export default DashboardContent;
+export default connect()(DashboardContent);

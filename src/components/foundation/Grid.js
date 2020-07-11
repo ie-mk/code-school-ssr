@@ -9,9 +9,11 @@ import getMedia from '../../utils/media';
 const Grid = styled.div`
   width: 100%;
   display: grid;
+  justify-content: ${({ justifyContent }) => justifyContent || ''};
   grid-template-columns: ${({ columns }) => columns || ''};
   grid-template-rows: ${({ rows }) => rows || ''};
   grid-gap: ${({ gridGap }) => gridGap || ''};
+  align-items: ${({ alignItems }) => (alignItems ? alignItems : '')};
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { spacing } from '../../../constants/styles';
+import { fontSizeMap, spacing } from '../../../constants/styles';
+import media from '../../foundation/media';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -17,12 +18,39 @@ const Content = styled.div`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: ${spacing.xxxl};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ${media.aboveTablet`
+    justify-content: space-around;
+    margin-top: ${spacing.xxxl};
+    flex-direction: row;
+  `}
+`;
+
+const HeaderWrapper = styled.div`
+  margin: 150px 50px 60px;
+  text-align: center;
+
+  ${media.aboveTablet`
+    margin: auto;
+  `}
+`;
+
+const TextWrapper = styled.div`
+  margin: 0 30px 40px;
+  text-align: center;
+
+  ${media.aboveTablet`
+    margin: auto;
+  `}
 `;
 
 export default {
   Wrapper,
   Content,
   ButtonWrapper,
+  HeaderWrapper,
+  TextWrapper,
 };

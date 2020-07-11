@@ -8,6 +8,8 @@ const Wrapper = styled.div`
 `;
 
 const MenuWrapper = styled.div`
+  position: sticky;
+  top: 0;
   height: 100vh;
   background: transparent linear-gradient(180deg, #1a2036 0%, #191f37 100%) 0%
     0% no-repeat padding-box;

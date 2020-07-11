@@ -23,11 +23,11 @@ const borderSecondary = css`
 `;
 
 const getBorder = border => css`
-  ${border && border === 'primary'
+  ${border === 'primary'
     ? borderPrimary
     : border === 'secondary'
     ? borderSecondary
-    : ''}
+    : `border: ${border};`}
 `;
 
 const getBorderRadius = radius => css`
@@ -159,7 +159,8 @@ const ContainerRoot = styled.div`
   ${({ fontSize }) => (fontSize ? getfontSize(fontSize) : '')}
 
   ${({ padding }) => (padding ? getPadding(padding) : '')}
-  ${({ margin }) => (margin ? getMargin(margin) : '')}
+  ${({ margin }) =>
+    margin ? (getMargin(margin) ? getMargin(margin) : margin) : ''}
   ${({ paddingBottom }) =>
     paddingBottom ? getPaddingBottom(paddingBottom) : ''}
   ${({ paddingTop }) => (paddingTop ? getPaddingTop(paddingTop) : '')}
@@ -190,11 +191,29 @@ const ContainerRoot = styled.div`
   ${({ flexDirection }) =>
     flexDirection ? getFlexDirection(flexDirection) : ''}
   ${({ styles }) => (styles ? styles : '')};
+
+  // example
+  //  mediaConfig={{
+  //    aboveTablet: {
+  //      'grid-template-columns': '1fr 1fr',
+  //      width: '200px',
+  //      margin: 'lg',
+  //    },
+  //    belowDesktop: {
+  //      'grid-gap': spacing.xl,
+  //      width: '100px',
+  //      margin: 'sm'
+  //    },
+  //  }}
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')}
 `;
 
-const ContainerBase = props => {
-  return <ContainerRoot {...props}>{props.children}</ContainerRoot>;
-};
+const ContainerBase = React.forwardRef((props, ref) => {
+  return (
+    <ContainerRoot ref={ref} {...props}>
+      {props.children}
+    </ContainerRoot>
+  );
+});
 
 export default ContainerBase;

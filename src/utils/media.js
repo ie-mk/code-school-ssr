@@ -3,8 +3,12 @@ import media from '../components/foundation/media';
 
 const getMediaCSS = mediaSection => {
   return css`
-    ${Object.keys(mediaSection).map(cssRule => {
-      const value = mediaSection[cssRule];
+    ${Object.keys(mediaSection).map(cssRuleCamelCase => {
+      const cssRule = cssRuleCamelCase
+        .replace(/([a-zA-Z])(?=[A-Z])/g, '$1-')
+        .toLowerCase();
+
+      const value = mediaSection[cssRuleCamelCase];
       return css`
         ${cssRule}: ${value};
       `;

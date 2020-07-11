@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import withSpacing from './withSpacing';
+import ResponsiveImage from './ResponsiveImage';
 
 const LinkStyled = styled.a`
   text-decoration: none;
@@ -9,11 +10,20 @@ const LinkStyled = styled.a`
   cursor: pointer;
 `;
 
-const Logo = ({ imgSrc, width, title }) => (
+const Logo = ({ imgSrc, width, height, title, imageMediaConfig }) => (
   <Link href="/" as="/">
     <LinkStyled>
       {title && <h1>{title}</h1>}
-      {imgSrc && <img src={imgSrc} alt="logo" width={width} />}
+      {imgSrc && (
+        <ResponsiveImage
+          src={imgSrc}
+          alt="logo"
+          width={width}
+          height={height}
+          backGroundSize="contain"
+          mediaConfig={imageMediaConfig}
+        />
+      )}
     </LinkStyled>
   </Link>
 );

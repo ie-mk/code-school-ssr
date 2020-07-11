@@ -13,20 +13,29 @@ const HeroFront = () => {
         height="100vh"
         width="100%"
         position="absolute"
+        mediaConfig={{
+          belowTabletLarge: {
+            backgroundImage: 'url("/img/mobile/Background.png")',
+          },
+        }}
       />
       <Styled.Content>
-        <HeroTitle text="THE TECHNOLOGY SKILL PLATFORM" />
-        <BodyText>
-          With real world projects you’ll master the tech skills companies want.
-          Our knowledgeable mentors guide your learning and are focused on
-          answering your questions, motivating you and keeping you on track. Get
-          a custom learning plan tailored to fit your busy life. Learn at your
-          own pace and reach your personal goals on the schedule that works best
-          for you.
-        </BodyText>
+        <Styled.HeaderWrapper>
+          <HeroTitle text="THE TECHNOLOGY SKILL PLATFORM" />
+        </Styled.HeaderWrapper>
+        <Styled.TextWrapper>
+          <BodyText>
+            With real world projects you’ll master the tech skills companies
+            want. Our knowledgeable mentors guide your learning and are focused
+            on answering your questions, motivating you and keeping you on
+            track. Get a custom learning plan tailored to fit your busy life.
+            Learn at your own pace and reach your personal goals on the schedule
+            that works best for you.
+          </BodyText>
+        </Styled.TextWrapper>
         <Styled.ButtonWrapper>
           <Button size="lg" type="primary">
-            VIEW COURSES
+            COURSES
           </Button>
           <Button size="lg" type="secondary">
             GET IN TOUCH

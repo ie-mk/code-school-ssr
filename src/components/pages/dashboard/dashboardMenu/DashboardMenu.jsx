@@ -49,6 +49,20 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           <img src="svg/icon_Authors & Learning Paths.svg" />
           <Styled.Label>Authors & Learning Paths</Styled.Label>
         </Styled.MenuItem>
+        <Styled.MenuItem
+          active={active === 'staff'}
+          onClick={() => setActiveComponent('staff')}
+        >
+          <i className="fa fa-user-secret" aria-hidden="true" />
+          <Styled.Label>Staff</Styled.Label>
+        </Styled.MenuItem>
+        <Styled.MenuItem
+          active={active === 'users'}
+          onClick={() => setActiveComponent('users')}
+        >
+          <i className="fa fa-users" aria-hidden="true" />
+          <Styled.Label>Users</Styled.Label>
+        </Styled.MenuItem>
       </ContainerBase>
     </Styled.Wrapper>
   );

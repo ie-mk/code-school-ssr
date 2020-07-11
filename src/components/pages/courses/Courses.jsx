@@ -1,14 +1,19 @@
 import React from 'react';
 import Styled from './Courses.styles';
 import { useTranslation } from 'react-i18next';
-import ChooseLearningPath from './chooseLearningPath/ChooseLearningPath';
+import ChooseLearningPath from '../dashboard/courses/chooseLearningPath/ChooseLearningPath';
+import CourseFeatures from '../dashboard/courses/courseFeatures/CourseFeatures';
+import PageContent from '../../foundation/PageContent';
 
 const Courses = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <ChooseLearningPath />
+      <CourseFeatures />
+      <PageContent>
+        <ChooseLearningPath />
+      </PageContent>
     </>
   );
 };

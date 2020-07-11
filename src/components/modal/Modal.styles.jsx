@@ -54,11 +54,11 @@ const Header = styled.div`
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px 20px 10px;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: ${({ fontSize }) => fontSize || '18px'};
+  font-weight: ${({ fontWeight }) => fontWeight || '500'};
   z-index: 100;
   background-color: white;
 `;

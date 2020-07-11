@@ -15,6 +15,7 @@ const HeaderWrapper = styled.div`
   padding: 10px;
   font-weight: bold;
   background-color: ${colors.lightBlue};
+  border-radius: 10px;
 `;
 
 const Header = styled.div`
