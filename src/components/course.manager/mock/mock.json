@@ -1,28 +1,18 @@
 {
   "id": "COURSE_ID",
-  "desc": { "title": "Some title" },
   "tasks": [
     {
       "desc": { "title": "Some title" },
       "steps": [
         {
-          "desc": { "title": "Some title" },
-          "renderer": "standard",
           "files": {
             "index.js": {
               "name": "index.js",
-              "content": "class MyComponent extends React.Component {\n  render() {\n    return <div className=\"my-component\">Content</div>\n  }\n}",
-              "variables": {
-                "MyComponent": {
-                  "type": "react.class.component"
-                }
-              },
-              "desc": { "title": "Some title" }
+              "content": "class MyComponent extends React.Component {\n  render() {\n    return <div className=\"my-component\">Content</div>\n  }\n}"
             },
             "index.css": {
               "name": "index.css",
-              "content": ".my-component {\n  background-color: red;\n}",
-              "desc": { "title": "Some title" }
+              "content": ".my-component {\n  background-color: red;\n}"
             }
           }
         }
