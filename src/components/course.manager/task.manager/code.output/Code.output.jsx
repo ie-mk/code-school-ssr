@@ -75,7 +75,7 @@ export class CodeOutput extends PureComponent {
       eval(`
       ${transformation.code}
 
-      Component = MyComponent;
+      Component = ${file.var};
     `);
     } catch (error) {
       this.setState({ error });
