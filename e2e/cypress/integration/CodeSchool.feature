@@ -4,9 +4,20 @@ Feature: Code School UI
 Scenario: LOGGED IN create course
     Given I navigate to platform url
     And I wait "1000" ms
-
-
-
+    And I navigate to login page
+    And I login with test user with registered permissions
+    And I wait "1000" ms
+    And I check the values of the new course
+   | Course Title | Python |
+   | Learning path | Backend Developer |
+   | Level | Beginner |
+   | Duration | 20 weeks |
+   | Number of chapters | 10 |
+   | Student rating | 4 |
+   | Published | true |
+   | What you will learn | Best language for backend, Best language for backend, Best language for backend |
+   | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
+   Then I click button "Update Description"
 
 
 
