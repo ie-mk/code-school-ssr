@@ -83,6 +83,7 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
                 borderRadius="sm"
                 height="45px"
                 size="sm"
+                submit={true}
               >
                 Send
               </Button>
