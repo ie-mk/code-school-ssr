@@ -67,6 +67,7 @@ export const resourceActions = {
   deleteMessage: createAsyncAction('delete-message'),
   fetchMessage: createAsyncAction('fetch-message'),
   fetchMessages: createAsyncAction('fetch-messages'),
+  resetMessages: createAction('reset-messages'),
 
   createLearningPath: createAsyncAction('create-learning-path'),
   updateLearningPath: createAsyncAction('update-learning-path'),

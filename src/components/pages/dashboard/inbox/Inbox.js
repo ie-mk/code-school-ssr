@@ -38,8 +38,7 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
   const showReceived = activeTab === 'received';
 
   useEffect(() => {
-    debugger;
-    console.log('Hello');
+    dispatch(resourceActions.resetMessages());
     dispatch(
       resourceActions.fetchMessages.request({
         queries: {
