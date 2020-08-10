@@ -89,7 +89,7 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           </MenuLink>
           <Styled.LoginWrapper>
             {user && user.uid && isStaff && (
-              <MenuLink href="/dashboard">
+              <MenuLink dataTest="go-to-dashboard-page" href="/dashboard">
                 <i className="fa fa-briefcase" />
               </MenuLink>
             )}

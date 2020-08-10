@@ -41,6 +41,80 @@ Given('I login with test user with registered permissions', () => {
   });
 });
 
+Given('I login with test user with author permissions', () => {
+  cy.get('[data-test="hidden-login-form"]').within(() => {
+    cy.get('[name=email]').then(elem => {
+      elem.val('test-author@test.com');
+    });
+
+    cy.get('[name=password]').then(elem => {
+      elem.val('ysxDAtcaX48XnHH');
+    });
+
+    cy.get('[data-test="login-with-test-user"]').click({ force: true });
+  });
+});
+
+Given('I navigate to dashboard page', () => {
+  cy.get('[data-test="go-to-dashboard-page"]').click();
+});
+
+Given('I navigate to courses page', () => {
+  cy.get('[data-test="go-to-courses"]').click();
+});
+
+Given('I navigate to AddNew page', () => {
+  cy.get('[data-test="go-to-add-new"]').click();
+});
+
+Then('I fill the values of the new course', (dataTable: any) => {
+  cy.get('input[name="title"]')
+    .clear()
+    .type(dataTable.rawTable[0][1], {
+      force: true,
+    });
+  cy.get('input[name="learningPath"]')
+    .clear()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+  cy.get('input[name="level"]')
+    .clear()
+    .type(dataTable.rawTable[2][1], {
+      force: true,
+    });
+  cy.get('input[name="duration"]')
+    .clear()
+    .type(dataTable.rawTable[3][1], {
+      force: true,
+    });
+  cy.get('input[name="numberOfChapters"]')
+    .clear()
+    .type(dataTable.rawTable[4][1], {
+      force: true,
+    });
+  cy.get('input[name="studentRating"]')
+    .clear()
+    .type(dataTable.rawTable[5][1], {
+      force: true,
+    });
+  cy.get('input[name="published"]')
+    .clear()
+    .type(dataTable.rawTable[6][1], {
+      force: true,
+    });
+  cy.get('textarea[name="whatWillLearn"]')
+    .clear()
+    .type(dataTable.rawTable[7][1], {
+      force: true,
+    });
+  cy.get('textarea[name="prerequisites"]')
+    .clear()
+    .type(dataTable.rawTable[8][1], {
+      force: true,
+    });
+});
+
 Given(`I navigate to platform url`, () => {
   cy.visit('/');
 });

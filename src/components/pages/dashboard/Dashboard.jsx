@@ -70,7 +70,7 @@ const Dashboard = ({ dispatch, user }) => {
           <Styled.Wrapper>
             {dashboard && <DashboardTab />}
             {inbox && <Inbox />}
-            {courses && <DashboardCourses />}
+            {courses && <DashboardCourses dataTest="go-to-courses" />}
             {practicalTasks && <PracticalTasks />}
             {students && <Students />}
             {authors && <AuthorsAndLearningPath />}

@@ -21,7 +21,8 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           <Styled.Label>Inbox</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
-          data-test="results-properties"
+          //data-test="results-properties"
+          data-test="go-to-courses"
           active={active === 'courses'}
           onClick={() => setActiveComponent('courses')}
         >
