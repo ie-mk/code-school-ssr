@@ -23,12 +23,14 @@ Scenario: LOGGED IN create course
       | Published | true |
       | What you will learn | Best language for backend, Best language for backend, Best language for backend |
       | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
-   Then I click button "Update Description"
+    Then In Learning path I select "frontend"
+    Then I click button "Update Description"
 
 
 
 
-    
+
+
 
 #    And I open date picker
 #    And I select start date first day of the week on the date picker

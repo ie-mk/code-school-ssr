@@ -67,22 +67,26 @@ Given('I navigate to AddNew page', () => {
   cy.get('[data-test="go-to-add-new"]').click();
 });
 
+Then('In Learning path I select {string}', (learningPath: string) => {
+  cy.get('select[name="learningPath"]').select(learningPath);
+});
+
 Then('I fill the values of the new course', (dataTable: any) => {
   cy.get('input[name="title"]')
     //  .clear()
     .type(dataTable.rawTable[0][1], {
       force: true,
     });
-  cy.get('select[name="learningPath"]')
-    // .clear()
-    .type(dataTable.rawTable[1][1], {
-      force: true,
-    });
-  cy.get('select[name="level"]')
-    //  .clear()
-    .type(dataTable.rawTable[2][1], {
-      force: true,
-    });
+  // cy.get('select[name="learningPath"]')
+  //   // .clear()
+  //   .type(dataTable.rawTable[1][1], {
+  //     force: true,
+  //   });
+  // cy.get('select[name="level"]')
+  //   //  .clear()
+  //   .type(dataTable.rawTable[2][1], {
+  //     force: true,
+  //   });
   cy.get('input[name="duration"]')
     //  .clear()
     .type(dataTable.rawTable[3][1], {
@@ -98,11 +102,11 @@ Then('I fill the values of the new course', (dataTable: any) => {
     .type(dataTable.rawTable[5][1], {
       force: true,
     });
-  cy.get('input[name="published"]')
-    .clear()
-    .type(dataTable.rawTable[6][1], {
-      force: true,
-    });
+  // cy.get('input[name="published"]')
+  //   .clear()
+  //   .type(dataTable.rawTable[6][1], {
+  //     force: true,
+  //   });
   cy.get('textarea[name="whatWillLearn"]')
     .clear()
     .type(dataTable.rawTable[7][1], {
