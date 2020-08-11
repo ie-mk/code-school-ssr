@@ -62,6 +62,19 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
           <Styled.Title onClick={() => setActiveTab('sent')} active={showSent}>
             Sent
           </Styled.Title>
+          <Styled.ButtonWrapper>
+            <Button
+              type="primary"
+              width="200px"
+              borderRadius="sm"
+              height="45px"
+              size="sm"
+              onClick={() => setNewAdd(true)}
+            >
+              <i className="fa fa-plus" aria-hidden="true" />
+              New Message
+            </Button>
+          </Styled.ButtonWrapper>
         </CenteredFlexContainer>
 
         <Table columnHeaders={columnHeaders}>
@@ -89,20 +102,6 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
             );
           })}
         </Table>
-
-        <Styled.ButtonWrapper>
-          <Button
-            type="primary"
-            width="200px"
-            borderRadius="sm"
-            height="45px"
-            size="sm"
-            onClick={() => setNewAdd(true)}
-          >
-            <i className="fa fa-plus" aria-hidden="true" />
-            New Message
-          </Button>
-        </Styled.ButtonWrapper>
 
         <ContainerBase>
           {newAdd && (

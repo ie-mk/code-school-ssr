@@ -43,7 +43,7 @@ const ReplyMessage = ({
   Object.keys(allUsersPublicInfo).forEach(key => {
     const userObject = allUsersPublicInfo[key];
     if (messageData.receiverId === key) {
-      receiverName = userObject.displayName;
+      receiverName = userObject.firstName + ' ' + userObject.lastName;
     }
   });
 
@@ -98,6 +98,7 @@ const ReplyMessage = ({
                 borderRadius="sm"
                 height="45px"
                 size="sm"
+                submit={true}
               >
                 Send
               </Button>
