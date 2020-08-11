@@ -11,12 +11,14 @@ import { resourceActions } from '../../../../store/actions';
 import Modal from '../../../modal/Modal';
 import { spacing, fontSizeMap } from '../../../../constants/styles';
 import SpinnerLarge from '../../../foundation/spinner/SpinnerLarge';
+import moment from 'moment';
 
 const columnHeaders = [
   'S.No',
   'Student Name',
   'Email',
   'Phone',
+  'Date',
   'Message',
   'Actions',
 ];
@@ -87,6 +89,9 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
                 <Table.Td>{rowData.subject}</Table.Td>
                 <Table.Td>{rowData.email}</Table.Td>
                 <Table.Td>{rowData.senderPhone}</Table.Td>
+                <Table.Td>
+                  {moment(rowData.created).format('DD/MM/YYYY, h:mm:ss a')}
+                </Table.Td>
                 <Table.Td>{rowData.message}</Table.Td>
                 <Table.Td>
                   <Button
