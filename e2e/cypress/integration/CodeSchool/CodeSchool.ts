@@ -69,22 +69,22 @@ Given('I navigate to AddNew page', () => {
 
 Then('I fill the values of the new course', (dataTable: any) => {
   cy.get('input[name="title"]')
-    .clear()
+    //  .clear()
     .type(dataTable.rawTable[0][1], {
       force: true,
     });
-  cy.get('input[name="learningPath"]')
-    .clear()
+  cy.get('select[name="learningPath"]')
+    // .clear()
     .type(dataTable.rawTable[1][1], {
       force: true,
     });
-  cy.get('input[name="level"]')
-    .clear()
+  cy.get('select[name="level"]')
+    //  .clear()
     .type(dataTable.rawTable[2][1], {
       force: true,
     });
   cy.get('input[name="duration"]')
-    .clear()
+    //  .clear()
     .type(dataTable.rawTable[3][1], {
       force: true,
     });
