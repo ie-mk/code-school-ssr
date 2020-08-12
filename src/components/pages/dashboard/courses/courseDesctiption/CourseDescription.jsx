@@ -191,7 +191,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 submit="true"
                 onClick={handleSubmit}
               >
-                {t('Update Description')}
+                Update Description
               </Button>
             </ContainerBase>
           </form>

@@ -83,29 +83,19 @@ Then('I fill the values of the new course', (dataTable: any) => {
     .type(dataTable.rawTable[0][1], {
       force: true,
     });
-  // cy.get('select[name="learningPath"]')
-  //   // .clear()
-  //   .type(dataTable.rawTable[1][1], {
-  //     force: true,
-  //   });
-  // cy.get('select[name="level"]')
-  //   //  .clear()
-  //   .type(dataTable.rawTable[2][1], {
-  //     force: true,
-  //   });
   cy.get('input[name="duration"]')
     //  .clear()
-    .type(dataTable.rawTable[3][1], {
+    .type(dataTable.rawTable[1][1], {
       force: true,
     });
   cy.get('input[name="numberOfChapters"]')
     .clear()
-    .type(dataTable.rawTable[4][1], {
+    .type(dataTable.rawTable[2][1], {
       force: true,
     });
   cy.get('input[name="studentRating"]')
     .clear()
-    .type(dataTable.rawTable[5][1], {
+    .type(dataTable.rawTable[3][1], {
       force: true,
     });
   // cy.get('input[name="published"]')
@@ -115,12 +105,12 @@ Then('I fill the values of the new course', (dataTable: any) => {
   //   });
   cy.get('textarea[name="whatWillLearn"]')
     .clear()
-    .type(dataTable.rawTable[7][1], {
+    .type(dataTable.rawTable[4][1], {
       force: true,
     });
   cy.get('textarea[name="prerequisites"]')
     .clear()
-    .type(dataTable.rawTable[8][1], {
+    .type(dataTable.rawTable[5][1], {
       force: true,
     });
 });

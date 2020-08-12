@@ -22,7 +22,7 @@ Scenario: LOGGED IN create course
       | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
     Then In Learning path I select "backend"
     Then In Level I select "beginner"
-    And I click on Publish 
+#    And I click on Publish
     Then I click button "Update Description"
     And I navigate to dashboard page
     And I wait "1000" ms
