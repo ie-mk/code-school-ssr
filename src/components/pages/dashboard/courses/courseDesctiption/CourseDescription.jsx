@@ -149,6 +149,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
               />
               <Button
                 onClick={handlePublish}
+                data-test="publish-button"
                 type="button"
                 size="sm"
                 margin="45px 40px 0 0"
@@ -182,6 +183,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
               marginTop={spacing.md}
             >
               <Button
+                data-test="update-description"
                 type="primary"
                 fontSize="18px"
                 borderRadius="sm"
@@ -189,7 +191,7 @@ let CourseDescription = ({ dispatch, editableCourseData }) => {
                 submit="true"
                 onClick={handleSubmit}
               >
-                Update Description
+                {t('Update Description')}
               </Button>
             </ContainerBase>
           </form>
