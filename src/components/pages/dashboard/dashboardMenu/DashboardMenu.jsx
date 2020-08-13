@@ -7,6 +7,7 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
     <Styled.Wrapper>
       <ContainerBase minWidth="300px">
         <Styled.MenuItem
+          data-test="go-to-dashboard-page"
           active={active === 'dashboard' || !active}
           onClick={() => setActiveComponent('dashboard')}
         >

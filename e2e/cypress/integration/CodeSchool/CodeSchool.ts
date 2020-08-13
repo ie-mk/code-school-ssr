@@ -71,7 +71,7 @@ Then('In Learning path I select {string}', (learningPath: string) => {
   cy.get('select[name="learningPath"]').select(learningPath);
 });
 Then('In Level I select {string}', (level: string) => {
-  cy.get('select[name="learningPath"]').select(level);
+  cy.get('select[name="level"]').select(level);
 });
 Given('I click on Publish button', () => {
   cy.get('[data-test="publish-button"]').click();
