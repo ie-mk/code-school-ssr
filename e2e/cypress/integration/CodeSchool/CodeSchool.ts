@@ -89,12 +89,12 @@ Then('I fill the values of the new course', (dataTable: any) => {
       force: true,
     });
   cy.get('input[name="numberOfChapters"]')
-    .clear()
+    // .clear()
     .type(dataTable.rawTable[2][1], {
       force: true,
     });
   cy.get('input[name="studentRating"]')
-    .clear()
+    //.clear()
     .type(dataTable.rawTable[3][1], {
       force: true,
     });
@@ -104,12 +104,12 @@ Then('I fill the values of the new course', (dataTable: any) => {
   //     force: true,
   //   });
   cy.get('textarea[name="whatWillLearn"]')
-    .clear()
+    // .clear()
     .type(dataTable.rawTable[4][1], {
       force: true,
     });
   cy.get('textarea[name="prerequisites"]')
-    .clear()
+    // .clear()
     .type(dataTable.rawTable[5][1], {
       force: true,
     });
