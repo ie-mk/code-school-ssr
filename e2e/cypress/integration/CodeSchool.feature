@@ -1,8 +1,32 @@
 Feature: Code School UI
   @code-school
 
+@focus
 Scenario: LOGGED IN create course
     Given I navigate to platform url
+    And I wait "1000" ms
+    And I navigate to login page
+    And I login with test user with author permissions
+    And I wait "1000" ms
+    And I navigate to dashboard page
+    And I wait "1000" ms
+    And I navigate to courses page
+    And I wait "1000" ms
+    And I navigate to AddNew page
+    And I fill the values of the new course
+      | Course Title | Ruby |
+      | Duration | 30 weeks |
+      | Number of chapters | 10 |
+      | Student rating | 4 |
+      | What you will learn | Best language for backend, Best language for backend, Best language for backend |
+      | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
+    Then In Learning path I select "backend"
+    Then In Level I select "beginner"
+    And I click on Publish button
+    Then I click button "Update Description"
+    And I navigate to dashboard page
+    And I wait "1000" ms
+    And I navigate to courses page
     And I wait "1000" ms
 
 
@@ -10,8 +34,6 @@ Scenario: LOGGED IN create course
 
 
 
-
-    
 
 #    And I open date picker
 #    And I select start date first day of the week on the date picker
