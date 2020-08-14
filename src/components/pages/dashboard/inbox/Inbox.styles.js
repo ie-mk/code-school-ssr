@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing, colors } from '../../../../constants/styles';
+import { spacing, colors, fontSizeMap } from '../../../../constants/styles';
 
 const ButtonWrapper = styled.div`
   position: absolute;
@@ -10,6 +10,14 @@ const ButtonWrapper = styled.div`
     margin-right: ${spacing.md};
   }
 `;
+export const Title = styled.div`
+  font-size: ${fontSizeMap.h5};
+  padding-right: ${spacing.xxxxxl};
+  ${({ active }) => (active ? 'font-weight: bold;' : '')};
+  text-decoration: ${({ active }) => (active ? 'underline' : '')};
+  cursor: pointer;
+`;
 export default {
   ButtonWrapper,
+  Title,
 };

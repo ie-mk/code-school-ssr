@@ -452,6 +452,11 @@ export const messageReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.deleteMessage }),
     ...getAsyncReducers({ action: resourceActions.fetchMessage }),
     ...getAsyncReducers({ action: resourceActions.fetchMessages }),
+
+    [resourceActions.resetMessages]: state => ({
+      ...state,
+      data: {},
+    }),
   },
   {
     data: {},
