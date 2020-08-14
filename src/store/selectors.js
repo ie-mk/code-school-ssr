@@ -36,7 +36,9 @@ export const getCoursesByLevel = createSelector(getCourses, courses => {
 
   Object.keys(courses).forEach(key => {
     const course = courses[key];
-    result[course.level][key] = course;
+    if (result[course.level]) {
+      result[course.level][key] = course;
+    }
   });
 
   return result;

@@ -21,10 +21,12 @@ const ReplyMessage = ({
 
   const sub = messageData.subject;
 
-  initialFormValues.subject =
-    sub.substring(0, 2) !== 'RE'
-      ? 'RE: ' + messageData.subject
-      : messageData.subject;
+  initialFormValues.subject = sub
+    ? sub.substring(0, 2) !== 'RE'
+      ? 'RE: ' + sub
+      : sub
+    : '';
+
   initialFormValues.message = `
 
 
