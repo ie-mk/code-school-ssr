@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Text24 from '../../../../foundation/typography/Text24';
 import { connect } from 'react-redux';
 
-import Styled from './courseHomeChapters.styles';
+import Styled from './CourseHomeChapters.styles';
 
 const CustomText241 = props => (
   <Text24

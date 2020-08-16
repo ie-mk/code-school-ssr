@@ -24,12 +24,20 @@ beforeEach(() => {
 });
 
 Given('I navigate to login page', () => {
-  // if(cy.get('[data-test="go-to-loginwrapper"]').contains('Logout')) {
-  //     cy.contains('Logout').click();
-  //  }
-  // else{
   cy.get('[data-test="go-to-login-page"]').click();
-  // }
+  cy.wait(9000);
+
+  cy.get('body').then($body => {
+    if ($body.find('[data-test=logout-button]').length > 0) {
+      //evaluates as true
+      cy.log('Logout button exist');
+      cy.get('[data-test=logout-button]').click();
+      cy.wait(9000);
+      cy.get('[data-test="go-to-login-page"]').click();
+    } else {
+      cy.log('Logout button does NOT exist');
+    }
+  });
 });
 
 Given('I login with test user with registered permissions', () => {

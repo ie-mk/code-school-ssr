@@ -103,7 +103,11 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
               </MenuLink>
             )}
             {user && user.uid ? (
-              <LogoutButton type="secondary" onClick={handleLogout}>
+              <LogoutButton
+                data-test="logout-button"
+                type="secondary"
+                onClick={handleLogout}
+              >
                 {t('Logout')}
               </LogoutButton>
             ) : (
