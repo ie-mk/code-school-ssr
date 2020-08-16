@@ -218,6 +218,13 @@ function* fetchCourses({ payload = {} }) {
       'courses',
       payload.queries,
     );
+
+    // clean leaking chapters which comes only partially for unknown reason
+    Object.keys(courses).forEach(key => {
+      const course = courses[key];
+      delete course.chapters;
+    });
+
     yield put(resourceActions.fetchCourses.success(courses));
   } catch (err) {
     yield put(resourceActions.fetchCourses.failure(err));
