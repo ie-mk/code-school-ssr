@@ -2,7 +2,7 @@ import Immutable from 'seamless-immutable';
 
 export const loadState = persistWhitelist => {
   try {
-    const serializedState = localStorage.getItem('state');
+    const serializedState = localStorage.getItem('code-school-storage');
     if (serializedState === null) {
       return undefined;
     }
