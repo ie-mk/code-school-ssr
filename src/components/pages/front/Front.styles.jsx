@@ -15,7 +15,7 @@ export const ChatContent = styled.div`
   //padding: 20px;
   overflow: hidden;
   color: black;
-  display: ${({ chatOpen }) => (chatOpen ? 'block' : 'none')};
+  //display: ${({ chatOpen }) => (chatOpen ? 'block' : 'none')};
   transition: all 0.5s ease-in;
 `;
 
