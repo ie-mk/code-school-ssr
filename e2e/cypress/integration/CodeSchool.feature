@@ -14,20 +14,24 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
     And I fill the values of the new course
-      | Course Title | Ruby |
-      | Duration | 30 weeks |
+      | Course Title | _TEST_COURSE_Nestjs |
+      | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
       | What you will learn | Best language for backend, Best language for backend, Best language for backend |
       | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
-    Then In Learning path I select "backend"
+    Then In Learning path I select "frontend"
     Then In Level I select "beginner"
     And I click on Publish button
     Then I click button "Update Description"
     And I navigate to dashboard page
     And I wait "1000" ms
-    And I navigate to courses page
+   Given I navigate to platform url
     And I wait "1000" ms
+    And I navigate to courses
+    And I wait "1000" ms
+    And I click on Learning path "Frontend developer"
+
 
 
 

@@ -24,7 +24,12 @@ beforeEach(() => {
 });
 
 Given('I navigate to login page', () => {
+  // if(cy.get('[data-test="go-to-loginwrapper"]').contains('Logout')) {
+  //     cy.contains('Logout').click();
+  //  }
+  // else{
   cy.get('[data-test="go-to-login-page"]').click();
+  // }
 });
 
 Given('I login with test user with registered permissions', () => {
@@ -42,6 +47,10 @@ Given('I login with test user with registered permissions', () => {
 });
 
 Given('I login with test user with author permissions', () => {
+  // cy.contains('Logout')
+  //  if(cy.contains('Logout')) {
+  //   cy.contains('Logout').click();
+  // }
   cy.get('[data-test="hidden-login-form"]').within(() => {
     cy.get('[name=email]').then(elem => {
       elem.val('test-author@test.com');
@@ -75,6 +84,25 @@ Then('In Level I select {string}', (level: string) => {
 });
 Given('I click on Publish button', () => {
   cy.get('[data-test="publish-button"]').click();
+});
+
+Given('I navigate to courses', () => {
+  cy.get('[data-test="go-to-courses-page"]').click();
+});
+
+// Given('I click on Learning path {string}', (learningPath: string) => {
+
+// cy.get('[data-test="chooselearningpath"]').contains(learningPath).click();
+// //       .should('have.text', learningPath).click();
+
+// // });
+// // .should(($div) => {
+// //   expect($div.text().trim()).equal(learningPath);
+
+// });
+
+Given('I click on Learning path {string}', (name: string) => {
+  cy.contains(name).click();
 });
 
 Then('I fill the values of the new course', (dataTable: any) => {

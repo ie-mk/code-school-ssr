@@ -53,6 +53,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
                 imageSrc={data && data.images && data.images[0]}
                 title={LEARNING_PATH[data.title]}
                 learningPathId={key}
+                data-test="chooselearningpath"
               />
             );
           })}
