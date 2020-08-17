@@ -31,6 +31,14 @@ Scenario: LOGGED IN create course
     And I navigate to courses
     And I wait "1000" ms
     And I click on Learning path "Frontend developer"
+    And I clicked new created course
+    And I check created course values
+    | Course Title | _TEST_COURSE_Nestjs |
+    | Duration | 10 weeks |
+    | Number of chapters | 10 |
+    | Student rating | 4 |
+    | What you will learn | Best language for backend, Best language for backend, Best language for backend |
+    | Pre-requisites | You should have a
 
 
 

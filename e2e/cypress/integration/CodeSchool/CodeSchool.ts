@@ -113,7 +113,17 @@ Given('I click on Learning path {string}', (name: string) => {
   cy.contains(name).click();
 });
 
+Then('I check created course values', (dataTable: any) => {
+  cy.contain(dataTable.rawTable[0][1]);
+  cy.contain(dataTable.rawTable[1][1]);
+  cy.contain(dataTable.rawTable[2][1]);
+});
+
 Then('I fill the values of the new course', (dataTable: any) => {
+  cy.contain(dataTable.rawTable[0][1]);
+  cy.contain(dataTable.rawTable[1][1]);
+  cy.contain(dataTable.rawTable[2][1]);
+
   cy.get('input[name="title"]')
     //  .clear()
     .type(dataTable.rawTable[0][1], {
