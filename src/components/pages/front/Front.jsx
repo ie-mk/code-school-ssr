@@ -18,21 +18,6 @@ const Front = () => {
         <SectionPictureDescButton />
         <SectionCards title="How it works" />
       </PageContent>
-      <Styled.Chat>
-        <Styled.ChatHeader onClick={() => setChatOpen(!chatOpen)}>
-          Chat
-        </Styled.ChatHeader>
-
-        <Styled.ChatContent chatOpen={chatOpen}>
-          {`
-            ascfasfd
-            asdf
-            asdfas
-            asdf
-
-          `}
-        </Styled.ChatContent>
-      </Styled.Chat>
     </>
   );
 };
