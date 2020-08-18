@@ -14,7 +14,7 @@ import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
 const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
   useEffect(() => {
-    dispatch(resourceActions.fetchCourseChapters.request(courseId));
+    dispatch(resourceActions.fetchChapters.request(courseId));
   }, []);
 
   const chapters = courseData && courseData.chapters;
