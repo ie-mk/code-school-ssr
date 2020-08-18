@@ -93,7 +93,7 @@ const PictureUploader = ({
         ) : null}
         {fileArray.length && !loading && uploadAsync ? (
           <>
-            <Button type="primary" size="sm" onClick={handleUpload}>
+            <Button type="primary" size="sm" onClick={handleUpload} mar>
               Upload
             </Button>
             <Button

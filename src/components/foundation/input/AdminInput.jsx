@@ -18,6 +18,7 @@ const AdminInput = ({
   mobileWidth,
   color,
   inputColor,
+  border,
 }) => {
   return (
     <Styled.Wrapper
@@ -34,6 +35,7 @@ const AdminInput = ({
         height={height}
         backgroundColor={backgroundColor}
         disabled={disabled}
+        border={border}
       >
         <Field
           className={classNameString}

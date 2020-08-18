@@ -12,7 +12,9 @@ const ImageContainer = styled.div`
   border-radius: ${({ borderRadius }) => borderRadius || ''};
   background-image: url(${({ src }) => src});
   background-repeat: no-repeat;
-  background-size: ${({ backGroundSize }) => backGroundSize || 'cover'};
+  background-size: ${({ backgroundSize }) => backgroundSize || 'cover'};
+  background-position: ${({ backGroundPosition }) =>
+    backGroundPosition || 'center'};
   flex: ${({ flex }) => flex || ''};
   cursor: ${({ cursor }) => cursor || ''};
   position: ${({ position }) => position || ''};

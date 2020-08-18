@@ -20,7 +20,7 @@ const Logo = ({ imgSrc, width, height, title, imageMediaConfig }) => (
           alt="logo"
           width={width}
           height={height}
-          backGroundSize="contain"
+          backgroundSize="contain"
           mediaConfig={imageMediaConfig}
         />
       )}
