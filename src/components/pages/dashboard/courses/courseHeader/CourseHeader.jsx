@@ -30,25 +30,18 @@ const Label = ({ keyname, value }) => {
 const CourseHeader = ({ title, course, courseId }) => {
   const Rating = <StarRating rating={course.studentRating} />;
 
-  const whatyouwilllearn = course.whatWillLearn;
-  const data = whatyouwilllearn.split(',');
+  const whatWillLearn = course.whatWillLearn;
+  const willLearnArr = (whatWillLearn && whatWillLearn.split(',')) || [];
 
   const prerequisites = course.prerequisites;
-  const prerequisitesdata = prerequisites.split(',');
+  const prereqArr = (prerequisites && prerequisites.split(',')) || [];
 
   const router = useRouter();
 
   const startCourse = title => {
-    router.push(
-      {
-        pathname: '/courseLearning',
-        query: {
-          courseId,
-        },
-      },
-      `/course/${title.replace(' ', '')}/startLearning`,
-      { shallow: true },
-    );
+    const url = `/courseLearning?course=${title}&courseId=${courseId}`;
+
+    router.push(url, url, { shallow: true });
   };
 
   return (
@@ -118,7 +111,7 @@ const CourseHeader = ({ title, course, courseId }) => {
                 What you will learn{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>
-                {data.map((item, i) => {
+                {willLearnArr.map((item, i) => {
                   return (
                     <GreenCheckBoxWithText
                       key={i}
@@ -136,7 +129,7 @@ const CourseHeader = ({ title, course, courseId }) => {
                 Requirements{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>
-                {prerequisitesdata.map((item, i) => {
+                {prereqArr.map((item, i) => {
                   return (
                     <GreenCheckBoxWithText
                       key={i}

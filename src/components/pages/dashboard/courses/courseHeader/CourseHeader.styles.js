@@ -3,18 +3,17 @@ import { fontSizeMap, spacing, colors } from '../../../../../constants/styles';
 import media from '../../../../foundation/media';
 
 const Wrapper = styled.div`
-  min-height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 ${spacing.xxxl};
+  padding: 0 ${spacing.xl};
 `;
 
 const Content = styled.div`
   max-width: 1400px;
   z-index: 1;
-  margin-top: ${spacing.xxxl};
+  margin-top: ${spacing.xxl};
   ${media.aboveTablet`
    margin-top: ${spacing.xxxxxl};
   `}
@@ -61,7 +60,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const StyledHeader = styled.text`
+const StyledHeader = styled.span`
   font-size: ${({ fontSize }) =>
     fontSizeMap[fontSize] ? fontSizeMap[fontSize] : fontSizeMap.textS};
   z-index: 1;

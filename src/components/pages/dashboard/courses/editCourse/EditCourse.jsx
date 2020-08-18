@@ -12,15 +12,13 @@ import Button from '../../../../foundation/button/Button';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import SpinnerLarge from '../../../../foundation/spinner/SpinnerLarge';
 
-const EditCourse = ({
-  dispatch,
-  courseId,
-  courseData: { chapters, edited },
-  loading,
-}) => {
+const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
   useEffect(() => {
-    dispatch(resourceActions.fetchChapters.request());
+    dispatch(resourceActions.fetchCourseChapters.request(courseId));
   }, []);
+
+  const chapters = courseData && courseData.chapters;
+  const editedOnDate = courseData && courseData.editedOnDate;
 
   const handleCreateNewChapter = () => {
     dispatch(
@@ -30,10 +28,8 @@ const EditCourse = ({
     );
   };
 
-  // console.log(`=========== course rendered id: ${courseId}`);
-
   return (
-    <ContainerBase key={edited}>
+    <ContainerBase key={editedOnDate}>
       {loading && <SpinnerLarge />}
       <CourseDescription />
       {chapters &&
