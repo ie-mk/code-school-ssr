@@ -54,7 +54,12 @@ const EditCourse = ({
             );
           })}
       <CenteredFlexContainer margin="lg">
-        <Button type="primary" size="lg" onClick={handleCreateNewChapter}>
+        <Button
+          type="primary"
+          size="lg"
+          data-test="add-new-chapter"
+          onClick={handleCreateNewChapter}
+        >
           Add New Chapter
         </Button>
       </CenteredFlexContainer>

@@ -55,10 +55,6 @@ Given('I login with test user with registered permissions', () => {
 });
 
 Given('I login with test user with author permissions', () => {
-  // cy.contains('Logout')
-  //  if(cy.contains('Logout')) {
-  //   cy.contains('Logout').click();
-  // }
   cy.get('[data-test="hidden-login-form"]').within(() => {
     cy.get('[name=email]').then(elem => {
       elem.val('test-author@test.com');
@@ -94,6 +90,14 @@ Given('I click on Publish button', () => {
   cy.get('[data-test="publish-button"]').click();
 });
 
+Given('I click on AddNewChapter button', () => {
+  cy.get('[data-test="add-new-chapter"]').click();
+});
+
+Given('I click on open Chapter', () => {
+  cy.get('[data-test="open-chapter"]').click();
+});
+
 Given('I navigate to courses', () => {
   cy.get('[data-test="go-to-courses-page"]').click();
 });
@@ -113,16 +117,16 @@ Given('I click on Learning path {string}', (name: string) => {
   cy.contains(name).click();
 });
 
-Then('I check created course values', (dataTable: any) => {
-  cy.contain(dataTable.rawTable[0][1]);
-  cy.contain(dataTable.rawTable[1][1]);
-  cy.contain(dataTable.rawTable[2][1]);
-});
+// Then('I check created course values', (dataTable: any) => {
+//   cy.contains(dataTable.rawTable[0][1]);
+//   cy.contains(dataTable.rawTable[1][1]);
+//   cy.contains(dataTable.rawTable[2][1]);
+// });
 
 Then('I fill the values of the new course', (dataTable: any) => {
-  cy.contain(dataTable.rawTable[0][1]);
-  cy.contain(dataTable.rawTable[1][1]);
-  cy.contain(dataTable.rawTable[2][1]);
+  // cy.contain(dataTable.rawTable[0][1]);
+  // cy.contain(dataTable.rawTable[1][1]);
+  // cy.contain(dataTable.rawTable[2][1]);
 
   cy.get('input[name="title"]')
     //  .clear()
@@ -159,6 +163,55 @@ Then('I fill the values of the new course', (dataTable: any) => {
     .type(dataTable.rawTable[5][1], {
       force: true,
     });
+});
+
+Then('I fill the values of the new chapter', (dataTable: any) => {
+  cy.get('[data-test="chapter-title"]')
+    .last()
+    //  .clear()
+    .type(dataTable.rawTable[0][1], {
+      force: true,
+    });
+  cy.get('input[name="numberOfLessons"]')
+    //  .clear()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+});
+
+Given('I click on AddLesson button', () => {
+  cy.get('[data-test="add-lesson"]').click();
+});
+
+Given('I click on edit button in lesson1', () => {
+  cy.get('[data-test="edit-lesson"]').click();
+});
+
+Then('I fill the values of the new lesson', (dataTable: any) => {
+  cy.get('input[data-test="lesson-title"]')
+    //  .clear()
+    .type(dataTable.rawTable[0][1], {
+      force: true,
+    });
+  cy.get('input[name="descr"]')
+    //  .clear()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+  cy.get('input[name="videoLink"]')
+    // .clear()
+    .type(dataTable.rawTable[2][1], {
+      force: true,
+    });
+  cy.get('input[name="assignment"]')
+    //.clear()
+    .type(dataTable.rawTable[3][1], {
+      force: true,
+    });
+});
+
+Given('I click on save button in lesson1', () => {
+  cy.get('[data-test="lesson-save"]').click();
 });
 
 Given(`I navigate to platform url`, () => {

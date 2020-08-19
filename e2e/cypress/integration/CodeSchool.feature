@@ -13,7 +13,7 @@ Scenario: LOGGED IN create course
     And I navigate to courses page
     And I wait "1000" ms
     And I navigate to AddNew page
-    And I fill the values of the new course
+  And I fill the values of the new course
       | Course Title | _TEST_COURSE_Nestjs |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
@@ -22,27 +22,19 @@ Scenario: LOGGED IN create course
       | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
     Then In Learning path I select "frontend"
     Then In Level I select "beginner"
-    And I click on Publish button
-    Then I click button "Update Description"
-    And I navigate to dashboard page
-    And I wait "1000" ms
-   Given I navigate to platform url
-    And I wait "1000" ms
-    And I navigate to courses
-    And I wait "1000" ms
-    And I click on Learning path "Frontend developer"
-    And I clicked new created course
-    And I check created course values
-    | Course Title | _TEST_COURSE_Nestjs |
-    | Duration | 10 weeks |
-    | Number of chapters | 10 |
-    | Student rating | 4 |
-    | What you will learn | Best language for backend, Best language for backend, Best language for backend |
-    | Pre-requisites | You should have a
-
-
-
-
+    And I click on AddNewChapter button
+    And I click on open Chapter
+    And I fill the values of the new chapter
+      | Chapter Title | _TEST_COURSE_Chapter1 |
+      | Number of lessons | 10 |
+    And I click on AddLesson button
+    And I click on edit button in lesson1
+    And I fill the values of the new lesson
+      | Lesson Title | _TEST_Lesson_Introduction |
+      | Lesson Breif | skywalk |
+      | Video Link | 10:00 |
+      | Assignment | moonwalk |
+    And I click on save button in lesson1
 
 
 
@@ -64,7 +56,6 @@ Scenario: LOGGED IN create course
   Scenario: LOGGED IN Dahshboard send message
     Given I navigate to dahsboard
     And I open messages tab
-
 
 
 #  Scenario: NOT LOGGED IN - add to favourites

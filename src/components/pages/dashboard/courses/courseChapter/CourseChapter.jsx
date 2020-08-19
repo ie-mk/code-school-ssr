@@ -37,7 +37,10 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
       <Styled.ChapterHeader>
-        <Styled.ExpandButton onClick={() => setExpanded(!expanded)}>
+        <Styled.ExpandButton
+          data-test="open-chapter"
+          onClick={() => setExpanded(!expanded)}
+        >
           <i className={`fa fa-${expanded ? 'minus' : 'plus'}`} />{' '}
         </Styled.ExpandButton>
         Chapter {idx + 1}
@@ -64,10 +67,12 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
             <form onSubmit={handleSubmit}>
               <Styled.InputRow>
                 <AdminInput
+                  id="chaptertitle"
                   name="title"
                   type="text"
                   label="Chapter title"
-                  //placeholder="Enter chapter title"
+                  data-test="chapter-title"
+                  //  placeholder="Enter chapter title"
                   width="28%"
                 />
                 <AdminInput
@@ -85,7 +90,12 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
                 />
               </Styled.InputRow>
               <FlexContainer justifyContent="flex-end" marginTop="xxl">
-                <Button type="button" size="sm" onClick={handleSubmit}>
+                <Button
+                  type="button"
+                  size="sm"
+                  data-test="update-chapter"
+                  onClick={handleSubmit}
+                >
                   Update Chapter
                 </Button>
               </FlexContainer>
