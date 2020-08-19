@@ -14,7 +14,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
   And I fill the values of the new course
-      | Course Title | _TEST_COURSE_Nestjs |
+      | Course Title | _TEST_COURSE_Nestjs_111111 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
@@ -22,6 +22,9 @@ Scenario: LOGGED IN create course
       | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
     Then In Learning path I select "frontend"
     Then In Level I select "beginner"
+    Then I click button "Update Description"
+    And I wait "1000" ms
+    And I click on Publish button
     And I click on AddNewChapter button
     And I click on open Chapter
     And I fill the values of the new chapter
@@ -35,6 +38,7 @@ Scenario: LOGGED IN create course
       | Video Link | 10:00 |
       | Assignment | moonwalk |
     And I click on save button in lesson1
+  And I wait "9000" ms
 
 
 

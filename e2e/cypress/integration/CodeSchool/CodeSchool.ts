@@ -25,14 +25,14 @@ beforeEach(() => {
 
 Given('I navigate to login page', () => {
   cy.get('[data-test="go-to-login-page"]').click();
-  cy.wait(9000);
+  cy.wait(4000);
 
   cy.get('body').then($body => {
     if ($body.find('[data-test=logout-button]').length > 0) {
       //evaluates as true
       cy.log('Logout button exist');
       cy.get('[data-test=logout-button]').click();
-      cy.wait(9000);
+      cy.wait(4000);
       cy.get('[data-test="go-to-login-page"]').click();
     } else {
       cy.log('Logout button does NOT exist');
@@ -167,7 +167,7 @@ Then('I fill the values of the new course', (dataTable: any) => {
 
 Then('I fill the values of the new chapter', (dataTable: any) => {
   cy.get('[data-test="chapter-title"]')
-    .last()
+    //.last()
     //  .clear()
     .type(dataTable.rawTable[0][1], {
       force: true,

@@ -71,7 +71,7 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
                   name="title"
                   type="text"
                   label="Chapter title"
-                  data-test="chapter-title"
+                  dataTest="chapter-title"
                   //  placeholder="Enter chapter title"
                   width="28%"
                 />

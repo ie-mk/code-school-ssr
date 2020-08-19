@@ -18,6 +18,7 @@ const AdminInput = ({
   mobileWidth,
   color,
   inputColor,
+  dataTest,
 }) => {
   return (
     <Styled.Wrapper
@@ -36,6 +37,7 @@ const AdminInput = ({
         disabled={disabled}
       >
         <Field
+          data-test={dataTest}
           className={classNameString}
           name={name}
           type={type}

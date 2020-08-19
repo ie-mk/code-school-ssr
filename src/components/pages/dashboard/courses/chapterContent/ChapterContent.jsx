@@ -4,7 +4,13 @@ import CollapseContainer from '../../../../foundation/collapseContainer';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 
-const ChapterContent = ({ dispatch, chapterId, chapters, courseId }) => {
+const ChapterContent = ({
+  dispatch,
+  chapterId,
+  chapters,
+  courseId,
+  chapterIdx,
+}) => {
   const chapter = chapters[chapterId];
   const title = 'Chapter ' + chapter.sequenceNr + ' : ' + chapter.title;
 
