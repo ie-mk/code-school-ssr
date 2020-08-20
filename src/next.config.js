@@ -1,8 +1,14 @@
 const path = require('path');
 const withCSS = require('@zeit/next-css');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const projectRoot = path.join(__dirname);
+
+// // to make react-smooshpack/CodeMirror to work
+// global.navigator = {
+//   platform: 'Win32',
+//   userAgent:
+//     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36',
+// };
 
 module.exports = withCSS({
   distDir: '../_next',
@@ -26,14 +32,6 @@ module.exports = withCSS({
         },
       },
     });
-
-    config.plugins.push(
-      new MonacoWebpackPlugin({
-        // Add languages as needed...
-        languages: ['javascript', 'typescript'],
-        filename: 'static/[name].worker.js',
-      }),
-    );
 
     return config;
   },

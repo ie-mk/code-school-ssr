@@ -21,9 +21,6 @@
     "cypress:openLocal": "./e2e/node_modules/.bin/cypress open -P e2e --env E2ELOCAL=true"
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.9.4",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/standalone": "^7.9.6",
     "@zeit/next-css": "1.0.1",
     "babel-plugin-styled-components": "1.10.7",
     "firebase": "7.1.0",
@@ -42,9 +39,9 @@
     "react-dom": "16.8.6",
     "react-firebaseui": "4.1.0",
     "react-i18next": "11.4.0",
-    "react-monaco-editor": "^0.36.0",
     "react-redux": "7.2.0",
     "react-router": "3.2.4",
+    "react-smooshpack": "^0.0.66",
     "redux": "4.0.5",
     "redux-actions": "2.6.5",
     "redux-form": "8.2.6",
@@ -67,7 +64,6 @@
     "firebase-functions-test": "^0.1.6",
     "firebase-tools": "^8.0.3",
     "husky": "^3.0.8",
-    "monaco-editor-webpack-plugin": "^1.9.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^1.11.1",
     "redux-devtools-extension": "2.13.8",

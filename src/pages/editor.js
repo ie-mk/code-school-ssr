@@ -1,14 +1,18 @@
 import React from 'react';
 import { IS_SERVER } from '../constants';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { CourseManager } from '../components';
+import { TaskManager } from '../components';
 
-const Login = () => {
+console.log('IS_SERVER', IS_SERVER);
+
+const Editor = () => {
+  console.log('IS_SERVER', IS_SERVER);
+
   return !IS_SERVER ? (
     <ErrorBoundary>
-      <CourseManager />
+      <TaskManager />
     </ErrorBoundary>
   ) : null;
 };
 
-export default Login;
+export default Editor;
