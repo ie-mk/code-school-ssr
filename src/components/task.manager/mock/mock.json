@@ -1,0 +1,53 @@
+{
+  "id": "TASK_ID",
+  "desc": {
+    "title": "Basic React usage",
+    "body": [
+      {
+        "type": "section"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "desc": { "title": "Create a component" },
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "files": {
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solution": [
+        {
+          "desc": { "title": "Using classes" },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "desc": { "title": "Using functional components" },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
