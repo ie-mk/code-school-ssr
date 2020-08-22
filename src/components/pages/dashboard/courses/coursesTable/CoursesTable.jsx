@@ -49,6 +49,9 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
       >
         {Object.keys(courses).map((courseId, idx) => {
           const data = courses[courseId];
+
+          if (!data) return null;
+
           return (
             <Table.Tr key={courseId}>
               <Table.Td>{idx + 1}</Table.Td>
@@ -70,16 +73,18 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
                 >
                   Edit
                 </Button>
-                <Button
-                  onClick={() => handleDelete(courseId)}
-                  type="action"
-                  size="sm"
-                  fontSize="12px"
-                  margin="0 10px 0 0"
-                  borderRadius="sm"
-                >
-                  Delete
-                </Button>
+                {!data.published ? (
+                  <Button
+                    onClick={() => handleDelete(courseId)}
+                    type="action"
+                    size="sm"
+                    fontSize="12px"
+                    margin="0 10px 0 0"
+                    borderRadius="sm"
+                  >
+                    Delete
+                  </Button>
+                ) : null}
               </Table.Td>
             </Table.Tr>
           );
