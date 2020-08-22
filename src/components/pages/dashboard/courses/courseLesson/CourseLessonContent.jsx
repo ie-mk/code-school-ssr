@@ -82,7 +82,7 @@ const CourseLessonContent = ({
                   width="80%"
                   backgroundColor="white"
                   disabled={!editMode}
-                  data-test="lesson-title"
+                  dataTest="lesson-title"
                 />
               </FlexContainer>
               <AdminTextArea
@@ -106,7 +106,7 @@ const CourseLessonContent = ({
                   backgroundColor="white"
                   width="70%"
                   disabled={!editMode}
-                  data-test="video-link"
+                  dataTest="video-link"
                 />
                 <Styled.Upload marginTop="xxl">upload</Styled.Upload>
               </ContainerBase>
@@ -118,7 +118,7 @@ const CourseLessonContent = ({
                 backgroundColor="white"
                 width="100%"
                 disabled={!editMode}
-                data-test="assignment"
+                dataTest="assignment"
               />
               {editMode ? (
                 <FlexContainer

@@ -94,8 +94,8 @@ Given('I click on AddNewChapter button', () => {
   cy.get('[data-test="add-new-chapter"]').click();
 });
 
-Given('I click on open Chapter', () => {
-  cy.get('[data-test="open-chapter"]').click();
+Given('I click on open Chapter 1', () => {
+  cy.get('[data-test="open-chapter-1"]').click();
 });
 
 Given('I navigate to courses', () => {
@@ -117,11 +117,15 @@ Given('I click on Learning path {string}', (name: string) => {
   cy.contains(name).click();
 });
 
-// Then('I check created course values', (dataTable: any) => {
-//   cy.contains(dataTable.rawTable[0][1]);
-//   cy.contains(dataTable.rawTable[1][1]);
-//   cy.contains(dataTable.rawTable[2][1]);
-// });
+Given('I click on new course {string}', (name: string) => {
+  cy.contains(name).click();
+});
+
+Then('I check created course values', (dataTable: any) => {
+  cy.contains(dataTable.rawTable[0][1]);
+  cy.contains(dataTable.rawTable[1][1]);
+  cy.contains(dataTable.rawTable[2][1]);
+});
 
 Then('I fill the values of the new course', (dataTable: any) => {
   // cy.contain(dataTable.rawTable[0][1]);
@@ -129,12 +133,12 @@ Then('I fill the values of the new course', (dataTable: any) => {
   // cy.contain(dataTable.rawTable[2][1]);
 
   cy.get('input[name="title"]')
-    //  .clear()
+    .clear()
     .type(dataTable.rawTable[0][1], {
       force: true,
     });
   cy.get('input[name="duration"]')
-    //  .clear()
+    .clear()
     .type(dataTable.rawTable[1][1], {
       force: true,
     });
@@ -148,11 +152,7 @@ Then('I fill the values of the new course', (dataTable: any) => {
     .type(dataTable.rawTable[3][1], {
       force: true,
     });
-  // cy.get('input[name="published"]')
-  //   .clear()
-  //   .type(dataTable.rawTable[6][1], {
-  //     force: true,
-  //   });
+
   cy.get('textarea[name="whatWillLearn"]')
     // .clear()
     .type(dataTable.rawTable[4][1], {
@@ -167,51 +167,77 @@ Then('I fill the values of the new course', (dataTable: any) => {
 
 Then('I fill the values of the new chapter', (dataTable: any) => {
   cy.get('[data-test="chapter-title"]')
-    //.last()
+    .last()
     //  .clear()
     .type(dataTable.rawTable[0][1], {
       force: true,
     });
   cy.get('input[name="numberOfLessons"]')
+    .last()
     //  .clear()
     .type(dataTable.rawTable[1][1], {
       force: true,
     });
 });
 
-Given('I click on AddLesson button', () => {
-  cy.get('[data-test="add-lesson"]').click();
+Given('I click button Update Chapter', () => {
+  // cy.get(`button:contains("${name}")`).click({ force: true });
+  cy.get('[data-test="update-chapter"]')
+    .last()
+    .click({ force: true });
 });
 
-Given('I click on edit button in lesson1', () => {
-  cy.get('[data-test="edit-lesson"]').click();
+// Then('In Level I select {string}', (level: string) => {
+//   cy.get('select[name="level"]').select(level);
+// });
+
+Given('I click on AddLesson button', () => {
+  cy.get('[data-test="add-lesson"]')
+    .last()
+    .click({ force: true });
+});
+
+Given('I click on edit button in lesson 1', () => {
+  cy.get('[data-test="edit-lesson-1"]').click({ force: true });
 });
 
 Then('I fill the values of the new lesson', (dataTable: any) => {
   cy.get('input[data-test="lesson-title"]')
+    .last()
     //  .clear()
     .type(dataTable.rawTable[0][1], {
       force: true,
     });
-  cy.get('input[name="descr"]')
+  cy.get('textarea[name="descr"]')
+    .last()
     //  .clear()
     .type(dataTable.rawTable[1][1], {
       force: true,
     });
   cy.get('input[name="videoLink"]')
+    .last()
     // .clear()
     .type(dataTable.rawTable[2][1], {
       force: true,
     });
   cy.get('input[name="assignment"]')
+    .last()
     //.clear()
     .type(dataTable.rawTable[3][1], {
       force: true,
     });
 });
 
-Given('I click on save button in lesson1', () => {
-  cy.get('[data-test="lesson-save"]').click();
+Given('I click on save button', () => {
+  cy.get('[data-test="lesson-save"]').click({ force: true });
+});
+
+Given('I click on edit button in lesson 2', () => {
+  cy.get('[data-test="edit-lesson-2"]').click({ force: true });
+});
+
+Given('I click on open Chapter 2', () => {
+  cy.get('[data-test="open-chapter-2"]').click();
 });
 
 Given(`I navigate to platform url`, () => {

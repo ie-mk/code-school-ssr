@@ -38,7 +38,7 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
       <Styled.ChapterHeader>
         <Styled.ExpandButton
-          data-test="open-chapter"
+          data-test={`open-chapter-${idx + 1}`}
           onClick={() => setExpanded(!expanded)}
         >
           <i className={`fa fa-${expanded ? 'minus' : 'plus'}`} />{' '}
