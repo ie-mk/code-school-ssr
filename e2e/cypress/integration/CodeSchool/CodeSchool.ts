@@ -102,17 +102,6 @@ Given('I navigate to courses', () => {
   cy.get('[data-test="go-to-courses-page"]').click();
 });
 
-// Given('I click on Learning path {string}', (learningPath: string) => {
-
-// cy.get('[data-test="chooselearningpath"]').contains(learningPath).click();
-// //       .should('have.text', learningPath).click();
-
-// // });
-// // .should(($div) => {
-// //   expect($div.text().trim()).equal(learningPath);
-
-// });
-
 Given('I click on Learning path {string}', (name: string) => {
   cy.contains(name).click();
 });
@@ -128,10 +117,6 @@ Then('I check created course values', (dataTable: any) => {
 });
 
 Then('I fill the values of the new course', (dataTable: any) => {
-  // cy.contain(dataTable.rawTable[0][1]);
-  // cy.contain(dataTable.rawTable[1][1]);
-  // cy.contain(dataTable.rawTable[2][1]);
-
   cy.get('input[name="title"]')
     .clear()
     .type(dataTable.rawTable[0][1], {
@@ -168,7 +153,7 @@ Then('I fill the values of the new course', (dataTable: any) => {
 Then('I fill the values of the new chapter', (dataTable: any) => {
   cy.get('[data-test="chapter-title"]')
     .last()
-    //  .clear()
+    // .clear()
     .type(dataTable.rawTable[0][1], {
       force: true,
     });
@@ -181,15 +166,10 @@ Then('I fill the values of the new chapter', (dataTable: any) => {
 });
 
 Given('I click button Update Chapter', () => {
-  // cy.get(`button:contains("${name}")`).click({ force: true });
   cy.get('[data-test="update-chapter"]')
     .last()
     .click({ force: true });
 });
-
-// Then('In Level I select {string}', (level: string) => {
-//   cy.get('select[name="level"]').select(level);
-// });
 
 Given('I click on AddLesson button', () => {
   cy.get('[data-test="add-lesson"]')

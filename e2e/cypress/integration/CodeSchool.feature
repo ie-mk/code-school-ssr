@@ -14,7 +14,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
   And I fill the values of the new course
-      | Course Title | _TEST_COURSE_Nextjs12345 |
+      | Course Title | _TEST_COURSE_12345 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
@@ -24,7 +24,6 @@ Scenario: LOGGED IN create course
     Then In Level I select "beginner"
     Then I click button "Update Description"
     And I wait "1000" ms
-    And I click on Publish button
     And I click on AddNewChapter button
     And I click on open Chapter 1
     And I fill the values of the new chapter
@@ -83,15 +82,18 @@ Scenario: LOGGED IN create course
     And I click on save button
 
     And I wait "1000" ms
+    And I click on Publish button
+    And I wait "1000" ms
+
    Given I navigate to platform url
     And I wait "1000" ms
     And I navigate to courses
     And I wait "1000" ms
     And I click on Learning path "Frontend developer"
-    And I click on new course "_TEST_COURSE_Nextjs12345"
+    And I click on new course "_TEST_COURSE_12345"
 
     And I check created course values
-      | Course Title | _TEST_COURSE_Nextjs12345 |
+      | Course Title | _TEST_COURSE_12345 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
