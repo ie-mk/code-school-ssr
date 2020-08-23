@@ -22,7 +22,7 @@ Scenario: LOGGED IN create course
       | Pre-requisites | You should have a basic understanding of Computer Programming terminologies, A basic understanding of any of the programming languages is a plus |
     Then In Learning path I select "frontend"
     Then In Level I select "beginner"
-  # Then I click button "Update Description"
+    Then I click button "Update Description"
     And I wait "4000" ms
     And I click on AddNewChapter button
     And I click on open Chapter 1
