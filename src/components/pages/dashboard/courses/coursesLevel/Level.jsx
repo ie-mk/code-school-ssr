@@ -47,25 +47,30 @@ const Level = ({ courses, learningPathData, heading }) => {
           gridGap={spacing.xxxxl}
         >
           {courses &&
-            Object.keys(courses).map((courseId, i) => {
-              const course = courses[courseId];
-              if (!course) return null;
+            Object.keys(courses)
+              .filter(
+                key =>
+                  courses[key].title && !courses[key].title.includes('_TEST'),
+              )
+              .map((courseId, i) => {
+                const course = courses[courseId];
+                if (!course) return null;
 
-              return (
-                <ProfileLearning
-                  key={i}
-                  imageSrc={
-                    learningPathData &&
-                    learningPathData.images &&
-                    learningPathData.images[0]
-                  }
-                  title={course.title}
-                  subtitle={course.level}
-                  background={colors.background.violetprimary}
-                  onClick={() => toCourseStartPage(courseId, course.title)}
-                />
-              );
-            })}
+                return (
+                  <ProfileLearning
+                    key={i}
+                    imageSrc={
+                      learningPathData &&
+                      learningPathData.images &&
+                      learningPathData.images[0]
+                    }
+                    title={course.title}
+                    subtitle={course.level}
+                    background={colors.background.violetprimary}
+                    onClick={() => toCourseStartPage(courseId, course.title)}
+                  />
+                );
+              })}
         </Grid>
       </Styled.Wrapper>
     </ErrorBoundary>

@@ -6,12 +6,16 @@ import { connect } from 'react-redux';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CourseHeader from '../../components/pages/dashboard/courses/courseHeader/CourseHeader';
 import CourseOutline from '../../components/pages/dashboard/courses/courseOutline/CourseOutline';
-import needsLoginWrapper from '../../utils/needsLoginWrapper';
+import { resourceActions } from '../../store/actions';
 
-const CourseStart = ({ courses }) => {
+const CourseStart = ({ dispatch, courses }) => {
   const {
     query: { courseId },
   } = useRouter();
+
+  useEffect(() => {
+    dispatch(resourceActions.fetchChapters.request(courseId));
+  }, [courseId]);
 
   const course = courses[courseId];
 
