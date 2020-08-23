@@ -13,16 +13,9 @@ const Level = ({ courses, learningPathData, heading }) => {
   const router = useRouter();
 
   const toCourseStartPage = (courseId, title) => {
-    router.push(
-      {
-        pathname: '/courses/courseStart',
-        query: {
-          courseId,
-        },
-      },
-      `/course/${title.replace(' ', '')}/start`,
-      { shallow: true },
-    );
+    const url = `/courses/courseStart?title=${title}&courseId=${courseId}`;
+
+    router.push(url, url, { shallow: true });
   };
 
   if (!learningPathData) return null;
@@ -47,25 +40,30 @@ const Level = ({ courses, learningPathData, heading }) => {
           gridGap={spacing.xxxxl}
         >
           {courses &&
-            Object.keys(courses).map((courseId, i) => {
-              const course = courses[courseId];
-              if (!course) return null;
+            Object.keys(courses)
+              .filter(
+                key =>
+                  courses[key].title && !courses[key].title.includes('_TEST'),
+              )
+              .map((courseId, i) => {
+                const course = courses[courseId];
+                if (!course) return null;
 
-              return (
-                <ProfileLearning
-                  key={i}
-                  imageSrc={
-                    learningPathData &&
-                    learningPathData.images &&
-                    learningPathData.images[0]
-                  }
-                  title={course.title}
-                  subtitle={course.level}
-                  background={colors.background.violetprimary}
-                  onClick={() => toCourseStartPage(courseId, course.title)}
-                />
-              );
-            })}
+                return (
+                  <ProfileLearning
+                    key={i}
+                    imageSrc={
+                      learningPathData &&
+                      learningPathData.images &&
+                      learningPathData.images[0]
+                    }
+                    title={course.title}
+                    subtitle={course.level}
+                    background={colors.background.violetprimary}
+                    onClick={() => toCourseStartPage(courseId, course.title)}
+                  />
+                );
+              })}
         </Grid>
       </Styled.Wrapper>
     </ErrorBoundary>

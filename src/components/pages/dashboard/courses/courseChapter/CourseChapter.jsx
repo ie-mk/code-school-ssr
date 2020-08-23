@@ -14,14 +14,15 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    dispatch(
-      resourceActions.fetchLessons.request({
-        courseId,
-        chapterId,
-        //forceFetch: true,
-      }),
-    );
-  }, []);
+    expanded &&
+      dispatch(
+        resourceActions.fetchLessons.request({
+          courseId,
+          chapterId,
+          //forceFetch: true,
+        }),
+      );
+  }, [expanded]);
 
   const handleChapterDelete = () => {
     if (confirm('Are you sure you want to delete this chapter?')) {
@@ -35,7 +36,7 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
   // console.log('+++++++++++ chapter data: ', data);
 
   return (
-    <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
+    <ContainerBase paddingLeft="xl" paddingRight="xl">
       <Styled.ChapterHeader>
         <Styled.ExpandButton
           data-test={`open-chapter-${idx + 1}`}
@@ -74,6 +75,7 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
                   dataTest="chapter-title"
                   //  placeholder="Enter chapter title"
                   width="28%"
+                  border={true}
                 />
                 <AdminInput
                   name="sequenceNr"
@@ -81,15 +83,17 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
                   label="Sequence Nr"
                   //placeholder="Enter chapter title"
                   width="28%"
+                  border={true}
                 />
                 <AdminInput
                   name="numberOfLessons"
                   type="text"
                   label="Number of Lessons"
                   width="28%"
+                  border={true}
                 />
               </Styled.InputRow>
-              <FlexContainer justifyContent="flex-end" marginTop="xxl">
+              <FlexContainer justifyContent="flex-end" marginTop="md">
                 <Button
                   type="button"
                   size="sm"
@@ -102,13 +106,11 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
             </form>
           )}
         </Formik>
-        {lessons && (
-          <CourseLessonsContainer
-            courseId={courseId}
-            chapterId={chapterId}
-            data={lessons}
-          />
-        )}
+        <CourseLessonsContainer
+          courseId={courseId}
+          chapterId={chapterId}
+          lessons={lessons}
+        />
       </Styled.Content>
     </ContainerBase>
   );

@@ -33,22 +33,27 @@ export const InputStyles = styled.div`
       backgroundColor ? backgroundColor : '#f0f0f7'};
     background-color: ${({ disabled }) =>
       disabled ? lightenDarkenColor('#f0f0f7', -20) : ''};
-    line-height: ${({ height }) => (height ? height : '40px')};
+    line-height: ${({ height }) => (height ? height : '35px')};
     font-size: ${fontSizeMap.text};
     color: ${({ inputColor }) => (inputColor ? inputColor : '')};
     width: 100%;
     padding-left: ${spacing.sm};
-    //border: 1px solid #909090;
+    border: ${({ border }) =>
+      border
+        ? typeof border === 'boolean'
+          ? '1px solid #909090'
+          : border
+        : ''};
     border-radius: ${borderRadius.sm};
     opacity: 1;
     ${media.belowTabletLarge`
-    line-height: 40px;
+    line-height: 35px;
   `}
   }
 
   input[type='checkbox'] {
-    height: 42px;
-    width: 42px;
+    height: 35px;
+    width: 35px;
     padding: 0;
   }
 
@@ -86,8 +91,10 @@ const Wrapper = styled.div`
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'center' : ''};
   color: ${colors.black};
-  margin-top: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
-  margin-bottom: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
+  margin-top: ${({ noMargin, marginTop }) =>
+    noMargin ? '0' : marginTop ? marginTop : 0};
+  margin-bottom: ${({ noMargin, marginBottom }) =>
+    noMargin ? '0' : marginBottom ? marginBottom : 0};
   margin: ${({ margin }) => (margin ? margin : '')};
   padding: ${({ padding }) => (padding ? padding : '0')};
 
@@ -100,7 +107,7 @@ const Wrapper = styled.div`
 const UploadImageButton = styled.label`
   width: 100%;
   // padding-right: ${spacing.sm};
-  height: 40px;
+  height: 35px;
   border: 1px solid #909090;
   font-size: ${fontSizeMap.text};
   color:${colors.black};

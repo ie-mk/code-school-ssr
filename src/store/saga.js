@@ -218,6 +218,13 @@ function* fetchCourses({ payload = {} }) {
       'courses',
       payload.queries,
     );
+
+    // clean leaking chapters which comes only partially for unknown reason
+    Object.keys(courses).forEach(key => {
+      const course = courses[key];
+      delete course.chapters;
+    });
+
     yield put(resourceActions.fetchCourses.success(courses));
   } catch (err) {
     yield put(resourceActions.fetchCourses.failure(err));
@@ -342,12 +349,14 @@ function* deleteTask({ payload: docId }) {
 
 // ============================ CHAPTERS =====================================
 
-function* fetchChapters() {
-  const courseId = yield select(getEditingCourseId);
+function* fetchChapters({ payload: courseId }) {
+  //const courseId = yield select(getEditingCourseId);
   try {
     const chapters = yield api.resource.fetchResources(
       `courses/${courseId}/chapters`,
     );
+
+    debugger;
 
     yield put(
       resourceActions.fetchChapters.success({

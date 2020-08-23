@@ -19,6 +19,7 @@ const AdminInput = ({
   color,
   inputColor,
   dataTest,
+  border,
 }) => {
   return (
     <Styled.Wrapper
@@ -35,6 +36,7 @@ const AdminInput = ({
         height={height}
         backgroundColor={backgroundColor}
         disabled={disabled}
+        border={border}
       >
         <Field
           data-test={dataTest}

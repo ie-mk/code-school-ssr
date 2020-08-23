@@ -104,11 +104,10 @@ const CourseLessonContent = ({
                   label="Video Link"
                   placeholder="video link"
                   backgroundColor="white"
-                  width="70%"
+                  width="100%"
                   disabled={!editMode}
                   dataTest="video-link"
                 />
-                <Styled.Upload marginTop="xxl">upload</Styled.Upload>
               </ContainerBase>
               <AdminInput
                 name="assignment"

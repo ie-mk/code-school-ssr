@@ -11,7 +11,6 @@ export const InputRow = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  padding-bottom: ${spacing.sm};
   align-items: center;
 `;
 
@@ -19,7 +18,7 @@ export const RowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: ${spacing.xxxxl};
+  padding-top: ${spacing.xl};
   flex-direction: row;
 `;
 

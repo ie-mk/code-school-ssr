@@ -8,6 +8,7 @@
   },
   "main": "firebaseFunctions.js",
   "scripts": {
+    "analyze": "cross-env ANALYZE=true next build src/",
     "dev": "next src/ -p 8081",
     "build": "next build src/ && npm run predeploy",
     "start": "next start src/",
@@ -54,8 +55,10 @@
     "yup": "0.28.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.5.2",
     "babel-eslint": "8.2.3",
     "cpx": "^1.5.0",
+    "cross-env": "^7.0.2",
     "cypress": "^4.5.0",
     "eslint": "5.16.0",
     "eslint-plugin-prettier": "2.6.0",
