@@ -8,9 +8,9 @@ import Footer from '../components/footer/Footer';
 import '../css/global.css';
 import 'react-phone-number-input/style.css';
 import Head from 'next/head';
-import SetLanguageFromStoreWrapper from '../i18n/SetLanguageFromStoreWrapper';
+// import SetLanguageFromStoreWrapper from '../i18n/SetLanguageFromStoreWrapper';
 import '../i18n/i18n';
-import ScrollTracker from '../components/foundation/scrollTracker/ScrollTracker';
+// import ScrollTracker from '../components/foundation/scrollTracker/ScrollTracker';
 import { IS_SERVER } from '../constants';
 
 class MyApp extends App {
@@ -43,15 +43,15 @@ class MyApp extends App {
           />
         </Head>
         <Provider store={store}>
-          <SetLanguageFromStoreWrapper>
-            <ScrollTracker>
-              {showAppbar ? <AppBar /> : null}
-              <main className={showAppbar ? 'darkTheme' : ''}>
-                <Component {...pageProps} />
-              </main>
-              {showAppbar ? <Footer /> : null}
-            </ScrollTracker>
-          </SetLanguageFromStoreWrapper>
+          {/*<SetLanguageFromStoreWrapper>*/}
+          {/*<ScrollTracker>*/}
+          {showAppbar ? <AppBar /> : null}
+          <main className={showAppbar ? 'darkTheme' : ''}>
+            <Component {...pageProps} />
+          </main>
+          {showAppbar ? <Footer /> : null}
+          {/*</ScrollTracker>*/}
+          {/*</SetLanguageFromStoreWrapper>*/}
         </Provider>
         {/*</ThemeProvider>*/}
       </>

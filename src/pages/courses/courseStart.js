@@ -19,8 +19,10 @@ const CourseStart = ({ dispatch, courses }) => {
 
   const course = courses[courseId];
 
+  if (!course) return null;
+
   let courseTitle = course.title;
-  courseTitle = courseTitle.toUpperCase();
+  courseTitle = courseTitle && courseTitle.toUpperCase();
 
   const chapters = course.chapters;
 

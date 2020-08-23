@@ -13,16 +13,9 @@ const Level = ({ courses, learningPathData, heading }) => {
   const router = useRouter();
 
   const toCourseStartPage = (courseId, title) => {
-    router.push(
-      {
-        pathname: '/courses/courseStart',
-        query: {
-          courseId,
-        },
-      },
-      `/course/${title.replace(' ', '')}/start`,
-      { shallow: true },
-    );
+    const url = `/courses/courseStart?title=${title}&courseId=${courseId}`;
+
+    router.push(url, url, { shallow: true });
   };
 
   if (!learningPathData) return null;
