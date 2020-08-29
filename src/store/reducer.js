@@ -219,7 +219,26 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.updateCourse }),
     ...getAsyncReducers({ action: resourceActions.deleteCourse }),
     ...getAsyncReducers({ action: resourceActions.fetchCourses }),
-    ...getAsyncReducers({ action: resourceActions.fetchCourse }),
+    ...getAsyncReducers({
+      action: resourceActions.fetchCourse,
+      exclude: { success: true },
+    }),
+
+    [resourceActions.fetchCourse.success.type]: (
+      state,
+      { payload: { courseId, course } },
+    ) => {
+      const newState = {
+        ...state,
+      };
+      // we want to keep chapters;
+      const chapters = state.data[courseId].chapters;
+
+      newState.data[courseId] = course;
+      newState.data[courseId].chapters = chapters;
+
+      return newState;
+    },
 
     [resourceActions.resetCourses]: state => ({
       ...state,

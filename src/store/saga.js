@@ -265,15 +265,12 @@ function* fetchCourses({ payload = {} }) {
 }
 
 function* fetchCourse({ payload: courseId }) {
-  const courses = yield select(getCourses);
-  if (courses && courses[courseId]) return;
-
   try {
     const course = yield api.resource.fetchResource(`courses/${courseId}`);
     // clean leaking chapters which comes only partially for unknown reason
     delete course.chapters;
 
-    yield put(resourceActions.fetchCourse.success({ [courseId]: course }));
+    yield put(resourceActions.fetchCourse.success({ courseId, course }));
   } catch (err) {
     yield put(resourceActions.fetchCourse.failure(err));
   }
