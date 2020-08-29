@@ -82,6 +82,7 @@ const CourseLessonContent = ({
                   width="80%"
                   backgroundColor="white"
                   disabled={!editMode}
+                  dataTest="lesson-title"
                 />
               </FlexContainer>
               <AdminTextArea
@@ -94,6 +95,7 @@ const CourseLessonContent = ({
                 width="100%"
                 backgroundColor="white"
                 disabled={!editMode}
+                data-test="lesson-breif"
               />
               <ContainerBase flexDirection="row" display="flex">
                 <AdminInput
@@ -104,6 +106,7 @@ const CourseLessonContent = ({
                   backgroundColor="white"
                   width="100%"
                   disabled={!editMode}
+                  dataTest="video-link"
                 />
               </ContainerBase>
               <AdminInput
@@ -114,6 +117,7 @@ const CourseLessonContent = ({
                 backgroundColor="white"
                 width="100%"
                 disabled={!editMode}
+                dataTest="assignment"
               />
               {editMode ? (
                 <FlexContainer
@@ -127,6 +131,7 @@ const CourseLessonContent = ({
                     type="primary"
                     onClick={handleSubmit}
                     margin="null"
+                    data-test="lesson-save"
                   >
                     Save
                   </CustomButton>

@@ -78,7 +78,11 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           <MenuLink noMargin={true} href="/">
             Home
           </MenuLink>
-          <MenuLink noMargin={true} href="/courses">
+          <MenuLink
+            noMargin={true}
+            dataTest="go-to-courses-page"
+            href="/courses"
+          >
             Courses
           </MenuLink>
           {/*<MenuLink noMargin={true} href="/">*/}
@@ -87,7 +91,7 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           <MenuLink noMargin={true} href="/stories">
             Stories
           </MenuLink>
-          <Styled.LoginWrapper>
+          <Styled.LoginWrapper dataTest="go-to-loginwrapper">
             {user && user.uid && isStaff && (
               <MenuLink dataTest="go-to-dashboard-page" href="/dashboard">
                 <i className="fa fa-briefcase" />
@@ -99,7 +103,11 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
               </MenuLink>
             )}
             {user && user.uid ? (
-              <LogoutButton type="secondary" onClick={handleLogout}>
+              <LogoutButton
+                data-test="logout-button"
+                type="secondary"
+                onClick={handleLogout}
+              >
                 {t('Logout')}
               </LogoutButton>
             ) : (

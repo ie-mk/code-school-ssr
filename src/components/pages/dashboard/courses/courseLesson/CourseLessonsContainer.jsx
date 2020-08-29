@@ -54,6 +54,7 @@ let CourseLessonsContainer = ({
             })}
           <Button
             onClick={createLesson}
+            data-test="add-lesson"
             type="primary"
             fontSize="18px"
             borderRadius="sm"

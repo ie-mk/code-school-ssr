@@ -18,6 +18,7 @@ const AdminInput = ({
   mobileWidth,
   color,
   inputColor,
+  dataTest,
   border,
 }) => {
   return (
@@ -38,6 +39,7 @@ const AdminInput = ({
         border={border}
       >
         <Field
+          data-test={dataTest}
           className={classNameString}
           name={name}
           type={type}

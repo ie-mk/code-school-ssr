@@ -72,6 +72,7 @@ let CourseLessonHeader = ({
             ) : null}
             <CustomButton
               margin="0 20px 0 0"
+              data-test={`edit-lesson-${idx + 1}`}
               onClick={() => {
                 setActiveLessonId(lessonId);
                 setEditMode(true);
