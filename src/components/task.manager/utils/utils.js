@@ -1,18 +1,62 @@
-import { useEffect } from 'react';
+import { useState, useMemo } from 'react';
 
-export function getFileExtension(file) {
-  const nameSplit = file.name.split('.');
-  const fileExtension = nameSplit[nameSplit.length - 1];
+export function useSearchParams(search, defaults = {}) {
+  const initial = useMemo(() => new SearchParams(search, defaults, update), []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return fileExtension;
+  const [Params, setParams] = useState(initial);
+
+  function update() {
+    setParams(new Params());
+  }
+
+  return Params;
 }
 
-export function useDebounce(ms, fn, deps) {
-  useEffect(() => {
-    if (!ms) return fn();
+function SearchParams(search, defaults, update, instance) {
+  instance = instance || new URLSearchParams(search);
 
-    const timeoutId = setTimeout(fn, ms);
+  const _SearchParams = SearchParams.bind(
+    null,
+    search,
+    defaults,
+    update,
+    instance,
+  );
 
-    return () => clearTimeout(timeoutId);
-  }, deps);
+  _SearchParams.append = instance.append.bind(instance);
+  _SearchParams.entries = instance.entries.bind(instance);
+  _SearchParams.forEach = instance.forEach.bind(instance);
+  _SearchParams.getAll = instance.getAll.bind(instance);
+  _SearchParams.has = instance.has.bind(instance);
+  _SearchParams.keys = instance.keys.bind(instance);
+  _SearchParams.sort = instance.sort.bind(instance);
+  _SearchParams.toString = instance.toString.bind(instance);
+  _SearchParams.values = instance.values.bind(instance);
+
+  _SearchParams.set = set;
+  _SearchParams.get = get;
+  _SearchParams.delete = _delete;
+
+  function get() {
+    const name = arguments[0];
+    const exists = instance.has(name);
+
+    return exists ? instance.get.apply(instance, arguments) : defaults[name];
+  }
+
+  function set() {
+    update();
+
+    return instance.set.apply(instance, arguments);
+  }
+
+  function _delete() {
+    update();
+
+    return instance.delete.apply(instance, arguments);
+  }
+
+  return _SearchParams;
 }
+
+export { default as cn } from 'classnames';

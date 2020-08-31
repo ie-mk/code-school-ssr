@@ -1,20 +1,69 @@
 {
   "id": "TASK_ID",
-  "desc": {
-    "title": "Basic React usage",
-    "body": [
-      {
-        "type": "section"
-      }
-    ]
-  },
   "steps": [
     {
-      "desc": { "title": "Create a component" },
       "dependencies": {
         "@babel/runtime": "latest",
         "react": "latest",
         "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "children": "The First Step is the Hardest",
+            "icon": "deathly-hallows"
+          },
+          {
+            "type": "p",
+            "icon": "facebook",
+            "children": "Ad magna veniam et minim ut cillum cillum amet aute nisi enim pariatur. Reprehenderit est ullamco deserunt quis in cupidatat ipsum sint qui enim aliqua do. Cillum tempor excepteur commodo aute veniam mollit eiusmod officia cupidatat dolor. Fugiat quis cillum fugiat elit deserunt anim sint non duis."
+          },
+          {
+            "type": "ol",
+            "icon": "reddit",
+            "children": [
+              {
+                "type": "li",
+                "children": "Reprehenderit do aliquip occaecat irure non culpa consectetur id exercitation et sint et reprehenderit."
+              },
+              {
+                "type": "li",
+                "children": "Velit in et occaecat laboris sunt qui culpa occaecat do enim commodo."
+              },
+              {
+                "type": "li",
+                "children": "Do voluptate commodo sit esse ad eiusmod anim."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": "Sunt officia sint pariatur ex ea. Ea pariatur deserunt adipisicing dolore do ex laboris aliquip qui reprehenderit. Magna sint ullamco ipsum irure aliquip. Nostrud ut ad enim sit cupidatat ut cupidatat irure. Dolor dolor consequat nulla excepteur qui quis est non sunt cillum sunt anim velit nulla. Sit esse elit amet pariatur tempor."
+          },
+          {
+            "type": "ul",
+            "icon": "google",
+            "children": [
+              {
+                "type": "li",
+                "children": "Reprehenderit do aliquip occaecat irure non culpa consectetur id exercitation et sint et reprehenderit."
+              },
+              {
+                "type": "li",
+                "children": "Velit in et occaecat laboris sunt qui culpa occaecat do enim commodo."
+              },
+              {
+                "type": "li",
+                "children": "Do voluptate commodo sit esse ad eiusmod anim."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": "Magna proident sunt non Lorem esse esse laborum cillum deserunt quis. Nulla laboris sint aliqua eiusmod minim ut labore eiusmod adipisicing dolor anim cupidatat sint ad. Anim consequat do aliqua do adipisicing culpa ut ex amet labore amet. Culpa Lorem eu excepteur irure non commodo minim do elit Lorem minim. Fugiat duis consequat eiusmod sit dolor laborum aliquip proident minim non officia excepteur consequat excepteur.  Officia est cupidatat qui minim labore ullamco. Officia nostrud proident laboris dolor. Aliqua Lorem dolor nisi adipisicing ipsum minim reprehenderit nostrud laboris cillum sunt fugiat magna. Laborum consectetur sunt consectetur incididunt minim minim Lorem excepteur enim elit quis consequat. Dolore ad laborum eu laboris exercitation veniam officia sint ut laborum.Id dolore laboris adipisicing officia tempor nisi. Dolore ex laboris cillum nulla et. Esse duis reprehenderit aliqua incididunt aute anim eiusmod exercitation consequat laboris reprehenderit. Culpa et reprehenderit velit voluptate eu laboris nisi sit.Tempor minim laborum nisi cupidatat enim velit esse est excepteur laborum nisi anim. Est dolore minim anim deserunt consectetur et consequat. Officia qui cupidatat dolore fugiat sint aliquip culpa voluptate est cupidatat non anim amet.Cupidatat reprehenderit Lorem ea officia tempor. Ullamco magna Lorem labore anim mollit pariatur nisi. Aliquip cillum duis ipsum ea duis. Enim deserunt aute aliquip ea amet aute consequat minim. Qui est dolor ullamco nulla. Ad minim proident reprehenderit incididunt cupidatat tempor officia ut cupidatat pariatur elit excepteur laborum occaecat. Qui esse dolore dolor duis.Pariatur sunt ex in culpa sunt ex incididunt voluptate enim amet. Anim commodo aute nisi laboris veniam deserunt mollit in mollit duis aliquip fugiat consequat. Eiusmod ex proident nisi aute officia esse in magna eiusmod voluptate. Esse voluptate consectetur mollit sint ipsum nostrud et fugiat dolor adipisicing pariatur cupidatat.Lorem sit sunt deserunt velit magna do nulla culpa. Commodo est aute commodo dolore excepteur aliqua aliquip sunt cupidatat fugiat aute. Mollit qui sit sint ad labore incididunt Lorem aliquip sit irure anim irure culpa do. Minim non aute duis esse adipisicing officia incididunt aliquip ullamco ex. Elit excepteur voluptate veniam tempor culpa aliquip excepteur id adipisicing eiusmod exercitation veniam.Excepteur laborum consectetur non et mollit aute id. Nostrud id sit eu reprehenderit culpa ullamco duis. Dolore culpa aute laborum aliquip culpa officia in nisi reprehenderit officia sit ex ea.Nisi occaecat veniam incididunt eu dolor exercitation. Sunt minim Lorem officia consequat. Sunt est enim excepteur laborum non ipsum voluptate aliqua exercitation ea.Adipisicing culpa ea do elit et laboris mollit do officia eu enim sit. Ullamco do cupidatat anim sit ea occaecat velit dolore enim incididunt velit Lorem. Consequat ipsum culpa commodo duis aute. Et do quis velit cupidatat Lorem labore. Ipsum deserunt ea ut deserunt id officia nisi. Lorem Lorem consequat adipisicing anim. Magna in cillum nulla cupidatat dolor in do fugiat elit elit nulla deserunt dolore in."
+          }
+        ]
       },
       "files": {
         "/index.js": {
@@ -22,11 +71,38 @@
         },
         "/index.css": {
           "code": ".my-component {\n  background-color: red;\n}"
+        },
+        "/index0.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        },
+        "/index1.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        },
+        "/index2.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        },
+        "/index3.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        },
+        "/very.long.file.name.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
         }
       },
-      "solution": [
+      "solutions": [
         {
-          "desc": { "title": "Using classes" },
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The First Step is the Hardest: Using classes"
+              }
+            ]
+          },
           "files": {
             "/index.js": {
               "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
@@ -37,7 +113,300 @@
           }
         },
         {
-          "desc": { "title": "Using functional components" },
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The First Step is the Hardest: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          { "type": "h1", "children": "The Second Step is the Second Step" }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Second Step is the Second Step: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Second Step is the Second Step: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "children": "The Third Step is after the Second Step"
+          }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "// The Third Step is after the Second Step\nimport React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Third Step is after the Second Step: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Third Step is after the Second Step: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "children": "The Fourth Step is before the Fifth Step"
+          }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Fourth Step is before the Fifth Step: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Fourth Step is before the Fifth Step: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "children": "The Fifth Step is the Final Step, Unless We Add More Steps"
+          }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Fifth Step is the Final Step, Unless We Add More Steps: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "children": "The Fifth Step is the Final Step, Unless We Add More Steps: Using functional components"
+              }
+            ]
+          },
           "files": {
             "/index.js": {
               "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"

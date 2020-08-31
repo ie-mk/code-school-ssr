@@ -1,35 +1,52 @@
-import React, { memo } from 'react';
-import {
-  FileExplorer,
-  CodeMirror,
-  BrowserPreview,
-  SandpackProvider,
-} from 'react-smooshpack';
-import 'react-smooshpack/dist/styles.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter, useHistory, useLocation } from 'react-router-dom';
+import Split from 'react-split';
+import { useSearchParams } from './utils';
 import { Desc } from './desc';
-import { Wrapper } from './Task.manager.styles';
-import mock from './mock/mock.json';
+import { Stepnav } from './stepnav';
+import { Sandpack } from './sandpack';
+import './Task.manager.scss';
 
 function TaskManager(props) {
-  const { task = mock, stepIndex = 0 } = props;
-  const step = task.steps[stepIndex];
+  const history = useHistory();
+  const location = useLocation();
+  const params = useSearchParams(location.search, defaultParams);
+  const stepParam = params.get('step');
+  const solutionParam = params.get('solution');
+  const { task, onFileChange } = props;
+  const { steps } = task;
+  const step = steps[stepParam];
+  const { solutions } = step;
+  const solution = solutions[solutionParam];
+  const $step = solution || step;
+
+  useEffect(pushParams, [params]);
+
+  function pushParams() {
+    history.push(params.toString());
+  }
 
   return (
-    <Wrapper>
-      <Desc desc={task.desc} />
-      <SandpackProvider
-        files={step.files}
-        dependencies={step.dependencies}
-        entry="/index.js"
-      >
-        <FileExplorer />
-        <CodeMirror />
-        <BrowserPreview />
-      </SandpackProvider>
-    </Wrapper>
+    <Split className="task-manager" sizes={[20, 80]} gutterSize={5}>
+      <div className="task-manager-left">
+        <Stepnav params={params} task={task} />
+        <Desc step={$step} />
+      </div>
+      <Sandpack step={$step} onFileChange={onFileChange} />
+    </Split>
   );
 }
 
-TaskManager = memo(TaskManager);
+var defaultParams = {
+  step: 0,
+};
 
-export { TaskManager };
+function WithRouting(props) {
+  return (
+    <BrowserRouter>
+      <TaskManager {...props} />
+    </BrowserRouter>
+  );
+}
+
+export { WithRouting as TaskManager };

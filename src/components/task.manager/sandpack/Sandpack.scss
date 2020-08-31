@@ -1,0 +1,88 @@
+.sandpack {
+  flex-grow: 1;
+}
+
+.sandpack-content {
+  --background-color: #211d30;
+  --scrollbar-color: #3b3457;
+  --scrollbar-color-hover: #49406a;
+
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+
+  * {
+    font-family: 'Roboto Mono';
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0 !important;
+    }
+  }
+
+  .sandpack-content-left {
+    display: flex;
+    flex-direction: column;
+
+    .file-explorer {
+      --background-color: #16131f;
+
+      overflow: auto;
+      display: flex;
+      padding-top: 0;
+      background-color: #16131f;
+
+      > div {
+        height: var(--header-element-height);
+        display: flex;
+
+        .sandpack-File__container {
+          flex-shrink: 0;
+          color: #888;
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+
+          &.sandpack-File__active {
+            background-color: #211d30;
+            color: white;
+            border-color: var(--scrollbar-color-hover);
+            border-width: 3px;
+          }
+        }
+      }
+    }
+
+    .code-mirror {
+      flex-grow: 1;
+      width: 100%;
+      padding-right: 3px;
+      padding-bottom: 3px;
+      background-color: var(--background-color);
+      overflow: hidden;
+
+      .CodeMirror,
+      .CodeMirror-gutters,
+      .CodeMirror-scrollbar-filler {
+        background-color: var(--background-color);
+      }
+
+      .react-codemirror2 {
+        height: 100%;
+      }
+
+      .CodeMirror-vscrollbar {
+      }
+
+      .CodeMirror-vscrollbar,
+      .CodeMirror-hscrollbar {
+        outline: none;
+      }
+    }
+  }
+
+  .browser-preview {
+    iframe {
+      height: calc(100vh - 50px) !important;
+    }
+  }
+}

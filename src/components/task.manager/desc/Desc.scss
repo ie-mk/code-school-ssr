@@ -1,0 +1,18 @@
+.task-manager-desc {
+  --background-color: white;
+
+  flex-grow: 1;
+  padding: 0 var(--element-gutter);
+  color: #186aa5;
+  overflow: auto;
+
+  .icon {
+    margin-right: var(--element-gutter);
+  }
+
+  * {
+    &:not(h1) {
+      text-align: justify;
+    }
+  }
+}
