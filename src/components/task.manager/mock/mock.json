@@ -66,6 +66,9 @@
         ]
       },
       "files": {
+        "/index.html": {
+          "code": "<div id=\"root\">MY HTML</div>\n<div class=\"my-component2\">My component 2</div>"
+        },
         "/index.js": {
           "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\nimport \"./index1.css\";\nimport MyComponent from './MyComponent.js';\n\n\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"))"
         },
@@ -77,9 +80,6 @@
         },
         "/index1.css": {
           "code": ".my-component {\n  background-color: lightgreen;\n}"
-        },
-        "/index.html": {
-          "code": "<div id=\"root\">MY HTML</div>\n<div class=\"my-component2\">My component 2</div>"
         }
       },
       "solutions": [
