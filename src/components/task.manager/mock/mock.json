@@ -67,7 +67,7 @@
       },
       "files": {
         "/index.js": {
-          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\nimport MyComponent from './MyComponent.js';\n\n\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"))"
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\nimport \"./index1.css\";\nimport MyComponent from './MyComponent.js';\n\n\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"))"
         },
         "/MyComponent.js": {
           "code": "import React from \"react\";\n\nconst MyComponent = () => <div className=\"my-component\">bla</div>;\n\nexport default MyComponent;"
@@ -76,7 +76,7 @@
           "code": ".my-component {\n  background-color: red;\npadding: 20px;\n}"
         },
         "/index1.css": {
-          "code": ".my-component {\n  background-color: green;\n}"
+          "code": ".my-component {\n  background-color: lightgreen;\n}"
         }
       },
       "solutions": [
@@ -141,7 +141,7 @@
       },
       "files": {
         "/index.js": {
-          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx 1\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
         },
         "/index.css": {
           "code": ".my-component {\n  background-color: red;\n}"
@@ -212,7 +212,7 @@
       },
       "files": {
         "/index.js": {
-          "code": "// The Third Step is after the Second Step\nimport React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+          "code": "// The Third Step is after the Second Step\nimport React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx 2\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
         },
         "/index.css": {
           "code": ".my-component {\n  background-color: red;\n}"
@@ -283,7 +283,7 @@
       },
       "files": {
         "/index.js": {
-          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx3\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
         },
         "/index.css": {
           "code": ".my-component {\n  background-color: red;\n}"
@@ -354,7 +354,7 @@
       },
       "files": {
         "/index.js": {
-          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx 4\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
         },
         "/index.css": {
           "code": ".my-component {\n  background-color: red;\n}"

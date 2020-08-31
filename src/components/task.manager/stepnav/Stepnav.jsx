@@ -1,46 +1,62 @@
 import React from 'react';
 import './Stepnav.scss';
+import { useRouter } from 'next/router';
 
-export function Stepnav(props) {
-  const { params, task } = props;
-  const stepParam = params.get('step');
-  const solutionParam = params.get('solution');
-  const stepIndex = Number(stepParam);
-  const solutionIndex = Number(solutionParam);
+export function Stepnav({ task }) {
+  // const { params, task } = props;
+  // const stepParam = params.get('step');
+  // const solutionParam = params.get('solution');
+  // const stepIndex = Number(stepParam);
+  // const solutionIndex = Number(solutionParam);
+  const router = useRouter();
+  const { query } = router;
+  const { stepIndex = 0, solutionIndex } = query;
+
   const { steps } = task;
-  const step = steps[stepIndex];
+  const step = steps[Number(stepIndex)];
   const { solutions } = step;
 
-  const isFirstStep = stepIndex === 0;
-  const isLastStep = stepIndex === steps.length - 1;
-  const isFirstSolution = solutionIndex === 0;
-  const isLastSolution = solutionIndex === solutions.length - 1;
+  const isFirstStep = Number(stepIndex) === 0;
+  const isLastStep = Number(stepIndex) === steps.length - 1;
+  const isFirstSolution = Number(solutionIndex) === 0;
+  const isLastSolution = Number(solutionIndex) === solutions.length - 1;
 
-  function goPrevStep() {
-    params.set('step', stepIndex - 1);
+  function updateQuery() {
+    const url = `/editor?${new URLSearchParams(query).toString()}`;
+    router.push(url, url, { shallow: true });
   }
 
-  function goSolutions() {
-    params.set('solution', 0);
+  function goPrevStep() {
+    query.stepIndex = Number(stepIndex) - 1;
+    updateQuery();
   }
 
   function goNextStep() {
-    params.set('step', stepIndex + 1);
+    query.stepIndex = Number(stepIndex) + 1;
+    updateQuery();
+  }
+
+  function goSolutions() {
+    query.solutionIndex = 0;
+    updateQuery();
   }
 
   function goPrevSolution() {
-    params.set('solution', solutionIndex - 1);
-  }
-
-  function goTask() {
-    params.delete('solution');
+    query.solutionIndex = Number(solutionIndex) - 1;
+    updateQuery();
   }
 
   function goNextSolution() {
-    params.set('solution', solutionIndex + 1);
+    query.solutionIndex = Number(solutionIndex) + 1;
+    updateQuery();
   }
 
-  if (solutionParam) {
+  function goTask() {
+    delete query.solutionIndex;
+    updateQuery();
+  }
+
+  if (solutionIndex) {
     return (
       <div className="task-manager-stepnav">
         <button onClick={goPrevSolution} hidden={isFirstSolution}>
