@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 const Content = styled.div`
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '1200px')};
   width: 100%;
-  padding: ${spacing.lg};
+  padding: 0 ${spacing.lg};
   margin-top: ${({ hasDefaultMarginTop }) =>
     hasDefaultMarginTop ? '100px' : ''};
 `;

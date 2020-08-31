@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Styled from '../List.styles';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { adActions, mapActions, userActions } from '../../../store/actions';
 import { getNumberOfDays } from '../../../utils/utils';
 import { getSelectedDateSelector } from '../../../store/selectors';
@@ -39,10 +39,13 @@ const ListItem = ({
       );
     }
   });
+
+  const router = useRouter();
+
   const handleRedirect = id => {
     if (!admin) {
       const url = `/ad?id=${id}`;
-      Router.push(url, url, { shallow: true });
+      router.push(url, url, { shallow: true });
       dispatch(adActions.setActiveAdId(id));
     }
   };
@@ -120,8 +123,7 @@ const ListItem = ({
             <Styled.CustomButton
               onClick={() => {
                 const url = `/edit?id=${id}`;
-                Router.push(url, url, { shallow: true });
-                debugger;
+                router.push(url, url, { shallow: true });
               }}
             >
               EDIT

@@ -2,10 +2,9 @@ import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import api from '../../../api/api.min';
 import styled from 'styled-components';
-import { adActions, userActions } from '../../../store/actions';
+import { userActions } from '../../../store/actions';
 import { connect } from 'react-redux';
-import Router from 'next/router';
-import { Field, Formik } from 'formik';
+import { withRouter } from 'next/router';
 import PageContent from '../../foundation/PageContent';
 import media from '../../foundation/media';
 
@@ -60,7 +59,7 @@ class FireBaseUILoginPage extends React.Component {
   // Listen to the Firebase Auth state and set the local state.
   componentDidMount() {
     if (this.props.loginProviderUserData) {
-      Router.push('/');
+      this.props.router.push('/');
       return;
     }
     this.unregisterAuthObserver = firebase
@@ -97,7 +96,7 @@ class FireBaseUILoginPage extends React.Component {
             tenantId,
           }),
         );
-        Router.push('/');
+        this.props.router.push('/');
       });
   }
 
@@ -147,4 +146,4 @@ const mapStateToProps = state => ({
   loginProviderUserData: state.user.loginProviderUserData,
 });
 
-export default connect(mapStateToProps)(FireBaseUILoginPage);
+export default connect(mapStateToProps)(withRouter(FireBaseUILoginPage));

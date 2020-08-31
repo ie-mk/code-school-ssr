@@ -4,7 +4,13 @@ import CollapseContainer from '../../../../foundation/collapseContainer';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 
-const ChapterContent = ({ dispatch, chapterId, chapters, courseId }) => {
+const ChapterContent = ({
+  dispatch,
+  chapterId,
+  chapters,
+  courseId,
+  chapterIdx,
+}) => {
   const chapter = chapters[chapterId];
   const title = 'Chapter ' + chapter.sequenceNr + ' : ' + chapter.title;
 
@@ -19,6 +25,8 @@ const ChapterContent = ({ dispatch, chapterId, chapters, courseId }) => {
 
   const lessons = chapter.lessons;
 
+  console.log('rajesh' + lessons);
+
   return (
     <Styled.Wrapper>
       <CollapseContainer title={title} isCollapsed={true}>
@@ -26,9 +34,11 @@ const ChapterContent = ({ dispatch, chapterId, chapters, courseId }) => {
           {lessons &&
             Object.keys(lessons).map((lessonId, i) => {
               const lesson = lessons && lessons[lessonId];
+
               if (!lesson) return null;
               const title =
                 'Lesson ' + lesson.sequenceNr + ' : ' + lesson.title;
+              console.log('mm' + title);
               return (
                 <Styled.ContentWrapper key={i}>
                   <div>{title}</div>

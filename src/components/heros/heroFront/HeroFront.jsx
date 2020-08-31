@@ -4,8 +4,19 @@ import ResponsiveImage from '../../foundation/ResponsiveImage';
 import HeroTitle from '../../foundation/typography/HeroTitle';
 import BodyText from '../../foundation/typography/BodyText';
 import Button from '../../foundation/button/Button';
+import { useRouter } from 'next/router';
 
 const HeroFront = () => {
+  const router = useRouter();
+  const getInTouch = () => {
+    router.push(
+      {
+        pathname: '/getInTouch',
+      },
+      '/getInTouch',
+    );
+  };
+
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -37,7 +48,7 @@ const HeroFront = () => {
           <Button size="lg" type="primary">
             COURSES
           </Button>
-          <Button size="lg" type="secondary">
+          <Button size="lg" type="secondary" onClick={getInTouch}>
             GET IN TOUCH
           </Button>
         </Styled.ButtonWrapper>

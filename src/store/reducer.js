@@ -150,6 +150,33 @@ export const userReducer = handleActions(
       action: userActions.fetchAllUsersPublicInfo,
       resultProp: 'allUsersPublicInfo',
     }),
+    ...getAsyncReducers({
+      action: userActions.updateUserPublicInfo,
+      resultProp: 'allUsersPublicInfo',
+    }),
+    ...getAsyncReducers({
+      action: userActions.fetchUserPublicInfo,
+      exclude: { success: true },
+      resultProp: 'allUsersPublicInfo',
+    }),
+
+    [userActions.fetchUserPublicInfo.success.type]: (
+      state,
+      { payload: { uid, data } },
+    ) => {
+      const newState = {
+        ...state,
+        loading: false,
+      };
+
+      const allUsersPublicInfo = cloneDeep(state.allUsersPublicInfo);
+
+      allUsersPublicInfo[uid] = data;
+
+      newState.allUsersPublicInfo = allUsersPublicInfo;
+
+      return newState;
+    },
 
     /*===============================================================*/
 
@@ -192,7 +219,26 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.updateCourse }),
     ...getAsyncReducers({ action: resourceActions.deleteCourse }),
     ...getAsyncReducers({ action: resourceActions.fetchCourses }),
-    ...getAsyncReducers({ action: resourceActions.fetchCourse }),
+    ...getAsyncReducers({
+      action: resourceActions.fetchCourse,
+      exclude: { success: true },
+    }),
+
+    [resourceActions.fetchCourse.success.type]: (
+      state,
+      { payload: { courseId, course } },
+    ) => {
+      const newState = {
+        ...state,
+      };
+      // we want to keep chapters;
+      const chapters = state.data[courseId].chapters;
+
+      newState.data[courseId] = course;
+      newState.data[courseId].chapters = chapters;
+
+      return newState;
+    },
 
     [resourceActions.resetCourses]: state => ({
       ...state,
@@ -425,6 +471,11 @@ export const messageReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.deleteMessage }),
     ...getAsyncReducers({ action: resourceActions.fetchMessage }),
     ...getAsyncReducers({ action: resourceActions.fetchMessages }),
+
+    [resourceActions.resetMessages]: state => ({
+      ...state,
+      data: {},
+    }),
   },
   {
     data: {},

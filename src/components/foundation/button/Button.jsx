@@ -59,15 +59,17 @@ const ButtonWrapper = styled.button`
   padding: ${({ size }) => (paddingMap[size] ? paddingMap[size] : '10px')};
   padding: ${({ padding }) =>
     paddingMap[padding] ? paddingMap[padding] : padding};
-  background: ${({ type }) =>
-    backGroundMap[type] ? backGroundMap[type] : 'transparent'};
+  background: ${({ styleType }) =>
+    backGroundMap[styleType] ? backGroundMap[styleType] : 'transparent'};
   border-radius: 2px;
   border-radius: ${({ borderRadius }) =>
     borderRadiusMap[borderRadius] ? borderRadiusMap[borderRadius] : 'none'};
-  border: ${({ type }) => (borderMap[type] ? borderMap[type] : 'none')};
+  border: ${({ styleType }) =>
+    borderMap[styleType] ? borderMap[styleType] : 'none'};
   cursor: pointer;
   outline: none;
-  color: ${({ type }) => (colorMap[type] ? colorMap[type] : 'white')};
+  color: ${({ styleType }) =>
+    colorMap[styleType] ? colorMap[styleType] : 'white'};
   font-weight: 500;
   font-size: ${({ size }) => (fontSizeMap[size] ? fontSizeMap[size] : '12px')};
   font-size: ${({ fontSize }) =>
@@ -87,14 +89,21 @@ const ButtonWrapper = styled.button`
             padding: paddingMap.mobile,
             fontSize: fontSizeMap.mobile,
             margin: marginMobile || `0 0 ${spacing.xl}`,
-            width: 'auto',
             minWidth: '150px',
           },
         })}
 `;
 
-const Button = ({ children, ...props }) => {
-  return <ButtonWrapper {...props}>{children}</ButtonWrapper>;
+const Button = ({ children, submit, type, ...props }) => {
+  return (
+    <ButtonWrapper
+      type={submit ? 'submit' : 'button'}
+      styleType={type}
+      {...props}
+    >
+      {children}
+    </ButtonWrapper>
+  );
 };
 
 export default Button;

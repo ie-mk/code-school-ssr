@@ -15,6 +15,7 @@ const ModalOverlay = styled.div`
 
 const ModalContainer = styled.div`
   position: fixed;
+ 
   ${({ fullPageWidth }) =>
     fullPageWidth
       ? css`

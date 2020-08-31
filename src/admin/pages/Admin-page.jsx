@@ -3,14 +3,15 @@ import Styled from './AdminMyPage.styles';
 import AdminAds from '../components/adminAds/AdminAds';
 import Grid from '../../app/components/foundation/Grid';
 import Users from '../components/users/Users';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 const AdminPage = () => {
-  const { query, pathname } = useRouter();
+  const router = useRouter();
+  const { query, pathname } = router;
 
   const makeActive = activeTab => {
     const url = `${pathname}?activeTab=${activeTab}`;
-    Router.push(url, url, { shallow: true });
+    router.push(url, url, { shallow: true });
   };
 
   const activeTab = query && query.activeTab;

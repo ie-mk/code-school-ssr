@@ -16,11 +16,15 @@ export const userActions = {
   setLanguage: createAction('SET_LANGUAGE'),
   updateUserProfile: createAsyncAction('update-user-profile'),
   updateUserProfilePicture: createAsyncAction('update-user-profile-picture'),
+  updateUserPublicInfo: createAsyncAction('update-user-public-info'),
 
   fetchUsers: createAsyncAction('fetch-users'),
   fetchUserProfile: createAsyncAction('fetch-user-profile'),
   fetchUserPermissions: createAsyncAction('fetch-user-permissions'),
+  fetchUserPublicInfo: createAsyncAction('fetch-user-public-info'),
   fetchAllUsersPublicInfo: createAsyncAction('fetch-all-users-public-info'),
+
+  createGetIntouchMessage: createAsyncAction('create-get-in-touch-message'),
 
   setIsFirstLogin: createAction('SET_IS_FIRST_LOGIN'),
 
@@ -63,6 +67,7 @@ export const resourceActions = {
   deleteMessage: createAsyncAction('delete-message'),
   fetchMessage: createAsyncAction('fetch-message'),
   fetchMessages: createAsyncAction('fetch-messages'),
+  resetMessages: createAction('reset-messages'),
 
   createLearningPath: createAsyncAction('create-learning-path'),
   updateLearningPath: createAsyncAction('update-learning-path'),
@@ -77,10 +82,13 @@ export const adminActions = {
   deleteUser: createAsyncAction('admin-delete-user'),
   fetchUserPermissions: createAsyncAction('admin-fetch-user-permissions'),
   addUserPermission: createAsyncAction('admin-add-user-permission'),
+  fetchGetIntouchMessages: createAsyncAction('fetch-get-in-touch-messages'),
 };
 
 if (!IS_SERVER) {
   window.resourceActions = resourceActions;
+  window.adminActions = adminActions;
+  window.userActions = userActions;
 }
 
 export const layoutActions = {

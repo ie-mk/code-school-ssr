@@ -33,22 +33,27 @@ export const InputStyles = styled.div`
       backgroundColor ? backgroundColor : '#f0f0f7'};
     background-color: ${({ disabled }) =>
       disabled ? lightenDarkenColor('#f0f0f7', -20) : ''};
-    line-height: ${({ height }) => (height ? height : '40px')};
+    line-height: ${({ height }) => (height ? height : '35px')};
     font-size: ${fontSizeMap.text};
     color: ${({ inputColor }) => (inputColor ? inputColor : '')};
     width: 100%;
     padding-left: ${spacing.sm};
-    //border: 1px solid #909090;
+    border: ${({ border }) =>
+      border
+        ? typeof border === 'boolean'
+          ? '1px solid #909090'
+          : border
+        : ''};
     border-radius: ${borderRadius.sm};
     opacity: 1;
     ${media.belowTabletLarge`
-    line-height: 40px;
+    line-height: 35px;
   `}
   }
 
   input[type='checkbox'] {
-    height: 42px;
-    width: 42px;
+    height: 35px;
+    width: 35px;
     padding: 0;
   }
 
@@ -57,7 +62,7 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: ${({ dropdownWidth }) => (dropdownWidth ? dropdownWidth : '100%')};
     padding-left: ${spacing.sm};
-    border: 1px solid #909090;
+    border: ${({ border }) => (border ? border : '1px solid #909090')};
     border-radius: ${borderRadius.sm};
     text-align-last: center;
     background-color: ${({ backgroundColor }) =>
@@ -73,9 +78,10 @@ export const InputStyles = styled.div`
     font-size: ${fontSizeMap.text};
     width: 100%;
     padding-left: ${spacing.sm};
-    border: 1px solid #909090;
+    border: ${({ border }) => (border ? border : '1px solid #909090')};
     border-radius: ${borderRadius.sm};
     opacity: 1;
+    color: ${({ inputColor }) => (inputColor ? inputColor : '')};
   }
 `;
 
@@ -85,8 +91,11 @@ const Wrapper = styled.div`
   justify-content: ${({ displayLabelLeft }) =>
     displayLabelLeft ? 'center' : ''};
   color: ${colors.black};
-  margin-top: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
-  margin-bottom: ${({ noMargin }) => (noMargin ? '0' : spacing.xl)};
+  margin-top: ${({ noMargin, marginTop }) =>
+    noMargin ? '0' : marginTop ? marginTop : 0};
+  margin-bottom: ${({ noMargin, marginBottom }) =>
+    noMargin ? '0' : marginBottom ? marginBottom : 0};
+  margin: ${({ margin }) => (margin ? margin : '')};
   padding: ${({ padding }) => (padding ? padding : '0')};
 
   ${media.belowTabletLarge`
@@ -98,7 +107,7 @@ const Wrapper = styled.div`
 const UploadImageButton = styled.label`
   width: 100%;
   // padding-right: ${spacing.sm};
-  height: 40px;
+  height: 35px;
   border: 1px solid #909090;
   font-size: ${fontSizeMap.text};
   color:${colors.black};
@@ -121,7 +130,7 @@ const ItemContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: ${spacing.md} 0;
+  padding: ${spacing.xs} 0;
   font-size: ${fontSizeMap.h3};
   font-weight: 300;
   color: ${({ color }) => (color ? color : 'black')};

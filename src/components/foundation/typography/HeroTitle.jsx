@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { fontSizeMap } from '../../../constants/styles';
 import media from '../media';
+import getMedia from '../../../utils/media';
 
 const StyledH2 = styled.h2`
   font-size: ${fontSizeMap.h4};
   font-weight: ${({ fontWeight }) => fontWeight || '500'};
   margin: ${({ mobileMargin }) => mobileMargin || ''};
-  ${media.aboveTablet`
+  ${media.aboveTabletLarge`
     font-size: ${fontSizeMap.h2};
     margin: ${({ margin }) => margin || ''};
   `};

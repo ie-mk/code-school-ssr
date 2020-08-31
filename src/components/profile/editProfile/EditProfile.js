@@ -9,15 +9,16 @@ import AdminInput from '../../foundation/input/AdminInput';
 import ContainerBase from '../../foundation/ContainerBase';
 import Button from '../../foundation/button/Button';
 import { connect } from 'react-redux';
-import EditAccount from './editAccountDetails/EditAccountDetails';
 import BillingDetails from './billingDetails/BillingDetails';
 import { userActions } from '../../../store/actions';
 import SpinnerLarge from '../../foundation/spinner/SpinnerLarge';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
+import PhoneInput from 'react-phone-number-input';
 import {
   getUserProfileSelector,
   getUserSelector,
 } from '../../../store/selectors';
+import BackButton from '../../foundation/button/BackButton';
 
 const EditProfile = ({
   user: { profile, loadingPicture: loading },
@@ -43,7 +44,7 @@ const EditProfile = ({
   };
 
   return (
-    <CenteredFlexContainer>
+    <CenteredFlexContainer position="relative">
       {loading ? <SpinnerLarge /> : null}
       <HeroTitle
         margin="30px 0 100px 0"
@@ -51,12 +52,17 @@ const EditProfile = ({
         fontWeight="700"
         text="Edit Your Profile"
       />
+      <Styled.BackButtonContainer>
+        <BackButton />
+      </Styled.BackButtonContainer>
       <CenteredFlexContainer>
         <Formik
           initialValues={{ ...userProfile }}
           enableReinitialize={true}
           onSubmit={(values, { setSubmitting }) => {
+            console.log('hello');
             setSubmitting(true);
+
             dispatch(userActions.updateUserProfile.request(values));
             setTimeout(() => setSubmitting(false), 1000);
           }}
@@ -77,11 +83,8 @@ const EditProfile = ({
                 gridGap={spacing.xxxxl}
               >
                 <Styled.ProfileWrapper>
-                  <div>
-                    {' '}
+                  <CenteredFlexContainer>
                     <Styled.Image src={profileImage} />
-                  </div>
-                  <div>
                     <input
                       className="hidden"
                       type="file"
@@ -99,7 +102,7 @@ const EditProfile = ({
                     >
                       Upload Photo
                     </Button>
-                  </div>
+                  </CenteredFlexContainer>
                 </Styled.ProfileWrapper>
                 <div>
                   <AdminInput
@@ -139,6 +142,20 @@ const EditProfile = ({
                     height="50px"
                     fontSize="h4"
                   />
+                  <Styled.InputRow>
+                    <Styled.Container>
+                      <Styled.Label>Mobile</Styled.Label>
+                      <Styled.PhoneInputStyles>
+                        <PhoneInput
+                          name="mobileNo"
+                          international
+                          defaultCountry="CA"
+                          value={values.mobileNo || ''}
+                          onChange={val => setFieldValue('mobileNo', val)}
+                        />
+                      </Styled.PhoneInputStyles>
+                    </Styled.Container>
+                  </Styled.InputRow>
                   <AdminInput
                     name="linkdinProfile"
                     type="text"
@@ -189,7 +206,7 @@ const EditProfile = ({
                   />
                 </div>
               </Grid>
-              <EditAccount />
+
               <BillingDetails />
 
               <CenteredFlexContainer>
@@ -201,6 +218,7 @@ const EditProfile = ({
                     height="45px"
                     marginMobile="35px 0 0 0"
                     size="sm"
+                    submit={true}
                   >
                     UPDATE MY PROFILE
                   </Button>
@@ -239,7 +257,6 @@ const initialFormValues = {
   country: '',
   email: '',
   password: '',
-  countryCode: '',
   mobileNo: '',
 };
 

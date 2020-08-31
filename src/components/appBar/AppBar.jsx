@@ -11,7 +11,7 @@ import MenuLink from '../foundation/MenuLink';
 import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
 import { isStaff } from '../../store/selectors';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import media from '../foundation/media';
 
 const LogoutButton = styled(Button)`
@@ -40,6 +40,8 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
   };
 
   const { t } = useTranslation();
+
+  const router = useRouter();
 
   return (
     <ContainerBase
@@ -76,18 +78,22 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           <MenuLink noMargin={true} href="/">
             Home
           </MenuLink>
-          <MenuLink noMargin={true} href="/courses">
+          <MenuLink
+            noMargin={true}
+            dataTest="go-to-courses-page"
+            href="/courses"
+          >
             Courses
           </MenuLink>
-          <MenuLink noMargin={true} href="/">
-            Community
-          </MenuLink>
+          {/*<MenuLink noMargin={true} href="/">*/}
+          {/*  Community*/}
+          {/*</MenuLink>*/}
           <MenuLink noMargin={true} href="/stories">
             Stories
           </MenuLink>
-          <Styled.LoginWrapper>
+          <Styled.LoginWrapper dataTest="go-to-loginwrapper">
             {user && user.uid && isStaff && (
-              <MenuLink href="/dashboard">
+              <MenuLink dataTest="go-to-dashboard-page" href="/dashboard">
                 <i className="fa fa-briefcase" />
               </MenuLink>
             )}
@@ -97,7 +103,11 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
               </MenuLink>
             )}
             {user && user.uid ? (
-              <LogoutButton type="secondary" onClick={handleLogout}>
+              <LogoutButton
+                data-test="logout-button"
+                type="secondary"
+                onClick={handleLogout}
+              >
                 {t('Logout')}
               </LogoutButton>
             ) : (
@@ -109,7 +119,7 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
                 />
                 <Button
                   onClick={() =>
-                    Router.push('/joinus', '/joinus', { shallow: true })
+                    router.push('/joinus', '/joinus', { shallow: true })
                   }
                   type="primary"
                   padding="17px 64px"

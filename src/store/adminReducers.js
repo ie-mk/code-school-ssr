@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
-import { adminActions } from './actions';
+import { adminActions, userActions } from './actions';
+import { getAsyncReducers } from './reducer';
 
 export const adminReducer = handleActions(
   {
@@ -74,6 +75,12 @@ export const adminReducer = handleActions(
       loading: false,
       error: payload,
     }),
+
+    /*===============================================================*/
+    ...getAsyncReducers({
+      action: adminActions.fetchGetIntouchMessages,
+      resultProp: 'getInTouchMessages',
+    }),
   },
-  { users: {}, loading: null, error: null },
+  { users: {}, loading: null, error: null, getInTouchMessages: {} },
 );

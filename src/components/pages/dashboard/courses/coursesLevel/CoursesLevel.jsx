@@ -2,6 +2,7 @@ import React from 'react';
 import Level from './Level';
 import { connect } from 'react-redux';
 import { getCoursesByLevel } from '../../../../../store/selectors';
+import ErrorBoundary from '../../../../ErrorBoundary';
 
 const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
   const begginerCourses = coursesByLevel && coursesByLevel.beginner;
@@ -20,7 +21,7 @@ const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
     'Part-03 : ADVANCED (' + Object.keys(advancedCourses).length + ' COURSES)';
 
   return (
-    <>
+    <ErrorBoundary>
       {Object.keys(begginerCourses).length && (
         <Level
           courses={begginerCourses}
@@ -42,7 +43,7 @@ const CoursesLevel = ({ coursesByLevel, learningPathData }) => {
           heading={advancedHeading}
         />
       )}
-    </>
+    </ErrorBoundary>
   );
 };
 

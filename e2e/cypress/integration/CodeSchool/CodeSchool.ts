@@ -25,6 +25,19 @@ beforeEach(() => {
 
 Given('I navigate to login page', () => {
   cy.get('[data-test="go-to-login-page"]').click();
+  cy.wait(4000);
+
+  cy.get('body').then($body => {
+    if ($body.find('[data-test=logout-button]').length > 0) {
+      //evaluates as true
+      cy.log('Logout button exist');
+      cy.get('[data-test=logout-button]').click();
+      cy.wait(4000);
+      cy.get('[data-test="go-to-login-page"]').click();
+    } else {
+      cy.log('Logout button does NOT exist');
+    }
+  });
 });
 
 Given('I login with test user with registered permissions', () => {
@@ -37,10 +50,174 @@ Given('I login with test user with registered permissions', () => {
       elem.val('test-registered-user');
     });
 
-    cy.get('[data-test="login-with-test-user"]').click({
+    cy.get('[data-test="login-with-test-user"]').click({ force: true });
+  });
+});
+
+Given('I login with test user with author permissions', () => {
+  cy.get('[data-test="hidden-login-form"]').within(() => {
+    cy.get('[name=email]').then(elem => {
+      elem.val('test-author@test.com');
+    });
+
+    cy.get('[name=password]').then(elem => {
+      elem.val('ysxDAtcaX48XnHH');
+    });
+
+    cy.get('[data-test="login-with-test-user"]').click({ force: true });
+  });
+});
+
+Given('I navigate to dashboard page', () => {
+  cy.get('[data-test="go-to-dashboard-page"]').click();
+});
+
+Given('I navigate to courses page', () => {
+  cy.get('[data-test="go-to-courses"]').click();
+});
+
+Given('I navigate to AddNew page', () => {
+  cy.get('[data-test="go-to-add-new"]').click();
+});
+
+Then('In Learning path I select {string}', (learningPath: string) => {
+  cy.get('select[name="learningPath"]').select(learningPath);
+});
+Then('In Level I select {string}', (level: string) => {
+  cy.get('select[name="level"]').select(level);
+});
+Given('I click on Publish button', () => {
+  cy.get('[data-test="publish-button"]').click();
+});
+
+Given('I click on AddNewChapter button', () => {
+  cy.get('[data-test="add-new-chapter"]').click();
+});
+
+Given('I click on open Chapter 1', () => {
+  cy.get('[data-test="open-chapter-1"]').click();
+});
+
+Given('I navigate to courses', () => {
+  cy.get('[data-test="go-to-courses-page"]').click();
+});
+
+Given('I click on Learning path {string}', (name: string) => {
+  cy.contains(name).click();
+});
+
+Given('I click on new course {string}', (name: string) => {
+  cy.contains(name).click();
+});
+
+Then('I check created course values', (dataTable: any) => {
+  cy.contains(dataTable.rawTable[0][1]);
+  cy.contains(dataTable.rawTable[1][1]);
+  cy.contains(dataTable.rawTable[2][1]);
+});
+
+Then('I fill the values of the new course', (dataTable: any) => {
+  cy.get('input[name="title"]')
+    .clear()
+    .type(dataTable.rawTable[0][1], {
       force: true,
     });
-  });
+  cy.get('input[name="duration"]')
+    .clear()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+  cy.get('input[name="numberOfChapters"]')
+    // .clear()
+    .type(dataTable.rawTable[2][1], {
+      force: true,
+    });
+  cy.get('input[name="studentRating"]')
+    //.clear()
+    .type(dataTable.rawTable[3][1], {
+      force: true,
+    });
+
+  cy.get('textarea[name="whatWillLearn"]')
+    // .clear()
+    .type(dataTable.rawTable[4][1], {
+      force: true,
+    });
+  cy.get('textarea[name="prerequisites"]')
+    // .clear()
+    .type(dataTable.rawTable[5][1], {
+      force: true,
+    });
+});
+
+Then('I fill the values of the new chapter', (dataTable: any) => {
+  cy.get('[data-test="chapter-title"]')
+    .last()
+    // .clear()
+    .type(dataTable.rawTable[0][1], {
+      force: true,
+    });
+  cy.get('input[name="numberOfLessons"]')
+    .last()
+    //  .clear()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+});
+
+Given('I click button Update Chapter', () => {
+  cy.get('[data-test="update-chapter"]')
+    .last()
+    .click({ force: true });
+});
+
+Given('I click on AddLesson button', () => {
+  cy.get('[data-test="add-lesson"]')
+    .last()
+    .click({ force: true });
+});
+
+Given('I click on edit button in lesson 1', () => {
+  cy.get('[data-test="edit-lesson-1"]').click({ force: true });
+});
+
+Then('I fill the values of the new lesson', (dataTable: any) => {
+  cy.get('input[data-test="lesson-title"]')
+    .last()
+    //  .clear()
+    .type(dataTable.rawTable[0][1], {
+      force: true,
+    });
+  cy.get('textarea[name="descr"]')
+    .last()
+    //  .clear()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+  cy.get('input[name="videoLink"]')
+    .last()
+    // .clear()
+    .type(dataTable.rawTable[2][1], {
+      force: true,
+    });
+  cy.get('input[name="assignment"]')
+    .last()
+    //.clear()
+    .type(dataTable.rawTable[3][1], {
+      force: true,
+    });
+});
+
+Given('I click on save button', () => {
+  cy.get('[data-test="lesson-save"]').click({ force: true });
+});
+
+Given('I click on edit button in lesson 2', () => {
+  cy.get('[data-test="edit-lesson-2"]').click({ force: true });
+});
+
+Given('I click on open Chapter 2', () => {
+  cy.get('[data-test="open-chapter-2"]').click();
 });
 
 Given(`I navigate to platform url`, () => {
@@ -204,6 +381,60 @@ Then('I check the values of the description', (dataTable: any) => {
   );
 });
 
+Given('I expand the {string} section', (location: string) => {
+  cy.get('[data-test="test-title"]')
+    .contains(location)
+    .click();
+});
+
+Then('Google map with location marker should be rendered', () => {
+  cy.get('[data-test="test-map"]').should('be.visible');
+});
+
+Then('I fill address data', (dataTable: any) => {
+  cy.get('input[name="addressLine1"]')
+    .clear()
+    .type(dataTable.rawTable[0][1], {
+      force: true,
+    });
+  cy.get('input[name="addressLine2"]')
+    .clear()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+  cy.get('input[name="city"]')
+    .clear()
+    .type(dataTable.rawTable[2][1], {
+      force: true,
+    });
+  cy.get('input[name="zipCode"]')
+    .clear()
+    .type(dataTable.rawTable[3][1], {
+      force: true,
+    });
+});
+
+Then('I should not see {string}', (title: string) => {
+  cy.contains(title).should('not.exist');
+});
+
+Then('I move drag marker to the new location', () => {
+  cy.get('[usemap^="#gmimap"]')
+    .parent()
+    .as('marker')
+    .then($el => {
+      const { x, y } = $el[0].getBoundingClientRect();
+
+      cy.log('-------marker positionv x: ', x);
+      cy.log('-------marker position y: ', y);
+
+      cy.get('@marker')
+        .trigger('mousedown', { which: 1 })
+        .trigger('mousemove', { clientX: x + 200, clientY: y + 200 })
+        .trigger('mouseup');
+    });
+});
+
 // ====================== EXAMPLES ====================================
 
 Given('I navigate to the Opportunities Tab', () => {
@@ -324,9 +555,7 @@ Given(
 );
 
 Given('I click on the loan pricing tab', () => {
-  cy.get('[data-test="loan-pricing-tab"]').click({
-    force: true,
-  });
+  cy.get('[data-test="loan-pricing-tab"]').click({ force: true });
 });
 
 Given('I sign in as {string}', (role: string) => {
@@ -339,9 +568,7 @@ Given('I click {string}', (name: string) => {
 });
 
 Given('I click button {string}', (name: string) => {
-  cy.get(`button:contains("${name}")`).click({
-    force: true,
-  });
+  cy.get(`button:contains("${name}")`).click({ force: true });
 });
 
 Given('I click button Add new asset', () => {
@@ -420,10 +647,7 @@ Then('I adjust borrower price to {string}', (price: string) => {
         nativeInputValueSetter.call(range, Number(price));
       range.dispatchEvent(
         // @ts-ignore
-        new Event('change', {
-          value: Number(price),
-          bubbles: true,
-        }),
+        new Event('change', { value: Number(price), bubbles: true }),
       );
     });
   });
@@ -496,15 +720,11 @@ Then('I can see security asset minimum value {string}', (text: string) => {
 });
 
 Then('I expand the security asset', () => {
-  cy.get('[data-test="security-asset-expand-icon"]').click({
-    force: true,
-  });
+  cy.get('[data-test="security-asset-expand-icon"]').click({ force: true });
 });
 
 Then('I click edit button of security asset', () => {
-  cy.get('[data-test="security-asset-edit-button"]').click({
-    force: true,
-  });
+  cy.get('[data-test="security-asset-edit-button"]').click({ force: true });
 });
 
 Then('I can see the loan pricing container', () => {

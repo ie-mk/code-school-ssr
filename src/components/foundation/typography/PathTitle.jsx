@@ -4,10 +4,10 @@ import { colors, fontSizeMap } from '../../../constants/styles';
 import withSpacing from '../../foundation/withSpacing';
 import media from '../media';
 
-const H5 = styled.h5`
+const H5 = styled.span`
   font-size: ${fontSizeMap.textMobile};
   color: ${({ color }) => (color ? color : 'white')};
-  margin: ${({ margin }) => margin || ''};
+  margin: 0;
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '300')};
   padding-top: ${({ paddingTop }) => (paddingTop ? paddingTop : '')};
 
@@ -16,8 +16,8 @@ const H5 = styled.h5`
   `};
 `;
 
-const PathTitle = ({ text }) => {
-  return <H5 margin="0">{text}</H5>;
+const PathTitle = ({ text, ...props }) => {
+  return <H5 {...props}>{text}</H5>;
 };
 
 export default withSpacing(PathTitle);

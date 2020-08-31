@@ -18,9 +18,17 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
   }, []);
 
   return (
-    <CenteredFlexContainer marginTop="xxl">
+    <CenteredFlexContainer
+      marginTop="xxl"
+      marginBottom="xxxxxl"
+      mediaConfig={{
+        belowDesktop: {
+          marginBottom: 'lg',
+        },
+      }}
+    >
       <SectionTitle text="Choose a Learning Path" />
-      <BodyText>
+      <BodyText margin="0 0 40px 0">
         Learning paths guide you through exactly what you need to learn to build
         a solid foundation for a career or skillset
       </BodyText>
@@ -45,6 +53,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
                 imageSrc={data && data.images && data.images[0]}
                 title={LEARNING_PATH[data.title]}
                 learningPathId={key}
+                data-test="chooselearningpath"
               />
             );
           })}

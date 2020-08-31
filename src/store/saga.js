@@ -10,8 +10,18 @@ import {
 import { adminActions, userActions } from './actions';
 import api from '../api/api.min';
 import moment from 'moment';
-import { getUID, getEditingCourseId } from './selectors';
+import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
+import { IS_SERVER } from '../constants';
+
+const cleanObject = obj => {
+  for (var k in obj) {
+    if (obj.hasOwnProperty(k) && !obj[k]) {
+      delete obj[k];
+    }
+  }
+  return obj;
+};
 
 function* fetchUserPermissions({ payload }) {
   try {
@@ -53,13 +63,13 @@ function* deleteUser({ payload }) {
 
 function* handleLoginFlow({ payload: user }) {
   const uid = user && user.uid;
+
   if (!uid) return;
 
   try {
     const profile = yield api.user.fetchUserProfile(uid);
 
     if (profile) {
-      const profile = yield api.user.fetchUserProfile(uid);
       const permissions = yield api.user.fetchUserPermissions(uid);
 
       yield put(userActions.fetchUserProfile.success(profile));
@@ -69,19 +79,33 @@ function* handleLoginFlow({ payload: user }) {
       yield put(userActions.setIsFirstLogin(true));
       const firstName = user.displayName.split(' ')[0];
       const lastName = user.displayName.split(' ')[1];
-      // remove falsy values from object otherwise firebase will complain
-      for (var k in user) {
-        if (user.hasOwnProperty(k) && !user[k]) {
-          delete user[k];
-        }
-      }
 
-      yield api.user.createUserProfile({
+      const newUserObject = {
         ...user,
         firstName,
         lastName,
         firstLogin: moment().format(),
         lastLogin: moment().format(),
+      };
+
+      // remove falsy values from object otherwise firebase will complain
+      cleanObject(newUserObject);
+
+      yield api.user.createUserProfile(newUserObject);
+
+      const newPublicProfile = {
+        firstName,
+        lastName,
+        profileImage: user.photoURL,
+      };
+
+      // remove falsy values from object otherwise firebase will complain
+      cleanObject(newPublicProfile);
+
+      yield createUserPublicInfo({
+        payload: {
+          data: newPublicProfile,
+        },
       });
     }
   } catch (err) {
@@ -129,6 +153,96 @@ function* fetchAllUsersPublicInfo() {
   }
 }
 
+function* fetchUserPublicInfo({ payload: uid }) {
+  const userId = uid ? uid : yield select(getUID);
+  try {
+    const data = yield api.resource.fetchResource(`usersPublicInfo/${userId}`);
+    yield put(userActions.fetchUserPublicInfo.success({ uid: userId, data }));
+  } catch (err) {
+    yield put(userActions.fetchUserPublicInfo.failure(err));
+  }
+}
+
+function* createUserPublicInfo({ payload: { data } }) {
+  const uid = yield select(getUID);
+
+  // remove falsy values from object otherwise firebase will complain
+  for (var k in data) {
+    if (data.hasOwnProperty(k) && !data[k]) {
+      delete data[k];
+    }
+  }
+
+  try {
+    yield api.resource.createResourceWithId('usersPublicInfo', uid, data);
+    yield put(userActions.updateUserPublicInfo.success());
+    yield fetchUserPublicInfo({
+      payload: uid,
+    });
+  } catch (err) {
+    yield put(userActions.updateUserPublicInfo.failure(err));
+  }
+}
+
+function* updateUserPublicInfo({ payload: { data } }) {
+  const uid = yield select(getUID);
+  try {
+    yield api.resource.updateResource(`usersPublicInfo/${uid}`, data);
+    yield put(userActions.updateUserPublicInfo.success());
+    yield fetchUserPublicInfo({
+      payload: uid,
+    });
+  } catch (err) {
+    yield put(userActions.updateUserPublicInfo.failure(err));
+  }
+}
+
+function* createGetInTouchMessage({ payload }) {
+  const uid = yield select(getUID);
+
+  const data = {
+    ...payload.data,
+    ownerId: uid,
+    read: false,
+    created: new Date(),
+  };
+
+  try {
+    const messageId = yield api.resource.createResource('getInTouch', data);
+    yield put(userActions.createGetIntouchMessage.success(messageId));
+  } catch (err) {
+    yield put(userActions.createGetIntouchMessage.failure(err));
+  }
+}
+
+function* fetchGetIntouchMessages() {
+  try {
+    const messages = yield api.resource.fetchResources('getInTouch');
+    yield put(adminActions.fetchGetIntouchMessages.success(messages));
+  } catch (err) {
+    yield put(adminActions.fetchGetIntouchMessages.failure(err));
+  }
+}
+
+function* startCourse({ payload: courseId }) {
+  const uid = yield select(getUID);
+
+  const data = {
+    uid,
+    courses: {
+      [courseId]: true,
+    },
+  };
+
+  try {
+    yield updateUserProfile({ payload: data });
+    yield put(userActions.startCourse.success());
+    yield fetchUserProfile({ payload: { uid } });
+  } catch (err) {
+    yield put(userActions.startCourse.failure(err));
+  }
+}
+
 // ============================ COURSES =====================================
 
 function* fetchCourses({ payload = {} }) {
@@ -137,6 +251,13 @@ function* fetchCourses({ payload = {} }) {
       'courses',
       payload.queries,
     );
+
+    // clean leaking chapters which comes only partially for unknown reason
+    Object.keys(courses).forEach(key => {
+      const course = courses[key];
+      delete course.chapters;
+    });
+
     yield put(resourceActions.fetchCourses.success(courses));
   } catch (err) {
     yield put(resourceActions.fetchCourses.failure(err));
@@ -146,7 +267,10 @@ function* fetchCourses({ payload = {} }) {
 function* fetchCourse({ payload: courseId }) {
   try {
     const course = yield api.resource.fetchResource(`courses/${courseId}`);
-    yield put(resourceActions.fetchCourse.success({ [courseId]: course }));
+    // clean leaking chapters which comes only partially for unknown reason
+    delete course.chapters;
+
+    yield put(resourceActions.fetchCourse.success({ courseId, course }));
   } catch (err) {
     yield put(resourceActions.fetchCourse.failure(err));
   }
@@ -159,7 +283,7 @@ function* createCourse({ payload = {} }) {
     ...payload.data,
     ownerId: uid,
     published: false,
-    edited: moment().format(),
+    editedOnDate: moment().format(),
   };
   try {
     const courseId = yield api.resource.createResource('courses', data);
@@ -176,7 +300,7 @@ function* updateCourse({ payload }) {
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
       ...payload.data,
-      edited: moment().format(),
+      editedOnDate: moment().format(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -190,7 +314,7 @@ function* updateCourseEditedTime() {
 
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
-      edited: moment().format(),
+      editedOnDate: moment().format(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -258,12 +382,18 @@ function* deleteTask({ payload: docId }) {
 
 // ============================ CHAPTERS =====================================
 
-function* fetchChapters() {
-  const courseId = yield select(getEditingCourseId);
+function* fetchChapters({ payload: courseId }) {
+  // const courseId = yield select(getEditingCourseId);
   try {
     const chapters = yield api.resource.fetchResources(
       `courses/${courseId}/chapters`,
     );
+
+    // clean leaking lessons which comes only partially for unknown reason
+    Object.keys(chapters).forEach(key => {
+      const chapter = chapters[key];
+      delete chapter.lessons;
+    });
 
     yield put(
       resourceActions.fetchChapters.success({
@@ -279,13 +409,17 @@ function* fetchChapters() {
 function* fetchChapter({ payload: chapterId }) {
   const courseId = yield select(getEditingCourseId);
   try {
-    const result = yield api.resource.fetchResource(
+    const chapter = yield api.resource.fetchResource(
       `courses/${courseId}/chapters/${chapterId}`,
     );
+
+    // clean leaking lessons which comes only partially for unknown reason
+    delete chapter.lessons;
+
     yield put(
       resourceActions.fetchChapter.success({
         courseId,
-        data: { [chapterId]: result },
+        data: { [chapterId]: chapter },
       }),
     );
   } catch (err) {
@@ -347,21 +481,48 @@ function* deleteChapter({ payload: chapterId }) {
 
 // ============================ LESSONS =====================================
 
-function* fetchLessons({ payload: { courseId, chapterId } }) {
-  try {
-    const lessons = yield api.resource.fetchResources(
-      `courses/${courseId}/chapters/${chapterId}/lessons`,
-    );
+function* fetchLessons({
+  payload: { courseId, chapterId, forceFetch = false },
+}) {
+  const courses = select(getCourses);
 
-    yield put(
-      resourceActions.fetchLessons.success({
-        courseId,
-        chapterId,
-        lessons,
-      }),
-    );
-  } catch (err) {
-    yield put(resourceActions.fetchLessons.failure(err));
+  const checkIfcourseFetched = () => {
+    return courses && courses[courseId];
+  };
+  // we want to make sure that the course data has been fetched already
+  // otherwise if the course data are fetched later it will override the data
+  // with empty object
+  if (!checkIfcourseFetched) {
+    setTimeout(() => {
+      fetchLessons({
+        payload: { courseId, chapterId },
+      });
+    }, 100);
+    return;
+  }
+
+  // skip fetching
+  // const chapter = courses[courseId].chapters[chapterId];
+  // if (!forceFetch && chapter && Object.keys(chapter.lessons).length > 0) return;
+
+  yield fetchData();
+
+  function* fetchData() {
+    try {
+      const lessons = yield api.resource.fetchResources(
+        `courses/${courseId}/chapters/${chapterId}/lessons`,
+      );
+
+      yield put(
+        resourceActions.fetchLessons.success({
+          courseId,
+          chapterId,
+          lessons,
+        }),
+      );
+    } catch (err) {
+      yield put(resourceActions.fetchLessons.failure(err));
+    }
   }
 }
 
@@ -523,8 +684,8 @@ function* fetchLearningPath({ payload: docId }) {
 }
 
 function* createLearningPath({ payload: { data } }) {
-  if (data.images) {
-    data.imageSavePath = 'images/learningPaths';
+  if (data.imagesToUpload) {
+    data.imageUploadPath = 'images/learningPaths';
   }
   try {
     const learningPathId = yield api.resource.createResource(
@@ -543,7 +704,6 @@ function* updateLearningPath({ payload: { docId, data } }) {
   if (data.imagesToUpload) {
     data.imageUploadPath = 'images/learningPaths';
   }
-  debugger;
   try {
     yield api.resource.updateResource(`learningPaths/${docId}`, data);
     yield put(resourceActions.updateLearningPath.success());
@@ -589,6 +749,28 @@ function* rootSaga() {
       fetchAllUsersPublicInfo,
     ),
   ]);
+  yield all([
+    takeLatest(
+      userActions.updateUserPublicInfo.request.type,
+      updateUserPublicInfo,
+    ),
+  ]);
+
+  yield all([
+    takeEvery(
+      userActions.fetchUserPublicInfo.request.type,
+      fetchUserPublicInfo,
+    ),
+  ]);
+
+  yield all([
+    takeLatest(
+      userActions.createGetIntouchMessage.request.type,
+      createGetInTouchMessage,
+    ),
+  ]);
+
+  yield all([takeLatest(userActions.startCourse.request.type, startCourse)]);
 
   // ========================== COURSES ===============================
   yield all([
@@ -703,6 +885,18 @@ function* rootSaga() {
   yield all([
     takeLatest(adminActions.addUserPermission.request.type, addUserPermission),
   ]);
+
+  yield all([
+    takeLatest(
+      adminActions.fetchGetIntouchMessages.request.type,
+      fetchGetIntouchMessages,
+    ),
+  ]);
+}
+
+if (!IS_SERVER) {
+  window.createGetInTouchMessage = createGetInTouchMessage;
+  window.fetchGetIntouchMessages = fetchGetIntouchMessages;
 }
 
 export default rootSaga;

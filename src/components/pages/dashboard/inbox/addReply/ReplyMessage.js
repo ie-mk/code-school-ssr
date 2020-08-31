@@ -21,10 +21,12 @@ const ReplyMessage = ({
 
   const sub = messageData.subject;
 
-  initialFormValues.subject =
-    sub.substring(0, 2) !== 'RE'
-      ? 'RE: ' + messageData.subject
-      : messageData.subject;
+  initialFormValues.subject = sub
+    ? sub.substring(0, 2) !== 'RE'
+      ? 'RE: ' + sub
+      : sub
+    : '';
+
   initialFormValues.message = `
 
 
@@ -43,7 +45,7 @@ const ReplyMessage = ({
   Object.keys(allUsersPublicInfo).forEach(key => {
     const userObject = allUsersPublicInfo[key];
     if (messageData.receiverId === key) {
-      receiverName = userObject.displayName;
+      receiverName = userObject.firstName + ' ' + userObject.lastName;
     }
   });
 
@@ -98,6 +100,7 @@ const ReplyMessage = ({
                 borderRadius="sm"
                 height="45px"
                 size="sm"
+                submit={true}
               >
                 Send
               </Button>

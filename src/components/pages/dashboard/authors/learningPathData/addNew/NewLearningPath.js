@@ -139,6 +139,7 @@ let NewLearningPath = ({
                   borderRadius="sm"
                   height="45px"
                   size="sm"
+                  submit={true}
                 >
                   Update
                 </Button>
@@ -149,6 +150,7 @@ let NewLearningPath = ({
                   borderRadius="sm"
                   height="45px"
                   size="sm"
+                  submit={true}
                 >
                   Save
                 </Button>

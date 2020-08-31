@@ -7,6 +7,7 @@ import ContainerBase from '../../../../foundation/ContainerBase';
 import Button from '../../../../foundation/button/Button';
 import GreenCheckBoxWithText from '../../../../foundation/greencheckboxwithtext/GreenCheckBoxWithText.jsx';
 import StarRating from '../../../../foundation/starRating/StarRating';
+import { useRouter } from 'next/router';
 
 const Label = ({ keyname, value }) => {
   return (
@@ -26,14 +27,23 @@ const Label = ({ keyname, value }) => {
   );
 };
 
-const CourseHeader = ({ title, course }) => {
+const CourseHeader = ({ title, course, courseId }) => {
   const Rating = <StarRating rating={course.studentRating} />;
 
-  const whatyouwilllearn = course.whatWillLearn;
-  const data = whatyouwilllearn.split(',');
+  const whatWillLearn = course.whatWillLearn;
+  const willLearnArr = (whatWillLearn && whatWillLearn.split(',')) || [];
 
   const prerequisites = course.prerequisites;
-  const prerequisitesdata = prerequisites.split(',');
+  const prereqArr = (prerequisites && prerequisites.split(',')) || [];
+
+  const router = useRouter();
+
+  const startCourse = title => {
+    const url = `/courseLearning?course=${title}&courseId=${courseId}`;
+
+    router.push(url, url, { shallow: true });
+  };
+
   return (
     <Styled.Wrapper>
       <ResponsiveImage
@@ -78,6 +88,7 @@ const CourseHeader = ({ title, course }) => {
             padding="10px 30px"
             maxWidth="280px"
             margin="0"
+            onClick={() => startCourse(course.title)}
           >
             START COURSE
           </Button>
@@ -100,7 +111,7 @@ const CourseHeader = ({ title, course }) => {
                 What you will learn{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>
-                {data.map((item, i) => {
+                {willLearnArr.map((item, i) => {
                   return (
                     <GreenCheckBoxWithText
                       key={i}
@@ -118,7 +129,7 @@ const CourseHeader = ({ title, course }) => {
                 Requirements{' '}
               </Styled.StyledHeader>
               <Styled.ItemsWrapper>
-                {prerequisitesdata.map((item, i) => {
+                {prereqArr.map((item, i) => {
                   return (
                     <GreenCheckBoxWithText
                       key={i}

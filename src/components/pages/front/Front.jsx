@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styled from './Front.styles';
 import { useTranslation } from 'react-i18next';
 import PageContent from '../../foundation/PageContent';
@@ -8,6 +8,8 @@ import SectionCards from '../../heros/sectionCards/SectionCards';
 
 const Front = () => {
   const { t } = useTranslation();
+
+  const [chatOpen, setChatOpen] = useState(false);
 
   return (
     <>

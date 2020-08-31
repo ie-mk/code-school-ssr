@@ -13,13 +13,21 @@ const AdminInput = ({
   disabled,
   fontSize,
   noMargin,
+  margin,
   height,
   mobileWidth,
   color,
   inputColor,
+  dataTest,
+  border,
 }) => {
   return (
-    <Styled.Wrapper width={width} mobileWidth={mobileWidth} noMargin={noMargin}>
+    <Styled.Wrapper
+      margin={margin}
+      width={width}
+      mobileWidth={mobileWidth}
+      noMargin={noMargin}
+    >
       <Styled.Label color={color} fontSize={fontSize}>
         {label}
       </Styled.Label>
@@ -28,8 +36,10 @@ const AdminInput = ({
         height={height}
         backgroundColor={backgroundColor}
         disabled={disabled}
+        border={border}
       >
         <Field
+          data-test={dataTest}
           className={classNameString}
           name={name}
           type={type}

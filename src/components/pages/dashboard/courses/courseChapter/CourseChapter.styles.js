@@ -39,12 +39,12 @@ const ChapterHeader = styled.label`
   font-weight: bold;
   color: ${colors.white};
   border-radius: ${borderRadius.sm};
-  background-color: ${colors.black};
+  background-color: #191f37;
   opacity: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: ${spacing.xxl};
+  margin-bottom: ${spacing.sm};
 `;
 
 export const MidContainer = styled.div`

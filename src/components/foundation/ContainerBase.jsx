@@ -190,6 +190,7 @@ const ContainerRoot = styled.div`
     justifyContent ? getJustifyContent(justifyContent) : ''}
   ${({ flexDirection }) =>
     flexDirection ? getFlexDirection(flexDirection) : ''}
+  ${({ flexWrap }) => (flexWrap ? flexWrap : '')}
   ${({ styles }) => (styles ? styles : '')};
 
   // example

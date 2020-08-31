@@ -4,7 +4,7 @@ import ResponsiveImage from '../ResponsiveImage';
 import PathTitle from '../typography/PathTitle';
 import media from '../media';
 import { spacing } from '../../../constants/styles';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,6 +15,8 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 30px;
   cursor: pointer;
+  background: linear-gradient(180deg, #293150 0%, #1e2540 100%) 0% 0% no-repeat
+    padding-box;
   ${media.belowTabletLarge`
     padding: 0;
     height: 240px;
@@ -28,23 +30,28 @@ const Wrapper = styled.div`
 `;
 
 const LearningPathCard = ({ imageSrc, title, learningPathId }) => {
+  const router = useRouter();
+
   const handlePathClick = () => {
-    Router.push(
-      {
-        pathname: '/courses/path',
-        query: {
-          learningPathId,
-        },
-      },
-      `courses/${title.split(' ')[0].toLowerCase()}`,
-      { shallow: true },
-    );
+    // router.push(
+    //   {
+    //     pathname: '/courses/path',
+    //     query: {
+    //       learningPathId,
+    //     },
+    //   },
+    //   `courses/${title.split(' ')[0].toLowerCase()}`,
+    //   { shallow: true },
+    // );
+
+    const path = `/courses/path?learningPathId=${learningPathId}`;
+    router.push(path, path, { shallow: true });
   };
 
   return (
     <Wrapper onClick={() => handlePathClick()}>
       <ResponsiveImage height="120px" width="120px" src={imageSrc} />
-      <PathTitle text={title} />
+      <PathTitle margin="30px 0 0" fontWeight="500" text={title} />
     </Wrapper>
   );
 };

@@ -4,8 +4,8 @@ import Styled from './Authors.styles';
 import AuthorsData from './authorsData/authorsData';
 import LearningPaths from './learningPathData/LearningPathData';
 
-const Authors = () => {
-  const [activeTab, setActiveTab] = useState('authors');
+const AuthorsAndLearningPath = () => {
+  const [activeTab, setActiveTab] = useState('learningPath');
 
   const isActiveAuthors = activeTab === 'authors';
   const isActiveLearningPaths = activeTab === 'learningPath';
@@ -13,20 +13,20 @@ const Authors = () => {
   return (
     <ContainerBase paddingLeft="xl" paddingRight="xl">
       <Styled.RowContainer>
-        <Styled.Title
-          isStrong={isActiveAuthors}
-          textDecor={isActiveAuthors}
-          onClick={() => setActiveTab('authors')}
-        >
-          Authors
-        </Styled.Title>
-        <Styled.Title
-          isStrong={isActiveLearningPaths}
-          textDecor={isActiveLearningPaths}
-          onClick={() => setActiveTab('learningPath')}
-        >
-          Learning Paths
-        </Styled.Title>
+        {/*<Styled.Title*/}
+        {/*  isStrong={isActiveAuthors}*/}
+        {/*  textDecor={isActiveAuthors}*/}
+        {/*  onClick={() => setActiveTab('authors')}*/}
+        {/*>*/}
+        {/*  Authors*/}
+        {/*</Styled.Title>*/}
+        {/*<Styled.Title*/}
+        {/*  isStrong={isActiveLearningPaths}*/}
+        {/*  textDecor={isActiveLearningPaths}*/}
+        {/*  onClick={() => setActiveTab('learningPath')}*/}
+        {/*>*/}
+        {/*  Learning Paths*/}
+        {/*</Styled.Title>*/}
       </Styled.RowContainer>
       <Styled.Wrapper>
         {isActiveAuthors && <AuthorsData />}
@@ -36,4 +36,4 @@ const Authors = () => {
   );
 };
 
-export default Authors;
+export default AuthorsAndLearningPath;

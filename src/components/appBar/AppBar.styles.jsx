@@ -41,7 +41,7 @@ const Wrapper = styled.div`
 const LinkWrapper = styled.div`
   display: flex;
   flex: 1;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-right: ${spacing.xl};
   transition: all 0.7s ease-in;
   ${media.belowTabletLarge`

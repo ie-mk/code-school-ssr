@@ -9,7 +9,7 @@ const DropdownWrapper = styled.div`
 const TableWrapper = styled.div`
   margin-left: ${spacing.xls};
   margin-right: ${spacing.xls};
-  margin-top: ${spacing.xxxls};
+  margin-top: ${spacing.xl};
 `;
 const DropdownItemWrapper = styled.div`
   display: flex;

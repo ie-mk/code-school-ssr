@@ -38,7 +38,11 @@ const DashboardCourses = ({ dispatch, loading, editableCourseId }) => {
         >
           Unpublished(06)
         </Styled.Title>
-        <Styled.Title onClick={handleCreateNew} active={showNew}>
+        <Styled.Title
+          onClick={handleCreateNew}
+          active={showNew}
+          data-test="go-to-add-new"
+        >
           Add New
         </Styled.Title>
       </CenteredFlexContainer>

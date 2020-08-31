@@ -1,26 +1,9 @@
-import React from 'react';
-import { ContainerBase } from '../../../../foundation';
+import React, { useEffect } from 'react';
 import Table from '../../table/Table';
 import Button from '../../../../foundation/button/Button';
-
-const messages = {
-  '124jq23j234': {
-    senderId: '845235o2u35',
-    authorName: 'John',
-    email: 'some@email.com',
-    phone: '+44123874533',
-    courses: '02',
-    skills: 'Html,CSS',
-  },
-  '124jq23ddj234': {
-    senderId: '845235o2u35',
-    authorName: 'John',
-    email: 'some@email.com',
-    phone: '+44123874533',
-    courses: '02',
-    skills: 'Html,CSS',
-  },
-};
+import { connect } from 'react-redux';
+import { getUsers } from '../../../../../store/selectors';
+import { userActions } from '../../../../../store/actions';
 
 const columnHeaders = [
   'S.No',
@@ -32,15 +15,15 @@ const columnHeaders = [
   'Actions',
 ];
 
-const Inbox = () => {
-  const handleReply = messageId => {
-    // TODO
-  };
+const Authors = ({ dispatch, users }) => {
+  useEffect(() => {
+    dispatch(userActions.fetchAllUsers.request({}));
+  });
 
   return (
     <Table columnHeaders={columnHeaders}>
-      {Object.keys(messages).map((id, idx) => {
-        const rowData = messages[id];
+      {Object.keys(users).map((id, idx) => {
+        const rowData = users[id];
         if (!rowData) return null;
 
         return (
@@ -58,7 +41,7 @@ const Inbox = () => {
                 type="action"
                 fontSize="20px"
                 borderRadius="sm"
-                onClick={() => handleReply(id)}
+                onClick={() => {}}
               >
                 Remove
               </Button>
@@ -70,4 +53,8 @@ const Inbox = () => {
   );
 };
 
-export default Inbox;
+const mapStateToProps = state => ({
+  users: getUsers(state),
+});
+
+export default connect(mapStateToProps)(Authors);

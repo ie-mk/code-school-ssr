@@ -87,6 +87,7 @@ export const colors = {
   lightBlue: '#D7DDF3',
   bluishgreen: '#0EC9B0',
   Sapphire: '#3145A1',
+  violet: '#1B3052',
   label: {
     primary: '#414141',
   },
@@ -96,6 +97,7 @@ export const colors = {
   background: {
     primary: '#1A2036',
     secondary: '#191F37',
+    SteelBlue: '#2385D92B',
     gradient:
       'transparent linear-gradient(180deg, #1A2036 0%, #191F37 51%, #191F37 100%) 0% 0% no-repeat padding-box',
     decorprimary:

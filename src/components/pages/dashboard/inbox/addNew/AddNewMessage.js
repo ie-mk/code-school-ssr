@@ -13,15 +13,17 @@ import { getAllUsersPublicInfo } from '../../../../../store/selectors';
 const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
   useEffect(() => {
     dispatch(userActions.fetchAllUsersPublicInfo.request());
-  }, [setNewAdd]);
+  }, []);
 
+  console.log(allUsersPublicInfo);
   const userOptions = {};
 
   Object.keys(allUsersPublicInfo).forEach(key => {
     const userObject = allUsersPublicInfo[key];
-    userOptions[userObject.displayName] = key;
+    userOptions[userObject.firstName + ' ' + userObject.lastName] = key;
   });
-
+  debugger;
+  console.log(allUsersPublicInfo);
   const handleUserSearch = setFieldValue => selectedName => {
     setFieldValue('receiverId', userOptions[selectedName]);
   };
@@ -83,6 +85,7 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
                 borderRadius="sm"
                 height="45px"
                 size="sm"
+                submit={true}
               >
                 Send
               </Button>

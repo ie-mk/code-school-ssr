@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from 'next/router';
+import { withRouter } from 'next/router';
 import firebase from '../../../firebase/app';
 
 const withAuthorization = Component => {
@@ -7,7 +7,7 @@ const withAuthorization = Component => {
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         if (!authUser) {
-          Router.push('sign-in');
+          this.props.router.push('sign-in');
         }
       });
     }
@@ -17,7 +17,7 @@ const withAuthorization = Component => {
     }
   }
 
-  return WithAuthorization;
+  return withRouter(WithAuthorization);
 };
 
 export default withAuthorization;
