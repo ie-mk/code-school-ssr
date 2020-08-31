@@ -1,6 +1,7 @@
-import '@mdi/font/css/materialdesignicons.min.css';
 import React from 'react';
 import { cn } from '../utils';
+import './Icon.scss';
+import '@mdi/font/css/materialdesignicons.min.css';
 
 // https://dev.materialdesignicons.com/getting-started/webfont
 export function Icon(props) {

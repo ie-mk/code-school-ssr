@@ -1,7 +1,7 @@
 import React from 'react';
-import { IS_SERVER } from '../constants';
-import ErrorBoundary from '../components/ErrorBoundary';
 import dynamic from 'next/dynamic';
+import ErrorBoundary from '../components/ErrorBoundary';
+import mock from '../components/task.manager/mock/mock.json';
 
 const TaskManager = dynamic(
   () => import('../components/task.manager/Task.manager.jsx'),
@@ -10,18 +10,14 @@ const TaskManager = dynamic(
   },
 );
 
-console.log('IS_SERVER', IS_SERVER);
-
 const Editor = () => {
-  console.log('Editor -> TaskManager', TaskManager);
-
   if (!TaskManager) return null;
 
-  return !IS_SERVER ? (
+  return (
     <ErrorBoundary>
-      <TaskManager />
+      <TaskManager task={mock} />
     </ErrorBoundary>
-  ) : null;
+  );
 };
 
 export default Editor;

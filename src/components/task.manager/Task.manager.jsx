@@ -49,4 +49,4 @@ function WithRouting(props) {
   );
 }
 
-export { WithRouting as TaskManager };
+export { WithRouting as default };
