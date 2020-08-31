@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../utils';
+import cn from 'classnames';
 import './Icon.scss';
 import '@mdi/font/css/materialdesignicons.min.css';
 

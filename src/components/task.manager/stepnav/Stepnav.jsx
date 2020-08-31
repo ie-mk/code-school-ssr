@@ -3,11 +3,6 @@ import './Stepnav.scss';
 import { useRouter } from 'next/router';
 
 export function Stepnav({ task }) {
-  // const { params, task } = props;
-  // const stepParam = params.get('step');
-  // const solutionParam = params.get('solution');
-  // const stepIndex = Number(stepParam);
-  // const solutionIndex = Number(solutionParam);
   const router = useRouter();
   const { query } = router;
   const { stepIndex = 0, solutionIndex } = query;
