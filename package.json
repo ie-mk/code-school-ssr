@@ -25,6 +25,7 @@
     "@mdi/font": "^5.5.55",
     "@zeit/next-css": "1.0.1",
     "@zeit/next-sass": "^1.0.1",
+    "@next/bundle-analyzer": "^9.5.2",
     "babel-plugin-styled-components": "1.10.7",
     "classnames": "^2.2.6",
     "firebase": "7.1.0",
@@ -63,7 +64,6 @@
     "yup": "0.28.3"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.5.2",
     "babel-eslint": "8.2.3",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.2",
