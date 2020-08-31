@@ -10,7 +10,7 @@ import './Task.manager.scss';
 function TaskManager(props) {
   const history = useHistory();
   const location = useLocation();
-  // useSearchParams siulau perziuret, nes cia is mano lempos visiskai rasytas, gal kazka geresnio zinai ar sugalvosi pats :DD
+  // useSearchParams siulau perziuret, nes cia visiskai is mano lempos rasytas, gal kazka geresnio zinai ar sugalvosi pats :DD
   const params = useSearchParams(location.search, defaultParams);
   const stepParam = params.get('step');
   const solutionParam = params.get('solution');
