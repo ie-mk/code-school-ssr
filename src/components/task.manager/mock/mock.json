@@ -77,6 +77,9 @@
         },
         "/index1.css": {
           "code": ".my-component {\n  background-color: lightgreen;\n}"
+        },
+        "/index.html": {
+          "code": "<div id=\"root\">MY HTML</div>\n<div class=\"my-component2\">My component 2</div>"
         }
       },
       "solutions": [
@@ -90,7 +93,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The First Step is the Hardest: Using classes"
+                "children": "SOLUTION 1 STEP 1 The First Step is the Hardest: Using classes"
               }
             ]
           },
@@ -113,7 +116,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The First Step is the Hardest: Using functional components"
+                "children": "SOLUTION 2 STEP 1 The First Step is the Hardest: Using functional components"
               }
             ]
           },
@@ -158,7 +161,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Second Step is the Second Step: Using classes"
+                "children": "SOLUTION 1 STEP 2 The Second Step is the Second Step: Using classes"
               }
             ]
           },
@@ -181,7 +184,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Second Step is the Second Step: Using functional components"
+                "children": "SOLUTION 2 STEP 2 The Second Step is the Second Step: Using functional components"
               }
             ]
           },
@@ -229,7 +232,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Third Step is after the Second Step: Using classes"
+                "children": " SOLUTION 1 STEP 3 The Third Step is after the Second Step: Using classes"
               }
             ]
           },
@@ -252,7 +255,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Third Step is after the Second Step: Using functional components"
+                "children": "SOLUTION 2 STEP 3 The Third Step is after the Second Step: Using functional components"
               }
             ]
           },
@@ -300,7 +303,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Fourth Step is before the Fifth Step: Using classes"
+                "children": "SOLUTION 1 STEP 4 The Fourth Step is before the Fifth Step: Using classes"
               }
             ]
           },
@@ -323,7 +326,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Fourth Step is before the Fifth Step: Using functional components"
+                "children": "SOLUTION 2 STEP 4 The Fourth Step is before the Fifth Step: Using functional components"
               }
             ]
           },
@@ -358,6 +361,9 @@
         },
         "/index.css": {
           "code": ".my-component {\n  background-color: red;\n}"
+        },
+        "/index.html": {
+          "code": "<div class=\"my-component\">MY HTML</div>"
         }
       },
       "solutions": [
@@ -371,7 +377,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Fifth Step is the Final Step, Unless We Add More Steps: Using classes"
+                "children": "SOLUTION 1 STEP 5 The Fifth Step is the Final Step, Unless We Add More Steps: Using classes"
               }
             ]
           },
@@ -394,7 +400,7 @@
             "children": [
               {
                 "type": "h1",
-                "children": "The Fifth Step is the Final Step, Unless We Add More Steps: Using functional components"
+                "children": "SOLUTION 2 STEP 5 The Fifth Step is the Final Step, Unless We Add More Steps: Using functional components"
               }
             ]
           },
