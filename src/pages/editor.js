@@ -15,7 +15,10 @@ const Editor = () => {
 
   return (
     <ErrorBoundary>
-      <TaskManager task={mock} />
+      <TaskManager
+        task={mock}
+        onFileChange={console.log.bind(null, 'onFileChange')}
+      />
     </ErrorBoundary>
   );
 };
