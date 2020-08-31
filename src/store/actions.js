@@ -24,6 +24,8 @@ export const userActions = {
   fetchUserPublicInfo: createAsyncAction('fetch-user-public-info'),
   fetchAllUsersPublicInfo: createAsyncAction('fetch-all-users-public-info'),
 
+  startCourse: createAsyncAction('start-course'),
+
   createGetIntouchMessage: createAsyncAction('create-get-in-touch-message'),
 
   setIsFirstLogin: createAction('SET_IS_FIRST_LOGIN'),
