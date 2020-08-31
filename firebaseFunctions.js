@@ -17,4 +17,3 @@ const nextjsHandle = app.getRequestHandler();
 exports.nextjsFunc = https.onRequest((req, res) => {
   return app.prepare().then(() => nextjsHandle(req, res));
 });
-s;
