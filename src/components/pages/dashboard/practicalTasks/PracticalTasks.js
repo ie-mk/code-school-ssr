@@ -19,45 +19,6 @@ const PracticalTasks = ({ dispatch, tasks }) => {
     'Link',
     'Actions',
   ];
-  const categoryarr = [
-    { show: 'Choose course', value: '' },
-    { show: 'development', value: 'development' },
-    { show: 'testing', value: 'testing' },
-  ];
-  const categoryoptions = categoryarr.map(k => {
-    return (
-      <option key={k.show} value={k.value}>
-        {k.show}
-      </option>
-    );
-  });
-
-  const skillarr = [
-    { show: 'Choose Skill', value: '' },
-    { show: 'Html', value: 'Html' },
-    { show: 'Php', value: 'Php' },
-  ];
-  const skilloptions = skillarr.map(k => {
-    return (
-      <option key={k.show} value={k.value}>
-        {k.show}
-      </option>
-    );
-  });
-
-  // const levelarr = [
-  //   { show: 'Choose Level', value: '' },
-  //   { show: 'Beginner', value: 'Beginner' },
-  //   { show: 'Intermidate', value: 'Intermidate' },
-  //   { show: 'Advance', value: 'Advance' },
-  // ];
-  // const leveloptions = levelarr.map(k => {
-  //   return (
-  //     <option key={k.show} value={k.value}>
-  //       {k.show}
-  //     </option>
-  //   );
-  // });
 
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -72,12 +33,12 @@ const PracticalTasks = ({ dispatch, tasks }) => {
         <ContainerBase marginTop="30px">
           <Formik>
             <form>
-              <CustomAdminDropDown
-                label="Course"
-                name="course"
-                placeholder="Choose course"
-                options={categoryoptions}
-              />
+              {/*<CustomAdminDropDown*/}
+              {/*  label="Course"*/}
+              {/*  name="course"*/}
+              {/*  placeholder="Choose course"*/}
+              {/*  options={categoryoptions}*/}
+              {/*/>*/}
               {/*<Styled.DropdownItemWrapper>*/}
               {/*  <CustomAdminDropDown*/}
               {/*    name="skill"*/}
@@ -105,7 +66,7 @@ const PracticalTasks = ({ dispatch, tasks }) => {
                 return (
                   <Table.Tr key={id}>
                     <Table.Td>{idx + 1}</Table.Td>
-                    <Table.Td>{rowData.taskName}</Table.Td>
+                    <Table.Td>{rowData.title}</Table.Td>
                     <Table.Td>{rowData.Category}</Table.Td>
                     <Table.Td>{rowData.Level}</Table.Td>
                     <Table.Td>{rowData.Skills}</Table.Td>

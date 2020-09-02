@@ -13,6 +13,7 @@ import moment from 'moment';
 import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
+import taskMock from '../components/task.manager/mock/newTaskMock.json';
 
 const cleanObject = obj => {
   for (var k in obj) {
@@ -354,9 +355,20 @@ function* fetchTask({ payload: docId }) {
 }
 
 function* createTask({ payload: { data } }) {
+  const uid = yield select(getUID);
+  debugger;
   try {
-    yield api.resource.createResource('tasks', data);
+    const taskId = yield api.resource.createResource('tasks', {
+      ...data,
+      created: new Date(),
+      ownerId: uid,
+      body: JSON.stringify(taskMock),
+    });
+
+    debugger;
+
     yield put(resourceActions.createTask.success());
+    yield fetchTask({ payload: taskId });
   } catch (err) {
     yield put(resourceActions.createTask.failure(err));
   }

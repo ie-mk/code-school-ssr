@@ -9,54 +9,13 @@ import styled from 'styled-components';
 // import { userActions } from '../../store/actions';
 import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
-import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
-import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
-import { userActions, resourceActions } from '../../../../../store/actions';
+import { resourceActions } from '../../../../../store/actions';
+
 const StyledError = styled.div`
   color: red;
 `;
 
-const categoryarr = [
-  { show: 'Choose category', value: '' },
-  { show: 'development', value: 'development' },
-  { show: 'testing', value: 'testing' },
-];
-const categoryoptions = categoryarr.map(k => {
-  return (
-    <option key={k.show} value={k.value}>
-      {k.show}
-    </option>
-  );
-});
-
-const skillarr = [
-  { show: 'Choose Skill', value: '' },
-  { show: 'Html', value: 'Html' },
-  { show: 'Php', value: 'Php' },
-];
-const skilloptions = skillarr.map(k => {
-  return (
-    <option key={k.show} value={k.value}>
-      {k.show}
-    </option>
-  );
-});
-
-const levelarr = [
-  { show: 'Choose Level', value: '' },
-  { show: 'Beginner', value: 'Beginner' },
-  { show: 'Intermidate', value: 'Intermidate' },
-  { show: 'Advance', value: 'Advance' },
-];
-const leveloptions = levelarr.map(k => {
-  return (
-    <option key={k.show} value={k.value}>
-      {k.show}
-    </option>
-  );
-});
 const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
   const handleCancel = () => {
     setEdit(false);
@@ -68,7 +27,7 @@ const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
       <Styled.RowContainer>
         {editTask ? (
           <div>
-            Task Name <i class="fa fa-angle-right" aria-hidden="true" />
+            Task Name <i className="fa fa-angle-right" aria-hidden="true" />
             <Styled.Title isStrong={true} textDecor={true}>
               EdIT
             </Styled.Title>
@@ -94,73 +53,16 @@ const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
           setTimeout(() => setSubmitting(false), 1000);
         }}
       >
-        {({ values, handleSubmit, setFieldValue }) => (
+        {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Styled.InputRow>
               <AdminInput
-                name="taskName"
+                name="title"
                 type="text"
-                label="Task Name"
-                placeholder="Enter course title"
+                label="Task Title"
+                placeholder="Enter Task Title..."
                 width="100%"
-              />
-            </Styled.InputRow>
-            <Styled.InputRow>
-              <AdminDropDown
-                classNameString="select"
-                name="category"
-                label="Category"
-                component="select"
-                dropdownWidth="300px"
-                placeholder="Choose Category"
-                options={categoryoptions}
-              />
-              <AdminDropDown
-                classNameString="select"
-                name="Skill"
-                label="Skill"
-                component="select"
-                dropdownWidth="300px"
-                placeholder="Choose Skill"
-                options={skilloptions}
-              />
-              <AdminDropDown
-                classNameString="select"
-                name="level"
-                label="Level"
-                component="select"
-                dropdownWidth="300px"
-                placeholder="Choose Level"
-                options={leveloptions}
-              />
-            </Styled.InputRow>
-
-            <Styled.InputRow>
-              <AdminTextArea
-                name="taskBrief"
-                rows="10"
-                cols="110"
-                component="textarea"
-                label="Task Brief"
-                width="100%"
-              />
-            </Styled.InputRow>
-            <Styled.InputRow>
-              <AdminTextArea
-                name="taskChallenge"
-                rows="10"
-                cols="110"
-                component="textarea"
-                label="Task Challenge"
-                width="100%"
-              />
-            </Styled.InputRow>
-            <Styled.InputRow>
-              <AdminInput
-                name="taskLink"
-                type="text"
-                label="Task Link"
-                width="100%"
+                border={true}
               />
             </Styled.InputRow>
             <Styled.ButtonWrapper>
@@ -170,6 +72,7 @@ const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
                 borderRadius="sm"
                 height="45px"
                 size="sm"
+                submit={true}
               >
                 Save
               </Button>
@@ -192,13 +95,7 @@ const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
 };
 
 const initialFormValues = {
-  taskName: '',
-  level: '',
-  skill: '',
-  category: '',
-  taskBrief: '',
-  taskChallenge: '',
-  taskLink: '',
+  title: '',
 };
 
 export default connect()(AddNew);
