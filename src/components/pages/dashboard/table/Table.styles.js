@@ -39,7 +39,6 @@ const Th = styled.th`
   }
 `;
 const Tbody = styled.tbody`
-  height: 50px;
   overflow-y: auto;
   overflow-x: hidden;
 `;

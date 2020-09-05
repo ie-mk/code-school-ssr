@@ -16,11 +16,20 @@ const StyledError = styled.div`
   color: red;
 `;
 
-const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
+const AddNew = ({
+  editTask,
+  setEdit,
+  editTaskId,
+  setNewAdd,
+  dispatch,
+  tasks,
+}) => {
   const handleCancel = () => {
     setEdit(false);
     setNewAdd(false);
   };
+
+  const task = tasks[editTaskId];
 
   return (
     <ContainerBase paddingLeft="xxxl" paddingRight="xxxl">
@@ -40,17 +49,25 @@ const AddNew = ({ editTask, setEdit, setNewAdd, dispatch }) => {
       </Styled.RowContainer>
 
       <Formik
-        initialValues={initialFormValues}
+        initialValues={{ ...initialFormValues, ...task }}
         enableReinitialize={true}
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           dispatch(
-            resourceActions.createTask.request({
-              data: values,
-            }),
+            editTask
+              ? resourceActions.updateTask.request({
+                  docId: editTaskId,
+                  data: values,
+                })
+              : resourceActions.createTask.request({
+                  data: values,
+                }),
           );
-          setTimeout(() => setSubmitting(false), 1000);
+          setTimeout(() => {
+            setSubmitting(false);
+            setEdit(false);
+          }, 400);
         }}
       >
         {({ handleSubmit }) => (
@@ -98,4 +115,8 @@ const initialFormValues = {
   title: '',
 };
 
-export default connect()(AddNew);
+const mapStateToProps = state => ({
+  tasks: state.tasks.data,
+});
+
+export default connect(mapStateToProps)(AddNew);

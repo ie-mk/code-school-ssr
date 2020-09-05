@@ -14,6 +14,7 @@ import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
 import taskMock from '../components/task.manager/mock/newTaskMock.json';
+import Router from 'next/router';
 
 const cleanObject = obj => {
   for (var k in obj) {
@@ -356,7 +357,7 @@ function* fetchTask({ payload: docId }) {
 
 function* createTask({ payload: { data } }) {
   const uid = yield select(getUID);
-  debugger;
+
   try {
     const taskId = yield api.resource.createResource('tasks', {
       ...data,
@@ -365,10 +366,11 @@ function* createTask({ payload: { data } }) {
       body: JSON.stringify(taskMock),
     });
 
-    debugger;
-
     yield put(resourceActions.createTask.success());
     yield fetchTask({ payload: taskId });
+
+    const url = `/editor?taskId=${taskId}`;
+    Router.push(url, url, { shallow: true });
   } catch (err) {
     yield put(resourceActions.createTask.failure(err));
   }
@@ -378,6 +380,7 @@ function* updateTask({ payload: { docId, data } }) {
   try {
     yield api.resource.updateResource(`tasks/${docId}`, data);
     yield put(resourceActions.updateTask.success());
+    yield fetchTask({ payload: docId });
   } catch (err) {
     yield put(resourceActions.updateTask.failure(err));
   }

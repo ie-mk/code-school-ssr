@@ -8,8 +8,9 @@ import { Formik } from 'formik';
 import CustomAdminDropDown from './customAdminDropDown/CustomAdminDropDown';
 import AddNewTask from './addNew/AddNew';
 import { resourceActions } from '../../../../store/actions';
+import SpinnerLarge from '../../../foundation/spinner/SpinnerLarge';
 
-const PracticalTasks = ({ dispatch, tasks }) => {
+const PracticalTasks = ({ dispatch, tasks, loading }) => {
   const columnHeaders = [
     'S.No',
     'Task Name',
@@ -22,6 +23,7 @@ const PracticalTasks = ({ dispatch, tasks }) => {
 
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [editTaskId, setEditTaskId] = useState(null);
 
   useEffect(() => {
     dispatch(resourceActions.fetchTasks.request({}));
@@ -29,6 +31,7 @@ const PracticalTasks = ({ dispatch, tasks }) => {
 
   return (
     <>
+      {loading ? <SpinnerLarge /> : null}
       {!newAdd && !edit ? (
         <ContainerBase marginTop="30px">
           <Formik>
@@ -76,22 +79,24 @@ const PracticalTasks = ({ dispatch, tasks }) => {
                     </Table.Td>
                     <Table.Td>
                       <Button
-                        margin="22px"
-                        width="100px"
-                        height="48px"
+                        margin="0 10px 0 0"
                         type="action"
-                        fontSize="20px"
+                        fontSize="12px"
                         borderRadius="sm"
-                        onClick={() => setEdit(true)}
+                        size="sm"
+                        onClick={() => {
+                          setEditTaskId(id);
+                          setEdit(true);
+                        }}
                       >
                         Edit
                       </Button>
                       <Button
-                        width="100px"
-                        height="48px"
+                        margin="0 10px 0 0"
                         type="action"
-                        fontSize="20px"
+                        fontSize="12px"
                         borderRadius="sm"
+                        size="sm"
                         onClick={() => {}}
                       >
                         Delete
@@ -118,7 +123,12 @@ const PracticalTasks = ({ dispatch, tasks }) => {
         </ContainerBase>
       ) : (
         <ContainerBase>
-          <AddNewTask editTask={edit} setEdit={setEdit} setNewAdd={setNewAdd} />
+          <AddNewTask
+            editTask={edit}
+            editTaskId={editTaskId}
+            setEdit={setEdit}
+            setNewAdd={setNewAdd}
+          />
         </ContainerBase>
       )}
     </>
@@ -128,5 +138,6 @@ const PracticalTasks = ({ dispatch, tasks }) => {
 const mapStateToProps = state => ({
   profile: state.user.loginProviderData,
   tasks: state.tasks.data,
+  loading: state.tasks.loading,
 });
 export default connect(mapStateToProps)(PracticalTasks);
