@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Split from 'react-split';
 import { connect } from 'react-redux';
 import { Desc } from './desc';
@@ -7,12 +7,15 @@ import { Sandpack } from './sandpack';
 import './Task.manager.scss';
 import { useRouter } from 'next/router';
 import { resourceActions } from '../../store/actions';
+import { canEditTask } from '../../store/selectors';
 
-function TaskManager({ dispatch, onFileChange, tasks }) {
+function TaskManager({ dispatch, onFileChange, tasks, canEditTask }) {
   const router = useRouter();
   const {
     query: { stepIndex, solutionIndex, taskId },
   } = router;
+
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     dispatch(resourceActions.fetchTask.request(taskId));
@@ -36,8 +39,13 @@ function TaskManager({ dispatch, onFileChange, tasks }) {
   return (
     <Split className="task-manager" sizes={[20, 80]} gutterSize={5}>
       <div className="task-manager-left">
-        <Stepnav task={task} />
-        <Desc step={$step} />
+        <Stepnav task={task} editMode={editMode} />
+        <Desc
+          step={$step}
+          canEditTask={canEditTask}
+          setEditMode={setEditMode}
+          editMode={editMode}
+        />
       </div>
       <Sandpack step={$step} onFileChange={onFileChange} />
     </Split>
@@ -46,6 +54,7 @@ function TaskManager({ dispatch, onFileChange, tasks }) {
 
 const mapStateToProps = state => ({
   tasks: state.tasks.data,
+  canEditTask: canEditTask(state),
 });
 
 export default connect(mapStateToProps)(TaskManager);

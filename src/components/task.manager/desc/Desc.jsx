@@ -1,27 +1,54 @@
 import React from 'react';
 import { Icon } from '../icon';
-import './Desc.scss';
+//import './Desc.scss';
+import Styled from './Desc.styles';
 
-function Desc(props) {
-  const { step } = props;
-  const { desc } = step;
-  const { children } = desc;
+const EditMenu = () => <Styled.ElementEditMenu>Edit</Styled.ElementEditMenu>;
 
-  return <div className="task-manager-desc">{children.map(Element)}</div>;
-}
-
-function Element(el, i) {
+const Element = ({ el, idx, editMode }) => {
   if (typeof el === 'string') return el;
 
   const Tag = el.type;
 
-  const children = [].concat(el.children).map(Element);
+  const children = []
+    .concat(el.children)
+    .map((child, i) => (
+      <Element key={i} el={child} idx={i} editMode={editMode} />
+    ));
 
   return (
-    <Tag key={i}>
-      <Icon icon={el.icon} />
-      {children}
-    </Tag>
+    <>
+      {editMode ? <EditMenu /> : null}
+      <Tag>
+        <Icon icon={el.icon} />
+        {children}
+      </Tag>
+    </>
+  );
+};
+
+function Desc({ step, canEditTask, setEditMode, editMode }) {
+  const { desc } = step;
+  const { children } = desc;
+
+  return (
+    <>
+      {canEditTask ? (
+        <Styled.EditButton
+          editMode={editMode}
+          onClick={() => {
+            setEditMode(!editMode);
+          }}
+        >
+          {editMode ? 'SAVE TASK' : 'Edit Task'}
+        </Styled.EditButton>
+      ) : null}
+      <Styled.TaskManagerWrapper>
+        {children.map((child, idx) => (
+          <Element key={idx} el={child} idx={idx} editMode={editMode} />
+        ))}
+      </Styled.TaskManagerWrapper>
+    </>
   );
 }
 
