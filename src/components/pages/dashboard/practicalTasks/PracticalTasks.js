@@ -9,6 +9,7 @@ import CustomAdminDropDown from './customAdminDropDown/CustomAdminDropDown';
 import AddNewTask from './addNew/AddNew';
 import { resourceActions } from '../../../../store/actions';
 import SpinnerLarge from '../../../foundation/spinner/SpinnerLarge';
+import { useRouter } from 'next/router';
 
 const PracticalTasks = ({ dispatch, tasks, loading }) => {
   const columnHeaders = [
@@ -28,6 +29,8 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
   useEffect(() => {
     dispatch(resourceActions.fetchTasks.request({}));
   }, []);
+
+  const router = useRouter();
 
   return (
     <>
@@ -75,7 +78,13 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
                     <Table.Td>{rowData.Skills}</Table.Td>
                     <Table.Td>
                       {' '}
-                      <img src="svg/noun_link.svg" />
+                      <Styled.Link
+                        src="svg/noun_link.svg"
+                        onClick={() => {
+                          const url = `/editor?taskId=${id}`;
+                          router.push(url, url, { shallow: true });
+                        }}
+                      />
                     </Table.Td>
                     <Table.Td>
                       <Button
@@ -89,7 +98,7 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
                           setEdit(true);
                         }}
                       >
-                        Edit
+                        Edit Title
                       </Button>
                       <Button
                         margin="0 10px 0 0"

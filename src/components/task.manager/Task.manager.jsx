@@ -18,7 +18,11 @@ function TaskManager({ dispatch, onFileChange, tasks }) {
     dispatch(resourceActions.fetchTask.request(taskId));
   }, [taskId]);
 
-  const task = tasks[taskId];
+  const task =
+    tasks &&
+    tasks[taskId] &&
+    tasks[taskId].body &&
+    JSON.parse(tasks[taskId].body);
 
   if (!task) return null;
 

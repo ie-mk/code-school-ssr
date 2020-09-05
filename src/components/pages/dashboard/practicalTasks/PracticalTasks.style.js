@@ -24,9 +24,15 @@ const ButtonWrapper = styled.div`
     margin-right: ${spacing.xxl};
   }
 `;
+
+const Link = styled.img`
+  cursor: pointer;
+`;
+
 export default {
   DropdownWrapper,
   DropdownItemWrapper,
   TableWrapper,
   ButtonWrapper,
+  Link,
 };
