@@ -3,7 +3,19 @@ import { Icon } from '../icon';
 //import './Desc.scss';
 import Styled from './Desc.styles';
 
-const EditMenu = () => <Styled.ElementEditMenu>Edit</Styled.ElementEditMenu>;
+const EditMenu = () => {
+  return (
+    <Styled.ElementEditMenu>
+      <Styled.EditHeader>Edit</Styled.EditHeader>
+      <Styled.MenuContent>
+        <Styled.MenuItem>
+          Delete <i className="fa fa-close" />{' '}
+        </Styled.MenuItem>
+        <Styled.MenuItem>Update</Styled.MenuItem>
+      </Styled.MenuContent>
+    </Styled.ElementEditMenu>
+  );
+};
 
 const Element = ({ el, idx, editMode }) => {
   if (typeof el === 'string') return el;
@@ -17,13 +29,13 @@ const Element = ({ el, idx, editMode }) => {
     ));
 
   return (
-    <>
+    <Styled.ElementWrapper>
       {editMode ? <EditMenu /> : null}
       <Tag>
         <Icon icon={el.icon} />
         {children}
       </Tag>
-    </>
+    </Styled.ElementWrapper>
   );
 };
 
