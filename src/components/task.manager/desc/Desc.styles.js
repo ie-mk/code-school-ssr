@@ -20,9 +20,11 @@ const TaskManagerWrapper = styled.div`
 `;
 
 const EditButton = styled.button`
-  padding: 9px;
+  padding: 3px 7px;
   background-color: ${({ editMode }) => (editMode ? 'lightgreen' : 'orange')};
   cursor: pointer;
+  margin-left: 10px;
+  border-radius: 3px;
 `;
 
 const MenuContent = styled.div`
@@ -55,6 +57,10 @@ const MenuItem = styled.div`
   align-items: center;
   border-bottom: 1px solid orange;
   padding: 4px 10px;
+  i {
+    display: inline-block;
+    margin-left: 5px;
+  }
   :last-child {
     border-bottom: none;
   }

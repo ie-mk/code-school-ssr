@@ -1,39 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Icon } from '../icon';
 //import './Desc.scss';
 import Styled from './Desc.styles';
+import FlexContainer from '../../foundation/FlexContainer';
+import EditMenu from './EditMenu';
 
-const EditMenu = () => {
-  return (
-    <Styled.ElementEditMenu>
-      <Styled.EditHeader>Edit</Styled.EditHeader>
-      <Styled.MenuContent>
-        <Styled.MenuItem>
-          Delete <i className="fa fa-close" />{' '}
-        </Styled.MenuItem>
-        <Styled.MenuItem>Update</Styled.MenuItem>
-      </Styled.MenuContent>
-    </Styled.ElementEditMenu>
-  );
-};
-
-const Element = ({ el, idx, editMode }) => {
+const Element = ({
+  el,
+  editMode,
+  setRerender,
+  topParent,
+  elementAccessPath,
+}) => {
   if (typeof el === 'string') return el;
 
   const Tag = el.type;
 
-  const children = []
-    .concat(el.children)
-    .map((child, i) => (
-      <Element key={i} el={child} idx={i} editMode={editMode} />
-    ));
+  const children = el.children;
 
   return (
     <Styled.ElementWrapper>
-      {editMode ? <EditMenu /> : null}
+      {editMode ? (
+        <EditMenu
+          topParent={topParent}
+          setRerender={setRerender}
+          elementAccessPath={elementAccessPath}
+        />
+      ) : null}
       <Tag>
         <Icon icon={el.icon} />
-        {children}
+        {el.text}
+        {children
+          ? children.map((child, i) => (
+              <Element
+                key={i}
+                el={child}
+                elIndex={i}
+                editMode={editMode}
+                topParent={topParent}
+                elementAccessPath={[...elementAccessPath, i]}
+                setRerender={setRerender}
+              />
+            ))
+          : null}
       </Tag>
     </Styled.ElementWrapper>
   );
@@ -43,21 +52,38 @@ function Desc({ step, canEditTask, setEditMode, editMode }) {
   const { desc } = step;
   const { children } = desc;
 
+  const [rerender, setRerender] = useState(true);
+
   return (
     <>
       {canEditTask ? (
-        <Styled.EditButton
-          editMode={editMode}
-          onClick={() => {
-            setEditMode(!editMode);
-          }}
-        >
-          {editMode ? 'SAVE TASK' : 'Edit Task'}
-        </Styled.EditButton>
+        <FlexContainer justifyContent="flex-end">
+          {editMode ? (
+            <Styled.EditButton onClick={() => setEditMode(false)}>
+              Cancel
+            </Styled.EditButton>
+          ) : null}
+          <Styled.EditButton
+            editMode={editMode}
+            onClick={() => {
+              setEditMode(!editMode);
+            }}
+          >
+            {editMode ? 'Save Task' : 'Edit Task'}
+          </Styled.EditButton>
+        </FlexContainer>
       ) : null}
-      <Styled.TaskManagerWrapper>
+      <Styled.TaskManagerWrapper key={rerender}>
         {children.map((child, idx) => (
-          <Element key={idx} el={child} idx={idx} editMode={editMode} />
+          <Element
+            key={idx}
+            el={child}
+            elIndex={idx}
+            editMode={editMode}
+            setRerender={setRerender}
+            elementAccessPath={[idx]}
+            topParent={desc}
+          />
         ))}
       </Styled.TaskManagerWrapper>
     </>
