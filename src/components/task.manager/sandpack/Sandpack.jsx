@@ -13,7 +13,7 @@ import FlexContainer from '../../foundation/FlexContainer';
 import AddNewFile from './AddNewFile';
 
 export function Sandpack(props) {
-  const { step, onFileChange } = props;
+  const { step, onFileChange, canEditTask } = props;
   const { files, dependencies } = step;
 
   return (
@@ -35,7 +35,7 @@ function SandpackContent() {
       <div className="sandpack-content-left">
         <FlexContainer backgroundColor="#211D31" position="relative">
           <FileExplorer className="file-explorer" id="file-explorer" />
-          <AddNewFile />
+          {<AddNewFile />}
         </FlexContainer>
         <CodeMirror className="code-mirror" />
       </div>

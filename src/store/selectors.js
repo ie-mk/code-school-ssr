@@ -27,6 +27,10 @@ export const canEditTask = createSelector(getPermissions, perm => {
   return perm.author || perm.admin;
 });
 
+export const isRegistered = createSelector(getPermissions, perm => {
+  return perm.registered;
+});
+
 export const getUserProfileSelector = state => state.user && state.user.profile;
 
 export const getCourses = state => state.courses.data;

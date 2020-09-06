@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import styled from 'styled-components';
 import FlexContainer from '../../foundation/FlexContainer';
 import Button from '../../foundation/button/Button';
+import { canEditTask } from '../../../store/selectors';
 
 const AddButtton = styled.div`
   font-size: 25px;
@@ -22,9 +24,11 @@ const DialogBox = styled.div`
   background-color: #888888;
 `;
 
-const AddNewFile = () => {
+const AddNewFile = ({ tasks }) => {
   const [showDialogBox, setShowDialogBox] = useState(null);
   const [fileName, setFilename] = useState('');
+
+  const handleNewFileCreation = () => {};
 
   return (
     <Wrapper onClick={() => setShowDialogBox(!showDialogBox)}>
@@ -54,6 +58,7 @@ const AddNewFile = () => {
               type="secondary"
               padding="3px"
               backgroundColor="lightgreen"
+              onClick={handleNewFileCreation}
             >
               Create
             </Button>
@@ -64,4 +69,10 @@ const AddNewFile = () => {
   );
 };
 
-export default AddNewFile;
+const mapStateToProps = state => ({
+  tasks: state.tasks.data,
+  canEditTask: canEditTask(state),
+  loading: state.tasks.loading,
+});
+
+export default connect(mapStateToProps)(AddNewFile);

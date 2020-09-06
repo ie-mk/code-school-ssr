@@ -7,10 +7,17 @@ import { Sandpack } from './sandpack';
 import './Task.manager.scss';
 import { useRouter } from 'next/router';
 import { resourceActions } from '../../store/actions';
-import { canEditTask } from '../../store/selectors';
+import { canEditTask, isRegistered } from '../../store/selectors';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
 
-function TaskManager({ dispatch, onFileChange, tasks, canEditTask, loading }) {
+function TaskManager({
+  dispatch,
+  onFileChange,
+  tasks,
+  canEditTask,
+  loading,
+  isRegistered,
+}) {
   const router = useRouter();
   const {
     query: { stepIndex, solutionIndex, taskId },
@@ -62,7 +69,12 @@ function TaskManager({ dispatch, onFileChange, tasks, canEditTask, loading }) {
             saveTask={saveTask}
           />
         </div>
-        <Sandpack step={$step} onFileChange={onFileChange} />
+        <Sandpack
+          canEditTask={canEditTask}
+          step={$step}
+          onFileChange={onFileChange}
+          isRegistered={isRegistered}
+        />
       </Split>
     </>
   );
@@ -72,6 +84,7 @@ const mapStateToProps = state => ({
   tasks: state.tasks.data,
   canEditTask: canEditTask(state),
   loading: state.tasks.loading,
+  isRegistered: isRegistered(state),
 });
 
 export default connect(mapStateToProps)(TaskManager);
