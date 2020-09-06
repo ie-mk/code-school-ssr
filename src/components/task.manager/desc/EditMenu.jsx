@@ -53,7 +53,9 @@ const EditMenu = ({ topParent, elementAccessPath, setRerender }) => {
         />
       ) : null}
       <Styled.ElementEditMenu>
-        <Styled.EditHeader>Edit</Styled.EditHeader>
+        <Styled.EditHeader>
+          <i className="fa fa-edit" />{' '}
+        </Styled.EditHeader>
         <Styled.MenuContent>
           <Styled.MenuItem onClick={handleElementDelete}>
             Delete <i className="fa fa-close" />{' '}

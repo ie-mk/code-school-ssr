@@ -72,7 +72,7 @@ function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
                 setEditMode(true);
               }}
             >
-              Edit Task
+              Edit Description
             </Styled.EditButton>
           ) : null}
           {editMode ? (
@@ -82,7 +82,7 @@ function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
                 saveTask();
               }}
             >
-              Save Task
+              Save Description
             </Styled.EditButton>
           ) : null}
         </FlexContainer>
