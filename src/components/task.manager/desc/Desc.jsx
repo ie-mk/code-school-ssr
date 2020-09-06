@@ -28,6 +28,7 @@ const Element = ({
         />
       ) : null}
       <Tag>
+        {editMode ? <Styled.Tag>{`<${Tag}>`}</Styled.Tag> : null}
         <Icon icon={el.icon} />
         {el.text}
         {children
@@ -43,12 +44,13 @@ const Element = ({
               />
             ))
           : null}
+        {editMode ? <Styled.Tag>{`</${Tag}>`}</Styled.Tag> : null}
       </Tag>
     </Styled.ElementWrapper>
   );
 };
 
-function Desc({ step, canEditTask, setEditMode, editMode }) {
+function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
   const { desc } = step;
   const { children } = desc;
 
@@ -57,20 +59,32 @@ function Desc({ step, canEditTask, setEditMode, editMode }) {
   return (
     <>
       {canEditTask ? (
-        <FlexContainer justifyContent="flex-end">
+        <FlexContainer justifyContent="flex-end" padding="5px">
           {editMode ? (
             <Styled.EditButton onClick={() => setEditMode(false)}>
               Cancel
             </Styled.EditButton>
           ) : null}
-          <Styled.EditButton
-            editMode={editMode}
-            onClick={() => {
-              setEditMode(!editMode);
-            }}
-          >
-            {editMode ? 'Save Task' : 'Edit Task'}
-          </Styled.EditButton>
+          {!editMode ? (
+            <Styled.EditButton
+              editMode={editMode}
+              onClick={() => {
+                setEditMode(true);
+              }}
+            >
+              Edit Task
+            </Styled.EditButton>
+          ) : null}
+          {editMode ? (
+            <Styled.EditButton
+              editMode={editMode}
+              onClick={() => {
+                saveTask();
+              }}
+            >
+              Save Task
+            </Styled.EditButton>
+          ) : null}
         </FlexContainer>
       ) : null}
       <Styled.TaskManagerWrapper key={rerender}>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
 
 const TaskManagerWrapper = styled.div`
   --background-color: white;
@@ -75,6 +76,34 @@ const ElementWrapper = styled.div`
   position: relative;
 `;
 
+const Tag = styled.span`
+  color: darkred;
+`;
+
+const AddElementWrapper = styled.div`
+  width: 70%;
+  position: absolute;
+  background-color: lightgray;
+  border: 1px solid orange;
+  padding: 5px;
+  top: 0;
+  left: 0;
+  z-index: 9;
+`;
+
+const FormField = styled(Field)`
+  width: 100%;
+  padding: 2px; 5px;
+`;
+
+const FormButton = styled.button`
+  padding: 3px 7px;
+  background-color: ${({ submit }) => (submit ? 'lightgreen' : 'orange')};
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 3px;
+`;
+
 export default {
   TaskManagerWrapper,
   EditButton,
@@ -83,4 +112,8 @@ export default {
   MenuItem,
   EditHeader,
   ElementWrapper,
+  Tag,
+  AddElementWrapper,
+  FormField,
+  FormButton,
 };

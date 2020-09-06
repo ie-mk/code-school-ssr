@@ -1,7 +1,11 @@
 import Styled from './Desc.styles';
-import React from 'react';
+import React, { useState } from 'react';
+import AddElement from './AddElement';
 
 const EditMenu = ({ topParent, elementAccessPath, setRerender }) => {
+  const [showAddElementDialog, setShowAddElementDialog] = useState(false);
+  const [newElPosition, setNewElPosition] = useState(null);
+
   const handleElementDelete = () => {
     if (confirm('Are you sure you want to delete the element?')) {
       const levelsDown = elementAccessPath.length;
@@ -38,15 +42,41 @@ const EditMenu = ({ topParent, elementAccessPath, setRerender }) => {
   };
 
   return (
-    <Styled.ElementEditMenu>
-      <Styled.EditHeader>Edit</Styled.EditHeader>
-      <Styled.MenuContent>
-        <Styled.MenuItem onClick={handleElementDelete}>
-          Delete <i className="fa fa-close" />{' '}
-        </Styled.MenuItem>
-        <Styled.MenuItem>Update</Styled.MenuItem>
-      </Styled.MenuContent>
-    </Styled.ElementEditMenu>
+    <>
+      {showAddElementDialog ? (
+        <AddElement
+          setShowAddElementDialog={setShowAddElementDialog}
+          elementAccessPath={elementAccessPath}
+          topParent={topParent}
+          newElPosition={newElPosition}
+          setRerender={setRerender}
+        />
+      ) : null}
+      <Styled.ElementEditMenu>
+        <Styled.EditHeader>Edit</Styled.EditHeader>
+        <Styled.MenuContent>
+          <Styled.MenuItem onClick={handleElementDelete}>
+            Delete <i className="fa fa-close" />{' '}
+          </Styled.MenuItem>
+          <Styled.MenuItem
+            onClick={() => {
+              setShowAddElementDialog(true);
+              setNewElPosition('asChild');
+            }}
+          >
+            Add child
+          </Styled.MenuItem>
+          <Styled.MenuItem
+            onClick={() => {
+              setShowAddElementDialog(true);
+              setNewElPosition('after');
+            }}
+          >
+            Add After
+          </Styled.MenuItem>
+        </Styled.MenuContent>
+      </Styled.ElementEditMenu>
+    </>
   );
 };
 
