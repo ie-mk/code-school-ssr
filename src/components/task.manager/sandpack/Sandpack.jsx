@@ -9,6 +9,8 @@ import {
 } from 'react-smooshpack';
 import 'react-smooshpack/dist/styles.css';
 import './Sandpack.scss';
+import FlexContainer from '../../foundation/FlexContainer';
+import AddNewFile from './AddNewFile';
 
 export function Sandpack(props) {
   const { step, onFileChange } = props;
@@ -31,7 +33,10 @@ function SandpackContent() {
   return (
     <Split className="sandpack-content" sizes={[50, 50]} gutterSize={5}>
       <div className="sandpack-content-left">
-        <FileExplorer className="file-explorer" id="file-explorer" />
+        <FlexContainer backgroundColor="#211D31" position="relative">
+          <FileExplorer className="file-explorer" id="file-explorer" />
+          <AddNewFile />
+        </FlexContainer>
         <CodeMirror className="code-mirror" />
       </div>
       <div className="sandpack-content-right">

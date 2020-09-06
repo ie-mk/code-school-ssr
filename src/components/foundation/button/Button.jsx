@@ -61,9 +61,10 @@ const ButtonWrapper = styled.button`
     paddingMap[padding] ? paddingMap[padding] : padding};
   background: ${({ styleType }) =>
     backGroundMap[styleType] ? backGroundMap[styleType] : 'transparent'};
-  border-radius: 2px;
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ? backgroundColor : ''};
   border-radius: ${({ borderRadius }) =>
-    borderRadiusMap[borderRadius] ? borderRadiusMap[borderRadius] : 'none'};
+    borderRadiusMap[borderRadius] ? borderRadiusMap[borderRadius] : '2px'};
   border: ${({ styleType }) =>
     borderMap[styleType] ? borderMap[styleType] : 'none'};
   cursor: pointer;
