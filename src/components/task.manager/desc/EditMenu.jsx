@@ -2,7 +2,7 @@ import Styled from './Desc.styles';
 import React, { useState } from 'react';
 import AddElement from './AddElement';
 
-const EditMenu = ({ topParent, elementAccessPath, setRerender }) => {
+const EditMenu = ({ topParent, elementAccessPath, setRerender, root }) => {
   const [showAddElementDialog, setShowAddElementDialog] = useState(false);
   const [newElPosition, setNewElPosition] = useState(null);
 

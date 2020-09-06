@@ -4,6 +4,7 @@ import { Icon } from '../icon';
 import Styled from './Desc.styles';
 import FlexContainer from '../../foundation/FlexContainer';
 import EditMenu from './EditMenu';
+import AddNewRootElement from './AddNewRootElement';
 
 const Element = ({
   el,
@@ -22,6 +23,7 @@ const Element = ({
     <Styled.ElementWrapper>
       {editMode ? (
         <EditMenu
+          root={true}
           topParent={topParent}
           setRerender={setRerender}
           elementAccessPath={elementAccessPath}
@@ -99,6 +101,13 @@ function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
             topParent={desc}
           />
         ))}
+        {editMode ? (
+          <AddNewRootElement
+            setRerender={setRerender}
+            elementAccessPath={[(children && children.length) || 0]}
+            topParent={desc}
+          />
+        ) : null}
       </Styled.TaskManagerWrapper>
     </>
   );
