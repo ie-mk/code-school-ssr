@@ -1,13 +1,12 @@
 import React, { useState, memo } from 'react';
 import Styled from './CourseDescription.styles';
 import { connect } from 'react-redux';
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, useFormikContext } from 'formik';
 import styled from 'styled-components';
 import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import AdminDropDown from '../../../../foundation/dropdown/AdminDropDown';
 import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
-import AdminUploadImage from '../../../../foundation/pictureUploader/PictureUploader';
 import Button from '../../../../foundation/button/Button';
 import { spacing } from '../../../../../constants/styles';
 import { getEditableCourseData } from '../../../../../store/selectors';
@@ -21,7 +20,22 @@ import PictureUploader from '../../../../foundation/pictureUploader/PictureUploa
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import ResponsiveImage from '../../../../foundation/ResponsiveImage';
 
-const CourseDescription = ({ dispatch, editableCourseData }) => {
+const SubmitFormFromOutside = ({ forceDescriptionSubmit }) => {
+  // Grab values and submitForm from context
+  const { submitForm } = useFormikContext();
+  React.useEffect(() => {
+    if (forceDescriptionSubmit) {
+      submitForm();
+    }
+  }, [submitForm, forceDescriptionSubmit]);
+  return null;
+};
+
+const CourseDescription = ({
+  dispatch,
+  editableCourseData,
+  forceDescriptionSubmit,
+}) => {
   const published = editableCourseData.published;
 
   const handlePublish = e => {
@@ -179,6 +193,9 @@ const CourseDescription = ({ dispatch, editableCourseData }) => {
                 Update Description
               </Button>
             </ContainerBase>
+            <SubmitFormFromOutside
+              forceDescriptionSubmit={forceDescriptionSubmit}
+            />
           </form>
         )}
       </Formik>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CourseDescription from '../courseDesctiption/CourseDescription';
 import { ContainerBase } from '../../../../foundation';
 import CourseChapter from '../courseChapter/CourseChapter';
@@ -17,21 +17,28 @@ const EditCourse = ({ dispatch, courseId, courseData, loading }) => {
     dispatch(resourceActions.fetchChapters.request(courseId));
   }, []);
 
+  const [forceDescriptionSubmit, setForceDescriptionSubmit] = useState(false);
+
   const chapters = courseData && courseData.chapters;
   const editedOnDate = courseData && courseData.editedOnDate;
 
   const handleCreateNewChapter = () => {
-    dispatch(
-      resourceActions.createChapter.request({
-        sequenceNr: Object.keys(chapters).length + 1,
-      }),
-    );
+    setForceDescriptionSubmit(true);
+
+    setTimeout(() => {
+      setForceDescriptionSubmit(false);
+      dispatch(
+        resourceActions.createChapter.request({
+          sequenceNr: Object.keys(chapters).length + 1,
+        }),
+      );
+    }, 500);
   };
 
   return (
     <ContainerBase key={editedOnDate}>
       {loading && <SpinnerLarge />}
-      <CourseDescription />
+      <CourseDescription forceDescriptionSubmit={forceDescriptionSubmit} />
       {chapters &&
         Object.keys(chapters)
           .sort(
