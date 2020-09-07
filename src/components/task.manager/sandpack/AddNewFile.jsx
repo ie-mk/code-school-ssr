@@ -4,7 +4,7 @@ import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
 import styled from 'styled-components';
 import FlexContainer from '../../foundation/FlexContainer';
 import Button from '../../foundation/button/Button';
-import { canEditTask } from '../../../store/selectors';
+import { canEditTask, isRegistered } from '../../../store/selectors';
 
 const AddButtton = styled.div`
   font-size: 25px;
@@ -24,9 +24,13 @@ const DialogBox = styled.div`
   background-color: #888888;
 `;
 
-const AddNewFile = ({ tasks }) => {
+const AddNewFile = ({ isRegistered, step }) => {
   const [showDialogBox, setShowDialogBox] = useState(null);
   const [fileName, setFilename] = useState('');
+
+  if (!isRegistered) return null;
+
+  console.log('---step: ', step);
 
   const handleNewFileCreation = () => {};
 
@@ -72,6 +76,7 @@ const AddNewFile = ({ tasks }) => {
 const mapStateToProps = state => ({
   tasks: state.tasks.data,
   canEditTask: canEditTask(state),
+  isRegistered: isRegistered(state),
   loading: state.tasks.loading,
 });
 
