@@ -32,7 +32,9 @@ const AddNewFile = ({ isRegistered, step }) => {
 
   console.log('---step: ', step);
 
-  const handleNewFileCreation = () => {};
+  const handleNewFileCreation = () => {
+    const files = step.files;
+  };
 
   return (
     <Wrapper onClick={() => setShowDialogBox(!showDialogBox)}>
