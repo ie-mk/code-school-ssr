@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
+import ContainerBase from '../../foundation/ContainerBase';
 import styled from 'styled-components';
 import FlexContainer from '../../foundation/FlexContainer';
 import Button from '../../foundation/button/Button';
@@ -24,24 +24,60 @@ const DialogBox = styled.div`
   background-color: #888888;
 `;
 
-const AddNewFile = ({ isRegistered, step }) => {
+const AddNewFile = ({ isRegistered, step, forceRerender, canEditTask }) => {
   const [showDialogBox, setShowDialogBox] = useState(null);
   const [fileName, setFilename] = useState('');
+  const [operation, setOperation] = useState(null);
+  const [filesToDelete, setFilesToDelete] = useState({});
 
-  if (!isRegistered) return null;
+  if (!(isRegistered || canEditTask)) return null;
 
-  console.log('---step: ', step);
+  const files = step.files;
 
   const handleNewFileCreation = () => {
-    const files = step.files;
+    const str = `/${fileName}`;
+
+    if (files.str) {
+      confirm('This file name exists already');
+      return;
+    }
+    files[str] = {
+      code: '',
+    };
+    forceRerender(new Date().getTime());
   };
 
+  const handleDialog = val => {
+    setShowDialogBox(!showDialogBox);
+    setOperation(val);
+  };
+
+  const handleDeleteCheckbox = (checked, str) => {
+    if (checked) {
+      filesToDelete[str] = true;
+    } else {
+      delete filesToDelete[str];
+    }
+  };
+
+  const hanldeDeletion = () => {
+    if (confirm('Are you sure you want to delete these files?')) {
+      Object.keys(filesToDelete).forEach(str => {
+        delete files[str];
+      });
+      forceRerender(new Date().getTime());
+    }
+  };
+
+  const fileNames = files && Object.keys(files);
+
   return (
-    <Wrapper onClick={() => setShowDialogBox(!showDialogBox)}>
-      <CenteredFlexContainer margin="0" padding="8px">
-        <AddButtton>+</AddButtton>
-      </CenteredFlexContainer>
-      {showDialogBox ? (
+    <Wrapper>
+      <FlexContainer margin="0" padding="8px">
+        <AddButtton onClick={() => handleDialog('add')}>+</AddButtton>
+        <AddButtton onClick={() => handleDialog('delete')}>-</AddButtton>
+      </FlexContainer>
+      {showDialogBox && operation === 'add' ? (
         <DialogBox onClick={e => e.stopPropagation()}>
           <header>Add new file</header>
           <input
@@ -67,6 +103,42 @@ const AddNewFile = ({ isRegistered, step }) => {
               onClick={handleNewFileCreation}
             >
               Create
+            </Button>
+          </FlexContainer>
+        </DialogBox>
+      ) : null}
+      {showDialogBox && operation === 'delete' ? (
+        <DialogBox onClick={e => e.stopPropagation()}>
+          <header>Select files to delete</header>
+          <ContainerBase marginTop="20px">
+            {fileNames.map(str => (
+              <div>
+                <input
+                  type="checkbox"
+                  onChange={e => handleDeleteCheckbox(e.target.checked, str)}
+                  checked={filesToDelete[str]}
+                />{' '}
+                {str}
+              </div>
+            ))}
+          </ContainerBase>
+          <FlexContainer marginTop="10px" justifyContent="flex-end">
+            <Button
+              onClick={() => setShowDialogBox(false)}
+              padding="3px"
+              backgroundColor="lightgray"
+              type="secondary"
+            >
+              Cancel
+            </Button>
+            <Button
+              margin="0"
+              type="secondary"
+              padding="3px"
+              backgroundColor="lightgreen"
+              onClick={hanldeDeletion}
+            >
+              Delete
             </Button>
           </FlexContainer>
         </DialogBox>

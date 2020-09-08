@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Split from 'react-split';
 import {
   FileExplorer,
@@ -12,30 +12,13 @@ import './Sandpack.scss';
 import FlexContainer from '../../foundation/FlexContainer';
 import AddNewFile from './AddNewFile';
 
-export function Sandpack(props) {
-  const { step, onFileChange } = props;
-  const { files, dependencies } = step;
-
-  return (
-    <SandpackProvider
-      files={files}
-      dependencies={dependencies}
-      showOpenInCodeSandbox={false}
-      onFileChange={onFileChange}
-      entry="/index.js"
-    >
-      <SandpackConsumer>{getSandpackContent(step)}</SandpackConsumer>
-    </SandpackProvider>
-  );
-}
-
-const getSandpackContent = step => () => {
+const getSandpackContent = (step, forceRerender) => () => {
   return (
     <Split className="sandpack-content" sizes={[50, 50]} gutterSize={5}>
       <div className="sandpack-content-left">
         <FlexContainer backgroundColor="#211D31" position="relative">
           <FileExplorer className="file-explorer" id="file-explorer" />
-          <AddNewFile step={step} />
+          <AddNewFile step={step} forceRerender={forceRerender} />
         </FlexContainer>
         <CodeMirror className="code-mirror" />
       </div>
@@ -45,3 +28,25 @@ const getSandpackContent = step => () => {
     </Split>
   );
 };
+
+export function Sandpack(props) {
+  const { step, onFileChange } = props;
+  const { files, dependencies } = step;
+
+  const [renderTime, forceRerender] = useState(new Date().getTime());
+
+  return (
+    <SandpackProvider
+      key={renderTime}
+      files={files}
+      dependencies={dependencies}
+      showOpenInCodeSandbox={false}
+      onFileChange={onFileChange}
+      entry="/index.js"
+    >
+      <SandpackConsumer>
+        {getSandpackContent(step, forceRerender)}
+      </SandpackConsumer>
+    </SandpackProvider>
+  );
+}
