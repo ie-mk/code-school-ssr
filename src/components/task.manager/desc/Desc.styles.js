@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import Button from '../../foundation/button/Button';
 
 const TaskManagerWrapper = styled.div`
   --background-color: white;
@@ -104,6 +105,12 @@ const FormButton = styled.button`
   border-radius: 3px;
 `;
 
+const SaveButton = styled(Button)`
+  color: black;
+  background-color: lightgreen;
+  border: 2px solid black;
+`;
+
 export default {
   TaskManagerWrapper,
   EditButton,
@@ -116,4 +123,5 @@ export default {
   AddElementWrapper,
   FormField,
   FormButton,
+  SaveButton,
 };

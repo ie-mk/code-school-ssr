@@ -61,7 +61,17 @@ function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
   return (
     <>
       {canEditTask ? (
-        <FlexContainer justifyContent="flex-end" padding="5px">
+        <FlexContainer justifyContent="space-between" padding="5px">
+          <Styled.SaveButton
+            type="secondary"
+            size="md"
+            padding="5px 10px"
+            onClick={() => {
+              saveTask();
+            }}
+          >
+            Save Task
+          </Styled.SaveButton>
           {editMode ? (
             <Styled.EditButton onClick={() => setEditMode(false)}>
               Cancel
@@ -77,16 +87,16 @@ function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
               Edit Description
             </Styled.EditButton>
           ) : null}
-          {editMode ? (
-            <Styled.EditButton
-              editMode={editMode}
-              onClick={() => {
-                saveTask();
-              }}
-            >
-              Save Description
-            </Styled.EditButton>
-          ) : null}
+          {/*{editMode ? (*/}
+          {/*  <Styled.EditButton*/}
+          {/*    editMode={editMode}*/}
+          {/*    onClick={() => {*/}
+          {/*      saveTask();*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    Save Description*/}
+          {/*  </Styled.EditButton>*/}
+          {/*) : null}*/}
         </FlexContainer>
       ) : null}
       <Styled.TaskManagerWrapper key={rerender}>

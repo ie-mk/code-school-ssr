@@ -1,6 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import ErrorBoundary from '../components/ErrorBoundary';
+import needsLoginWrapper from '../utils/needsLoginWrapper';
 // import mock from '../components/task.manager/mock/mock.json';
 
 const TaskManager = dynamic(
@@ -15,9 +16,9 @@ const Editor = () => {
 
   return (
     <ErrorBoundary>
-      <TaskManager onFileChange={console.log.bind(null, 'onFileChange')} />
+      <TaskManager />
     </ErrorBoundary>
   );
 };
 
-export default Editor;
+export default needsLoginWrapper(Editor);

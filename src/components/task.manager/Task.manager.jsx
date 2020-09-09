@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Split from 'react-split';
 import { connect } from 'react-redux';
 import { Desc } from './desc';
@@ -9,15 +9,9 @@ import { useRouter } from 'next/router';
 import { resourceActions } from '../../store/actions';
 import { canEditTask, isRegistered } from '../../store/selectors';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
+import debounce from 'lodash.debounce';
 
-function TaskManager({
-  dispatch,
-  onFileChange,
-  tasks,
-  canEditTask,
-  loading,
-  isRegistered,
-}) {
+function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   const router = useRouter();
   const {
     query: { stepIndex, solutionIndex, taskId },
@@ -46,14 +40,26 @@ function TaskManager({
     );
   };
 
+  let $step;
+
+  if (task) {
+    const { steps } = task;
+
+    const step = steps[(stepIndex && Number(stepIndex)) || 0];
+    const { solutions } = step;
+    const solution = solutionIndex && solutions[Number(solutionIndex)];
+    $step = solution || step;
+  }
+
+  const onFileChange = useCallback(
+    debounce(files => {
+      $step.files = files;
+      console.log('files updated');
+    }, 1000),
+    [$step],
+  );
+
   if (!task) return null;
-
-  const { steps } = task;
-
-  const step = steps[(stepIndex && Number(stepIndex)) || 0];
-  const { solutions } = step;
-  const solution = solutionIndex && solutions[Number(solutionIndex)];
-  const $step = solution || step;
 
   return (
     <>
