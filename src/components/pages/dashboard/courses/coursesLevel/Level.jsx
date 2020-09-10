@@ -49,6 +49,18 @@ const Level = ({ courses, learningPathData, heading }) => {
                 const course = courses[courseId];
                 if (!course) return null;
 
+                const title = course.title;
+                // skip test courses rendering if contains test
+                if (
+                  title &&
+                  typeof title === 'string' &&
+                  title.toLowerCase().includes('test') &&
+                  window &&
+                  window.location.hostname !== 'localhost'
+                ) {
+                  return null;
+                }
+
                 return (
                   <ProfileLearning
                     key={i}
