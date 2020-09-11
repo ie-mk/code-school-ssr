@@ -301,6 +301,13 @@ export const courseReducer = handleActions(
       state,
       { payload: { courseId, data } },
     ) => {
+      const chapterId = data && Object.keys(data)[0];
+
+      if (!chapterId && courseId) {
+        console.error('not enough data');
+        return state;
+      }
+
       const newState = {
         ...state,
         // we need this line only to trigger recalculate in the selector
@@ -310,12 +317,19 @@ export const courseReducer = handleActions(
       };
 
       try {
+        // we want to preserve lessons
+        const lessons = {
+          ...newState.data[courseId].chapters[chapterId].lessons,
+        };
+
         // we need to create new objects for the data so it is caught by React and selectors
         newState.data[courseId] = { ...state.data[courseId] };
         newState.data[courseId].chapters = {
           ...state.data[courseId].chapters,
           ...data,
         };
+
+        newState.data[courseId].chapters[chapterId].lessons = lessons;
       } catch (e) {
         //
       }
