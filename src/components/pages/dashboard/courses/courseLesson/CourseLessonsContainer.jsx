@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 let CourseLessonsContainer = ({
   dispatch,
-  data: lessons = {},
+  lessons = {},
   chapterId,
   courseId,
 }) => {
