@@ -1,9 +1,16 @@
 import Styled from './Desc.styles';
 import React, { useState } from 'react';
 import AddElement from './AddElement';
+import UpdateElement from './UpdateElement';
 
-const EditMenu = ({ topParent, elementAccessPath, setRerender, root }) => {
+const EditMenu = ({
+  topParent,
+  elementAccessPath,
+  setRerender,
+  elementValues,
+}) => {
   const [showAddElementDialog, setShowAddElementDialog] = useState(false);
+  const [showUpdateElementDialog, setShowUpdateElementDialog] = useState(false);
   const [newElPosition, setNewElPosition] = useState(null);
 
   const handleElementDelete = () => {
@@ -52,6 +59,15 @@ const EditMenu = ({ topParent, elementAccessPath, setRerender, root }) => {
           setRerender={setRerender}
         />
       ) : null}
+      {showUpdateElementDialog ? (
+        <UpdateElement
+          setShowUpdateElementDialog={setShowUpdateElementDialog}
+          elementAccessPath={elementAccessPath}
+          topParent={topParent}
+          setRerender={setRerender}
+          elementValues={elementValues}
+        />
+      ) : null}
       <Styled.ElementEditMenu>
         <Styled.EditHeader>
           <i className="fa fa-edit" />{' '}
@@ -59,6 +75,13 @@ const EditMenu = ({ topParent, elementAccessPath, setRerender, root }) => {
         <Styled.MenuContent>
           <Styled.MenuItem onClick={handleElementDelete}>
             Delete <i className="fa fa-close" />{' '}
+          </Styled.MenuItem>
+          <Styled.MenuItem
+            onClick={() => {
+              setShowUpdateElementDialog(true);
+            }}
+          >
+            Update
           </Styled.MenuItem>
           <Styled.MenuItem
             onClick={() => {

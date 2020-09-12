@@ -17,9 +17,10 @@ const AddElement = ({
     let newChildren;
     let i = 0;
 
-    let newElemIndex = elementAccessPath[i] + 1;
+    let newElemIndex;
 
     while (i < levelsDown) {
+      newElemIndex = elementAccessPath[i] + 1;
       // we want to navigate down the tree
       // and get parent one level up where the element is
       if (i < levelsDown - 1) {
@@ -107,7 +108,7 @@ const AddElement = ({
   };
 
   const initialValues = {
-    tag: 'p',
+    tag: '',
     text: '',
   };
 

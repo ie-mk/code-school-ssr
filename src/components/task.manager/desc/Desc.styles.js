@@ -95,6 +95,7 @@ const AddElementWrapper = styled.div`
 const FormField = styled(Field)`
   width: 100%;
   padding: 2px; 5px;
+  margin-bottom: 10px;
 `;
 
 const FormButton = styled.button`
@@ -121,6 +122,7 @@ export default {
   ElementWrapper,
   Tag,
   AddElementWrapper,
+  UpdateElementWrapper: AddElementWrapper,
   FormField,
   FormButton,
   SaveButton,

@@ -27,6 +27,7 @@ const Element = ({
           topParent={topParent}
           setRerender={setRerender}
           elementAccessPath={elementAccessPath}
+          elementValues={el}
         />
       ) : null}
       <Tag>
