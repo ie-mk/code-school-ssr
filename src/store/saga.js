@@ -319,7 +319,6 @@ function* updateCourseEditedTime() {
       editedOnDate: moment().format(),
     });
     yield put(resourceActions.updateCourse.success());
-    yield fetchCourse({ payload: courseId });
   } catch (err) {
     yield put(resourceActions.updateCourse.failure(err));
   }
@@ -459,12 +458,7 @@ function* createChapter({ payload: { sequenceNr } }) {
     if (createdChapterId) {
       yield put(resourceActions.createChapter.success());
       yield fetchChapter({ payload: createdChapterId });
-      yield updateCourse({
-        payload: courseId,
-        data: {
-          editedOnDate: new Date(),
-        },
-      });
+      yield updateCourseEditedTime();
     } else {
       throw 'create course chapter fail';
     }
@@ -480,6 +474,7 @@ function* updateChapter({ payload: { chapterId, data } }) {
       `courses/${courseId}/chapters/${chapterId}`,
       data,
     );
+    yield updateCourseEditedTime();
     yield put(resourceActions.updateChapter.success());
     yield fetchChapter({ payload: chapterId });
   } catch (err) {
