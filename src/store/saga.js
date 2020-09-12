@@ -449,7 +449,7 @@ function* createChapter({ payload: { sequenceNr } }) {
     const createdChapterId = yield api.resource.createResource(
       `courses/${courseId}/chapters`,
       {
-        created: moment().format(),
+        created: new Date(),
         parentId: courseId,
         ownerId: uid,
         sequenceNr,
@@ -457,8 +457,14 @@ function* createChapter({ payload: { sequenceNr } }) {
     );
 
     if (createdChapterId) {
-      yield put(resourceActions.createChapter.success(createdChapterId));
+      yield put(resourceActions.createChapter.success());
       yield fetchChapter({ payload: createdChapterId });
+      yield updateCourse({
+        payload: courseId,
+        data: {
+          editedOnDate: new Date(),
+        },
+      });
     } else {
       throw 'create course chapter fail';
     }
