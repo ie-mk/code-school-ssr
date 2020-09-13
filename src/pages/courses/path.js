@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../store/actions';
-import { LEARNING_PATH_VALUES, LEARNING_PATH, LEVEL } from '../../constants';
+import { LEARNING_PATH } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
 import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
 import CoursesLevel from '../../components/pages/dashboard/courses/coursesLevel/CoursesLevel';
@@ -31,6 +31,7 @@ const Path = ({ dispatch, courses, learningPaths }) => {
         resourceActions.fetchCourses.request({
           queries: {
             learningPath: ['==', title],
+            published: ['==', true],
           },
         }),
       );

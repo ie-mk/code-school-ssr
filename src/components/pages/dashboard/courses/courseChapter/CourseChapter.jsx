@@ -9,8 +9,16 @@ import { resourceActions } from '../../../../../store/actions';
 import Button from '../../../../foundation/button/Button';
 import FlexContainer from '../../../../foundation/FlexContainer';
 import CourseLessonsContainer from '../courseLesson/CourseLessonsContainer';
+import { getLessonsByChapterId } from '../../../../../store/selectors';
 
-const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
+const CourseChapter = ({
+  dispatch,
+  courseId,
+  chapterId,
+  data,
+  idx,
+  lessonsByChapter,
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
@@ -19,7 +27,6 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
         resourceActions.fetchLessons.request({
           courseId,
           chapterId,
-          //forceFetch: true,
         }),
       );
   }, [expanded]);
@@ -30,10 +37,7 @@ const CourseChapter = ({ dispatch, courseId, chapterId, data, idx }) => {
     }
   };
 
-  const lessons = data.lessons;
-
-  // console.log(`=========== chapter rendered id: ${chapterId}`);
-  // console.log('+++++++++++ chapter data: ', data);
+  const lessons = lessonsByChapter[chapterId] || {};
 
   return (
     <ContainerBase paddingLeft="xl" paddingRight="xl">
@@ -122,4 +126,8 @@ const initialFormValues = {
   sequenceNr: '',
 };
 
-export default connect()(CourseChapter);
+const mapStateToProps = state => ({
+  lessonsByChapter: getLessonsByChapterId(state),
+});
+
+export default connect(mapStateToProps)(CourseChapter);

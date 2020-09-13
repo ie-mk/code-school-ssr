@@ -3,13 +3,14 @@ import Styled from './ChapterContent.styles';
 import CollapseContainer from '../../../../foundation/collapseContainer';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
+import { getLessonsByChapterId } from '../../../../../store/selectors';
 
 const ChapterContent = ({
   dispatch,
   chapterId,
   chapters,
   courseId,
-  chapterIdx,
+  lessonsByChapter,
 }) => {
   const chapter = chapters[chapterId];
   const title = 'Chapter ' + chapter.sequenceNr + ' : ' + chapter.title;
@@ -23,9 +24,7 @@ const ChapterContent = ({
     );
   }, []);
 
-  const lessons = chapter.lessons;
-
-  console.log('rajesh' + lessons);
+  const lessons = lessonsByChapter[chapterId] || {};
 
   return (
     <Styled.Wrapper>
@@ -38,7 +37,6 @@ const ChapterContent = ({
               if (!lesson) return null;
               const title =
                 'Lesson ' + lesson.sequenceNr + ' : ' + lesson.title;
-              console.log('mm' + title);
               return (
                 <Styled.ContentWrapper key={i}>
                   <div>{title}</div>
@@ -52,4 +50,8 @@ const ChapterContent = ({
   );
 };
 
-export default connect()(ChapterContent);
+const mapStateToProps = state => ({
+  lessonsByChapter: getLessonsByChapterId(state),
+});
+
+export default connect(mapStateToProps)(ChapterContent);

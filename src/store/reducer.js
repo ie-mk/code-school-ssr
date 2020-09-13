@@ -219,26 +219,7 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.updateCourse }),
     ...getAsyncReducers({ action: resourceActions.deleteCourse }),
     ...getAsyncReducers({ action: resourceActions.fetchCourses }),
-    ...getAsyncReducers({
-      action: resourceActions.fetchCourse,
-      exclude: { success: true },
-    }),
-
-    [resourceActions.fetchCourse.success.type]: (
-      state,
-      { payload: { courseId, course } },
-    ) => {
-      const newState = {
-        ...state,
-      };
-      // we want to keep chapters;
-      const chapters = state.data[courseId].chapters;
-
-      newState.data[courseId] = course;
-      newState.data[courseId].chapters = chapters;
-
-      return newState;
-    },
+    ...getAsyncReducers({ action: resourceActions.fetchCourse }),
 
     [resourceActions.resetCourses]: state => ({
       ...state,
@@ -269,99 +250,24 @@ export const courseReducer = handleActions(
 
     ...getAsyncReducers({
       action: resourceActions.fetchChapters,
-      exclude: { success: true },
+      resultProp: 'chapters',
     }),
-
-    [resourceActions.fetchChapters.success.type]: (
-      state,
-      { payload: { courseId, chapters } },
-    ) => {
-      const newState = {
-        ...state,
-        // we need this line only to trigger recalculate in the selector
-        // as otherwise data stays same object and the selector will return prev value
-        data: { ...state.data },
-        loading: false,
-      };
-
-      const newCourseData = { ...state.data[courseId] };
-      newCourseData.chapters = chapters;
-
-      newState.data[courseId] = newCourseData;
-
-      return newState;
-    },
 
     ...getAsyncReducers({
       action: resourceActions.fetchChapter,
-      exclude: { success: true },
+      resultProp: 'chapters',
     }),
-
-    [resourceActions.fetchChapter.success.type]: (
-      state,
-      { payload: { courseId, data } },
-    ) => {
-      const chapterId = data && Object.keys(data)[0];
-
-      if (!chapterId || !courseId) {
-        console.error('not enough data');
-        return state;
-      }
-
-      const newState = {
-        ...state,
-        // we need this line only to trigger recalculate in the selector
-        // as otherwise data stays same object and the selector will return prev value
-        data: { ...state.data },
-        loading: false,
-      };
-
-      try {
-        let lessons;
-        const chapters = newState.data[courseId].chapters;
-        const existinglessons =
-          chapters && chapters[chapterId] && chapters[chapterId].lessons;
-        // we want to preserve lessons
-        if (existinglessons) {
-          lessons = {
-            ...existinglessons,
-          };
-        }
-
-        // we need to create new objects for the data so it is caught by React and selectors
-        newState.data[courseId] = { ...state.data[courseId] };
-        newState.data[courseId].chapters = {
-          ...state.data[courseId].chapters,
-          ...data,
-        };
-
-        if (existinglessons) {
-          newState.data[courseId].chapters[chapterId].lessons = lessons;
-        }
-      } catch (e) {
-        console.error('--------fetchChapter error: ', e);
-      }
-
-      return newState;
-    },
 
     [resourceActions.deleteChapterFromState]: (
       state,
-      { payload: { courseId, chapterId } },
+      { payload: chapterId },
     ) => {
       const newState = {
         ...state,
-        data: { ...state.data },
+        chapters: { ...state.chapters },
       };
 
-      const newCourseData = cloneDeep(state.data[courseId]);
-      // newCourseData.chapters = {
-      //   ...state.data[courseId].chapters,
-      // };
-
-      delete newCourseData.chapters[chapterId];
-
-      newState.data[courseId] = newCourseData;
+      delete newState.chapters[chapterId];
 
       return newState;
     },
@@ -373,101 +279,29 @@ export const courseReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.updateLesson }),
     ...getAsyncReducers({
       action: resourceActions.fetchLessons,
-      exclude: { success: true },
+      resultProp: 'lessons',
     }),
-
-    [resourceActions.fetchLessons.success.type]: (
-      state,
-      { payload: { courseId, chapterId, lessons } },
-    ) => {
-      const newState = {
-        ...state,
-        // we need this line only to trigger recalculate in the selector
-        // as otherwise data stays same object and the selector will return prev value
-        data: { ...state.data },
-        loading: false,
-      };
-
-      const newCourseData = cloneDeep(state.data[courseId]);
-
-      // newCourseData.chapters = { ...state.data[courseId].chapters };
-      //
-      // newCourseData.chapters[chapterId] = {
-      //   ...state.data[courseId].chapters[chapterId],
-      // };
-
-      newCourseData.chapters[chapterId].lessons = lessons;
-
-      newState.data[courseId] = newCourseData;
-
-      return newState;
-    },
 
     ...getAsyncReducers({
       action: resourceActions.fetchLesson,
-      exclude: { success: true },
+      resultProp: 'lessons',
     }),
 
-    [resourceActions.fetchLesson.success.type]: (
-      state,
-      { payload: { courseId, chapterId, data } },
-    ) => {
+    [resourceActions.deleteLessonFromState]: (state, { payload: lessonId }) => {
       const newState = {
         ...state,
-        // we need this line only to trigger recalculate in the selector
-        // as otherwise data stays same object and the selector will return prev value
-        data: { ...state.data },
-        loading: false,
+        lessons: { ...state.lessons },
       };
 
-      const newCourseData = cloneDeep(state.data[courseId]);
-
-      // newCourseData.chapters = { ...state.data[courseId].chapters };
-      //
-      // newCourseData.chapters[chapterId] = {
-      //   ...state.data[courseId].chapters[chapterId],
-      // };
-
-      newCourseData.chapters[chapterId].lessons = {
-        ...state.data[courseId].chapters[chapterId].lessons,
-        ...data,
-      };
-
-      newState.data[courseId] = newCourseData;
-
-      return newState;
-    },
-
-    [resourceActions.deleteLessonFromState]: (
-      state,
-      { payload: { courseId, chapterId, lessonId } },
-    ) => {
-      const newState = {
-        ...state,
-        data: { ...state.data },
-      };
-
-      const newCourseData = cloneDeep(state.data[courseId]);
-
-      // newCourseData.chapters = { ...state.data[courseId].chapters };
-      //
-      // newCourseData.chapters[chapterId] = {
-      //   ...state.data[courseId].chapters[chapterId],
-      // };
-      //
-      // newCourseData.chapters[chapterId].lessons = {
-      //   ...state.data[courseId].chapters[chapterId].lessons,
-      // };
-
-      delete newCourseData.chapters[chapterId].lessons[lessonId];
-
-      newState.data[courseId] = newCourseData;
+      delete newState.lessons[lessonId];
 
       return newState;
     },
   },
   {
     data: {},
+    chapters: {},
+    lessons: {},
     loading: false,
   },
 );

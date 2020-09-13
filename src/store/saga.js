@@ -409,12 +409,7 @@ function* fetchChapters({ payload: courseId }) {
       delete chapter.lessons;
     });
 
-    yield put(
-      resourceActions.fetchChapters.success({
-        courseId,
-        chapters,
-      }),
-    );
+    yield put(resourceActions.fetchChapters.success(chapters));
   } catch (err) {
     yield put(resourceActions.fetchChapters.failure(err));
   }
@@ -430,12 +425,7 @@ function* fetchChapter({ payload: chapterId }) {
     // clean leaking lessons which comes only partially for unknown reason
     delete chapter.lessons;
 
-    yield put(
-      resourceActions.fetchChapter.success({
-        courseId,
-        data: { [chapterId]: chapter },
-      }),
-    );
+    yield put(resourceActions.fetchChapter.success({ [chapterId]: chapter }));
   } catch (err) {
     yield put(resourceActions.fetchChapter.failure(err));
   }
@@ -489,7 +479,7 @@ function* deleteChapter({ payload: chapterId }) {
       `courses/${courseId}/chapters/${chapterId}`,
     );
     yield put(resourceActions.deleteChapter.success());
-    yield put(resourceActions.deleteChapterFromState({ courseId, chapterId }));
+    yield put(resourceActions.deleteChapterFromState(chapterId));
   } catch (err) {
     yield put(resourceActions.deleteChapter.failure(err));
   }
@@ -497,48 +487,15 @@ function* deleteChapter({ payload: chapterId }) {
 
 // ============================ LESSONS =====================================
 
-function* fetchLessons({
-  payload: { courseId, chapterId, forceFetch = false },
-}) {
-  const courses = select(getCourses);
+function* fetchLessons({ payload: { courseId, chapterId } }) {
+  try {
+    const lessons = yield api.resource.fetchResources(
+      `courses/${courseId}/chapters/${chapterId}/lessons`,
+    );
 
-  const checkIfcourseFetched = () => {
-    return courses && courses[courseId];
-  };
-  // we want to make sure that the course data has been fetched already
-  // otherwise if the course data are fetched later it will override the data
-  // with empty object
-  if (!checkIfcourseFetched) {
-    setTimeout(() => {
-      fetchLessons({
-        payload: { courseId, chapterId },
-      });
-    }, 100);
-    return;
-  }
-
-  // skip fetching
-  // const chapter = courses[courseId].chapters[chapterId];
-  // if (!forceFetch && chapter && Object.keys(chapter.lessons).length > 0) return;
-
-  yield fetchData();
-
-  function* fetchData() {
-    try {
-      const lessons = yield api.resource.fetchResources(
-        `courses/${courseId}/chapters/${chapterId}/lessons`,
-      );
-
-      yield put(
-        resourceActions.fetchLessons.success({
-          courseId,
-          chapterId,
-          lessons,
-        }),
-      );
-    } catch (err) {
-      yield put(resourceActions.fetchLessons.failure(err));
-    }
+    yield put(resourceActions.fetchLessons.success(lessons));
+  } catch (err) {
+    yield put(resourceActions.fetchLessons.failure(err));
   }
 }
 
@@ -547,13 +504,7 @@ function* fetchLesson({ payload: { courseId, chapterId, lessonId } }) {
     const result = yield api.resource.fetchResource(
       `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
     );
-    yield put(
-      resourceActions.fetchLesson.success({
-        courseId,
-        chapterId,
-        data: { [lessonId]: result },
-      }),
-    );
+    yield put(resourceActions.fetchLesson.success({ [lessonId]: result }));
   } catch (err) {
     yield put(resourceActions.fetchLesson.failure(err));
   }
@@ -566,17 +517,16 @@ function* createLesson({ payload: { chapterId, sequenceNr } }) {
     const createdLessonId = yield api.resource.createResource(
       `courses/${courseId}/chapters/${chapterId}/lessons`,
       {
-        created: moment().format(),
+        created: new Date(),
         parentId: chapterId,
-        courseId: courseId,
+        courseId,
         ownerId: uid,
         sequenceNr,
       },
     );
     if (createdLessonId) {
       yield put(resourceActions.createLesson.success(createdLessonId));
-      // yield updateCourseEditedTime();
-      // yield fetchCourse({ payload: courseId });
+      yield updateCourseEditedTime();
       yield fetchLesson({
         payload: { courseId, chapterId, lessonId: createdLessonId },
       });
@@ -595,8 +545,6 @@ function* updateLesson({ payload: { chapterId, lessonId, data } }) {
       `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
       data,
     );
-    // yield updateCourseEditedTime();
-    // yield fetchCourse({ payload: courseId });
     yield put(resourceActions.updateLesson.success());
     yield fetchLesson({ payload: { courseId, chapterId, lessonId } });
   } catch (err) {
@@ -610,11 +558,7 @@ function* deleteLesson({ payload: { courseId, chapterId, lessonId } }) {
       `courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`,
     );
     yield put(resourceActions.deleteLesson.success());
-    // yield updateCourseEditedTime();
-    // yield fetchCourse({ payload: courseId });
-    yield put(
-      resourceActions.deleteLessonFromState({ courseId, chapterId, lessonId }),
-    );
+    yield put(resourceActions.deleteLessonFromState(lessonId));
   } catch (err) {
     yield put(resourceActions.deleteLesson.failure(err));
   }

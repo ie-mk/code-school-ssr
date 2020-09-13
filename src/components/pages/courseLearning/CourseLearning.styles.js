@@ -27,7 +27,7 @@ export const Lesson = styled.div`
   margin: 57px 0 0 0;
   ${media.belowTabletLarge`
   margin: 25px 0 0 0;
-  
+
   `}
 `;
 
@@ -74,19 +74,8 @@ const MobileVideoWrapper = styled.div`
 `;
 const DesktopVideoWrapper = styled.div`
   position: relative;
-  width: 100%;
-  padding: 40%;
-
-  video {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  ${media.belowTabletLarge`
-      
-   `}
+  margin-bottom: ${spacing.xl};
+  margin-top: 30px;
 `;
 
 const LessonWrapper = styled.div`
@@ -157,7 +146,7 @@ export const MenuShowWrapper = styled.div`
   height: 60px;
   border-radius: 0 10px 10px 0;
   padding:5px;
-  
+
   `}
 `;
 
@@ -170,7 +159,7 @@ export const CourseHome = styled.div`
   transition: all 0.5s ease-in;
   ${media.belowTabletLarge`
   padding: 30px 30px 41px 46px;
-  
+
   `}
 `;
 

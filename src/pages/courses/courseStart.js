@@ -3,12 +3,12 @@ import ErrorBoundary from '../../components/ErrorBoundary';
 import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
-import { getCourses, getLearningPaths } from '../../store/selectors';
+import { getChaptersByCourseId, getCourses } from '../../store/selectors';
 import CourseHeader from '../../components/pages/dashboard/courses/courseHeader/CourseHeader';
 import CourseOutline from '../../components/pages/dashboard/courses/courseOutline/CourseOutline';
 import { resourceActions } from '../../store/actions';
 
-const CourseStart = ({ dispatch, courses }) => {
+const CourseStart = ({ dispatch, courses, chaptersByCourse }) => {
   const {
     query: { courseId },
   } = useRouter();
@@ -24,7 +24,7 @@ const CourseStart = ({ dispatch, courses }) => {
   let courseTitle = course.title;
   courseTitle = courseTitle && courseTitle.toUpperCase();
 
-  const chapters = course.chapters;
+  const chapters = chaptersByCourse[courseId] || {};
 
   return (
     <ErrorBoundary>
@@ -41,6 +41,7 @@ const CourseStart = ({ dispatch, courses }) => {
 
 const mapStateToProps = state => ({
   courses: getCourses(state),
+  chaptersByCourse: getChaptersByCourseId(state),
 });
 
 export default connect(mapStateToProps)(CourseStart);
