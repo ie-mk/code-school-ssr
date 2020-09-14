@@ -5,11 +5,17 @@ import ContainerBase from '../../../../foundation/ContainerBase';
 import { spacing } from '../../../../../constants/styles';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
-import { getCourses } from '../../../../../store/selectors';
+import { getCourses, getUID } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
 import { LEARNING_PATH, LEVEL } from '../../../../../constants';
 
-const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
+const CoursesTable = ({
+  dispatch,
+  courses,
+  showPublished,
+  setActiveTab,
+  uid,
+}) => {
   useEffect(() => {
     dispatch(resourceActions.resetCourses());
 
@@ -96,6 +102,7 @@ const CoursesTable = ({ dispatch, courses, showPublished, setActiveTab }) => {
 
 const mapStateToProps = state => ({
   courses: getCourses(state),
+  uid: getUID(state),
 });
 
 export default connect(mapStateToProps)(CoursesTable);
