@@ -272,7 +272,7 @@ function* fetchCourse({ payload: courseId }) {
     // clean leaking chapters which comes only partially for unknown reason
     delete course.chapters;
 
-    yield put(resourceActions.fetchCourse.success({ courseId, course }));
+    yield put(resourceActions.fetchCourse.success({ [courseId]: course }));
   } catch (err) {
     yield put(resourceActions.fetchCourse.failure(err));
   }
