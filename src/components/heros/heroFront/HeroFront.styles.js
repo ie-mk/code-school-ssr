@@ -21,6 +21,7 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   ${media.aboveTablet`
     justify-content: space-around;

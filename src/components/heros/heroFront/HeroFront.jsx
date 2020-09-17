@@ -39,15 +39,12 @@ const HeroFront = () => {
             <Styled.TextLine>at Code School, London</Styled.TextLine>
           </Styled.TextWrapper>
           <Styled.SignupContainer>
-            <ContainerBase padding="60px 40px">
+            <ContainerBase padding="90px 80px">
               <Text48 text="Want to be notifiend when we launch?" />
             </ContainerBase>
             <Styled.ButtonWrapper>
-              <Button size="lg" type="primary">
-                COURSES
-              </Button>
-              <Button size="lg" type="secondary" onClick={getInTouch}>
-                GET IN TOUCH
+              <Button width="50%" size="lg" type="primary">
+                SIGN UP
               </Button>
             </Styled.ButtonWrapper>
           </Styled.SignupContainer>
