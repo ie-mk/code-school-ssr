@@ -33,7 +33,6 @@ Scenario: LOGGED IN create course
     And I click button Update Chapter
     And I click on AddLesson button
     And I click on edit button in "chapter-1-edit-lesson-1"
-  #  And I click on edit button in lesson 1
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_Introduction |
       | Lesson Breif | skywalk |
@@ -45,7 +44,6 @@ Scenario: LOGGED IN create course
     And I click on AddLesson button
     And I click on edit button in "chapter-1-edit-lesson-2"
 
-#    And I click on edit button in lesson 2
     And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_first |
@@ -68,7 +66,6 @@ Scenario: LOGGED IN create course
     And I click on AddLesson button
         And I wait "2000" ms
     And I click on edit button in "chapter-2-edit-lesson-1"
- #  And I click on edit button in lesson 1
        And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_1_Intro |
@@ -81,7 +78,6 @@ Scenario: LOGGED IN create course
         And I wait "2000" ms
     And I click on edit button in "chapter-2-edit-lesson-2"
 
-#    And I click on edit button in lesson 2
     And I wait "2000" ms
 
    And I fill the values of the new lesson
