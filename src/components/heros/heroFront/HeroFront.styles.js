@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1100px;
+  max-width: 1800px;
   z-index: 1;
 `;
 
@@ -29,28 +29,35 @@ const ButtonWrapper = styled.div`
   `}
 `;
 
-const HeaderWrapper = styled.div`
-  margin: 150px 50px 60px;
-  text-align: center;
-
-  ${media.aboveTablet`
-    margin: auto;
-  `}
-`;
-
 const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   margin: 0 30px 40px;
   text-align: center;
+`;
 
-  ${media.aboveTablet`
-    margin: auto;
-  `}
+const TextLine = styled.div`
+  background-color: black;
+  color: white;
+  font-size: 48px;
+  margin-bottom: 2px;
+`;
+
+const SignupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  max-width: 663px;
+  background: transparent linear-gradient(180deg, #2386d9d8 0%, #000000bc 100%);
 `;
 
 export default {
   Wrapper,
   Content,
   ButtonWrapper,
-  HeaderWrapper,
   TextWrapper,
+  TextLine,
+  SignupContainer,
 };
