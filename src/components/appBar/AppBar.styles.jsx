@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   max-width: 1400px;
   padding: 45px;
   padding-right: ${spacing.lg};
-  position: absolute;
+  //background-color: ${colors.blue};
   z-index: 8;
   ${media.belowTabletLarge`
     padding: 11px;
