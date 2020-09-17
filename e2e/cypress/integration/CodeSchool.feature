@@ -14,7 +14,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
   And I fill the values of the new course
-      | Course Title | _TEST_COURSE_12 |
+      | Course Title | _TEST_COURSE_121211 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
@@ -32,7 +32,8 @@ Scenario: LOGGED IN create course
 
     And I click button Update Chapter
     And I click on AddLesson button
-    And I click on edit button in lesson 1
+    And I click on edit button in "chapter-1-edit-lesson-1"
+  #  And I click on edit button in lesson 1
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_Introduction |
       | Lesson Breif | skywalk |
@@ -42,7 +43,9 @@ Scenario: LOGGED IN create course
 
     And I wait "2000" ms
     And I click on AddLesson button
-    And I click on edit button in lesson 2
+    And I click on edit button in "chapter-1-edit-lesson-2"
+
+#    And I click on edit button in lesson 2
     And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_first |
@@ -61,8 +64,12 @@ Scenario: LOGGED IN create course
       | Number of lessons | 20 |
 
     And I click button Update Chapter
+        And I wait "2000" ms
     And I click on AddLesson button
-    And I click on edit button in lesson 1
+        And I wait "2000" ms
+    And I click on edit button in "chapter-2-edit-lesson-1"
+ #  And I click on edit button in lesson 1
+       And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_1_Intro |
       | Lesson Breif | modi work |
@@ -71,7 +78,10 @@ Scenario: LOGGED IN create course
     And I click on save button
     And I wait "2000" ms
     And I click on AddLesson button
-    And I click on edit button in lesson 2
+        And I wait "2000" ms
+    And I click on edit button in "chapter-2-edit-lesson-2"
+
+#    And I click on edit button in lesson 2
     And I wait "2000" ms
 
    And I fill the values of the new lesson
@@ -90,10 +100,10 @@ Scenario: LOGGED IN create course
     And I navigate to courses
     And I wait "1000" ms
     And I click on Learning path "Frontend developer"
-    And I click on new course "_TEST_COURSE_12"
+    And I click on new course "_TEST_COURSE_121211"
 
     And I check created course values
-      | Course Title | _TEST_COURSE_12345 |
+      | Course Title | _TEST_COURSE_121211 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |

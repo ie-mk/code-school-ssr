@@ -114,6 +114,7 @@ const CourseChapter = ({
           courseId={courseId}
           chapterId={chapterId}
           lessons={lessons}
+          chapterNumber={idx + 1}
         />
       </Styled.Content>
     </ContainerBase>

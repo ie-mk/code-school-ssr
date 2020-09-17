@@ -29,6 +29,7 @@ let CourseLessonHeader = ({
   setEditMode,
   activeLessonId,
   setActiveLessonId,
+  chapterNumber,
 }) => {
   const deleteLesson = () => {
     if (confirm('Are you sure you want to delete this lesson?')) {
@@ -43,7 +44,7 @@ let CourseLessonHeader = ({
   };
   const active = activeLessonId === lessonId;
   const editing = active && editMode;
-
+  console.log('cp --  ', `chapter-${chapterNumber}-edit-lesson-${idx + 1}`);
   return (
     <FlexContainer
       justifyContent="space-between"
@@ -72,7 +73,8 @@ let CourseLessonHeader = ({
             ) : null}
             <CustomButton
               margin="0 20px 0 0"
-              data-test={`edit-lesson-${idx + 1}`}
+              // data-test={`edit-lesson-${idx + 1}`}
+              data-test={`chapter-${chapterNumber}-edit-lesson-${idx + 1}`}
               onClick={() => {
                 setActiveLessonId(lessonId);
                 setEditMode(true);
