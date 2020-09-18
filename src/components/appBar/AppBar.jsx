@@ -89,9 +89,9 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           {/*<MenuLink noMargin={true} href="/">*/}
           {/*  Community*/}
           {/*</MenuLink>*/}
-          <MenuLink noMargin={true} href="/stories">
-            Stories
-          </MenuLink>
+          {/*<MenuLink noMargin={true} href="/stories">*/}
+          {/*  Stories*/}
+          {/*</MenuLink>*/}
           <Styled.LoginWrapper dataTest="go-to-loginwrapper">
             {user && user.uid && isStaff && (
               <MenuLink dataTest="go-to-dashboard-page" href="/dashboard">

@@ -42,6 +42,11 @@ class MyApp extends App {
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             rel="stylesheet"
           />
+          <link
+            href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css"
+            rel="stylesheet"
+            type="text/css"
+          />
         </Head>
         <Provider store={store}>
           {/*<SetLanguageFromStoreWrapper>*/}

@@ -7,8 +7,6 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0 ${spacing.lg};
 `;
 
 const Content = styled.div`
@@ -34,8 +32,11 @@ const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin: 0 30px 40px;
-  text-align: center;
+  margin: 0 60px 0;
+  position: relative;
+  top: 40px;
+  width: 50%;
+  align-items: flex-end;
 `;
 
 const TextLine = styled.div`
@@ -43,6 +44,10 @@ const TextLine = styled.div`
   color: white;
   font-size: 48px;
   margin-bottom: 2px;
+  text-align: left;
+  padding-left: 10px;
+  float: left;
+  width: auto;
 `;
 
 const SignupContainer = styled.div`
@@ -52,6 +57,12 @@ const SignupContainer = styled.div`
   align-items: center;
   max-width: 663px;
   background: transparent linear-gradient(180deg, #2386d9d8 0%, #000000bc 100%);
+  margin-right: 30px;
+`;
+
+const TextContainer = styled.div`
+  float: right;
+  max-width: 650px;
 `;
 
 export default {
@@ -61,4 +72,5 @@ export default {
   TextWrapper,
   TextLine,
   SignupContainer,
+  TextContainer,
 };
