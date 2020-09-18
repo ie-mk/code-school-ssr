@@ -3,6 +3,7 @@ Feature: Code School UI
 
 @focus
 Scenario: LOGGED IN create course
+
     Given I navigate to platform url
     And I wait "1000" ms
     And I navigate to login page
@@ -14,7 +15,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
   And I fill the values of the new course
-      | Course Title | _TEST_COURSE_121211 |
+      | Course Title | _TEST_COURSE_50 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
@@ -51,6 +52,7 @@ Scenario: LOGGED IN create course
       | Video Link | 10:00 |
       | Assignment | moonwalkss |
     And I click on save button
+    And I wait "2000" ms
 
     And I click on open Chapter 1
 
@@ -90,20 +92,32 @@ Scenario: LOGGED IN create course
 
     And I click on Publish button
     And I wait "1000" ms
-
    Given I navigate to platform url
     And I wait "1000" ms
     And I navigate to courses
     And I wait "1000" ms
     And I click on Learning path "Frontend developer"
-    And I click on new course "_TEST_COURSE_121211"
+    And I click on new course "_TEST_COURSE_50"
 
     And I check created course values
-      | Course Title | _TEST_COURSE_121211 |
+      | Course Title | _TEST_COURSE_50 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
-      | Student rating | 4 |
       
+    And I click on chapter "_TEST_COURSE_Chapter1"
+    And I check chapter lessons
+      | Lesson 1 Title | _TEST_Lesson_Introduction |
+      | Lesson 2 Title | _TEST_Lesson_first |
+
+    And I click on chapter "_TEST_COURSE_Chapter1"
+
+    And I click on chapter "_TEST_COURSE_Chapter2"
+    And I check chapter lessons
+      | Lesson 1 Title | _TEST_Lesson_1_Intro |
+      | Lesson 2 Title | _TEST_Lesson_first |
+
+    And I click on chapter "_TEST_COURSE_Chapter2"
+
 
 #    And I open date picker
 #    And I select start date first day of the week on the date picker

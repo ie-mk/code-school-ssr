@@ -116,6 +116,15 @@ Then('I check created course values', (dataTable: any) => {
   cy.contains(dataTable.rawTable[2][1]);
 });
 
+Given('I click on chapter {string}', (name: string) => {
+  cy.contains(name).click();
+});
+
+Then('I check chapter lessons', (dataTable: any) => {
+  cy.contains(dataTable.rawTable[0][1]);
+  cy.contains(dataTable.rawTable[1][1]);
+});
+
 Then('I fill the values of the new course', (dataTable: any) => {
   cy.get('input[name="title"]')
     .clear()
