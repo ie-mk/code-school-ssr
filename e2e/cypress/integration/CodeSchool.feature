@@ -54,8 +54,6 @@ Scenario: LOGGED IN create course
     And I click on save button
     And I wait "2000" ms
 
-    And I click on open Chapter 1
-
     And I click on AddNewChapter button
     And I click on open Chapter 2
 
@@ -103,7 +101,7 @@ Scenario: LOGGED IN create course
       | Course Title | _TEST_COURSE_50 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
-      
+
     And I click on chapter "_TEST_COURSE_Chapter1"
     And I check chapter lessons
       | Lesson 1 Title | _TEST_Lesson_Introduction |
