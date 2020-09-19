@@ -116,6 +116,15 @@ Then('I check created course values', (dataTable: any) => {
   cy.contains(dataTable.rawTable[2][1]);
 });
 
+Given('I click on chapter {string}', (name: string) => {
+  cy.contains(name).click();
+});
+
+Then('I check chapter lessons', (dataTable: any) => {
+  cy.contains(dataTable.rawTable[0][1]);
+  cy.contains(dataTable.rawTable[1][1]);
+});
+
 Then('I fill the values of the new course', (dataTable: any) => {
   cy.get('input[name="title"]')
     .clear()
@@ -177,8 +186,8 @@ Given('I click on AddLesson button', () => {
     .click({ force: true });
 });
 
-Given('I click on edit button in lesson 1', () => {
-  cy.get('[data-test="edit-lesson-1"]').click({ force: true });
+Given('I click on edit button in {string}', (lesson: string) => {
+  cy.get(`[data-test="${lesson}"]`).click({ force: true });
 });
 
 Then('I fill the values of the new lesson', (dataTable: any) => {

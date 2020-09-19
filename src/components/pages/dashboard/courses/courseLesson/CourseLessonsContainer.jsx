@@ -13,6 +13,7 @@ let CourseLessonsContainer = ({
   lessons = {},
   chapterId,
   courseId,
+  chapterNumber,
 }) => {
   const createLesson = () => {
     dispatch(
@@ -49,6 +50,7 @@ let CourseLessonsContainer = ({
                   setActiveLessonId={setActiveLessonId}
                   data={lesson}
                   idx={idx}
+                  chapterNumber={chapterNumber}
                 />
               );
             })}

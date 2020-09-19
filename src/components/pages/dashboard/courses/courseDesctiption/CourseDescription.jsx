@@ -153,6 +153,7 @@ const CourseDescription = ({
                 type="button"
                 size="sm"
                 margin="26px 40px 0 0"
+                data-test="publish-button"
               >
                 {published ? 'Unpublish' : 'Publish'}
               </Button>

@@ -3,6 +3,7 @@ Feature: Code School UI
 
 @focus
 Scenario: LOGGED IN create course
+
     Given I navigate to platform url
     And I wait "1000" ms
     And I navigate to login page
@@ -14,7 +15,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
   And I fill the values of the new course
-      | Course Title | _TEST_COURSE_12 |
+      | Course Title | _TEST_COURSE_50 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
@@ -32,7 +33,7 @@ Scenario: LOGGED IN create course
 
     And I click button Update Chapter
     And I click on AddLesson button
-    And I click on edit button in lesson 1
+    And I click on edit button in "chapter-1-edit-lesson-1"
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_Introduction |
       | Lesson Breif | skywalk |
@@ -42,7 +43,8 @@ Scenario: LOGGED IN create course
 
     And I wait "2000" ms
     And I click on AddLesson button
-    And I click on edit button in lesson 2
+    And I click on edit button in "chapter-1-edit-lesson-2"
+
     And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_first |
@@ -50,8 +52,7 @@ Scenario: LOGGED IN create course
       | Video Link | 10:00 |
       | Assignment | moonwalkss |
     And I click on save button
-
-    And I click on open Chapter 1
+    And I wait "2000" ms
 
     And I click on AddNewChapter button
     And I click on open Chapter 2
@@ -61,8 +62,11 @@ Scenario: LOGGED IN create course
       | Number of lessons | 20 |
 
     And I click button Update Chapter
+        And I wait "2000" ms
     And I click on AddLesson button
-    And I click on edit button in lesson 1
+        And I wait "2000" ms
+    And I click on edit button in "chapter-2-edit-lesson-1"
+       And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_1_Intro |
       | Lesson Breif | modi work |
@@ -71,11 +75,13 @@ Scenario: LOGGED IN create course
     And I click on save button
     And I wait "2000" ms
     And I click on AddLesson button
-    And I click on edit button in lesson 2
+        And I wait "2000" ms
+    And I click on edit button in "chapter-2-edit-lesson-2"
+
     And I wait "2000" ms
 
    And I fill the values of the new lesson
-      | Lesson Title | _TEST_Lesson_first |
+      | Lesson Title | _TEST_Lesson_22 |
       | Lesson Breif | nepolian work |
       | Video Link | 10:00 |
       | Assignment | putin work |
@@ -84,20 +90,32 @@ Scenario: LOGGED IN create course
 
     And I click on Publish button
     And I wait "1000" ms
-
    Given I navigate to platform url
     And I wait "1000" ms
     And I navigate to courses
     And I wait "1000" ms
     And I click on Learning path "Frontend developer"
-    And I click on new course "_TEST_COURSE_12"
+    And I click on new course "_TEST_COURSE_50"
 
     And I check created course values
-      | Course Title | _TEST_COURSE_12345 |
+      | Course Title | _TEST_COURSE_50 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
-      | Student rating | 4 |
-      
+
+    And I click on chapter "_TEST_COURSE_Chapter1"
+    And I check chapter lessons
+      | Lesson 1 Title | _TEST_Lesson_Introduction |
+      | Lesson 2 Title | _TEST_Lesson_first |
+
+    And I click on chapter "_TEST_COURSE_Chapter1"
+
+    And I click on chapter "_TEST_COURSE_Chapter2"
+    And I check chapter lessons
+      | Lesson 1 Title | _TEST_Lesson_1_Intro |
+      | Lesson 2 Title | _TEST_Lesson_22 |
+
+    And I click on chapter "_TEST_COURSE_Chapter2"
+
 
 #    And I open date picker
 #    And I select start date first day of the week on the date picker
