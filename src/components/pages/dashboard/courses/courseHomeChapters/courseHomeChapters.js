@@ -46,7 +46,6 @@ const CourseHomeChapters = ({
   return (
     <>
       <Styled.ChapterWrapper>
-        {/*<i className="fa fa-circle fa-2x" aria-hidden="true" />*/}
         <CustomText18 margin="0 0 0 10px" text={title} />
       </Styled.ChapterWrapper>
 

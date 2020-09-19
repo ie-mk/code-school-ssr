@@ -34,7 +34,7 @@ const HeroFront = () => {
         }}
       />
       <Styled.Content>
-        <FlexContainer height="60vh" marginTop="18%">
+        <FlexContainer minHeight="60vh" marginTop="16%">
           <Styled.TextWrapper>
             <Styled.TextContainer>
               <Styled.TextLine>Join 100's of developers</Styled.TextLine>
@@ -43,15 +43,11 @@ const HeroFront = () => {
             </Styled.TextContainer>
           </Styled.TextWrapper>
           <Styled.SignupContainer>
-            <ContainerBase padding="90px 53px">
+            <ContainerBase padding="70px 53px 0">
               <Text48 text="Want to be notified when we launch?" />
             </ContainerBase>
             <VerticalSignUp />
-            <Styled.ButtonWrapper>
-              <Button width="50%" size="lg" type="primary">
-                SIGN UP
-              </Button>
-            </Styled.ButtonWrapper>
+            <Styled.SpamNotice>We won't send you a spam</Styled.SpamNotice>
           </Styled.SignupContainer>
         </FlexContainer>
       </Styled.Content>

@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Button from '../foundation/button/Button';
 
 const Wrapper = styled.div`
-  #mc_embed_signup {
-    background: #fff;
-    clear: left;
-    font: 14px Helvetica, Arial, sans-serif;
+  #mc_embed_signup_scroll {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
+    form {
+      width: 100%;
+    }
+    .email {
+      padding: 26px;
+      border-radius: 4px;
+      text-align: center;
+      background-color: #f2f2f2;
+      color: #9b9b9b;
+      font-size: 24px;
+      margin: 40px 0;
+      height: 80px;
+      width: 100%;
+    }
   }
 `;
 
 const VerticalSignUp = () => {
   const [email, setEmail] = useState('');
+
   return (
     <Wrapper>
       <div id="mc_embed_signup">
@@ -31,7 +47,7 @@ const VerticalSignUp = () => {
               name="EMAIL"
               className="email"
               id="mce-EMAIL"
-              placeholder="email address"
+              placeholder="Please enter your email"
               required
               onChange={e => setEmail(e.target.value)}
             />
@@ -48,13 +64,19 @@ const VerticalSignUp = () => {
               />
             </div>
             <div className="clear">
-              <input
-                type="submit"
-                value="Subscribe"
-                name="subscribe"
+              <Button
+                type="primary"
+                size="lg"
+                submit={true}
                 id="mc-embedded-subscribe"
-                className="button"
-              />
+                margin="0"
+                padding="18px"
+                minWidth="200px"
+                width="70%"
+                fontSize="36px"
+              >
+                SIGN UP
+              </Button>
             </div>
           </div>
         </form>

@@ -27,9 +27,8 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 65px;
   max-width: 1400px;
-  padding: 45px;
+  padding: 10px;
   padding-right: ${spacing.lg};
   //background-color: ${colors.blue};
   z-index: 8;
