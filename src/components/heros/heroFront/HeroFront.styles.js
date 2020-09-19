@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { fontSizeMap, spacing } from '../../../constants/styles';
-import media from '../../foundation/media';
+import media, { aboveTabletLarge } from '../../foundation/media';
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
@@ -12,6 +12,11 @@ const Wrapper = styled.div`
 const Content = styled.div`
   max-width: 1800px;
   z-index: 1;
+  background: transparent linear-gradient(180deg, #2386d9d8 0%, #000000bc 100%);
+
+  ${aboveTabletLarge`
+    background: none;
+  `}
 `;
 
 const ButtonWrapper = styled.div`
@@ -29,35 +34,52 @@ const ButtonWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  margin: 0 60px 0;
-  position: relative;
-  top: 40px;
-  width: 50%;
-  align-items: flex-end;
+  padding: 40px;
+
+  ${media.aboveTabletLarge`
+    width: 50%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 30px;
+  `}
 `;
 
-const TextLine = styled.div`
+const TextLine = styled.span`
   background-color: black;
   color: white;
   font-size: 48px;
   margin-bottom: 2px;
   text-align: left;
-  padding-left: 10px;
+  padding: 0 10px;
   float: left;
-  width: auto;
+  ${media.belowTabletLarge`
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 0;
+    font-size: 34px;
+  `}
 `;
 
 const SignupContainer = styled.div`
+  align-items: flex-start;
+  margin-left: 0;
+  font-size: 34px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  align-items: center;
-  max-width: 663px;
-  background: transparent linear-gradient(180deg, #2386d9d8 0%, #000000bc 100%);
-  margin-right: 30px;
+  padding: 0 30px;
+
+  ${media.aboveTabletLarge`
+    align-items: center;
+    max-width: 663px;
+    margin-right: 30px;
+    margin-bottom: 50px;
+    padding: 60px;
+    background: transparent linear-gradient(180deg, #2386d9d8 0%, #000000bc 100%);
+  `}
 `;
 
 const TextContainer = styled.div`
@@ -66,8 +88,14 @@ const TextContainer = styled.div`
 `;
 
 const SpamNotice = styled.div`
-  margin: 20px 0 30px;
-  font-size: 16px;
+  margin-top: 20px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  ${aboveTabletLarge`
+    font-size: 16px;
+     margin-top: 30px;
+  `}
 `;
 
 export default {

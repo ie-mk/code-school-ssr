@@ -62,16 +62,13 @@ const MobileMenuWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  padding: 20px 40px 20px;
-  font-size: 50px;
   color: ${colors.white};
+  padding: 5px 20px 0;
+  font-size: 32px;
   ${media.aboveTabletLarge`
     display: none;
-  `}
-
-  ${media.belowTabletLarge`
-    padding: 10px 20px 0;
-    font-size: 32px;
+    padding: 20px 40px 20px;
+    font-size: 50px;
   `}
   i {
     cursor: pointer;

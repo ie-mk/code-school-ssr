@@ -23,29 +23,41 @@ const HeroFront = () => {
     <Styled.Wrapper>
       <ResponsiveImage
         src="/img/new/Hero_Image.png"
-        height="100vh"
+        minHeight="100%"
         width="100%"
         position="absolute"
-        backGroundPosition="0 85px"
+        backGroundPosition="0 50px"
         mediaConfig={{
-          belowTabletLarge: {
+          aboveTabletLarge: {
             backgroundImage: 'url("/img/new/Hero_Image.png")',
+            backGroundPosition: '0 85px',
           },
         }}
       />
       <Styled.Content>
-        <FlexContainer minHeight="60vh" marginTop="16%">
+        <FlexContainer
+          minHeight="50vh"
+          marginTop="60px"
+          flexDirection="column"
+          mediaConfig={{
+            aboveTabletLarge: {
+              flexDirection: 'row',
+              marginTop: '100px',
+            },
+          }}
+        >
           <Styled.TextWrapper>
             <Styled.TextContainer>
-              <Styled.TextLine>Join 100's of developers</Styled.TextLine>
-              <Styled.TextLine>advancing their code skills</Styled.TextLine>
-              <Styled.TextLine>at Code School, London</Styled.TextLine>
+              <Styled.TextLine>Join 100's of</Styled.TextLine>
+              <Styled.TextLine> developers</Styled.TextLine>
+              <Styled.TextLine>advancing</Styled.TextLine>
+              <Styled.TextLine> their code skills</Styled.TextLine>
+              <Styled.TextLine>at Code School,</Styled.TextLine>
+              <Styled.TextLine> London</Styled.TextLine>
             </Styled.TextContainer>
           </Styled.TextWrapper>
           <Styled.SignupContainer>
-            <ContainerBase padding="70px 53px 0">
-              <Text48 text="Want to be notified when we launch?" />
-            </ContainerBase>
+            <Text48 text="Want to be notified when we launch?" />
             <VerticalSignUp />
             <Styled.SpamNotice>We won't send you a spam</Styled.SpamNotice>
           </Styled.SignupContainer>

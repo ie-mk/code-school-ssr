@@ -6,7 +6,7 @@ import getMedia from '../../../utils/media';
 import withSpacing from '../withSpacing';
 
 const Text = styled.div`
-  font-size: ${fontSizeMap.text};
+  font-size: 16px;
   font-weight: 400;
   color: ${({ color }) => (color ? color : colors.white)};
   margin: ${({ margin }) => margin || ''};
@@ -18,12 +18,12 @@ const Text = styled.div`
   ${({ mediaConfig }) => (mediaConfig ? getMedia(mediaConfig) : '')};
 `;
 
-const Text24 = ({ text, color }) => {
+const Text48 = ({ text, color, mediaConfig }) => {
   return (
-    <Text color={color} margin="0">
+    <Text color={color} margin="0" mediaConfig={mediaConfig}>
       {text}
     </Text>
   );
 };
 
-export default withSpacing(Text24);
+export default withSpacing(Text48);

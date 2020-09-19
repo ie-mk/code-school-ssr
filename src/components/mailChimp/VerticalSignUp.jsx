@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../foundation/button/Button';
+import { aboveMobileLarge } from '../foundation/media';
 
 const Wrapper = styled.div`
+  width: 100%;
   #mc_embed_signup_scroll {
     display: flex;
     flex-direction: column;
@@ -12,15 +14,26 @@ const Wrapper = styled.div`
       width: 100%;
     }
     .email {
-      padding: 26px;
+      padding: 16px;
       border-radius: 4px;
       text-align: center;
       background-color: #f2f2f2;
       color: #9b9b9b;
-      font-size: 24px;
-      margin: 40px 0;
-      height: 80px;
+      font-size: 16px;
+      height: 50px;
+      border: 1px solid #707070;
+
       width: 100%;
+      ::placeholder,
+      ::-webkit-input-placeholder {
+        color: #9b9b9b;
+      }
+      ${aboveMobileLarge`
+         margin: 40px 0;
+         height: 80px;
+         font-size: 24px;
+         padding: 26px;
+      `}
     }
   }
 `;
@@ -69,11 +82,17 @@ const VerticalSignUp = () => {
                 size="lg"
                 submit={true}
                 id="mc-embedded-subscribe"
-                margin="0"
-                padding="18px"
+                margin="40px 0 0"
+                padding="10px"
                 minWidth="200px"
                 width="70%"
-                fontSize="36px"
+                fontSize="24px"
+                mediaConfig={{
+                  aboveTabletLarge: {
+                    fontSize: '36px',
+                    padding: '10px',
+                  },
+                }}
               >
                 SIGN UP
               </Button>

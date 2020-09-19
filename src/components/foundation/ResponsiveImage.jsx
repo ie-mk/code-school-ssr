@@ -7,6 +7,7 @@ const ImageContainer = styled.div`
   width: ${({ width }) => width || ''};
   max-width: ${({ maxWidth }) => maxWidth || ''};
   height: ${({ height }) => height || ''};
+  min-height: ${({ minHeight }) => minHeight || ''};
   padding: ${({ padding }) => padding || ''};
   margin: ${({ margin }) => margin || ''};
   border-radius: ${({ borderRadius }) => borderRadius || ''};
