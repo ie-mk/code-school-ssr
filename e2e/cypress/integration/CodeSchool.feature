@@ -81,7 +81,7 @@ Scenario: LOGGED IN create course
     And I wait "2000" ms
 
    And I fill the values of the new lesson
-      | Lesson Title | _TEST_Lesson_first |
+      | Lesson Title | _TEST_Lesson_22 |
       | Lesson Breif | nepolian work |
       | Video Link | 10:00 |
       | Assignment | putin work |
@@ -112,7 +112,7 @@ Scenario: LOGGED IN create course
     And I click on chapter "_TEST_COURSE_Chapter2"
     And I check chapter lessons
       | Lesson 1 Title | _TEST_Lesson_1_Intro |
-      | Lesson 2 Title | _TEST_Lesson_first |
+      | Lesson 2 Title | _TEST_Lesson_22 |
 
     And I click on chapter "_TEST_COURSE_Chapter2"
 

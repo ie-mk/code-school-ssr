@@ -187,14 +187,8 @@ Given('I click on AddLesson button', () => {
 });
 
 Given('I click on edit button in {string}', (lesson: string) => {
-  cy.get(`[data-test="${lesson}"]`)
-    .last()
-    .click({ force: true });
+  cy.get(`[data-test="${lesson}"]`).click({ force: true });
 });
-
-// Given('I click on edit button in lesson 1', () => {
-//   cy.get('[data-test="edit-lesson-1"]').click({ force: true });
-// });
 
 Then('I fill the values of the new lesson', (dataTable: any) => {
   cy.get('input[data-test="lesson-title"]')
