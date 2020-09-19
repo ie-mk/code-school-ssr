@@ -65,6 +65,11 @@ const TextContainer = styled.div`
   max-width: 650px;
 `;
 
+const SpamNotice = styled.div`
+  margin: 20px 0 30px;
+  font-size: 16px;
+`;
+
 export default {
   Wrapper,
   Content,
@@ -73,4 +78,5 @@ export default {
   TextLine,
   SignupContainer,
   TextContainer,
+  SpamNotice,
 };
