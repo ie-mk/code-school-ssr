@@ -82,7 +82,7 @@ const VerticalSignUp = () => {
                 size="lg"
                 submit={true}
                 id="mc-embedded-subscribe"
-                margin="40px 0 0"
+                margin="30px 0 0"
                 padding="10px"
                 minWidth="200px"
                 width="70%"
@@ -91,6 +91,7 @@ const VerticalSignUp = () => {
                   aboveTabletLarge: {
                     fontSize: '36px',
                     padding: '10px',
+                    height: '80px',
                   },
                 }}
               >

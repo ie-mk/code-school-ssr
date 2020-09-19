@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '1200px')};
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '1400px')};
   width: 100%;
   padding: 0 ${spacing.lg};
   margin-top: ${({ hasDefaultMarginTop }) =>

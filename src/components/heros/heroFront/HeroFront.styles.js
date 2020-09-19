@@ -16,6 +16,7 @@ const Content = styled.div`
 
   ${aboveTabletLarge`
     background: none;
+    margin-top: 100px;
   `}
 `;
 

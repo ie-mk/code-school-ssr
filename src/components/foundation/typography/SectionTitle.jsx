@@ -9,15 +9,17 @@ const StyledH3 = styled.h3`
   z-index: 1;
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   margin: ${({ noMargin }) => (noMargin ? 0 : '')};
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')};
+
   ${media.belowTabletLarge`
     font-size: ${fontSizeMap.text};
     margin: ${({ mobileMargin }) => mobileMargin || ''};
   `}
 `;
 
-const SectionTitle = ({ text, textAlign, noMargin }) => {
+const SectionTitle = ({ text, textAlign, noMargin, fontWeight }) => {
   return (
-    <StyledH3 noMargin={noMargin} textAlign={textAlign}>
+    <StyledH3 noMargin={noMargin} textAlign={textAlign} fontWeight={fontWeight}>
       {text}
     </StyledH3>
   );

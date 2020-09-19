@@ -10,7 +10,7 @@ const Courses = () => {
 
   return (
     <>
-      <CourseFeatures />
+      {/*<CourseFeatures />*/}
       <PageContent>
         <ChooseLearningPath />
       </PageContent>

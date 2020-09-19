@@ -5,6 +5,7 @@ import PageContent from '../../foundation/PageContent';
 import HeroFront from '../../heros/heroFront/HeroFront';
 import SectionPictureDescButton from '../../heros/sectionPictureDescButton/SectionPictureDescButton';
 import SectionCards from '../../heros/sectionCards/SectionCards';
+import LatestVideos from '../dashboard/courses/latestVideos/LatestVideos';
 
 const Front = () => {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ const Front = () => {
     <>
       <HeroFront />
       <PageContent>
-        <SectionPictureDescButton />
+        <LatestVideos />
         <SectionCards title="How it works" />
       </PageContent>
     </>
