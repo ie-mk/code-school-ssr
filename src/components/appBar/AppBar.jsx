@@ -47,17 +47,18 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
     <ContainerBase
       display="flex"
       justifyContent="center"
-      position="absolute"
+      position="fixed"
       top="0"
       width="100%"
       ref={containerRef}
+      backgroundColor={colors.blue}
+      zIndex="99"
     >
       <Styled.Wrapper id="appBar">
         <Logo
           imgSrc="/logo/logo_with_name.png"
           width="200px"
           height="58px"
-          margin="20px 40px 0 0"
           mediaConfig={{
             belowTabletLarge: {
               margin: '0 20px 0 10px',
@@ -88,9 +89,9 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
           {/*<MenuLink noMargin={true} href="/">*/}
           {/*  Community*/}
           {/*</MenuLink>*/}
-          <MenuLink noMargin={true} href="/stories">
-            Stories
-          </MenuLink>
+          {/*<MenuLink noMargin={true} href="/stories">*/}
+          {/*  Stories*/}
+          {/*</MenuLink>*/}
           <Styled.LoginWrapper dataTest="go-to-loginwrapper">
             {user && user.uid && isStaff && (
               <MenuLink dataTest="go-to-dashboard-page" href="/dashboard">

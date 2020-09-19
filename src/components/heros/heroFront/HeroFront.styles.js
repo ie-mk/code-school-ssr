@@ -7,12 +7,10 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0 ${spacing.lg};
 `;
 
 const Content = styled.div`
-  max-width: 1100px;
+  max-width: 1800px;
   z-index: 1;
 `;
 
@@ -21,6 +19,7 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   ${media.aboveTablet`
     justify-content: space-around;
@@ -29,28 +28,49 @@ const ButtonWrapper = styled.div`
   `}
 `;
 
-const HeaderWrapper = styled.div`
-  margin: 150px 50px 60px;
-  text-align: center;
-
-  ${media.aboveTablet`
-    margin: auto;
-  `}
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0 60px 0;
+  position: relative;
+  top: 40px;
+  width: 50%;
+  align-items: flex-end;
 `;
 
-const TextWrapper = styled.div`
-  margin: 0 30px 40px;
-  text-align: center;
+const TextLine = styled.div`
+  background-color: black;
+  color: white;
+  font-size: 48px;
+  margin-bottom: 2px;
+  text-align: left;
+  padding-left: 10px;
+  float: left;
+  width: auto;
+`;
 
-  ${media.aboveTablet`
-    margin: auto;
-  `}
+const SignupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  max-width: 663px;
+  background: transparent linear-gradient(180deg, #2386d9d8 0%, #000000bc 100%);
+  margin-right: 30px;
+`;
+
+const TextContainer = styled.div`
+  float: right;
+  max-width: 650px;
 `;
 
 export default {
   Wrapper,
   Content,
   ButtonWrapper,
-  HeaderWrapper,
   TextWrapper,
+  TextLine,
+  SignupContainer,
+  TextContainer,
 };

@@ -26,6 +26,10 @@ export const table = {
   rowBackground: '#e8e8e8',
 };
 
+export const topMenu = {
+  background: '#191f36',
+};
+
 export const spacing = {
   xxxxxxl: '150px',
   xxxxxl: '100px',
@@ -82,7 +86,7 @@ export const colors = {
   pink: '#C86DD7',
   white: '#FFFFFF',
   black: '#000000',
-  blue: '#7D8399',
+  blue: '#191f36',
   bluelight: '#2385D9',
   lightBlue: '#D7DDF3',
   bluishgreen: '#0EC9B0',
