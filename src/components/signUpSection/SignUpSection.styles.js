@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('/img/new/Video_Thumbnail_01.png');
+  background: url('/img/new/Signup_Image-min.png');
   background-size: cover;
   padding: 50px;
 `;

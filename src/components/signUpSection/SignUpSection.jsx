@@ -1,6 +1,5 @@
 import React from 'react';
 import Styled from './SignUpSection.styles';
-import SectionTitle from '../foundation/typography/SectionTitle';
 import VerticalSignUp from '../mailChimp/VerticalSignUp';
 
 const SignUpSection = () => {

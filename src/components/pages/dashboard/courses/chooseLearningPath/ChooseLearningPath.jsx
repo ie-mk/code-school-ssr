@@ -17,7 +17,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
 
   return (
     <CenteredFlexContainer
-      marginTop="xxl"
+      marginTop="xxxxxl"
       marginBottom="xxxxxl"
       mediaConfig={{
         belowDesktop: {
