@@ -6,7 +6,6 @@ import Button from '../foundation/button/Button';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
 import { colors, spacing } from '../../constants/styles';
-import { useTranslation } from 'react-i18next';
 import MenuLink from '../foundation/MenuLink';
 import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
@@ -38,8 +37,6 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
       setShowMobileMenu(!showMobileMenu);
     }
   };
-
-  const { t } = useTranslation();
 
   const router = useRouter();
 
