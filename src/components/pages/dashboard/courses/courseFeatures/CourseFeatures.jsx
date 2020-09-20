@@ -19,7 +19,7 @@ const CourseFeatures = () => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src="/img/Background.png"
+        src="/img/Background-min.png"
         height="100vh"
         width="100%"
         position="absolute"
