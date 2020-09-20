@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../foundation/button/Button';
-import { aboveMobileLarge } from '../foundation/media';
+import { aboveMobileLarge, aboveTabletLarge } from '../foundation/media';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -10,6 +10,12 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    align-items: center;
+
+    ${aboveTabletLarge`
+      flex-direction: ${({ horizontal }) => (horizontal ? 'row' : 'column')}
+    `}
+
     form {
       width: 100%;
     }
@@ -22,14 +28,13 @@ const Wrapper = styled.div`
       font-size: 16px;
       height: 50px;
       border: 1px solid #707070;
-
       width: 100%;
       ::placeholder,
       ::-webkit-input-placeholder {
         color: #9b9b9b;
       }
-      ${aboveMobileLarge`
-         margin: 40px 0;
+      ${aboveTabletLarge`
+         margin: 40px 40px;
          height: 80px;
          font-size: 24px;
          padding: 26px;
@@ -38,11 +43,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const VerticalSignUp = () => {
+const VerticalSignUp = ({ horizontal }) => {
   const [email, setEmail] = useState('');
 
   return (
-    <Wrapper>
+    <Wrapper horizontal={horizontal}>
       <div id="mc_embed_signup">
         <form
           action="https://codewave.us17.list-manage.com/subscribe/post?u=20f6b0540990aef2bc7b95199&amp;id=f8a16fcd5a"
@@ -92,6 +97,7 @@ const VerticalSignUp = () => {
                     fontSize: '36px',
                     padding: '10px',
                     height: '80px',
+                    marginTop: 0,
                   },
                 }}
               >

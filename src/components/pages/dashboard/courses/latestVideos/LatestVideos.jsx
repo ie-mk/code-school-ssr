@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
-import VideoCard from '../videoCard/VideoCard';
+import VideoCard from '../../../../videoCard/VideoCard';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import FlexContainer from '../../../../foundation/FlexContainer';
 

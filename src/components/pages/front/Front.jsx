@@ -4,6 +4,7 @@ import HeroFront from '../../heros/heroFront/HeroFront';
 import SectionCards from '../../heros/sectionCards/SectionCards';
 import LatestVideos from '../dashboard/courses/latestVideos/LatestVideos';
 import WhyJoin from '../../whyJoin/WhyJoin';
+import SignUpSection from '../../signUpSection/SignUpSection';
 
 const Front = () => {
   return (
@@ -12,8 +13,8 @@ const Front = () => {
       <PageContent>
         <LatestVideos />
         <WhyJoin />
-        <SectionCards title="How it works" />
       </PageContent>
+      <SignUpSection />
     </>
   );
 };

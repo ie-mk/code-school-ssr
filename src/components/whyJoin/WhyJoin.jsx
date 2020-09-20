@@ -31,7 +31,7 @@ export const WhyCard = ({ img, descr }) => (
 
 const WhyJoin = () => {
   return (
-    <CenteredFlexContainer width="100%">
+    <CenteredFlexContainer>
       <SectionTitle
         fontWeight="400"
         noMargin={true}
@@ -43,7 +43,7 @@ const WhyJoin = () => {
           },
         }}
       />
-      <FlexContainer flexWrap="wrap">
+      <FlexContainer flexWrap="wrap" width="100%">
         {whyArr.map(({ img, descr }, idx) => {
           return <WhyCard key={idx} img={img} descr={descr} />;
         })}
