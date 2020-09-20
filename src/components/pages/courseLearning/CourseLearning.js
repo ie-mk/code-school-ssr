@@ -6,7 +6,6 @@ import Text18 from '../../foundation/typography/Text18';
 import Styled from './CourseLearning.styles';
 import FlexContainer from '../../foundation/FlexContainer';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
-import CourseHomeChapters from '../../course/courseHomeChapters/courseHomeChapters';
 import { resourceActions } from '../../../store/actions';
 // import CollapseContainer from '../../foundation/collapseContainer';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';
@@ -14,6 +13,7 @@ import {
   getChaptersByCourseId,
   getLessonsByChapterId,
 } from '../../../store/selectors';
+import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/courseHomeChapters';
 
 // var questions = [
 //   'Does these courses need any special requirements?',
@@ -84,10 +84,6 @@ const CourseLearning = ({
 
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
-
-  debugger;
-
-  console.log('course--- ', course, 'activeLesson--', activeLesson);
 
   return (
     <CenteredFlexContainer>

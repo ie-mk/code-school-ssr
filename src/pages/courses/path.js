@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { resourceActions } from '../../store/actions';
 import { LEARNING_PATH } from '../../constants';
 import { getCourses, getLearningPaths } from '../../store/selectors';
-import CoursesLearningPath from '../../components/course/coursesLearningPath/CoursesLearningPath';
-import CoursesLevel from '../../components/course/coursesLevel/CoursesLevel';
+import CoursesLearningPath from '../../components/pages/dashboard/courses/coursesLearningPath/CoursesLearningPath';
+import CoursesLevel from '../../components/pages/dashboard/courses/coursesLevel/CoursesLevel';
 
 const Path = ({ dispatch, courses, learningPaths }) => {
   const {

@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import PageContent from '../../components/foundation/PageContent';
 import { connect } from 'react-redux';
 import { getChaptersByCourseId, getCourses } from '../../store/selectors';
-import CourseHeader from '../../components/course/courseHeader/CourseHeader';
-import CourseOutline from '../../components/course/courseOutline/CourseOutline';
 import { resourceActions } from '../../store/actions';
+import CourseHeader from '../../components/pages/dashboard/courses/courseHeader/CourseHeader';
+import CourseOutline from '../../components/pages/dashboard/courses/courseOutline/CourseOutline';
 
 const CourseStart = ({ dispatch, courses, chaptersByCourse }) => {
   const {

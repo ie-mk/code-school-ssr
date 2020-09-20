@@ -1,12 +1,8 @@
 import React from 'react';
-import Styled from './Courses.styles';
-import { useTranslation } from 'react-i18next';
-import ChooseLearningPath from '../../course/chooseLearningPath/ChooseLearningPath';
 import PageContent from '../../foundation/PageContent';
+import ChooseLearningPath from '../dashboard/courses/chooseLearningPath/ChooseLearningPath';
 
 const Courses = () => {
-  const { t } = useTranslation();
-
   return (
     <>
       {/*<CourseFeatures />*/}
