@@ -21,7 +21,8 @@ const videos = [
   {
     title: `Future of software development and starting
       your own business`,
-    descr: `In this video we will cover: Starting your own business and challenges delivering fullStack.
+    descr: `In this video we will cover: working from anywhere in the world.
+      Starting your own business and challenges delivering fullStack.
       Future is Serverless.
     `,
     videoUrl: 'https://www.youtube.com/embed/uhRQt92PYs0',

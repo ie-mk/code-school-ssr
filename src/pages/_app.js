@@ -14,17 +14,17 @@ import '../i18n/i18n';
 import { IS_SERVER } from '../constants';
 
 class MyApp extends App {
-  // static async getInitialProps({ Component, ctx }) {
-  //   let pageProps = {};
-  //
-  //   logIsServer('MyApp getInitialProps');
-  //
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx);
-  //   }
-  //
-  //   return { pageProps };
-  // }
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+
+    logIsServer('MyApp getInitialProps');
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
 
   render() {
     const { Component, pageProps, store } = this.props;
