@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { aboveTabletLarge } from '../foundation/media';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,9 +17,12 @@ const Content = styled.div`
 
 const Title = styled.h2`
   font-weight: 400;
-  font-size: 48px;
+  font-size: 24px;
   margin: 0;
   text-align: center;
+  ${aboveTabletLarge`
+    font-size: 48px;
+  `}
 `;
 
 export default {
