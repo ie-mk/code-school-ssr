@@ -6,7 +6,7 @@ import Text18 from '../../foundation/typography/Text18';
 import Styled from './CourseLearning.styles';
 import FlexContainer from '../../foundation/FlexContainer';
 import CenteredFlexContainer from '../../foundation/CenteredFlexContainer';
-import CourseHomeChapters from '../dashboard/courses/courseHomeChapters/courseHomeChapters';
+import CourseHomeChapters from '../../course/courseHomeChapters/courseHomeChapters';
 import { resourceActions } from '../../../store/actions';
 // import CollapseContainer from '../../foundation/collapseContainer';
 import needsLoginWrapper from '../../../utils/needsLoginWrapper';

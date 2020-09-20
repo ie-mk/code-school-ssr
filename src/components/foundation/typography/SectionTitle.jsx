@@ -12,14 +12,25 @@ const StyledH3 = styled.h3`
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '')};
 
   ${media.belowTabletLarge`
-    font-size: ${fontSizeMap.text};
+    font-size: ${fontSizeMap.h4};
     margin: ${({ mobileMargin }) => mobileMargin || ''};
   `}
 `;
 
-const SectionTitle = ({ text, textAlign, noMargin, fontWeight }) => {
+const SectionTitle = ({
+  text,
+  textAlign,
+  noMargin,
+  fontWeight,
+  mobileMargin,
+}) => {
   return (
-    <StyledH3 noMargin={noMargin} textAlign={textAlign} fontWeight={fontWeight}>
+    <StyledH3
+      noMargin={noMargin}
+      textAlign={textAlign}
+      fontWeight={fontWeight}
+      mobileMargin={mobileMargin}
+    >
       {text}
     </StyledH3>
   );
