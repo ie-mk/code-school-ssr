@@ -85,7 +85,7 @@ const CourseLearning = ({
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
-  debugger;
+  //debugger;
 
   console.log('course--- ', course, 'activeLesson--', activeLesson);
 
@@ -149,6 +149,8 @@ const CourseLearning = ({
                 <iframe
                   width="100%"
                   height="400px"
+                  data-test={`chapter-${activeChapterIdx +
+                    1}-watch-lesson-${activeLessonIdx + 1}-video`}
                   src={activeLesson.videoLink}
                   frameBorder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

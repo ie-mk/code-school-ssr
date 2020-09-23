@@ -15,7 +15,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
   And I fill the values of the new course
-      | Course Title | _TEST_COURSE_50 |
+      | Course Title | _TEST_COURSE_100 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
@@ -37,7 +37,7 @@ Scenario: LOGGED IN create course
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_Introduction |
       | Lesson Breif | skywalk |
-      | Video Link | 10:00 |
+      | Video Link | https://www.youtube.com/embed/upDLs1sn7g4 |
       | Assignment | moonwalk |
     And I click on save button
 
@@ -49,7 +49,7 @@ Scenario: LOGGED IN create course
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_first |
       | Lesson Breif | skywalksss |
-      | Video Link | 10:00 |
+      | Video Link | https://www.youtube.com/embed/afSbBjAaqeM |
       | Assignment | moonwalkss |
     And I click on save button
     And I wait "2000" ms
@@ -70,7 +70,7 @@ Scenario: LOGGED IN create course
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_1_Intro |
       | Lesson Breif | modi work |
-      | Video Link | 10:00 |
+      | Video Link | https://www.youtube.com/embed/W6NZfCO5SIk |
       | Assignment | trump work |
     And I click on save button
     And I wait "2000" ms
@@ -83,22 +83,23 @@ Scenario: LOGGED IN create course
    And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_22 |
       | Lesson Breif | nepolian work |
-      | Video Link | 10:00 |
+      | Video Link | https://www.youtube.com/embed/pU722vRd66A |
       | Assignment | putin work |
     And I click on save button
     And I wait "1000" ms
 
     And I click on Publish button
     And I wait "1000" ms
+
    Given I navigate to platform url
     And I wait "1000" ms
     And I navigate to courses
     And I wait "1000" ms
     And I click on Learning path "Frontend developer"
-    And I click on new course "_TEST_COURSE_50"
+    And I click on new course "_TEST_COURSE_100"
 
     And I check created course values
-      | Course Title | _TEST_COURSE_50 |
+      | Course Title | _TEST_COURSE_100 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
 
@@ -115,6 +116,16 @@ Scenario: LOGGED IN create course
       | Lesson 2 Title | _TEST_Lesson_22 |
 
     And I click on chapter "_TEST_COURSE_Chapter2"
+
+    Then I click button "START COURSE"
+
+     And I check video "chapter-1-watch-lesson-1-video" "https://www.youtube.com/embed/upDLs1sn7g4"
+     And I click on lesson "_TEST_Lesson_first"
+     And I check video "chapter-1-watch-lesson-2-video" "https://www.youtube.com/embed/afSbBjAaqeM"
+     And I click on lesson "_TEST_Lesson_1_Intro"
+     And I check video "chapter-2-watch-lesson-1-video" "https://www.youtube.com/embed/W6NZfCO5SIk"
+     And I click on lesson "_TEST_Lesson_22"
+     And I check video "chapter-2-watch-lesson-2-video" "https://www.youtube.com/embed/pU722vRd66A"
 
 
 #    And I open date picker

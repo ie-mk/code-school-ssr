@@ -233,6 +233,14 @@ Given(`I navigate to platform url`, () => {
   cy.visit('/');
 });
 
+Given('I click on lesson {string}', (name: string) => {
+  cy.contains(name).click();
+});
+
+Then('I check video {string} {string}', (videoId: string, video: string) => {
+  cy.get(`iframe[data-test="${videoId}"]`).should('have.attr', 'src', video);
+});
+
 Given('I open date picker', () => {
   cy.get('.DateRangePickerInput_calendarIcon').click();
 });
