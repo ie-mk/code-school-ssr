@@ -1,6 +1,7 @@
 import React from 'react';
-import './Stepnav.scss';
+import './Stepnav.styles';
 import { useRouter } from 'next/router';
+import Styled from './Stepnav.styles';
 
 export function Stepnav({ task }) {
   const router = useRouter();
@@ -28,6 +29,11 @@ export function Stepnav({ task }) {
 
   function goNextStep() {
     query.stepIndex = Number(stepIndex) + 1;
+    updateQuery();
+  }
+
+  function goToStep(step) {
+    query.stepIndex = Number(step) + 1;
     updateQuery();
   }
 
@@ -65,15 +71,38 @@ export function Stepnav({ task }) {
     );
   }
 
+  console.log('-----stepIndex: ', stepIndex);
+
   return (
-    <div className="task-manager-stepnav">
-      <button onClick={goPrevStep} hidden={isFirstStep}>
-        Previous
-      </button>
-      <button onClick={goSolutions}>Solutions</button>
-      <button onClick={goNextStep} hidden={isLastStep}>
-        Next
-      </button>
-    </div>
+    <Styled.Wrapper>
+      <div>
+        <Styled.Button onClick={goPrevStep} hidden={isFirstStep}>
+          PREVIOUS
+        </Styled.Button>
+      </div>
+      <Styled.StepsWrapper>
+        {steps &&
+          steps.map((step, idx) => {
+            return (
+              <Styled.Step
+                key={idx}
+                onClick={() => goToStep(idx)}
+                active={Number(stepIndex) === idx}
+              >
+                {idx + 1}
+              </Styled.Step>
+            );
+          })}
+      </Styled.StepsWrapper>
+      <div>
+        <Styled.Button
+          className="task-manager-stepnav-button"
+          onClick={goNextStep}
+          hidden={isLastStep}
+        >
+          NEXT
+        </Styled.Button>
+      </div>
+    </Styled.Wrapper>
   );
 }
