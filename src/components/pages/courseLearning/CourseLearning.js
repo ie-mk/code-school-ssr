@@ -85,7 +85,7 @@ const CourseLearning = ({
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
-  //debugger;
+  debugger;
 
   console.log('course--- ', course, 'activeLesson--', activeLesson);
 
