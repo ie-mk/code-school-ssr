@@ -9,8 +9,8 @@ const CoursesLearningPath = ({ title, descr }) => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src="/img/Background.png"
-        height="100vh"
+        src="/img/Background-min.png"
+        height="100%"
         width="100%"
         position="absolute"
         mediaConfig={{
@@ -28,12 +28,12 @@ const CoursesLearningPath = ({ title, descr }) => {
         </Styled.TextWrapper>
 
         <CenteredFlexContainer>
-          <ResponsiveImage
-            src="/img/Frontend_Dev_Illustration.png"
-            width="100%"
-            padding="25%"
-            backGroundSize="contain"
-          />
+          {/*<ResponsiveImage*/}
+          {/*  src="/img/Frontend_Dev_Illustration.png"*/}
+          {/*  width="100%"*/}
+          {/*  padding="25%"*/}
+          {/*  backGroundSize="contain"*/}
+          {/*/>*/}
         </CenteredFlexContainer>
       </Styled.Content>
     </Styled.Wrapper>

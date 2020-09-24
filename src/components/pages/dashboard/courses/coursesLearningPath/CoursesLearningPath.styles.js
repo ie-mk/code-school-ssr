@@ -3,7 +3,7 @@ import { fontSizeMap, spacing } from '../../../../../constants/styles';
 import media from '../../../../foundation/media';
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 300px;
   position: relative;
   display: flex;
   justify-content: center;

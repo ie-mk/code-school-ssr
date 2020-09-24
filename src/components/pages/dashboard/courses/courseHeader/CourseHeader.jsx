@@ -47,7 +47,7 @@ const CourseHeader = ({ title, course, courseId }) => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src="/img/Background.png"
+        src="/img/Background-min.png"
         height="100%"
         width="100%"
         position="absolute"

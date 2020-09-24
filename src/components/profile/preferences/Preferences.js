@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import Text24 from '../../foundation/typography/Text24';
 import ContainerBase from '../../foundation/ContainerBase';
 import CustomCardTitle from '../customCardTitles/CustomCardTitle';
@@ -30,7 +30,7 @@ const CustomText241 = props => (
 );
 
 const Preferences = ({ profile }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <ContainerBase

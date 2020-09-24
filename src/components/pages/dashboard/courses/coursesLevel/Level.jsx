@@ -25,7 +25,7 @@ const Level = ({ courses, learningPathData, heading }) => {
       <Styled.Wrapper>
         <SectionTitle text={heading} textAlign="center" />
         <Styled.TextWrapper>
-          <BodyText>{learningPathData && learningPathData.descr}</BodyText>
+          {/*<BodyText>{learningPathData && learningPathData.descr}</BodyText>*/}
         </Styled.TextWrapper>
         <Grid
           columns="1fr"
