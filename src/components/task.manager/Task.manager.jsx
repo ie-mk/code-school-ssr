@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { resourceActions } from '../../store/actions';
 import { canEditTask, isRegistered } from '../../store/selectors';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
+import Styled from './Task.manager.styles';
 import debounce from 'lodash.debounce';
 
 function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
