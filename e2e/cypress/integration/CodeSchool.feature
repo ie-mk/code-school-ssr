@@ -52,9 +52,10 @@ Scenario: LOGGED IN create course
       | Video Link | https://www.youtube.com/embed/afSbBjAaqeM |
       | Assignment | moonwalkss |
     And I click on save button
-    And I wait "2000" ms
+    And I wait "1000" ms
 
     And I click on AddNewChapter button
+    And I wait "2000" ms
     And I click on open Chapter 2
 
     And I fill the values of the new chapter
