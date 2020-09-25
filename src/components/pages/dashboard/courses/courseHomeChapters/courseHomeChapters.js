@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Text24 from '../../../../foundation/typography/Text24';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
+import { getLessonsByChapterId } from '../../../../../store/selectors';
+
 import Styled from './CourseHomeChapters.styles';
 import Text18 from '../../../../foundation/typography/Text18';
 
@@ -26,6 +28,7 @@ const CourseHomeChapters = ({
   setActiveChapterIdx,
   activeChapterIdx,
   chapterIdx,
+  lessonsByChapter,
 }) => {
   const chapter = chapters[chapterId];
   const title = chapter && chapter.title;
@@ -37,14 +40,13 @@ const CourseHomeChapters = ({
         chapterId,
       }),
     );
-  }, [chapterId]);
+  }, []);
 
-  const lessons = chapter.lessons;
+  const lessons = lessonsByChapter[chapterId] || {};
 
   return (
     <>
       <Styled.ChapterWrapper>
-        {/*<i className="fa fa-circle fa-2x" aria-hidden="true" />*/}
         <CustomText18 margin="0 0 0 10px" text={title} />
       </Styled.ChapterWrapper>
 
@@ -78,4 +80,8 @@ const CourseHomeChapters = ({
   );
 };
 
-export default connect()(CourseHomeChapters);
+const mapStateToProps = state => ({
+  lessonsByChapter: getLessonsByChapterId(state),
+});
+
+export default connect(mapStateToProps)(CourseHomeChapters);
