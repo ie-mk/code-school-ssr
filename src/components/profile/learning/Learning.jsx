@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import ProfileLearning from '../../foundation/profileLearning/ProfileLearning';
 import ContainerBase from '../../foundation/ContainerBase';
 import { spacing } from '../../../constants/styles';
@@ -49,8 +48,6 @@ const takingCourses = {
 };
 
 const ChooseLearningPath = () => {
-  const { t } = useTranslation();
-
   return (
     <ContainerBase
       marginTop="xxxl"

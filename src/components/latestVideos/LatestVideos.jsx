@@ -1,8 +1,8 @@
 import React from 'react';
-import SectionTitle from '../../../../foundation/typography/SectionTitle';
-import VideoCard from '../../../../videoCard/VideoCard';
-import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
-import FlexContainer from '../../../../foundation/FlexContainer';
+import SectionTitle from '../foundation/typography/SectionTitle';
+import VideoCard from '../videoCard/VideoCard';
+import CenteredFlexContainer from '../foundation/CenteredFlexContainer';
+import FlexContainer from '../foundation/FlexContainer';
 
 const videos = [
   {
@@ -35,10 +35,15 @@ const LatestVideos = () => {
       <SectionTitle
         fontWeight="400"
         noMargin={true}
-        margin="100px 0"
+        margin="30px 0"
         text="Our Latest Videos"
+        mediaConfig={{
+          aboveTabletLarge: {
+            margin: '80px 0',
+          },
+        }}
       />
-      <FlexContainer>
+      <FlexContainer flexWrap="wrap">
         {videos.map(({ title, videoUrl, descr }, idx) => {
           return (
             <VideoCard

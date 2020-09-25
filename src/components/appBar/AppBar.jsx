@@ -5,8 +5,7 @@ import api from '../../api/api.min';
 import Button from '../foundation/button/Button';
 import styled from 'styled-components';
 import { userActions } from '../../store/actions';
-import { colors, spacing } from '../../constants/styles';
-import { useTranslation } from 'react-i18next';
+import { colors } from '../../constants/styles';
 import MenuLink from '../foundation/MenuLink';
 import ContainerBase from '../foundation/ContainerBase';
 import Logo from '../foundation/Logo';
@@ -21,7 +20,7 @@ const LogoutButton = styled(Button)`
   `}
 `;
 
-const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
+const AppBar = ({ user, dispatch, isStaff }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const handleLogout = () => {
@@ -38,8 +37,6 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
       setShowMobileMenu(!showMobileMenu);
     }
   };
-
-  const { t } = useTranslation();
 
   const router = useRouter();
 
@@ -109,14 +106,14 @@ const AppBar = ({ user, dispatch, userLanguage, isStaff }) => {
                 type="secondary"
                 onClick={handleLogout}
               >
-                {t('Logout')}
+                Logout
               </LogoutButton>
             ) : (
               <>
                 <MenuLink
                   dataTest="go-to-login-page"
                   href="/login"
-                  text={t('LOGIN')}
+                  text={'LOGIN'}
                 />
                 <Button
                   onClick={() =>

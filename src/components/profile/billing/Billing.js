@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import CardTitle from '../../foundation/typography/CardTitle';
 import Text24 from '../../foundation/typography/Text24';
@@ -70,8 +69,6 @@ const CustomBodyText = props => (
 );
 
 const Billig = () => {
-  const { t } = useTranslation();
-
   return (
     <ContainerBase
       marginTop="xxxl"

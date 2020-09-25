@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import LearningPathCard from '../../../../foundation/learningPathCard/LearningPathCard';
 import BodyText from '../../../../foundation/typography/BodyText';
 import CenteredFlexContainer from '../../../../foundation/CenteredFlexContainer';
 import SectionTitle from '../../../../foundation/typography/SectionTitle';
-import { background, spacing } from '../../../../../constants/styles';
+import { spacing } from '../../../../../constants/styles';
 import Grid from '../../../../foundation/Grid';
-import { Router } from 'next/router';
 import { connect } from 'react-redux';
 import { resourceActions } from '../../../../../store/actions';
 import { getLearningPaths } from '../../../../../store/selectors';
@@ -19,7 +17,7 @@ const ChooseLearningPath = ({ dispatch, learningPaths }) => {
 
   return (
     <CenteredFlexContainer
-      marginTop="xxl"
+      marginTop="xxxxxl"
       marginBottom="xxxxxl"
       mediaConfig={{
         belowDesktop: {

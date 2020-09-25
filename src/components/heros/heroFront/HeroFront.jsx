@@ -22,14 +22,14 @@ const HeroFront = () => {
   return (
     <Styled.Wrapper>
       <ResponsiveImage
-        src="/img/new/Hero_Image.png"
+        src="/img/new/Hero_Image-min.png"
         minHeight="100%"
         width="100%"
         position="absolute"
         backGroundPosition="0 50px"
         mediaConfig={{
           aboveTabletLarge: {
-            backgroundImage: 'url("/img/new/Hero_Image.png")',
+            //backgroundImage: 'url("/img/new/Hero_Image-min.png")',
             backGroundPosition: '0 85px',
           },
         }}

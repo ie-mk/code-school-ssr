@@ -9,22 +9,22 @@ import '../css/global.css';
 import 'react-phone-number-input/style.css';
 import Head from 'next/head';
 // import SetLanguageFromStoreWrapper from '../i18n/SetLanguageFromStoreWrapper';
-import '../i18n/i18n';
+//import '../i18n/i18n';
 // import ScrollTracker from '../components/foundation/scrollTracker/ScrollTracker';
 import { IS_SERVER } from '../constants';
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    logIsServer('MyApp getInitialProps');
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
+  // static async getInitialProps({ Component, ctx }) {
+  //   let pageProps = {};
+  //
+  //   logIsServer('MyApp getInitialProps');
+  //
+  //   if (Component.getInitialProps) {
+  //     pageProps = await Component.getInitialProps(ctx);
+  //   }
+  //
+  //   return { pageProps };
+  // }
 
   render() {
     const { Component, pageProps, store } = this.props;

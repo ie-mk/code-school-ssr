@@ -21,14 +21,6 @@ const TaskManagerWrapper = styled.div`
   }
 `;
 
-const EditButton = styled.button`
-  padding: 3px 7px;
-  background-color: ${({ editMode }) => (editMode ? 'lightgreen' : 'orange')};
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 3px;
-`;
-
 const MenuContent = styled.div`
   display: none;
   background-color: white;
@@ -106,10 +98,21 @@ const FormButton = styled.button`
   border-radius: 3px;
 `;
 
-const SaveButton = styled(Button)`
+const SaveButton = styled.button`
   color: black;
   background-color: lightgreen;
-  border: 2px solid black;
+  padding: 4px 7px;
+  border: 1px solid darkblue;
+  font-size: 9px;
+  cursor: pointer;
+`;
+
+const EditButton = styled.button`
+  background-color: ${({ editMode }) => (editMode ? 'lightgreen' : 'orange')};
+  cursor: pointer;
+  padding: 4px 7px;
+  border: 1px solid darkblue;
+  font-size: 9px;
 `;
 
 export default {
