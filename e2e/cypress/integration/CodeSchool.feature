@@ -26,6 +26,7 @@ Scenario: LOGGED IN create course
     Then I click button "Update Description"
     And I wait "4000" ms
     And I click on AddNewChapter button
+    And I wait "2000" ms
     And I click on open Chapter 1
     And I fill the values of the new chapter
       | Chapter Title | _TEST_COURSE_Chapter1 |
