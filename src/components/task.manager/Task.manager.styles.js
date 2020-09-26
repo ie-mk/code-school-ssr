@@ -30,15 +30,30 @@ export const SolutionsWrapper = styled.div`
 
 export const SolutionsMenu = styled.div`
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   position: absolute;
   top: -70px;
   left: -2px;
   width: calc(100% + 4px);
-  padding: 10px;
+  padding: 8px 10px 10px;
   background-color: #f5f5f5;
   height: 70px;
   border: 2px solid gray;
+  color: #186aa5;
+  font-size: 10px;
+  font-weight: bold;
+
+  button {
+    text-align: center;
+    font-family: inherit;
+    border: 2px solid #07529d;
+    color: #07529d;
+    background-color: white;
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 6px;
+    padding: 6px 10px;
+  }
 `;
 
 export default {

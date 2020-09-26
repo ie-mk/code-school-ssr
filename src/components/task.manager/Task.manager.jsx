@@ -12,6 +12,7 @@ import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
 import Styled from './Task.manager.styles';
 import debounce from 'lodash.debounce';
 import SchemaType from 'yup/lib/mixed';
+import FlexContainer from '../foundation/FlexContainer';
 
 function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   const router = useRouter();
@@ -20,7 +21,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   } = router;
 
   const [editMode, setEditMode] = useState(false);
-  const [showSolutions, setShowSolutions] = useState(false);
+  const [showSolutions, setShowSolutions] = useState(true);
   const [firstColumnSize, updateFirstColumnSize] = useState(20);
   const [secondColumnSize, updateSecondColumnSize] = useState(47.5);
 
@@ -112,7 +113,12 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
       </Split>
       <Styled.SolutionsWrapper width={solutionsMenuWidth}>
         {showSolutions ? (
-          <Styled.SolutionsMenu>Choose solution stack:</Styled.SolutionsMenu>
+          <Styled.SolutionsMenu>
+            Choose solution stack:
+            <FlexContainer justifyContent="flex-start">
+              <button>STYLED COMPONENTS</button>
+            </FlexContainer>
+          </Styled.SolutionsMenu>
         ) : null}
         <Styled.Button
           onClick={() => setShowSolutions(!showSolutions)}
