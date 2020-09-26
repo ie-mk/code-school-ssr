@@ -85,6 +85,8 @@ const CourseLearning = ({
   const activeLesson =
     lessonsArr && activeLessonIdx !== null && lessonsArr[activeLessonIdx];
 
+  debugger;
+
   return (
     <CenteredFlexContainer>
       <SectionTitle
@@ -147,7 +149,7 @@ const CourseLearning = ({
                   height="400px"
                   data-test={`chapter-${activeChapterIdx +
                     1}-watch-lesson-${activeLessonIdx + 1}-video`}
-                  src={activeLesson.videoLink}
+                  src={activeLesson && activeLesson.videoLink}
                   frameBorder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -162,9 +164,9 @@ const CourseLearning = ({
                     margin: '38px 0 12px 0',
                   },
                 }}
-                text="What you will learn in this chapter"
+                text="What you will learn in this lesson"
               />
-              <Text18 text={course.whatWillLearn} />
+              <Text18 text={activeLesson && activeLesson.descr} />
               {/*<CardTitle*/}
               {/*  margin="50px 0 29px 0"*/}
               {/*  mediaConfig={{*/}
