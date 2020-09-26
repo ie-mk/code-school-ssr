@@ -11,6 +11,7 @@ import { canEditTask, isRegistered } from '../../store/selectors';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
 import Styled from './Task.manager.styles';
 import debounce from 'lodash.debounce';
+import SchemaType from 'yup/lib/mixed';
 
 function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   const router = useRouter();
@@ -19,6 +20,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   } = router;
 
   const [editMode, setEditMode] = useState(false);
+  const [showSolutions, setShowSolutions] = useState(false);
   const [firstColumnSize, updateFirstColumnSize] = useState(20);
   const [secondColumnSize, updateSecondColumnSize] = useState(47.5);
 
@@ -38,9 +40,6 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
       updateSecondColumnSize(val);
     }, 30),
   );
-
-  console.log('----firstColumnSize: ', firstColumnSize);
-  console.log('----secondColumnSize: ', secondColumnSize);
 
   useEffect(() => {
     dispatch(resourceActions.fetchTask.request(taskId));
@@ -111,7 +110,18 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
           updateSecondColumnSize={handleCol2Resize}
         />
       </Split>
-      <Styled.SolutionsWrapper width={solutionsMenuWidth} />
+      <Styled.SolutionsWrapper width={solutionsMenuWidth}>
+        {showSolutions ? (
+          <Styled.SolutionsMenu>Choose solution stack:</Styled.SolutionsMenu>
+        ) : null}
+        <Styled.Button
+          onClick={() => setShowSolutions(!showSolutions)}
+          color="#E67B38"
+        >
+          {`${showSolutions ? 'HIDE' : 'SHOW'} SOLUTIONS`}
+        </Styled.Button>
+        <Styled.Button color="#7FD86F">SAVE PROGRESS</Styled.Button>
+      </Styled.SolutionsWrapper>
     </>
   );
 }
