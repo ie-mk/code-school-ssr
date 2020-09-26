@@ -12,7 +12,15 @@ import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
 import Styled from './Task.manager.styles';
 import debounce from 'lodash.debounce';
 
-function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
+function TaskManager({
+  dispatch,
+  tasks,
+  canEditTask,
+  loading,
+  isRegistered,
+  updateSecondColumnSize,
+  updateFirstColumnSize,
+}) {
   const router = useRouter();
   const {
     query: { stepIndex, solutionIndex, taskId },
@@ -65,7 +73,12 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   return (
     <>
       {loading ? <SpinnerLarge /> : null}
-      <Split className="task-manager" sizes={[30, 70]} gutterSize={5}>
+      <Split
+        onDrag={e => updateFirstColumnSize(e[0])}
+        className="task-manager"
+        sizes={[30, 70]}
+        gutterSize={5}
+      >
         <div className="task-manager-left">
           <Stepnav task={task} editMode={editMode} />
           <Desc
@@ -81,6 +94,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
           step={$step}
           onFileChange={onFileChange}
           isRegistered={isRegistered}
+          updateSecondColumnSize={updateSecondColumnSize}
         />
       </Split>
     </>
