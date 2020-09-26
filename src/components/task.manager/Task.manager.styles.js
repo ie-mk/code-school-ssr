@@ -49,10 +49,13 @@ export const SolutionsMenu = styled.div`
     border: 2px solid #07529d;
     color: #07529d;
     background-color: white;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     margin-top: 6px;
-    padding: 6px 10px;
+    padding: 7px 10px;
+    margin-right: 15px;
+    min-width: 108px;
+    cursor: pointer;
   }
 `;
 

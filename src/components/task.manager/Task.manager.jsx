@@ -64,12 +64,14 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   };
 
   let $step;
+  let solutions;
 
   if (task) {
     const { steps } = task;
 
     const step = steps[(stepIndex && Number(stepIndex)) || 0];
-    const { solutions } = step;
+    solutions = step.solutions;
+
     const solution = solutionIndex && solutions[Number(solutionIndex)];
     $step = solution || step;
   }
@@ -116,7 +118,12 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
           <Styled.SolutionsMenu>
             Choose solution stack:
             <FlexContainer justifyContent="flex-start">
-              <button>STYLED COMPONENTS</button>
+              {solutions &&
+                solutions.map(({ title }, idx) => (
+                  <button key={idx}>
+                    {title ? title : `SOLUTION ${idx + 1}`}
+                  </button>
+                ))}
             </FlexContainer>
           </Styled.SolutionsMenu>
         ) : null}
