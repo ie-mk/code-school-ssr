@@ -6,27 +6,41 @@ import { Stepnav } from './stepnav';
 import { Sandpack } from './sandpack';
 import './Task.manager.scss';
 import { useRouter } from 'next/router';
-import { resourceActions } from '../../store/actions';
+import { layoutActions, resourceActions } from '../../store/actions';
 import { canEditTask, isRegistered } from '../../store/selectors';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
 import Styled from './Task.manager.styles';
 import debounce from 'lodash.debounce';
 
-function TaskManager({
-  dispatch,
-  tasks,
-  canEditTask,
-  loading,
-  isRegistered,
-  updateSecondColumnSize,
-  updateFirstColumnSize,
-}) {
+function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   const router = useRouter();
   const {
     query: { stepIndex, solutionIndex, taskId },
   } = router;
 
   const [editMode, setEditMode] = useState(false);
+  const [firstColumnSize, updateFirstColumnSize] = useState(20);
+  const [secondColumnSize, updateSecondColumnSize] = useState(47.5);
+
+  const solutionsMenuWidth =
+    firstColumnSize &&
+    secondColumnSize &&
+    firstColumnSize + (1 - firstColumnSize / 100) * secondColumnSize - 0.07;
+
+  const handleCol1Resize = useCallback(
+    debounce(val => {
+      updateFirstColumnSize(val);
+    }, 30),
+  );
+
+  const handleCol2Resize = useCallback(
+    debounce(val => {
+      updateSecondColumnSize(val);
+    }, 30),
+  );
+
+  console.log('----firstColumnSize: ', firstColumnSize);
+  console.log('----secondColumnSize: ', secondColumnSize);
 
   useEffect(() => {
     dispatch(resourceActions.fetchTask.request(taskId));
@@ -74,9 +88,9 @@ function TaskManager({
     <>
       {loading ? <SpinnerLarge /> : null}
       <Split
-        onDrag={e => updateFirstColumnSize(e[0])}
+        onDrag={e => handleCol1Resize(e[0])}
         className="task-manager"
-        sizes={[30, 70]}
+        sizes={[20, 75]}
         gutterSize={5}
       >
         <div className="task-manager-left">
@@ -94,9 +108,10 @@ function TaskManager({
           step={$step}
           onFileChange={onFileChange}
           isRegistered={isRegistered}
-          updateSecondColumnSize={updateSecondColumnSize}
+          updateSecondColumnSize={handleCol2Resize}
         />
       </Split>
+      <Styled.SolutionsWrapper width={solutionsMenuWidth} />
     </>
   );
 }

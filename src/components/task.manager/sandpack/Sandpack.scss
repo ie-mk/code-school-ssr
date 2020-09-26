@@ -18,12 +18,17 @@
     }
   }
 
+  .sandpack-content-right {
+    z-index: 11;
+    background-color: white;
+  }
+
   .sandpack-content-left {
     display: flex;
     flex-direction: column;
     position: relative;
     background-color: #191f37;
-    height: calc(100vh - 40px);
+    height: calc(100vh - 50px);
 
     .file-explorer {
       --background-color: #16131f;

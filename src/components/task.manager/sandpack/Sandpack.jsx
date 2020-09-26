@@ -22,7 +22,7 @@ const getSandpackContent = (
     <>
       <Split
         className="sandpack-content"
-        sizes={[50, 50]}
+        sizes={[47.5, 47.5]}
         gutterSize={5}
         onDrag={e => {
           updateSecondColumnSize(e[0]);
