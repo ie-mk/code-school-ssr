@@ -125,6 +125,10 @@ Then('I check chapter lessons', (dataTable: any) => {
   cy.contains(dataTable.rawTable[1][1]);
 });
 
+Then('I check lesson description', (dataTable: any) => {
+  cy.contains(dataTable.rawTable[0][1]);
+});
+
 Then('I fill the values of the new course', (dataTable: any) => {
   cy.get('input[name="title"]')
     .clear()
@@ -231,6 +235,14 @@ Given('I click on open Chapter 2', () => {
 
 Given(`I navigate to platform url`, () => {
   cy.visit('/');
+});
+
+Given('I click on lesson {string}', (name: string) => {
+  cy.contains(name).click();
+});
+
+Then('I check video {string} {string}', (videoId: string, video: string) => {
+  cy.get(`iframe[data-test="${videoId}"]`).should('have.attr', 'src', video);
 });
 
 Given('I open date picker', () => {

@@ -90,12 +90,12 @@ const CourseLessonContent = ({
                 rows="5"
                 cols="10"
                 component="textarea"
-                placeholder="Lesson Breif"
-                label="Lesson Breif"
+                placeholder="Lesson Description"
+                label="Lesson Description"
                 width="100%"
                 backgroundColor="white"
                 disabled={!editMode}
-                data-test="lesson-breif"
+                data-test="lesson-description"
               />
               <ContainerBase flexDirection="row" display="flex">
                 <AdminInput

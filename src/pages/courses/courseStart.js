@@ -25,7 +25,6 @@ const CourseStart = ({ dispatch, courses, chaptersByCourse }) => {
   courseTitle = courseTitle && courseTitle.toUpperCase();
 
   const chapters = chaptersByCourse[courseId] || {};
-
   return (
     <ErrorBoundary>
       <>
