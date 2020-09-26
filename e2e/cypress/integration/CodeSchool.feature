@@ -37,7 +37,7 @@ Scenario: LOGGED IN create course
     And I click on edit button in "chapter-1-edit-lesson-1"
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_Introduction |
-      | Lesson Breif | skywalk |
+      | Lesson Description | skywalk |
       | Video Link | https://www.youtube.com/embed/upDLs1sn7g4 |
       | Assignment | moonwalk |
     And I click on save button
@@ -49,7 +49,7 @@ Scenario: LOGGED IN create course
     And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_first |
-      | Lesson Breif | skywalksss |
+      | Lesson Description | skywalksss |
       | Video Link | https://www.youtube.com/embed/afSbBjAaqeM |
       | Assignment | moonwalkss |
     And I click on save button
@@ -71,7 +71,7 @@ Scenario: LOGGED IN create course
        And I wait "2000" ms
     And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_1_Intro |
-      | Lesson Breif | modi work |
+      | Lesson Description | modi work |
       | Video Link | https://www.youtube.com/embed/W6NZfCO5SIk |
       | Assignment | trump work |
     And I click on save button
@@ -84,7 +84,7 @@ Scenario: LOGGED IN create course
 
    And I fill the values of the new lesson
       | Lesson Title | _TEST_Lesson_22 |
-      | Lesson Breif | nepolian work |
+      | Lesson Description | nepolian work |
       | Video Link | https://www.youtube.com/embed/pU722vRd66A |
       | Assignment | putin work |
     And I click on save button
@@ -121,12 +121,28 @@ Scenario: LOGGED IN create course
 
     Then I click button "START COURSE"
 
+   # And I click on lesson "_TEST_Lesson_Introduction"
+     And I check lesson description
+       | Lesson 1 description | skywalk |
+
      And I check video "chapter-1-watch-lesson-1-video" "https://www.youtube.com/embed/upDLs1sn7g4"
+
      And I click on lesson "_TEST_Lesson_first"
+     And I check lesson description
+       | Lesson 1 description | skywalksss |
+
      And I check video "chapter-1-watch-lesson-2-video" "https://www.youtube.com/embed/afSbBjAaqeM"
+
      And I click on lesson "_TEST_Lesson_1_Intro"
+     And I check lesson description
+       | Lesson 1 description | modi work |
+
      And I check video "chapter-2-watch-lesson-1-video" "https://www.youtube.com/embed/W6NZfCO5SIk"
+   
      And I click on lesson "_TEST_Lesson_22"
+     And I check lesson description
+       | Lesson 1 description | nepolian work |
+
      And I check video "chapter-2-watch-lesson-2-video" "https://www.youtube.com/embed/pU722vRd66A"
 
 

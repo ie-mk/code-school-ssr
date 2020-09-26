@@ -125,6 +125,10 @@ Then('I check chapter lessons', (dataTable: any) => {
   cy.contains(dataTable.rawTable[1][1]);
 });
 
+Then('I check lesson description', (dataTable: any) => {
+  cy.contains(dataTable.rawTable[0][1]);
+});
+
 Then('I fill the values of the new course', (dataTable: any) => {
   cy.get('input[name="title"]')
     .clear()
