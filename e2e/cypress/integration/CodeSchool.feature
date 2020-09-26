@@ -121,27 +121,26 @@ Scenario: LOGGED IN create course
 
     Then I click button "START COURSE"
 
-   # And I click on lesson "_TEST_Lesson_Introduction"
      And I check lesson description
-       | Lesson 1 description | skywalk |
+       | Chapter 1 Lesson 1 description | skywalk |
 
      And I check video "chapter-1-watch-lesson-1-video" "https://www.youtube.com/embed/upDLs1sn7g4"
 
      And I click on lesson "_TEST_Lesson_first"
      And I check lesson description
-       | Lesson 1 description | skywalksss |
+       | Chapter 1 Lesson 2 description | skywalksss |
 
      And I check video "chapter-1-watch-lesson-2-video" "https://www.youtube.com/embed/afSbBjAaqeM"
 
      And I click on lesson "_TEST_Lesson_1_Intro"
      And I check lesson description
-       | Lesson 1 description | modi work |
+       | Chapter 2 Lesson 1 description | modi work |
 
      And I check video "chapter-2-watch-lesson-1-video" "https://www.youtube.com/embed/W6NZfCO5SIk"
    
      And I click on lesson "_TEST_Lesson_22"
      And I check lesson description
-       | Lesson 1 description | nepolian work |
+       | Chapter 2 Lesson 2 description | nepolian work |
 
      And I check video "chapter-2-watch-lesson-2-video" "https://www.youtube.com/embed/pU722vRd66A"
 
