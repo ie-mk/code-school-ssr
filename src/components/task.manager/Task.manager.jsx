@@ -151,6 +151,9 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
                     {title ? title : `SOLUTION ${idx + 1}`}
                   </Styled.SolutionButton>
                 ))}
+              {canEditTask ? (
+                <Styled.SolutionButton addNew={true}>+</Styled.SolutionButton>
+              ) : null}
             </FlexContainer>
           </Styled.SolutionsMenu>
         ) : null}
