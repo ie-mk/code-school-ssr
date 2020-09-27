@@ -54,10 +54,13 @@ const Element = ({
 };
 
 function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
-  const { desc } = step;
-  const { children } = desc;
+  debugger;
+  const desc = step && step.descr;
+  const children = desc && desc.children;
 
   const [rerender, setRerender] = useState(true);
+
+  if (!desc) return null;
 
   return (
     <>

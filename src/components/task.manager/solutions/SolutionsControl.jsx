@@ -40,7 +40,7 @@ const SolutionsControl = ({
   const [showDialogBox, setShowDialogBox] = useState(null);
   const [solutionName, setSolutionName] = useState('');
   const [operation, setOperation] = useState(null);
-  const [filesToDelete, setFilesToDelete] = useState({});
+  const [solutionsToDelete, setSolutionsToDelete] = useState({});
 
   if (!(isRegistered || canEditTask)) return null;
 
@@ -62,24 +62,25 @@ const SolutionsControl = ({
     setOperation(val);
   };
 
-  const handleDeleteCheckbox = (checked, str) => {
+  const handleDeleteCheckbox = (checked, idx) => {
     if (checked) {
-      filesToDelete[str] = true;
+      solutionsToDelete[idx] = true;
     } else {
-      delete filesToDelete[str];
+      delete solutionsToDelete[idx];
     }
   };
 
   const hanldeDeletion = () => {
     if (confirm('Are you sure you want to delete these files?')) {
-      Object.keys(filesToDelete).forEach(str => {
-        delete files[str];
+      Object.keys(solutionsToDelete).forEach(idx => {
+        Array.isArray(solutions) && solutions.splice(idx, 1);
       });
       forceRerender(new Date().getTime());
     }
   };
 
-  const solutionNames = solutions && Object.keys(solutions);
+  const solutionNames =
+    solutions && solutions.map(({ title }, idx) => title || idx);
 
   return (
     <>
@@ -125,14 +126,14 @@ const SolutionsControl = ({
       ) : null}
       {showDialogBox && operation === 'delete' ? (
         <DialogBox onClick={e => e.stopPropagation()}>
-          <header>Select files to delete</header>
+          <header>Select solutions to delete</header>
           <ContainerBase marginTop="20px">
-            {solutionNames.map(str => (
-              <div>
+            {solutionNames.map((str, idx) => (
+              <div key={idx}>
                 <input
                   type="checkbox"
-                  onChange={e => handleDeleteCheckbox(e.target.checked, str)}
-                  checked={filesToDelete[str]}
+                  onChange={e => handleDeleteCheckbox(e.target.checked, idx)}
+                  checked={solutionsToDelete[idx]}
                 />{' '}
                 {str}
               </div>

@@ -51,6 +51,8 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
     tasks[taskId].body &&
     JSON.parse(tasks[taskId].body);
 
+  debugger;
+
   const saveTask = () => {
     dispatch(
       resourceActions.updateTask.request({
@@ -75,6 +77,8 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
     solution = solutionIndex && solutions[Number(solutionIndex)];
     $step = solution || step;
   }
+
+  debugger;
 
   const onFileChange = useCallback(
     debounce(files => {
