@@ -11,7 +11,6 @@ import { canEditTask, isRegistered } from '../../store/selectors';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
 import Styled from './Task.manager.styles';
 import debounce from 'lodash.debounce';
-import SchemaType from 'yup/lib/mixed';
 import FlexContainer from '../foundation/FlexContainer';
 
 function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
@@ -86,6 +85,26 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
 
   if (!task) return null;
 
+  function updateQuery(params) {
+    const newQuery = { ...router.query, ...params };
+
+    const url = `/editor?${new URLSearchParams(newQuery).toString()}`;
+    router.push(url, url, { shallow: true });
+  }
+
+  const handleShowSolutions = () => {
+    const showSolutions = router.query.solutionIndex;
+    const newQuery = { ...router.query };
+    if (showSolutions) {
+      delete newQuery.solutionIndex;
+    } else {
+      newQuery.solutionIndex = 0;
+    }
+
+    const url = `/editor?${new URLSearchParams(newQuery).toString()}`;
+    router.push(url, url, { shallow: true });
+  };
+
   return (
     <>
       {loading ? <SpinnerLarge /> : null}
@@ -114,24 +133,29 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
         />
       </Split>
       <Styled.SolutionsWrapper width={solutionsMenuWidth}>
-        {showSolutions ? (
+        {solutionIndex ? (
           <Styled.SolutionsMenu>
             Choose solution stack:
             <FlexContainer justifyContent="flex-start">
               {solutions &&
                 solutions.map(({ title }, idx) => (
-                  <button key={idx}>
+                  <Styled.SolutionButton
+                    key={idx}
+                    onClick={() =>
+                      updateQuery({
+                        solutionIndex: idx,
+                      })
+                    }
+                    active={Number(solutionIndex) === idx}
+                  >
                     {title ? title : `SOLUTION ${idx + 1}`}
-                  </button>
+                  </Styled.SolutionButton>
                 ))}
             </FlexContainer>
           </Styled.SolutionsMenu>
         ) : null}
-        <Styled.Button
-          onClick={() => setShowSolutions(!showSolutions)}
-          color="#E67B38"
-        >
-          {`${showSolutions ? 'HIDE' : 'SHOW'} SOLUTIONS`}
+        <Styled.Button onClick={handleShowSolutions} color="#E67B38">
+          {`${solutionIndex ? 'HIDE' : 'SHOW'} SOLUTIONS`}
         </Styled.Button>
         <Styled.Button color="#7FD86F">SAVE PROGRESS</Styled.Button>
       </Styled.SolutionsWrapper>
