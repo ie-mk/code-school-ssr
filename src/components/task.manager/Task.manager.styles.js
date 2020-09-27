@@ -49,13 +49,14 @@ const SolutionButton = styled.div`
   font-family: inherit;
   border: 2px solid #07529d;
   color: #07529d;
-  background-color: ${({ addNew }) => (addNew ? 'lightGreen' : 'white')};
-  font-size: ${({ addNew }) => (addNew ? '17px' : '9px')};
+  background-color: ${({ control, deleteSolution }) =>
+    control ? (deleteSolution ? 'orangered' : 'lightGreen') : 'white'};
+  font-size: ${({ control }) => (control ? '17px' : '9px')};
   font-weight: 700;
   margin-top: 6px;
-  padding: ${({ addNew }) => (addNew ? '3px 10px' : '7px 10px')};
-  margin-right: 15px;
-  min-width: ${({ addNew }) => (addNew ? 'auto' : '108px')};
+  padding: ${({ control }) => (control ? '3px 10px' : '7px 10px')};
+  margin-right: ${({ control }) => (control ? '7px' : '15px')};
+  min-width: ${({ control }) => (control ? 'auto' : '108px')};
   cursor: pointer;
   box-shadow: ${({ active }) => (active ? 'inset 0 0 4px 5px #E67B38' : '')};
 `;

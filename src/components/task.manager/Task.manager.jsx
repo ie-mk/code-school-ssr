@@ -6,12 +6,12 @@ import { Stepnav } from './stepnav';
 import { Sandpack } from './sandpack';
 import './Task.manager.scss';
 import { useRouter } from 'next/router';
-import { layoutActions, resourceActions } from '../../store/actions';
+import { resourceActions } from '../../store/actions';
 import { canEditTask, isRegistered } from '../../store/selectors';
 import SpinnerLarge from '../foundation/spinner/SpinnerLarge';
 import Styled from './Task.manager.styles';
 import debounce from 'lodash.debounce';
-import FlexContainer from '../foundation/FlexContainer';
+import SolutionsMenu from './solutions/SolutionsMenu';
 
 function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   const router = useRouter();
@@ -20,7 +20,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   } = router;
 
   const [editMode, setEditMode] = useState(false);
-  const [showSolutions, setShowSolutions] = useState(true);
+  // const [showSolutions, setShowSolutions] = useState(true);
   const [firstColumnSize, updateFirstColumnSize] = useState(20);
   const [secondColumnSize, updateSecondColumnSize] = useState(47.5);
 
@@ -64,6 +64,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
 
   let $step;
   let solutions;
+  let solution;
 
   if (task) {
     const { steps } = task;
@@ -71,7 +72,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
     const step = steps[(stepIndex && Number(stepIndex)) || 0];
     solutions = step.solutions;
 
-    const solution = solutionIndex && solutions[Number(solutionIndex)];
+    solution = solutionIndex && solutions[Number(solutionIndex)];
     $step = solution || step;
   }
 
@@ -84,13 +85,6 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   );
 
   if (!task) return null;
-
-  function updateQuery(params) {
-    const newQuery = { ...router.query, ...params };
-
-    const url = `/editor?${new URLSearchParams(newQuery).toString()}`;
-    router.push(url, url, { shallow: true });
-  }
 
   const handleShowSolutions = () => {
     const showSolutions = router.query.solutionIndex;
@@ -134,28 +128,11 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
       </Split>
       <Styled.SolutionsWrapper width={solutionsMenuWidth}>
         {solutionIndex ? (
-          <Styled.SolutionsMenu>
-            Choose solution stack:
-            <FlexContainer justifyContent="flex-start">
-              {solutions &&
-                solutions.map(({ title }, idx) => (
-                  <Styled.SolutionButton
-                    key={idx}
-                    onClick={() =>
-                      updateQuery({
-                        solutionIndex: idx,
-                      })
-                    }
-                    active={Number(solutionIndex) === idx}
-                  >
-                    {title ? title : `SOLUTION ${idx + 1}`}
-                  </Styled.SolutionButton>
-                ))}
-              {canEditTask ? (
-                <Styled.SolutionButton addNew={true}>+</Styled.SolutionButton>
-              ) : null}
-            </FlexContainer>
-          </Styled.SolutionsMenu>
+          <SolutionsMenu
+            solutions={solutions}
+            task={task}
+            canEditTask={canEditTask}
+          />
         ) : null}
         <Styled.Button onClick={handleShowSolutions} color="#E67B38">
           {`${solutionIndex ? 'HIDE' : 'SHOW'} SOLUTIONS`}
