@@ -144,6 +144,17 @@ Scenario: LOGGED IN create course
 
      And I check video "chapter-2-watch-lesson-2-video" "https://www.youtube.com/embed/pU722vRd66A"
 
+    And I navigate to dashboard page
+    And I wait "3000" ms
+    And I navigate to courses page
+    And I wait "3000" ms
+    And I click Edit course button in "_TEST_COURSE_100"
+    And I wait "3000" ms
+    And I click on Unpublish button
+    And I wait "1000" ms
+    And I click on Unpublished button
+    And I wait "3000" ms
+    And I click on delete course "_TEST_COURSE_100"
 
 #    And I open date picker
 #    And I select start date first day of the week on the date picker

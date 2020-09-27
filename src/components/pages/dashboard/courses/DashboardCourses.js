@@ -35,6 +35,7 @@ const DashboardCourses = ({ dispatch, loading, editableCourseId }) => {
         <Styled.Title
           onClick={() => setActiveTab('unpublished')}
           active={showUnpublished}
+          data-test="go-to-unpublished"
         >
           Unpublished(06)
         </Styled.Title>

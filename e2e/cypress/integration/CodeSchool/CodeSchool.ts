@@ -245,6 +245,34 @@ Then('I check video {string} {string}', (videoId: string, video: string) => {
   cy.get(`iframe[data-test="${videoId}"]`).should('have.attr', 'src', video);
 });
 
+Given('I click Edit course button in {string}', (name: string) => {
+  cy.contains(name) // gives you the cell
+    .first()
+    .parent()
+    .contains('Edit') // finds the delete button
+    .click();
+});
+
+Given('I click on Unpublish button', () => {
+  cy.get('[data-test="publish-button"]').click();
+});
+
+Given('I click on Unpublished button', () => {
+  cy.get('[data-test="go-to-unpublished"]').click();
+});
+
+Given('I click on delete course {string}', (name: string) => {
+  cy.contains(name) // gives you the cell
+    .first()
+    .parent()
+    .contains('Delete') // finds the delete button
+    .click();
+
+  cy.on('window:confirm', txt => {
+    expect(txt).to.contains('Are you sure you want to delete this course?');
+  });
+});
+
 Given('I open date picker', () => {
   cy.get('.DateRangePickerInput_calendarIcon').click();
 });
