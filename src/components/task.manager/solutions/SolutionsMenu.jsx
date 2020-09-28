@@ -4,7 +4,13 @@ import Styled from '../Task.manager.styles';
 import SolutionsControl from './SolutionsControl';
 import { useRouter } from 'next/router';
 
-const SolutionsMenu = ({ solutions, canEditTask, task }) => {
+const SolutionsMenu = ({
+  solutions,
+  solution,
+  canEditTask,
+  task,
+  saveTask,
+}) => {
   const router = useRouter();
   const {
     query: { solutionIndex },
@@ -39,7 +45,13 @@ const SolutionsMenu = ({ solutions, canEditTask, task }) => {
               </Styled.SolutionButton>
             ))}
           {canEditTask ? (
-            <SolutionsControl forceRerender={forceRerender} task={task} />
+            <SolutionsControl
+              solutions={solutions}
+              solution={solution}
+              forceRerender={forceRerender}
+              task={task}
+              saveTask={saveTask}
+            />
           ) : null}
         </FlexContainer>
       </Styled.SolutionsMenu>

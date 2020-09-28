@@ -16,7 +16,7 @@ import SolutionsMenu from './solutions/SolutionsMenu';
 function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
   const router = useRouter();
   const {
-    query: { stepIndex, solutionIndex, taskId },
+    query: { stepIndex = 0, solutionIndex, taskId },
   } = router;
 
   const [editMode, setEditMode] = useState(false);
@@ -51,8 +51,6 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
     tasks[taskId].body &&
     JSON.parse(tasks[taskId].body);
 
-  debugger;
-
   const saveTask = () => {
     dispatch(
       resourceActions.updateTask.request({
@@ -77,8 +75,6 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
     solution = solutionIndex && solutions[Number(solutionIndex)];
     $step = solution || step;
   }
-
-  debugger;
 
   const onFileChange = useCallback(
     debounce(files => {
@@ -134,8 +130,10 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
         {solutionIndex ? (
           <SolutionsMenu
             solutions={solutions}
+            solution={solution}
             task={task}
             canEditTask={canEditTask}
+            saveTask={saveTask}
           />
         ) : null}
         <Styled.Button onClick={handleShowSolutions} color="#E67B38">

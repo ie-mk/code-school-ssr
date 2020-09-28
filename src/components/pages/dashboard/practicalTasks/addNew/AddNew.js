@@ -11,6 +11,7 @@ import { ContainerBase } from '../../../../foundation';
 import AdminInput from '../../../../foundation/input/AdminInput';
 import Button from '../../../../foundation/button/Button';
 import { resourceActions } from '../../../../../store/actions';
+import AdminTextArea from '../../../../foundation/textarea/AdminTextArea';
 
 const StyledError = styled.div`
   color: red;
@@ -82,6 +83,16 @@ const AddNew = ({
                 border={true}
               />
             </Styled.InputRow>
+            <Styled.InputRow>
+              <AdminTextArea
+                name="body"
+                type="text"
+                rows="15"
+                label="Task JSON"
+                width="100%"
+                border={true}
+              />
+            </Styled.InputRow>
             <Styled.ButtonWrapper>
               <Button
                 type="primary"
@@ -113,6 +124,7 @@ const AddNew = ({
 
 const initialFormValues = {
   title: '',
+  body: '',
 };
 
 const mapStateToProps = state => ({

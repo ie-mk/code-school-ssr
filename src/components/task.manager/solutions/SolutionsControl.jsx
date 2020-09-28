@@ -27,14 +27,15 @@ const DialogBox = styled.div`
 `;
 
 const SolutionsControl = ({
-  task,
   isRegistered,
   canEditTask,
-  forceRerender,
+  solutions,
+  solution,
+  saveTask,
 }) => {
   const router = useRouter();
   const {
-    query: { stepIndex, solutionIndex, taskId },
+    query: { solutionIndex },
   } = router;
 
   const [showDialogBox, setShowDialogBox] = useState(null);
@@ -44,17 +45,10 @@ const SolutionsControl = ({
 
   if (!(isRegistered || canEditTask)) return null;
 
-  const solutions =
-    task &&
-    task.steps &&
-    task.steps[stepIndex] &&
-    task.steps[stepIndex].solutions;
-
-  const activeSolution = solutions && solutions[solutionIndex];
-
   const handleNewSolutionCreation = () => {
-    solutions.push({ ...activeSolution, title: solutionName });
-    forceRerender(new Date().getTime());
+    solutions.push({ ...solution, title: solutionName });
+    setShowDialogBox(false);
+    saveTask();
   };
 
   const handleDialog = val => {
@@ -75,7 +69,16 @@ const SolutionsControl = ({
       Object.keys(solutionsToDelete).forEach(idx => {
         Array.isArray(solutions) && solutions.splice(idx, 1);
       });
-      forceRerender(new Date().getTime());
+
+      setShowDialogBox(false);
+
+      saveTask();
+
+      if (solutionsToDelete[solutionIndex]) {
+        const newQuery = { ...router.query, solutionIndex: 0 };
+        const url = `/editor?${new URLSearchParams(newQuery).toString()}`;
+        router.push(url, url, { shallow: true });
+      }
     }
   };
 
