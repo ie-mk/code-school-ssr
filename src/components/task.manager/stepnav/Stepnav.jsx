@@ -3,7 +3,7 @@ import './Stepnav.styles';
 import { useRouter } from 'next/router';
 import Styled from './Stepnav.styles';
 
-export function Stepnav({ task }) {
+export function Stepnav({ task, canEditTask }) {
   const router = useRouter();
   const { query } = router;
   const { stepIndex = 0 } = query;
@@ -93,6 +93,17 @@ export function Stepnav({ task }) {
               </Styled.Step>
             );
           })}
+
+        {canEditTask ? (
+          <>
+            <Styled.Step control={true} add={true} onClick={() => {}}>
+              +
+            </Styled.Step>
+            <Styled.Step control={true} onClick={() => {}}>
+              -
+            </Styled.Step>
+          </>
+        ) : null}
       </Styled.StepsWrapper>
       <div>
         <Styled.Button

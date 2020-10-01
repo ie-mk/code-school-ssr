@@ -14,8 +14,10 @@ const Step = styled.button`
   width: 20px;
   height: 20px;
   font-size: 9px;
-  margin-left: 1px;
   background-color: ${({ active }) => (active ? 'white' : '')};
+  background-color: ${({ control, add }) =>
+    control ? (control && add ? 'lightgreen' : 'red') : ''};
+  margin-left: ${({ control, add }) => (control && add ? '10px' : '1px')};
 `;
 
 const Button = styled.button`

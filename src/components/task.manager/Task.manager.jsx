@@ -109,7 +109,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
         gutterSize={5}
       >
         <div className="task-manager-left">
-          <Stepnav task={task} editMode={editMode} />
+          <Stepnav task={task} editMode={editMode} canEditTask={canEditTask} />
           <Desc
             step={$step}
             canEditTask={canEditTask}
