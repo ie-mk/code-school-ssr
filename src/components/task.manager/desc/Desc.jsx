@@ -65,13 +65,13 @@ function Desc({ step, canEditTask, setEditMode, editMode, saveTask }) {
     <>
       {canEditTask ? (
         <FlexContainer justifyContent="space-between" padding="10px">
-          <Styled.SaveButton
-            onClick={() => {
-              saveTask();
-            }}
-          >
-            SAVE TASK
-          </Styled.SaveButton>
+          <div>
+            {editMode ? (
+              <Styled.SaveButton onClick={saveTask}>
+                SAVE TASK
+              </Styled.SaveButton>
+            ) : null}
+          </div>
           {editMode ? (
             <Styled.EditButton onClick={() => setEditMode(false)}>
               Cancel

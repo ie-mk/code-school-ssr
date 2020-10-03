@@ -24,7 +24,13 @@ const DialogBox = styled.div`
   background-color: #888888;
 `;
 
-const AddNewFile = ({ isRegistered, step, forceRerender, canEditTask }) => {
+const AddNewFile = ({
+  isRegistered,
+  step,
+  forceRerender,
+  canEditTask,
+  saveTask,
+}) => {
   const [showDialogBox, setShowDialogBox] = useState(null);
   const [fileName, setFilename] = useState('');
   const [operation, setOperation] = useState(null);
@@ -44,6 +50,8 @@ const AddNewFile = ({ isRegistered, step, forceRerender, canEditTask }) => {
     files[str] = {
       code: '',
     };
+
+    saveTask();
     forceRerender(new Date().getTime());
   };
 
@@ -65,6 +73,7 @@ const AddNewFile = ({ isRegistered, step, forceRerender, canEditTask }) => {
       Object.keys(filesToDelete).forEach(str => {
         delete files[str];
       });
+      saveTask();
       forceRerender(new Date().getTime());
     }
   };

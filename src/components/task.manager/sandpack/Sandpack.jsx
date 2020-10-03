@@ -17,6 +17,7 @@ const getSandpackContent = (
   step,
   forceRerender,
   updateSecondColumnSize,
+  saveTask,
 ) => () => {
   return (
     <>
@@ -31,7 +32,11 @@ const getSandpackContent = (
         <div className="sandpack-content-left">
           <FlexContainer backgroundColor="#211D31" position="relative">
             <FileExplorer className="file-explorer" id="file-explorer" />
-            <AddNewFile step={step} forceRerender={forceRerender} />
+            <AddNewFile
+              step={step}
+              forceRerender={forceRerender}
+              saveTask={saveTask}
+            />
           </FlexContainer>
           <CodeMirror className="code-mirror" />
         </div>
@@ -44,7 +49,7 @@ const getSandpackContent = (
 };
 
 export function Sandpack(props) {
-  const { step, onFileChange, updateSecondColumnSize } = props;
+  const { step, onFileChange, updateSecondColumnSize, saveTask } = props;
 
   const [renderTime, forceRerender] = useState(new Date().getTime());
 
@@ -63,7 +68,12 @@ export function Sandpack(props) {
       entry="/index.js"
     >
       <SandpackConsumer>
-        {getSandpackContent(step, forceRerender, updateSecondColumnSize)}
+        {getSandpackContent(
+          step,
+          forceRerender,
+          updateSecondColumnSize,
+          saveTask,
+        )}
       </SandpackConsumer>
     </SandpackProvider>
   );

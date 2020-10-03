@@ -129,6 +129,7 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
           onFileChange={onFileChange}
           isRegistered={isRegistered}
           updateSecondColumnSize={handleCol2Resize}
+          saveTask={saveTask}
         />
       </Split>
       <Styled.SolutionsWrapper width={solutionsMenuWidth}>
