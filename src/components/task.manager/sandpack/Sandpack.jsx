@@ -45,9 +45,13 @@ const getSandpackContent = (
 
 export function Sandpack(props) {
   const { step, onFileChange, updateSecondColumnSize } = props;
-  const { files, dependencies } = step;
 
   const [renderTime, forceRerender] = useState(new Date().getTime());
+
+  const files = step && step.files;
+  const dependencies = step && step.dependencies;
+
+  if (!files) return null;
 
   return (
     <SandpackProvider

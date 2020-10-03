@@ -70,9 +70,9 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
     const { steps } = task;
 
     const step = steps[(stepIndex && Number(stepIndex)) || 0];
-    solutions = step.solutions;
+    solutions = step && step.solutions;
 
-    solution = solutionIndex && solutions[Number(solutionIndex)];
+    solution = solutions && solutionIndex && solutions[Number(solutionIndex)];
     $step = solution || step;
   }
 
@@ -109,7 +109,12 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
         gutterSize={5}
       >
         <div className="task-manager-left">
-          <Stepnav task={task} editMode={editMode} canEditTask={canEditTask} />
+          <Stepnav
+            task={task}
+            step={$step}
+            canEditTask={canEditTask}
+            saveTask={saveTask}
+          />
           <Desc
             step={$step}
             canEditTask={canEditTask}
