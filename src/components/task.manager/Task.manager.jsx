@@ -145,7 +145,9 @@ function TaskManager({ dispatch, tasks, canEditTask, loading, isRegistered }) {
         <Styled.Button onClick={handleShowSolutions} color="#E67B38">
           {`${solutionIndex ? 'HIDE' : 'SHOW'} SOLUTIONS`}
         </Styled.Button>
-        <Styled.Button color="#7FD86F">SAVE PROGRESS</Styled.Button>
+        <Styled.Button onClick={saveTask} color="#7FD86F">
+          SAVE {canEditTask ? 'TASK' : 'PROGRESS'}
+        </Styled.Button>
       </Styled.SolutionsWrapper>
     </>
   );
