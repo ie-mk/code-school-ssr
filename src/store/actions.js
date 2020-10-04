@@ -63,6 +63,7 @@ export const resourceActions = {
   deleteTask: createAsyncAction('delete-task'),
   fetchTask: createAsyncAction('fetch-task'),
   fetchTasks: createAsyncAction('fetch-tasks'),
+  deleteTaskFromState: createAction('delete-task-from-state'),
 
   createMessage: createAsyncAction('create-message'),
   updateMessage: createAsyncAction('update-message'),

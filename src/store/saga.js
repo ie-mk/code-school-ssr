@@ -389,6 +389,7 @@ function* deleteTask({ payload: docId }) {
   try {
     yield api.resource.deleteResource(`tasks/${docId}`);
     yield put(resourceActions.deleteTask.success());
+    yield put(resourceActions.deleteTaskFromState(docId));
   } catch (err) {
     yield put(resourceActions.deleteTask.failure(err));
   }

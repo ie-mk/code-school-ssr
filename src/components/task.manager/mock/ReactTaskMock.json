@@ -1,0 +1,388 @@
+{
+  "id": "TASK_ID",
+  "steps": [
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest",
+        "lodash": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "text": "The First Step is the Hardest",
+            "icon": "deathly-hallows"
+          },
+          {
+            "type": "ol",
+            "icon": "reddit",
+            "children": [
+              {
+                "type": "li",
+                "text": "Reprehenderit do aliquip occaecat irure non culpa consectetur id exercitation et sint et reprehenderit."
+              },
+              {
+                "type": "li",
+                "text": "Velit in et occaecat laboris sunt qui culpa occaecat do enim commodo."
+              }
+            ]
+          }
+        ]
+      },
+      "files": {
+        "/index.html": {
+          "code": "<div id=\"root\">MY HTML</div>\n<div class=\"my-component2\">My component 2</div>"
+        },
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\nimport \"./index1.css\";\nimport MyComponent from './MyComponent.js';\n\n\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"))"
+        },
+        "/MyComponent.js": {
+          "code": "import React from \"react\";\n\nconst MyComponent = () => <div className=\"my-component\">bla</div>;\n\nexport default MyComponent;"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\npadding: 20px;\n}"
+        },
+        "/index1.css": {
+          "code": ".my-component {\n  background-color: lightgreen;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 1 STEP 1 The First Step is the Hardest: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 2 STEP 1 The First Step is the Hardest: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "text": "The Second Step is the Second Step"
+          }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx 1\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 1 STEP 2 The Second Step is the Second Step: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 2 STEP 2 The Second Step is the Second Step: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "text": "The Third Step is after the Second Step"
+          }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "// The Third Step is after the Second Step\nimport React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx 2\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": " SOLUTION 1 STEP 3 The Third Step is after the Second Step: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 2 STEP 3 The Third Step is after the Second Step: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "text": "The Fourth Step is before the Fifth Step"
+          }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx3\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 1 STEP 4 The Fourth Step is before the Fifth Step: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 2 STEP 4 The Fourth Step is before the Fifth Step: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dependencies": {
+        "@babel/runtime": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+      },
+      "desc": {
+        "children": [
+          {
+            "type": "h1",
+            "text": "The Fifth Step is the Final Step, Unless We Add More Steps"
+          }
+        ]
+      },
+      "files": {
+        "/index.js": {
+          "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content step idx 4\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+        },
+        "/index.css": {
+          "code": ".my-component {\n  background-color: red;\n}"
+        },
+        "/index.html": {
+          "code": "<div class=\"my-component\">MY HTML</div>"
+        }
+      },
+      "solutions": [
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 1 STEP 5 The Fifth Step is the Final Step, Unless We Add More Steps: Using classes"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        },
+        {
+          "dependencies": {
+            "@babel/runtime": "latest",
+            "react": "latest",
+            "react-dom": "latest"
+          },
+          "desc": {
+            "children": [
+              {
+                "type": "h1",
+                "text": "SOLUTION 2 STEP 5 The Fifth Step is the Final Step, Unless We Add More Steps: Using functional components"
+              }
+            ]
+          },
+          "files": {
+            "/index.js": {
+              "code": "import React from \"react\";\nimport ReactDOM from \"react-dom\";\nimport \"./index.css\";\n\nfunction MyComponent() {\n  return \"MyComponent's Content\";\n}\n\nReactDOM.render(<MyComponent />, document.getElementById(\"root\"));\n"
+            },
+            "/index.css": {
+              "code": ".my-component {\n  background-color: red;\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

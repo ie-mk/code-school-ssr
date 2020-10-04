@@ -30,6 +30,12 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
     dispatch(resourceActions.fetchTasks.request({}));
   }, []);
 
+  const deleteTask = id => {
+    if (confirm('Are you sure you want to delete this task?')) {
+      dispatch(resourceActions.deleteTask.request(id));
+    }
+  };
+
   const router = useRouter();
 
   return (
@@ -98,7 +104,7 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
                           setEdit(true);
                         }}
                       >
-                        Edit Title
+                        Edit
                       </Button>
                       <Button
                         margin="0 10px 0 0"
@@ -106,7 +112,7 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
                         fontSize="12px"
                         borderRadius="sm"
                         size="sm"
-                        onClick={() => {}}
+                        onClick={() => deleteTask(id)}
                       >
                         Delete
                       </Button>

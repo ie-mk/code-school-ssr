@@ -313,6 +313,17 @@ export const taskReducer = handleActions(
     ...getAsyncReducers({ action: resourceActions.deleteTask }),
     ...getAsyncReducers({ action: resourceActions.fetchTask }),
     ...getAsyncReducers({ action: resourceActions.fetchTasks }),
+
+    [resourceActions.deleteTaskFromState]: (state, { payload: taskId }) => {
+      const newState = {
+        ...state,
+        data: { ...state.data },
+      };
+
+      delete newState.data[taskId];
+
+      return newState;
+    },
   },
   {
     data: {},

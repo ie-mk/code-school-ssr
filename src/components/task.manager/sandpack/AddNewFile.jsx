@@ -121,7 +121,7 @@ const AddNewFile = ({
           <header>Select files to delete</header>
           <ContainerBase marginTop="20px">
             {fileNames.map(str => (
-              <div>
+              <div className={`${str === '/index.js' ? 'hidden' : ''}`}>
                 <input
                   type="checkbox"
                   onChange={e => handleDeleteCheckbox(e.target.checked, str)}

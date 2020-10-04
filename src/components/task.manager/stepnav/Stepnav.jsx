@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Stepnav.styles';
 import { useRouter } from 'next/router';
 import Styled from './Stepnav.styles';
+import LogoWithConfig from '../../foundation/LogoWithConfig';
+import Logo from '../../foundation/Logo';
 
 export function Stepnav({ task, canEditTask, saveTask }) {
   const [renderTime, forceRerender] = useState(new Date().getTime());
@@ -59,6 +61,17 @@ export function Stepnav({ task, canEditTask, saveTask }) {
 
   return (
     <Styled.Wrapper key={renderTime}>
+      <Logo
+        imgSrc="/logo/logo.png"
+        width="27px"
+        height="27px"
+        mediaConfig={{
+          belowTabletLarge: {
+            margin: '0 20px 0 10px',
+          },
+        }}
+        zIndex="9"
+      />
       <div>
         {!canEditTask ? (
           <Styled.Button onClick={goPrevStep} hidden={isFirstStep}>
