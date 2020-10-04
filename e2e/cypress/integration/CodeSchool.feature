@@ -1,7 +1,6 @@
 Feature: Code School UI
   @code-school
 
-@focus
 Scenario: LOGGED IN create course
 
     Given I navigate to platform url
@@ -170,10 +169,33 @@ Scenario: LOGGED IN create course
 #    And I can see "Contact host"
 #    And I can see "More places to stay"
 
+  @focus
   Scenario: LOGGED IN Dahshboard send message
-    Given I navigate to dahsboard
-    And I open messages tab
+    Given I navigate to platform url
+    And I wait "1000" ms
+    And I navigate to login page
+    And I login with test user with author permissions
+    And I wait "1000" ms
+    And I navigate to dashboard page
+    And I wait "1000" ms
+    And I navigate to inbox page
+    And I wait "1000" ms
+    Then I click button "New Message"
+    And I click on new receiver "rajesh ganne"
+    And I fill the values of the new message
+      | Subject | Regarding Tourism |
+      | Message | Tajmahal is of the best places to visit in India  |
 
+    Then I click button "Send"
+
+    And I navigate to dashboard page
+    And I wait "1000" ms
+    And I navigate to inbox page
+    And I wait "1000" ms
+
+    And I check the values of message
+      | Subject | Regarding Tourism |
+      | Message | Tajmahal is of the best places to visit in India  |
 
 #  Scenario: NOT LOGGED IN - add to favourites
 #    Given I navigate to platform url

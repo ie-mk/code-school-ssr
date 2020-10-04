@@ -15,6 +15,7 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
           <Styled.Label>Dashboard</Styled.Label>
         </Styled.MenuItem>
         <Styled.MenuItem
+          data-test="go-to-inbox-page"
           active={active === 'inbox'}
           onClick={() => setActiveComponent('inbox')}
         >

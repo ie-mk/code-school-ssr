@@ -45,6 +45,8 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
           <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
             <Styled.InputRow>
               <SearchableInput
+                name="receiver-id"
+                //  data-test="receiver-id"
                 label="Enter Member ID(Name / Email / Phone)"
                 width="450px"
                 placeholder="start typing user name"

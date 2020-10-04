@@ -72,6 +72,10 @@ Given('I navigate to dashboard page', () => {
   cy.get('[data-test="go-to-dashboard-page"]').click();
 });
 
+Given('I navigate to inbox page', () => {
+  cy.get('[data-test="go-to-inbox-page"]').click();
+});
+
 Given('I navigate to courses page', () => {
   cy.get('[data-test="go-to-courses"]').click();
 });
@@ -271,6 +275,38 @@ Given('I click on delete course {string}', (name: string) => {
   cy.on('window:confirm', txt => {
     expect(txt).to.contains('Are you sure you want to delete this course?');
   });
+});
+
+Given('I click on new receiver {string}', (name: string) => {
+  cy.get('input[name="receiver-id"]')
+    // .last()
+    .type(name, {
+      force: true,
+    });
+  cy.contains(name).click();
+});
+
+Then('I fill the values of the new message', (dataTable: any) => {
+  // cy.get('input[name="receiver-id"]')
+  //   .last()
+  //   .type(dataTable.rawTable[0][1], {
+  //     force: true,
+  //   });
+  cy.get('input[name="subject"]')
+    .last()
+    .type(dataTable.rawTable[0][1], {
+      force: true,
+    });
+  cy.get('textarea[name="message"]')
+    .last()
+    .type(dataTable.rawTable[1][1], {
+      force: true,
+    });
+});
+
+Then('I check the values of message', (dataTable: any) => {
+  cy.contains(dataTable.rawTable[0][1]);
+  cy.contains(dataTable.rawTable[1][1]);
 });
 
 Given('I open date picker', () => {
