@@ -287,11 +287,6 @@ Given('I click on new receiver {string}', (name: string) => {
 });
 
 Then('I fill the values of the new message', (dataTable: any) => {
-  // cy.get('input[name="receiver-id"]')
-  //   .last()
-  //   .type(dataTable.rawTable[0][1], {
-  //     force: true,
-  //   });
   cy.get('input[name="subject"]')
     .last()
     .type(dataTable.rawTable[0][1], {
