@@ -8,7 +8,7 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
       <ContainerBase minWidth="300px">
         <Styled.MenuItem
           data-test="go-to-dashboard-page"
-          active={active === 'dashboard' || !active}
+          active={active === 'dashboard'}
           onClick={() => setActiveComponent('dashboard')}
         >
           <img src="svg/icon_dashboard.svg" />
@@ -24,7 +24,7 @@ const DashboardMenu = ({ setActiveComponent, active }) => {
         <Styled.MenuItem
           //data-test="results-properties"
           data-test="go-to-courses"
-          active={active === 'courses'}
+          active={active === 'courses' || !active}
           onClick={() => setActiveComponent('courses')}
         >
           <img src="svg/icon_courses.svg" />

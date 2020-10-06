@@ -25,6 +25,7 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
   const [newAdd, setNewAdd] = useState(false);
   const [edit, setEdit] = useState(false);
   const [editTaskId, setEditTaskId] = useState(null);
+  const [clone, setClone] = useState(false);
 
   useEffect(() => {
     dispatch(resourceActions.fetchTasks.request({}));
@@ -100,6 +101,19 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
                         borderRadius="sm"
                         size="sm"
                         onClick={() => {
+                          // setEditTaskId(id);
+                          // setEdit(true);
+                        }}
+                      >
+                        Clone
+                      </Button>
+                      <Button
+                        margin="0 10px 0 0"
+                        type="action"
+                        fontSize="12px"
+                        borderRadius="sm"
+                        size="sm"
+                        onClick={() => {
                           setEditTaskId(id);
                           setEdit(true);
                         }}
@@ -129,7 +143,10 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
               borderRadius="sm"
               height="45px"
               size="sm"
-              onClick={() => setNewAdd(true)}
+              onClick={() => {
+                setNewAdd(true);
+                setClone(true);
+              }}
             >
               <i className="fa fa-plus" aria-hidden="true" />
               ADD NEW
@@ -143,6 +160,8 @@ const PracticalTasks = ({ dispatch, tasks, loading }) => {
             editTaskId={editTaskId}
             setEdit={setEdit}
             setNewAdd={setNewAdd}
+            setClone={setClone}
+            clone={clone}
           />
         </ContainerBase>
       )}

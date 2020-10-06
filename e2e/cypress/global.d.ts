@@ -24,5 +24,7 @@ declare namespace Cypress {
         companyNumber?: string;
       },
     ) => Cypress.Chainable<Response>;
+    // attachFile: (value: string): Chainable<Subject>,
+    attachFile: () => Cypress.Chainable<Response>;
   }
 }

@@ -24,10 +24,13 @@ const AddNew = ({
   setNewAdd,
   dispatch,
   tasks,
+  setClone,
+  clone,
 }) => {
   const handleCancel = () => {
     setEdit(false);
     setNewAdd(false);
+    setClone(false);
   };
 
   const task = tasks[editTaskId];
