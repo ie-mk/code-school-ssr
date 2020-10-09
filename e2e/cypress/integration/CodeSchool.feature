@@ -183,8 +183,8 @@ Scenario: LOGGED IN create course
     Then I click button "New Message"
     And I click on new receiver "rajesh ganne"
     And I fill the values of the new message
-      | Subject | Regarding Tourism |
-      | Message | Tajmahal is of the best places to visit in India  |
+      | Subject | Regarding Yerrakota |
+      | Message | Yerrakota is of the best fort in India  |
 
     Then I click button "Send"
 
@@ -194,8 +194,17 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
 
     And I check the values of message
-      | Subject | Regarding Tourism |
-      | Message | Tajmahal is of the best places to visit in India  |
+      | Subject | Regarding Yerrakota |
+      | Message | Yerrakota is of the best fort in India  |
+
+    And I click on delete message "Yerrakota is of the best fort in India"
+    And I wait "2000" ms
+
+    And I navigate to dashboard page
+    And I wait "1000" ms
+    And I navigate to inbox page
+    And I wait "1000" ms
+
 
 #  Scenario: NOT LOGGED IN - add to favourites
 #    Given I navigate to platform url

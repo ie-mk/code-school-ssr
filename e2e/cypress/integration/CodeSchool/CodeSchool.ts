@@ -304,6 +304,18 @@ Then('I check the values of message', (dataTable: any) => {
   cy.contains(dataTable.rawTable[1][1]);
 });
 
+Given('I click on delete message {string}', (name: string) => {
+  cy.contains(name) // gives you the cell
+    .first()
+    .parent()
+    .contains('Delete') // finds the delete button
+    .click();
+
+  cy.on('window:confirm', txt => {
+    expect(txt).to.contains('Are you sure you want to delete this message?');
+  });
+});
+
 Given('I open date picker', () => {
   cy.get('.DateRangePickerInput_calendarIcon').click();
 });
