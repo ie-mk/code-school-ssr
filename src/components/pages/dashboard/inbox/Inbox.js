@@ -98,7 +98,7 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
                 <Table.Td>
                   {moment(rowData.created).format('DD/MM/YYYY, h:mm:ss a')}
                 </Table.Td>
-                <Table.Td>{rowData.message}</Table.Td>
+                <Table.Td>{rowData.message} </Table.Td>
                 <Table.Td>
                   <Button
                     type="action"

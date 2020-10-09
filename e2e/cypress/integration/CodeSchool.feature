@@ -191,7 +191,7 @@ Scenario: LOGGED IN create course
     And I navigate to dashboard page
     And I wait "1000" ms
     And I navigate to inbox page
-    And I wait "1000" ms
+    And I wait "3000" ms
 
     And I check the values of message
       | Subject | Regarding Yerrakota |
