@@ -50,6 +50,12 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
     );
   }, [uid, activeTab]);
 
+  const handleDelete = id => {
+    if (confirm('Are you sure you want to delete this message?')) {
+      dispatch(resourceActions.deleteMessage.request(id));
+    }
+  };
+
   return (
     <>
       {loading ? <SpinnerLarge /> : null}
@@ -92,7 +98,7 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
                 <Table.Td>
                   {moment(rowData.created).format('DD/MM/YYYY, h:mm:ss a')}
                 </Table.Td>
-                <Table.Td>{rowData.message}</Table.Td>
+                <Table.Td>{rowData.message} </Table.Td>
                 <Table.Td>
                   <Button
                     type="action"
@@ -101,6 +107,14 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
                     onClick={() => handleReply(rowData)}
                   >
                     Reply
+                  </Button>
+                  <Button
+                    type="action"
+                    size="sm"
+                    borderRadius="sm"
+                    onClick={() => handleDelete(id)}
+                  >
+                    Delete
                   </Button>
                 </Table.Td>
               </Table.Tr>
