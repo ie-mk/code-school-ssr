@@ -169,6 +169,7 @@ Scenario: LOGGED IN create course
 #    And I can see "Contact host"
 #    And I can see "More places to stay"
 
+  @focus
   Scenario: LOGGED IN Dahshboard send message
     Given I navigate to platform url
     And I wait "1000" ms
@@ -203,7 +204,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to inbox page
     And I wait "1000" ms
-
+    And I should not see "Yerrakota is of the best fort in India"
 
 #  Scenario: NOT LOGGED IN - add to favourites
 #    Given I navigate to platform url
