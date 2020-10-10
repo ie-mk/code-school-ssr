@@ -24,11 +24,11 @@ export const getUserPublicInfo = createSelector(
 export const getPermissions = state => state.user.permissions.data;
 
 export const canEditTask = createSelector(getPermissions, perm => {
-  return perm.author || perm.admin;
+  return perm && (perm.author || perm.admin);
 });
 
 export const isRegistered = createSelector(getPermissions, perm => {
-  return perm.registered;
+  return perm && perm.registered;
 });
 
 export const getUserProfileSelector = state => state.user && state.user.profile;
