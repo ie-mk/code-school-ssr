@@ -169,7 +169,6 @@ Scenario: LOGGED IN create course
 #    And I can see "Contact host"
 #    And I can see "More places to stay"
 
-  @focus
   Scenario: LOGGED IN Dahshboard send message
     Given I navigate to platform url
     And I wait "1000" ms
