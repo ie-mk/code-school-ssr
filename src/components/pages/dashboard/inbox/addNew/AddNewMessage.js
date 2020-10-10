@@ -9,6 +9,7 @@ import Button from '../../../../foundation/button/Button';
 import { userActions, resourceActions } from '../../../../../store/actions';
 import SearchableInput from '../../../../searchableInput/SearchableInput';
 import { getAllUsersPublicInfo } from '../../../../../store/selectors';
+import moment from 'moment';
 
 const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
   useEffect(() => {
@@ -35,6 +36,8 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
         enableReinitialize={true}
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
+          var msg = values.message + ` Date: ${moment().format()}`;
+          values.message = msg;
           setSubmitting(true);
           dispatch(resourceActions.createMessage.request({ data: values }));
           setTimeout(() => setSubmitting(false), 1000);
@@ -45,6 +48,8 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
           <form onSubmit={handleSubmit} /*onKeyDown={onKeyDown}*/>
             <Styled.InputRow>
               <SearchableInput
+                name="receiver-id"
+                //  data-test="receiver-id"
                 label="Enter Member ID(Name / Email / Phone)"
                 width="450px"
                 placeholder="start typing user name"
