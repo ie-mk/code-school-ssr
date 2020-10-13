@@ -6,7 +6,6 @@ import Styled from './Inbox.styles';
 import Button from '../../foundation/button/Button';
 import { connect } from 'react-redux';
 import { userActions, resourceActions } from '../../../store/actions';
-import moment from 'moment';
 import Modal from '../../modal/Modal';
 import AddNewMessage from '../../../components/pages/dashboard/inbox/addNew/AddNewMessage';
 import ReplyMessage from '../../../components/pages/dashboard/inbox/addReply/ReplyMessage';
@@ -122,7 +121,8 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages = [] }) => {
                         {userinfo.displayName}
                       </Styled.TextContainer>
                       <Styled.TextContainer fontSize="textMobile" opacity="0.5">
-                        {moment(item.created).format('ll')}
+                        {new Date(item.created).toDateString()}
+                        {/* {moment(item.created).format('ll')} */}
                       </Styled.TextContainer>
                     </Styled.RowContainer>
                     <Styled.TextContainer fontSize="textS" paddingTop="xxS">

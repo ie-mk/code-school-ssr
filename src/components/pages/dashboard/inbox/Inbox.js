@@ -12,7 +12,7 @@ import Modal from '../../../modal/Modal';
 import { spacing, fontSizeMap } from '../../../../constants/styles';
 import SpinnerLarge from '../../../foundation/spinner/SpinnerLarge';
 import moment from 'moment';
-
+import getFormattedDate from '../../../../utils/get-formatted-date';
 const columnHeaders = [
   'S.No',
   'Student Name',
@@ -96,7 +96,8 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
                 <Table.Td>{rowData.email}</Table.Td>
                 <Table.Td>{rowData.senderPhone}</Table.Td>
                 <Table.Td>
-                  {moment(rowData.created).format('DD/MM/YYYY, h:mm:ss a')}
+                  {getFormattedDate(rowData.created)}
+                  {/* {moment(rowData.created).format('DD/MM/YYYY, h:mm:ss a')} */}
                 </Table.Td>
                 <Table.Td>{rowData.message} </Table.Td>
                 <Table.Td>

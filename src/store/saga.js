@@ -9,7 +9,6 @@ import {
 } from 'redux-saga/effects';
 import { adminActions, userActions } from './actions';
 import api from '../api/api.min';
-import moment from 'moment';
 import { getUID, getEditingCourseId, getCourses } from './selectors';
 import { resourceActions } from './actions';
 import { IS_SERVER } from '../constants';
@@ -86,8 +85,8 @@ function* handleLoginFlow({ payload: user }) {
         ...user,
         firstName,
         lastName,
-        firstLogin: moment().format(),
-        lastLogin: moment().format(),
+        firstLogin: new Date(),
+        lastLogin: new Date(),
       };
 
       // remove falsy values from object otherwise firebase will complain
@@ -285,7 +284,7 @@ function* createCourse({ payload = {} }) {
     ...payload.data,
     ownerId: uid,
     published: false,
-    editedOnDate: moment().format(),
+    editedOnDate: new Date(),
   };
   try {
     const courseId = yield api.resource.createResource('courses', data);
@@ -302,7 +301,7 @@ function* updateCourse({ payload }) {
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
       ...payload.data,
-      editedOnDate: moment().format(),
+      editedOnDate: new Date(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -316,7 +315,7 @@ function* updateCourseEditedTime() {
 
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
-      editedOnDate: moment().format(),
+      editedOnDate: new Date(),
     });
     yield put(resourceActions.updateCourse.success());
   } catch (err) {
@@ -593,7 +592,7 @@ function* createMessage({ payload }) {
   const data = {
     ...payload.data,
     senderId: uid,
-    created: moment().format(),
+    created: new Date(),
   };
   try {
     yield api.resource.createResource('messages', data);
