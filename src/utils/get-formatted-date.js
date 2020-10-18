@@ -1,4 +1,4 @@
-function getFormattedDate(datetoformat) {
+export default function getFormattedDate(datetoformat) {
   var date = new Date(datetoformat);
   var aaaa = date.getFullYear();
   var gg = date.getDate();
@@ -23,4 +23,4 @@ function getFormattedDate(datetoformat) {
   return cur_day + ' ' + hours + ':' + minutes + ':' + seconds;
 }
 // "2017-10-17 14:02:33"
-export default getFormattedDate();
+// export default getFormattedDate();

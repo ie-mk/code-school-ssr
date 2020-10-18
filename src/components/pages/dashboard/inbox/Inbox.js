@@ -11,7 +11,6 @@ import { resourceActions } from '../../../../store/actions';
 import Modal from '../../../modal/Modal';
 import { spacing, fontSizeMap } from '../../../../constants/styles';
 import SpinnerLarge from '../../../foundation/spinner/SpinnerLarge';
-import moment from 'moment';
 import getFormattedDate from '../../../../utils/get-formatted-date';
 const columnHeaders = [
   'S.No',
@@ -89,6 +88,7 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
           {Object.keys(messages).map((id, idx) => {
             const rowData = messages[id];
             if (!rowData) return null;
+            console.log('rowData ', rowData);
             return (
               <Table.Tr key={id}>
                 <Table.Td>{idx + 1}</Table.Td>
@@ -96,7 +96,8 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
                 <Table.Td>{rowData.email}</Table.Td>
                 <Table.Td>{rowData.senderPhone}</Table.Td>
                 <Table.Td>
-                  {getFormattedDate(rowData.created)}
+                  {/* { rowData && rowData.created} */}
+                  {getFormattedDate(rowData && rowData.created)}
                   {/* {moment(rowData.created).format('DD/MM/YYYY, h:mm:ss a')} */}
                 </Table.Td>
                 <Table.Td>{rowData.message} </Table.Td>

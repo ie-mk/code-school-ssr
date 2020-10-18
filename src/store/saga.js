@@ -85,8 +85,8 @@ function* handleLoginFlow({ payload: user }) {
         ...user,
         firstName,
         lastName,
-        firstLogin: new Date(),
-        lastLogin: new Date(),
+        firstLogin: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
       };
 
       // remove falsy values from object otherwise firebase will complain
@@ -205,7 +205,7 @@ function* createGetInTouchMessage({ payload }) {
     ...payload.data,
     ownerId: uid,
     read: false,
-    created: new Date(),
+    created: new Date().toISOString(),
   };
 
   try {
@@ -284,7 +284,7 @@ function* createCourse({ payload = {} }) {
     ...payload.data,
     ownerId: uid,
     published: false,
-    editedOnDate: new Date(),
+    editedOnDate: new Date().toISOString(),
   };
   try {
     const courseId = yield api.resource.createResource('courses', data);
@@ -301,7 +301,7 @@ function* updateCourse({ payload }) {
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
       ...payload.data,
-      editedOnDate: new Date(),
+      editedOnDate: new Date().toISOString(),
     });
     yield put(resourceActions.updateCourse.success());
     yield fetchCourse({ payload: courseId });
@@ -315,7 +315,7 @@ function* updateCourseEditedTime() {
 
   try {
     yield api.resource.updateResource(`courses/${courseId}`, {
-      editedOnDate: new Date(),
+      editedOnDate: new Date().toISOString(),
     });
     yield put(resourceActions.updateCourse.success());
   } catch (err) {
@@ -359,7 +359,7 @@ function* createTask({ payload: { data } }) {
   try {
     const taskId = yield api.resource.createResource('tasks', {
       ...data,
-      created: new Date(),
+      created: new Date().toISOString(),
       ownerId: uid,
       body: JSON.stringify(taskMock),
     });
@@ -438,7 +438,7 @@ function* createChapter({ payload: { sequenceNr } }) {
     const createdChapterId = yield api.resource.createResource(
       `courses/${courseId}/chapters`,
       {
-        created: new Date(),
+        created: new Date().toISOString(),
         parentId: courseId,
         ownerId: uid,
         sequenceNr,
@@ -517,7 +517,7 @@ function* createLesson({ payload: { chapterId, sequenceNr } }) {
     const createdLessonId = yield api.resource.createResource(
       `courses/${courseId}/chapters/${chapterId}/lessons`,
       {
-        created: new Date(),
+        created: new Date().toISOString(),
         parentId: chapterId,
         courseId,
         ownerId: uid,
@@ -592,7 +592,7 @@ function* createMessage({ payload }) {
   const data = {
     ...payload.data,
     senderId: uid,
-    created: new Date(),
+    created: new Date().toISOString(),
   };
   try {
     yield api.resource.createResource('messages', data);
