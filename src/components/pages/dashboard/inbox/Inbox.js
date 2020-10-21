@@ -88,7 +88,7 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
           {Object.keys(messages).map((id, idx) => {
             const rowData = messages[id];
             if (!rowData) return null;
-            console.log('rowData ', rowData);
+            console.log('rowData ', typeof rowData.created, rowData.created);
             return (
               <Table.Tr key={id}>
                 <Table.Td>{idx + 1}</Table.Td>

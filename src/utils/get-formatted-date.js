@@ -1,5 +1,11 @@
 export default function getFormattedDate(datetoformat) {
-  var date = new Date(datetoformat);
+  var date = '';
+  if (typeof datetoformat === 'object' && datetoformat !== null) {
+    date = new Date(datetoformat.seconds);
+    // date = new Date(datetoformat.getTime() * 1000);
+  } else {
+    date = new Date(datetoformat);
+  }
   var aaaa = date.getFullYear();
   var gg = date.getDate();
   var mm = date.getMonth() + 1;
