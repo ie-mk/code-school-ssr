@@ -1,7 +1,8 @@
 export default function getFormattedDate(datetoformat) {
   var date = '';
-  if (typeof datetoformat === 'object' && datetoformat !== null) {
-    date = new Date(datetoformat.seconds);
+  if (typeof datetoformat === 'object') {
+    //&& datetoformat !== null)
+    date = new Date(datetoformat.seconds * 1000);
     // date = new Date(datetoformat.getTime() * 1000);
   } else {
     date = new Date(datetoformat);
@@ -29,4 +30,28 @@ export default function getFormattedDate(datetoformat) {
   return cur_day + ' ' + hours + ':' + minutes + ':' + seconds;
 }
 // "2017-10-17 14:02:33"
+// export default getFormattedDate();
+
+export function getFormattedDateWithOutTime(datetoformat) {
+  var date = '';
+  if (typeof datetoformat === 'object') {
+    //&& datetoformat !== null)
+    date = new Date(datetoformat.seconds * 1000);
+    // date = new Date(datetoformat.getTime() * 1000);
+  } else {
+    date = new Date(datetoformat);
+  }
+  var aaaa = date.getFullYear();
+  var gg = date.getDate();
+  var mm = date.getMonth() + 1;
+
+  if (gg < 10) gg = '0' + gg;
+
+  if (mm < 10) mm = '0' + mm;
+
+  var cur_day = aaaa + '-' + mm + '-' + gg;
+
+  return cur_day;
+}
+// "2017-10-17"
 // export default getFormattedDate();

@@ -8,6 +8,9 @@ import { resourceActions } from '../../../../../store/actions';
 import { getCourses, getUID } from '../../../../../store/selectors';
 import Button from '../../../../foundation/button/Button';
 import { LEARNING_PATH, LEVEL } from '../../../../../constants';
+import getFormattedDate, {
+  getFormattedDateWithOutTime,
+} from '../../../../../utils/get-formatted-date'; ///'../../../../utils/get-formatted-date';
 
 const CoursesTable = ({
   dispatch,
@@ -66,7 +69,14 @@ const CoursesTable = ({
               <Table.Td>{LEVEL[data.level]}</Table.Td>
               <Table.Td>{data.published ? 'Yes' : 'No'}</Table.Td>
               <Table.Td>
-                {data.edited ? data.edited.substring(0, 10) : ''}
+                {data && data.hasOwnProperty('edited')
+                  ? getFormattedDateWithOutTime(data && data.edited)
+                  : data && data.hasOwnProperty('editedOnDate')
+                  ? getFormattedDateWithOutTime(data && data.editedOnDate)
+                  : ''}
+                {/* {getFormattedDate(data && data.edited)} */}
+
+                {/* {data.edited ? data.edited.substring(0, 10) : ''} */}
               </Table.Td>
               <Table.Td>
                 <Button

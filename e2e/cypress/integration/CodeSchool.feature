@@ -1,6 +1,7 @@
 Feature: Code School UI
   @code-school
 
+@focus
 Scenario: LOGGED IN create course
 
     Given I navigate to platform url
@@ -14,7 +15,7 @@ Scenario: LOGGED IN create course
     And I wait "1000" ms
     And I navigate to AddNew page
   And I fill the values of the new course
-      | Course Title | _TEST_COURSE_100 |
+      | Course Title | _TEST_COURSE_1004 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
       | Student rating | 4 |
@@ -97,10 +98,10 @@ Scenario: LOGGED IN create course
     And I navigate to courses
     And I wait "1000" ms
     And I click on Learning path "Frontend developer"
-    And I click on new course "_TEST_COURSE_100"
+    And I click on new course "_TEST_COURSE_1004"
 
     And I check created course values
-      | Course Title | _TEST_COURSE_100 |
+      | Course Title | _TEST_COURSE_1004 |
       | Duration | 10 weeks |
       | Number of chapters | 10 |
 
@@ -147,13 +148,15 @@ Scenario: LOGGED IN create course
     And I wait "3000" ms
     And I navigate to courses page
     And I wait "3000" ms
-    And I click Edit course button in "_TEST_COURSE_100"
+    And I can see course "_TEST_COURSE_1004" with date: "2020-10-27"
+    And I click Edit course button in "_TEST_COURSE_1004"
     And I wait "3000" ms
     And I click on Unpublish button
     And I wait "1000" ms
     And I click on Unpublished button
     And I wait "3000" ms
-    And I click on delete course "_TEST_COURSE_100"
+  #  And I can see course "_TEST_COURSE_1004" with date: "2020-Feb-26"
+    And I click on delete course "_TEST_COURSE_1004"
 
 #    And I open date picker
 #    And I select start date first day of the week on the date picker
@@ -169,7 +172,6 @@ Scenario: LOGGED IN create course
 #    And I can see "Contact host"
 #    And I can see "More places to stay"
 
-  @focus
   Scenario: LOGGED IN Dahshboard send message
     Given I navigate to platform url
     And I wait "1000" ms
