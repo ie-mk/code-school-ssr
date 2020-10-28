@@ -3,7 +3,6 @@ export default function getFormattedDate(datetoformat) {
   if (typeof datetoformat === 'object') {
     //&& datetoformat !== null)
     date = new Date(datetoformat.seconds * 1000);
-    // date = new Date(datetoformat.getTime() * 1000);
   } else {
     date = new Date(datetoformat);
   }
@@ -37,7 +36,6 @@ export function getFormattedDateWithOutTime(datetoformat) {
   if (typeof datetoformat === 'object') {
     //&& datetoformat !== null)
     date = new Date(datetoformat.seconds * 1000);
-    // date = new Date(datetoformat.getTime() * 1000);
   } else {
     date = new Date(datetoformat);
   }

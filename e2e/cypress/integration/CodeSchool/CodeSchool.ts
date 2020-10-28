@@ -257,13 +257,6 @@ Given('I click Edit course button in {string}', (name: string) => {
     .click();
 });
 
-// Given('I check the course created date {string} of the course {string}', (createdDate: string, name: string) => {
-//   cy.contains(name) // gives you the cell
-//     .first()
-//     .parent()
-//     .should('have.text',createdDate)
-// });
-
 Given('I click on Unpublish button', () => {
   cy.get('[data-test="publish-button"]').click();
 });
@@ -1012,17 +1005,13 @@ Then('In summary all required fields should be displayed', () => {
     .and('contain', 'Created By');
 });
 
-Then(
-  'I can see course {string} with date: {string}',
-  (name: string, createdDate: string) => {
-    cy.contains(name) // gives you the cell
-      .first()
-      .parent()
-      .should('contain', createdDate);
-    // cy.get(`[data-test=${name}]`).as(`${name}`);
-    //  cy.get(name).should('contain', createdDate);
-  },
-);
+Then('I can see course {string} with date', (name: string) => {
+  const todaysDate = Cypress.moment().format('YYYY-MM-DD');
+  cy.contains(name) // gives you the cell
+    .first()
+    .parent()
+    .should('contain', todaysDate);
+});
 
 Then(
   'I can see button {string} with label: {string}',

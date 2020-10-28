@@ -35,7 +35,7 @@ const AddNewMessage = ({ dispatch, setNewAdd, allUsersPublicInfo }) => {
         enableReinitialize={true}
         //  validationSchema={profileFormValidation}
         onSubmit={(values, { setSubmitting }) => {
-          var msg = values.message + ` Date: ${new Date()}`; //` Date: ${moment().format()}`;
+          var msg = values.message + ` Date: ${new Date()}`;
           values.message = msg;
           setSubmitting(true);
           dispatch(resourceActions.createMessage.request({ data: values }));

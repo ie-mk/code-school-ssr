@@ -96,9 +96,7 @@ const Inbox = ({ dispatch, loading, profile, messages }) => {
                 <Table.Td>{rowData.email}</Table.Td>
                 <Table.Td>{rowData.senderPhone}</Table.Td>
                 <Table.Td>
-                  {/* { rowData && rowData.created} */}
                   {getFormattedDate(rowData && rowData.created)}
-                  {/* {moment(rowData.created).format('DD/MM/YYYY, h:mm:ss a')} */}
                 </Table.Td>
                 <Table.Td>{rowData.message} </Table.Td>
                 <Table.Td>

@@ -148,14 +148,13 @@ Scenario: LOGGED IN create course
     And I wait "3000" ms
     And I navigate to courses page
     And I wait "3000" ms
-    And I can see course "_TEST_COURSE_1004" with date: "2020-10-27"
+    And I can see course "_TEST_COURSE_1004" with date
     And I click Edit course button in "_TEST_COURSE_1004"
     And I wait "3000" ms
     And I click on Unpublish button
     And I wait "1000" ms
     And I click on Unpublished button
     And I wait "3000" ms
-  #  And I can see course "_TEST_COURSE_1004" with date: "2020-Feb-26"
     And I click on delete course "_TEST_COURSE_1004"
 
 #    And I open date picker

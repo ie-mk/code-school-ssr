@@ -74,9 +74,6 @@ const CoursesTable = ({
                   : data && data.hasOwnProperty('editedOnDate')
                   ? getFormattedDateWithOutTime(data && data.editedOnDate)
                   : ''}
-                {/* {getFormattedDate(data && data.edited)} */}
-
-                {/* {data.edited ? data.edited.substring(0, 10) : ''} */}
               </Table.Td>
               <Table.Td>
                 <Button
