@@ -49,8 +49,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages = [] }) => {
   };
 
   const getMessage = (i, item, userinfo) => {
-    // const item = messages[messageid];
-
     setMessage(item.message);
     setMessageData(item);
     setDisplayedMessageIndex(i);
@@ -113,7 +111,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages = [] }) => {
                 >
                   <Styled.Image
                     src={userinfo.profileImage || userinfo.photoURL || src}
-                    // src={src}
                   />
                   <Styled.Wrapper>
                     <Styled.RowContainer>
@@ -122,7 +119,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages = [] }) => {
                       </Styled.TextContainer>
                       <Styled.TextContainer fontSize="textMobile" opacity="0.5">
                         {new Date(item.created).toDateString()}
-                        {/* {moment(item.created).format('ll')} */}
                       </Styled.TextContainer>
                     </Styled.RowContainer>
                     <Styled.TextContainer fontSize="textS" paddingTop="xxS">
@@ -189,7 +185,6 @@ const Inbox = ({ dispatch, profile, allUsersPublicInfo, messages = [] }) => {
             fontSize={fontSizeMap.h4}
             marginTop={spacing.lg}
             fontWeight="700"
-            //   onClose={() => setReply(false)}
             title={userInfo.displayName}
             image={defaultImage}
             message={message}
