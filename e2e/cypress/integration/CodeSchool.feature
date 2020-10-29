@@ -1,7 +1,6 @@
 Feature: Code School UI
   @code-school
 
-@focus
 Scenario: LOGGED IN create course
 
     Given I navigate to platform url
